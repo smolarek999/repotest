@@ -4,50 +4,46 @@ A level-1 auxiliary file: rozdzial1.aux
 A level-1 auxiliary file: rozdzial2.aux
 The style file: abbrv.bst
 Database file #1: bibliografia.bib
-Too many commas in name 1 of "Scott Loveland, Michael Shannon, Geoffrey Miller, Richard Prewitt" for entry TestingMatt
-while executing---line 1049 of file abbrv.bst
 Warning--empty journal in BUTTERFLY
-Too many commas in name 1 of "Scott Loveland, Michael Shannon, Geoffrey Miller, Richard Prewitt" for entry TestingMatt
-while executing---line 1090 of file abbrv.bst
-You've used 3 entries,
+You've used 6 entries,
             2118 wiz_defined-function locations,
-            517 strings with 4096 characters,
-and the built_in function-call counts, 659 in all, are:
-= -- 58
-> -- 21
+            534 strings with 4452 characters,
+and the built_in function-call counts, 1541 in all, are:
+= -- 133
+> -- 81
 < -- 0
-+ -- 10
-- -- 6
-* -- 27
-:= -- 124
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 10
++ -- 33
+- -- 26
+* -- 81
+:= -- 280
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 26
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 34
-empty$ -- 62
-format.name$ -- 6
-if$ -- 134
+cite$ -- 7
+duplicate$ -- 70
+empty$ -- 128
+format.name$ -- 26
+if$ -- 315
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 5
-newline$ -- 18
-num.names$ -- 6
-pop$ -- 21
+int.to.str$ -- 6
+missing$ -- 11
+newline$ -- 33
+num.names$ -- 12
+pop$ -- 52
 preamble$ -- 1
-purify$ -- 9
+purify$ -- 25
 quote$ -- 0
-skip$ -- 19
+skip$ -- 39
 stack$ -- 0
-substring$ -- 16
-swap$ -- 2
+substring$ -- 31
+swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
+type$ -- 14
 warning$ -- 1
-while$ -- 6
-width$ -- 4
-write$ -- 32
-(There were 2 error messages)
+while$ -- 12
+width$ -- 7
+write$ -- 62
+(There was 1 warning)

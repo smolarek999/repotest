@@ -5,14 +5,30 @@ S.~P.~T. B.~B.~Agarwal, M.~Gupta.
 \newblock {\em Software Engineering and Testing}.
 \newblock Jones and Bartlett Publishers, United Kingdom, 2008.
 
+\bibitem{jsfRef}
+R.~Davies and A.~Davis.
+\newblock {\em JavaServer Faces 2.0:The Complete Reference}.
+\newblock McGraw-Hill Osborne Media, 2009.
+
+\bibitem{peopleWare}
+E.~Dustin, J.~Rashka, and J.~Paul.
+\newblock {\em Automated software testing:introduction, management, and
+  performance}.
+\newblock Addison-Wesley Professional, 1999.
+
+\bibitem{TestingMatt}
+S.~Loveland, M.~Shannon, G.~Miller, and R.~Prewitt.
+\newblock {\em Software Testing Techniques: Finding the Defects That Matter}.
+\newblock Cengage Learning, 2004.
+
 \bibitem{BUTTERFLY}
 S.~Morton.
 \newblock The butterfly model for test development.
 \newblock 2001.
 
-\bibitem{TestingMatt}
-G.~M. R.~P. Scott~Loveland, Michael~Shannon.
-\newblock {\em Software Testing Techniques: Finding the Defects That Matter}.
-\newblock Cengage Learning, 2004.
+\bibitem{primeFaces}
+O.~Varaksin and M.~Caliskan.
+\newblock {\em JavaServer Faces 2.0:The Complete Reference}.
+\newblock Packt Publishing, 2013.
 
 \end{thebibliography}

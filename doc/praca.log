@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.11.28)  1 MAY 2013 19:41
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.11.28)  2 MAY 2013 14:44
 entering extended mode
  %&-line parsing enabled.
 **praca.tex
@@ -448,11 +448,7 @@ LaTeX Warning: Unused global option(s):
 
 LaTeX Warning: Label `fig:vmodel' multiply defined.
 
-) (./rozdzial2.aux
-
-LaTeX Warning: Label `fig:architektura' multiply defined.
-
-))
+) (./rozdzial2.aux))
 \openout1 = `praca.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
@@ -603,28 +599,25 @@ Rozdzia\l  5.
 <img/architektura.png, id=67, 746.03719pt x 471.26062pt>
 File: img/architektura.png Graphic file (type png)
 
-<use img/architektura.png> <img/komponenty.png, id=68, 746.79pt x 481.8pt>
-File: img/komponenty.png Graphic file (type png)
-
-<use img/komponenty.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
+<use img/architektura.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17
 
 
 
- <./img/architektura.png>]
-Underfull \vbox (badness 4846) has occurred while \output is active []
+ <./img/architektura.png>] <img/komponenty.png, id=72, 746.79pt x 481.8pt>
+File: img/komponenty.png Graphic file (type png)
 
- [18 <./img/komponenty.png (PNG copy)>] [19] [20]
+<use img/komponenty.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[18] [19 <./img/komponenty.png (PNG copy)>] [20] [21]
 Rozdzia\l  6.
-) [21
+) [22
 
-] (./praca.bbl) [22
+] (./praca.bbl) [23
 
 
 ] (./praca.aux (./rozdzial1.aux) (./rozdzial2.aux))
@@ -633,13 +626,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4533 strings out of 493848
- 59121 string characters out of 1152822
+ 4537 strings out of 493848
+ 59165 string characters out of 1152822
  149926 words of memory out of 3000000
- 7715 multiletter control sequences out of 15000+50000
+ 7719 multiletter control sequences out of 15000+50000
  33961 words of font info for 43 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 32i,12n,45p,953b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 32i,12n,45p,953b,342s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/a
@@ -648,9 +641,9 @@ msy10.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/shar
 e/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/font
 s/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on praca.pdf (22 pages, 420839 bytes).
+Output written on praca.pdf (23 pages, 427451 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
+ 119 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

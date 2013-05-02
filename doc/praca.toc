@@ -41,11 +41,11 @@
 \contentsline {chapter}{\numberline {4}Analiza problemu}{16}
 \contentsline {chapter}{\numberline {5}Projekt}{17}
 \contentsline {section}{\numberline {5.1}Architektura}{17}
-\contentsline {section}{\numberline {5.2}Komponenty}{18}
-\contentsline {section}{\numberline {5.3}Warstwy}{18}
-\contentsline {subsection}{\numberline {5.3.1}Warstwa aplikacji internetowej}{18}
-\contentsline {subsection}{\numberline {5.3.2}Warstwa aplikacji internetowej}{18}
-\contentsline {section}{\numberline {5.4}U\IeC {\.z}ytkowicy i ich role}{19}
-\contentsline {section}{\numberline {5.5}Sk\IeC {\l }adowe aplikacji}{19}
-\contentsline {chapter}{\numberline {6}Implementacja}{21}
-\contentsline {section}{\numberline {6.1}Workflow}{21}
+\contentsline {section}{\numberline {5.2}Warstwy}{18}
+\contentsline {subsection}{\numberline {5.2.1}Warstwa aplikacji internetowej}{18}
+\contentsline {subsection}{\numberline {5.2.2}Modu\IeC {\l }y aplikacji}{19}
+\contentsline {subsubsection}{Modu\IeC {\l } administracji}{19}
+\contentsline {subsection}{\numberline {5.2.3}Warstwa aplikacji internetowej}{20}
+\contentsline {section}{\numberline {5.3}Sk\IeC {\l }adowe aplikacji}{20}
+\contentsline {chapter}{\numberline {6}Implementacja}{22}
+\contentsline {section}{\numberline {6.1}Workflow}{22}
