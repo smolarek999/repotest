@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="TestExecutionListForm">
+
+        <p:panel">
+
+            <p:dataTable id="datalist" value="#{testExecutionController.items}" var="item"
+                         selectionMode="single" selection="#{testExecutionController.selected}"
+                         rowKey="#{item.idTestExecution}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.idTestExecution}" filterBy="#{item.idTestExecution}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_idTestExecution}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idTestExecution}"/>
+                </p:column>
+                <p:column sortBy="#{item.comments}" filterBy="#{item.comments}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_comments}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.comments}"/>
+                </p:column>
+                <p:column sortBy="#{item.lastModificationDate}" filterBy="#{item.lastModificationDate}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_lastModificationDate}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.lastModificationDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column sortBy="#{item.state}" filterBy="#{item.state}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_state}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.state}"/>
+                </p:column>
+                <p:column sortBy="#{item.usersid.username}" filterBy="#{item.usersid.username}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_usersid}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.usersid.username}"/>
+                </p:column>
+                <p:column sortBy="#{item.loadReleaseidRelease.name}" filterBy="#{item.loadReleaseidRelease.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_loadReleaseidRelease}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.loadReleaseidRelease.name}"/>
+                </p:column>
+                <p:column sortBy="#{item.testidTest.name}" filterBy="#{item.testidTest.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_testidTest}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.testidTest.name}"/>
+                </p:column>
+                <p:column sortBy="#{item.strategyExecutionidStrategyExecution.idStrategyExecution}" filterBy="#{item.strategyExecutionidStrategyExecution.idStrategyExecution}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_strategyExecutionidStrategyExecution}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.strategyExecutionidStrategyExecution.idStrategyExecution}"/>
+                </p:column>
+                <p:column sortBy="#{item.modeidMode.name}" filterBy="#{item.modeidMode.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_modeidMode}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.modeidMode.name}"/>
+                </p:column>
+                <p:column sortBy="#{item.deviceidDevice.name}" filterBy="#{item.deviceidDevice.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestExecutionTitle_deviceidDevice}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.deviceidDevice.name}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{testExecutionController.prepareCreate}" update=":TestExecutionCreateForm" oncomplete="TestExecutionCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TestExecutionViewForm" oncomplete="TestExecutionViewDialog.show()" disabled="#{empty testExecutionController.selected}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TestExecutionEditForm" oncomplete="TestExecutionEditDialog.show()" disabled="#{empty testExecutionController.selected}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{testExecutionController.delete}" update=":growl,datalist" disabled="#{empty testExecutionController.selected}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

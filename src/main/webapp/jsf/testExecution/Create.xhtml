@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestExecutionCreateDlg" widgetVar="TestExecutionCreateDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="TestExecutionCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testExecutionController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_comments}" for="comments" />
+                        <p:inputText id="comments" value="#{testExecutionController.selected.comments}" title="#{bundle.CreateTestExecutionTitle_comments}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_lastModificationDate}" for="lastModificationDate" />
+                        <p:calendar id="lastModificationDate" pattern="MM/dd/yyyy" value="#{testExecutionController.selected.lastModificationDate}" title="#{bundle.EditTestExecutionTitle_lastModificationDate}"  showOn="button"/>
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_state}" for="state" />
+                        <p:inputText id="state" value="#{testExecutionController.selected.state}" title="#{bundle.CreateTestExecutionTitle_state}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_usersid}" for="usersid" />
+                        <p:selectOneMenu id="usersid" value="#{testExecutionController.selected.usersid}" required="true" requiredMessage="#{bundle.EditTestExecutionRequiredMessage_usersid}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usersController.items}"
+                                           var="usersidItem"
+                                           itemValue="#{usersidItem}"
+                                           itemLabel="#{usersidItem.username.toString()}"
+                                           />
+                            <f:converter binding="#{usersConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_loadReleaseidRelease}" for="loadReleaseidRelease" />
+                        <p:selectOneMenu id="loadReleaseidRelease" value="#{testExecutionController.selected.loadReleaseidRelease}" required="true" requiredMessage="#{bundle.EditTestExecutionRequiredMessage_loadReleaseidRelease}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{loadController.items}"
+                                           var="loadReleaseidReleaseItem"
+                                           itemValue="#{loadReleaseidReleaseItem}"
+                                           itemLabel="#{loadReleaseidReleaseItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{loadConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_testidTest}" for="testidTest" />
+                        <p:selectOneMenu id="testidTest" value="#{testExecutionController.selected.testidTest}" required="true" requiredMessage="#{bundle.EditTestExecutionRequiredMessage_testidTest}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{testController.items}"
+                                           var="testidTestItem"
+                                           itemValue="#{testidTestItem}"
+                                           itemLabel="#{testidTestItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{testConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_strategyExecutionidStrategyExecution}" for="strategyExecutionidStrategyExecution" />
+                        <p:selectOneMenu id="strategyExecutionidStrategyExecution" value="#{testExecutionController.selected.strategyExecutionidStrategyExecution}" required="true" requiredMessage="#{bundle.EditTestExecutionRequiredMessage_strategyExecutionidStrategyExecution}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{strategyExecutionController.items}"
+                                           var="strategyExecutionidStrategyExecutionItem"
+                                           itemValue="#{strategyExecutionidStrategyExecutionItem}"
+                                           itemLabel="#{strategyExecutionidStrategyExecutionItem.idStrategyExecution.toString()}"
+                                           />
+                            <f:converter binding="#{strategyExecutionConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_modeidMode}" for="modeidMode" />
+                        <p:selectOneMenu id="modeidMode" value="#{testExecutionController.selected.modeidMode}" required="true" requiredMessage="#{bundle.EditTestExecutionRequiredMessage_modeidMode}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{modeController.items}"
+                                           var="modeidModeItem"
+                                           itemValue="#{modeidModeItem}"
+                                           itemLabel="#{modeidModeItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{modeConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateTestExecutionLabel_deviceidDevice}" for="deviceidDevice" />
+                        <p:selectOneMenu id="deviceidDevice" value="#{testExecutionController.selected.deviceidDevice}" required="true" requiredMessage="#{bundle.EditTestExecutionRequiredMessage_deviceidDevice}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{deviceController.items}"
+                                           var="deviceidDeviceItem"
+                                           itemValue="#{deviceidDeviceItem}"
+                                           itemLabel="#{deviceidDeviceItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{deviceConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{testExecutionController.saveNew}" value="#{bundle.Save}" update="display,:TestExecutionListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,TestExecutionCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TestExecutionCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

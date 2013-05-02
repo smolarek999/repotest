@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{SEaT}
+S.~P.~T. B.~B.~Agarwal, M.~Gupta.
+\newblock {\em Software Engineering and Testing}.
+\newblock Jones and Bartlett Publishers, United Kingdom, 2008.
+
+\bibitem{BUTTERFLY}
+S.~Morton.
+\newblock The butterfly model for test development.
+\newblock 2001.
+
+\bibitem{TestingMatt}
+G.~M. R.~P. Scott~Loveland, Michael~Shannon.
+\newblock {\em Software Testing Techniques: Finding the Defects That Matter}.
+\newblock Cengage Learning, 2004.
+
+\end{thebibliography}

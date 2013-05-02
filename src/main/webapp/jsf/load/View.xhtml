@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LoadViewDlg" widgetVar="LoadViewDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="LoadViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{loadController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewLoadLabel_releaseidRelease}"/>
+                        <h:outputText value="#{loadController.selected.releaseidRelease}" title="#{bundle.ViewLoadTitle_releaseidRelease}"/>
+
+                        <h:outputText value="#{bundle.ViewLoadLabel_name}"/>
+                        <h:outputText value="#{loadController.selected.name}" title="#{bundle.ViewLoadTitle_name}"/>
+
+                        <h:outputText value="#{bundle.ViewLoadLabel_startDate}"/>
+                        <h:outputText value="#{loadController.selected.startDate}" title="#{bundle.ViewLoadTitle_startDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{bundle.ViewLoadLabel_endDate}"/>
+                        <h:outputText value="#{loadController.selected.endDate}" title="#{bundle.ViewLoadTitle_endDate}"/>
+
+                        <h:outputText value="#{bundle.ViewLoadLabel_release}"/>
+                        <h:outputText value="#{loadController.selected.release.idRelease}"/>
+
+                        <h:outputText value="#{bundle.ViewLoadLabel_testExecutionCollection}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LoadViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

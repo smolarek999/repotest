@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestGroupEditDlg" widgetVar="TestGroupEditDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="TestGroupEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{testGroupController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditTestGroupLabel_idTestGroup}" for="idTestGroup" />
+                        <h:outputText id="idTestGroup" value="#{testGroupController.selected.idTestGroup}" />
+
+                        <p:outputLabel value="#{bundle.EditTestGroupLabel_path}" for="path" />
+                        <p:inputText id="path" value="#{testGroupController.selected.path}" title="#{bundle.EditTestGroupTitle_path}" required="true" requiredMessage="#{bundle.EditTestGroupRequiredMessage_path}"/>
+
+                        <p:outputLabel value="#{bundle.EditTestGroupLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{testGroupController.selected.name}" title="#{bundle.EditTestGroupTitle_name}" />
+
+                        <p:outputLabel value="#{bundle.EditTestGroupLabel_parentId}" for="parentId" />
+                        <p:selectOneMenu id="parentId" value="#{testGroupController.selected.parentId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{testGroupController.items}"
+                                           var="parentIdItem"
+                                           itemValue="#{parentIdItem}"
+                                           itemLabel="#{parentIdItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{testGroupConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{testGroupController.save}" value="#{bundle.Save}" update="display,:TestGroupListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,TestGroupEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TestGroupEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

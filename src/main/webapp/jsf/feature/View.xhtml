@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FeatureViewDlg" widgetVar="FeatureViewDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="FeatureViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{featureController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewFeatureLabel_idFeature}"/>
+                        <h:outputText value="#{featureController.selected.idFeature}" title="#{bundle.ViewFeatureTitle_idFeature}"/>
+
+                        <h:outputText value="#{bundle.ViewFeatureLabel_name}"/>
+                        <h:outputText value="#{featureController.selected.name}" title="#{bundle.ViewFeatureTitle_name}"/>
+
+                        <h:outputText value="#{bundle.ViewFeatureLabel_description}"/>
+                        <h:outputText value="#{featureController.selected.description}" title="#{bundle.ViewFeatureTitle_description}"/>
+
+                        <h:outputText value="#{bundle.ViewFeatureLabel_releaseSince}"/>
+                        <h:outputText value="#{featureController.selected.releaseSince}" title="#{bundle.ViewFeatureTitle_releaseSince}"/>
+
+                        <h:outputText value="#{bundle.ViewFeatureLabel_productId}"/>
+                        <h:outputText value="#{featureController.selected.productId}" title="#{bundle.ViewFeatureTitle_productId}"/>
+
+                        <h:outputText value="#{bundle.ViewFeatureLabel_testCollection}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FeatureViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

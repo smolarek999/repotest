@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestCreateDlg" widgetVar="TestCreateDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="TestCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateTestLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{testController.selected.name}" title="#{bundle.CreateTestTitle_name}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{testController.selected.description}" title="#{bundle.CreateTestTitle_description}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestLabel_grouppath}" for="grouppath" />
+                        <p:inputText id="grouppath" value="#{testController.selected.grouppath}" title="#{bundle.CreateTestTitle_grouppath}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestLabel_testGroupidTestGroup}" for="testGroupidTestGroup" />
+                        <p:selectOneMenu id="testGroupidTestGroup" value="#{testController.selected.testGroupidTestGroup}" required="true" requiredMessage="#{bundle.EditTestRequiredMessage_testGroupidTestGroup}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{testGroupController.items}"
+                                           var="testGroupidTestGroupItem"
+                                           itemValue="#{testGroupidTestGroupItem}"
+                                           itemLabel="#{testGroupidTestGroupItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{testGroupConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateTestLabel_featureidFeature}" for="featureidFeature" />
+                        <p:selectOneMenu id="featureidFeature" value="#{testController.selected.featureidFeature}" required="true" requiredMessage="#{bundle.EditTestRequiredMessage_featureidFeature}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{featureController.items}"
+                                           var="featureidFeatureItem"
+                                           itemValue="#{featureidFeatureItem}"
+                                           itemLabel="#{featureidFeatureItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{featureConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{testController.saveNew}" value="#{bundle.Save}" update="display,:TestListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,TestCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TestCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

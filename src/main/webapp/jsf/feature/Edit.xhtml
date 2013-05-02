@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FeatureEditDlg" widgetVar="FeatureEditDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="FeatureEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{featureController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditFeatureLabel_idFeature}" for="idFeature" />
+                        <h:outputText id="idFeature" value="#{featureController.selected.idFeature}" />
+
+                        <p:outputLabel value="#{bundle.EditFeatureLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{featureController.selected.name}" title="#{bundle.EditFeatureTitle_name}" />
+
+                        <p:outputLabel value="#{bundle.EditFeatureLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{featureController.selected.description}" title="#{bundle.EditFeatureTitle_description}" />
+
+                        <p:outputLabel value="#{bundle.EditFeatureLabel_releaseSince}" for="releaseSince" />
+                        <p:inputText id="releaseSince" value="#{featureController.selected.releaseSince}" title="#{bundle.EditFeatureTitle_releaseSince}" />
+
+                        <p:outputLabel value="#{bundle.EditFeatureLabel_productId}" for="productId" />
+                        <p:inputText id="productId" value="#{featureController.selected.productId}" title="#{bundle.EditFeatureTitle_productId}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{featureController.save}" value="#{bundle.Save}" update="display,:FeatureListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FeatureEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FeatureEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

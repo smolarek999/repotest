@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReleaseCreateDlg" widgetVar="ReleaseCreateDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="ReleaseCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{releaseController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateReleaseLabel_releasecol}" for="releasecol" />
+                        <p:inputText id="releasecol" value="#{releaseController.selected.releasecol}" title="#{bundle.CreateReleaseTitle_releasecol}" />
+
+                        <p:outputLabel value="#{bundle.CreateReleaseLabel_load}" for="load" />
+                        <p:selectOneMenu id="load" value="#{releaseController.selected.load}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{loadController.items}"
+                                           var="loadItem"
+                                           itemValue="#{loadItem}"
+                                           itemLabel="#{loadItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{loadConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{releaseController.saveNew}" value="#{bundle.Save}" update="display,:ReleaseListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ReleaseCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReleaseCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

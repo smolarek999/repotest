@@ -1,0 +1,82 @@
+\documentclass[pdflatex,11pt]{aghdpl}
+
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+
+% dodatkowe pakiety
+\usepackage{enumerate}
+\usepackage{listings}
+\lstloadlanguages{TeX}
+
+\lstset{
+  literate={ą}{{\k{a}}}1
+           {ć}{{\'c}}1
+           {ę}{{\k{e}}}1
+           {ó}{{\'o}}1
+           {ń}{{\'n}}1
+           {ł}{{\l{}}}1
+           {ś}{{\'s}}1
+           {ź}{{\'z}}1
+           {ż}{{\.z}}1
+           {Ą}{{\k{A}}}1
+           {Ć}{{\'C}}1
+           {Ę}{{\k{E}}}1
+           {Ó}{{\'O}}1
+           {Ń}{{\'N}}1
+           {Ł}{{\L{}}}1
+           {Ś}{{\'S}}1
+           {Ź}{{\'Z}}1
+           {Ż}{{\.Z}}1
+}
+
+%---------------------------------------------------------------------------
+
+\author{Paweł Englert}
+\shortauthor{P. Englert}
+
+\titlePL{Repozytorium testów oprogramowania dla produktów wielowydaniowych dedykowanych na wiele urządzeń}
+
+
+\shorttitlePL{Repozytorium testów oprogramowania} % skrócona wersja tytułu jeśli jest bardzo długi
+
+\thesistypePL{Praca magisterska}
+
+
+\supervisorPL{dr inż. Paweł Skrzyński}
+
+\date{2012}
+
+\departmentPL{Katedra Automatyki}
+
+
+\facultyPL{Wydział Elektrotechniki, Automatyki, Informatyki i Elektroniki}
+
+
+
+
+\setlength{\cftsecnumwidth}{10mm}
+
+%---------------------------------------------------------------------------
+
+\begin{document}
+
+\titlepages
+
+\tableofcontents
+\clearpage
+
+\include{rozdzial1}
+\include{rozdzial2}
+
+
+
+% itd.
+% \appendix
+% \include{dodatekA}
+% \include{dodatekB}
+% itd.
+
+\bibliographystyle{abbrv}
+\bibliography{bibliografia}
+
+\end{document}

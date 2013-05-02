@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="UsersListForm">
+
+        <p:panel">
+
+            <p:dataTable id="datalist" value="#{usersController.items}" var="item"
+                         selectionMode="single" selection="#{usersController.selected}"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListUsersTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column sortBy="#{item.enabled}" filterBy="#{item.enabled}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListUsersTitle_enabled}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.enabled}"/>
+                </p:column>
+                <p:column sortBy="#{item.password}" filterBy="#{item.password}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListUsersTitle_password}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.password}"/>
+                </p:column>
+                <p:column sortBy="#{item.username}" filterBy="#{item.username}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListUsersTitle_username}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.username}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{usersController.prepareCreate}" update=":UsersCreateForm" oncomplete="UsersCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":UsersViewForm" oncomplete="UsersViewDialog.show()" disabled="#{empty usersController.selected}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":UsersEditForm" oncomplete="UsersEditDialog.show()" disabled="#{empty usersController.selected}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{usersController.delete}" update=":growl,datalist" disabled="#{empty usersController.selected}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

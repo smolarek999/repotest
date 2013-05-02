@@ -1,0 +1,51 @@
+\select@language {polish}
+\contentsline {chapter}{\numberline {1}Strategie testowania oprogramowania}{2}
+\contentsline {section}{\numberline {1.1}Testowanie w procesie tworzenia oprogramowania}{2}
+\contentsline {section}{\numberline {1.2}Modele tradycyjne}{2}
+\contentsline {subsection}{\numberline {1.2.1}Model Kaskadowy}{2}
+\contentsline {subsection}{\numberline {1.2.2}Model V}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {subsubsection}{Wariacje modelu V}{4}
+\contentsline {paragraph}{}{4}
+\contentsline {paragraph}{}{5}
+\contentsline {subsection}{\numberline {1.2.3}Modele iteracyjne}{5}
+\contentsline {subsubsection}{RAD}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {subsubsection}{Techniki zwinne}{6}
+\contentsline {section}{\numberline {1.3}Typy strategii}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{10}
+\contentsline {section}{\numberline {1.4}Typy test\IeC {\'o}w}{10}
+\contentsline {subsection}{\numberline {1.4.1}Podzia\IeC {\l } ze wzgl\IeC {\k e}du na obszar zastosowania}{10}
+\contentsline {subsubsection}{Testy komponentowe}{10}
+\contentsline {subsubsection}{Testy integracyjne}{10}
+\contentsline {subsubsection}{Testy systemowe}{11}
+\contentsline {subsubsection}{Testy akceptacyjne}{11}
+\contentsline {subsection}{\numberline {1.4.2}Podzia\IeC {\l } ze wzgl\IeC {\k e}du na typ}{12}
+\contentsline {subsubsection}{Testy funkcjonalne}{12}
+\contentsline {subsubsection}{Testy niefunkcjonalne}{12}
+\contentsline {chapter}{\numberline {2}Okre\IeC {\'s}lenie problemu}{13}
+\contentsline {section}{\numberline {2.1}Definicja problemu}{13}
+\contentsline {section}{\numberline {2.2}Podobne problemy i ich rozwi\IeC {\k a}zania}{14}
+\contentsline {chapter}{\numberline {3}Programy wspieraj\IeC {\k a}ce prosces testowania}{15}
+\contentsline {chapter}{\numberline {4}Analiza problemu}{16}
+\contentsline {chapter}{\numberline {5}Projekt}{17}
+\contentsline {section}{\numberline {5.1}Architektura}{17}
+\contentsline {section}{\numberline {5.2}Komponenty}{18}
+\contentsline {section}{\numberline {5.3}Warstwy}{18}
+\contentsline {subsection}{\numberline {5.3.1}Warstwa aplikacji internetowej}{18}
+\contentsline {subsection}{\numberline {5.3.2}Warstwa aplikacji internetowej}{18}
+\contentsline {section}{\numberline {5.4}U\IeC {\.z}ytkowicy i ich role}{19}
+\contentsline {section}{\numberline {5.5}Sk\IeC {\l }adowe aplikacji}{19}
+\contentsline {chapter}{\numberline {6}Implementacja}{21}
+\contentsline {section}{\numberline {6.1}Workflow}{21}

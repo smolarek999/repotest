@@ -1,0 +1,481 @@
+3.2. Static Testing
+
+Static testing is a type of testing which requires only the source code of the product, not the binaries or executables. Static testing does not involve executing the programs on computers but involves select people going through the code to find out whether
+
+the code works according to the functional requirement;
+
+the code has been written in accordance with the design developed earlier in the project life cycle;
+
+the code for any functionality has been missed out;
+
+the code handles errors properly.
+
+Static testing can be done by humans or with the help of specialized tools.
+
+3.2.1. Static Testing by Humans
+
+These methods rely on the principle of humans reading the program code to detect errors rather than computers executing the code to find errors. This process has several advantages.
+
+1.
+Sometimes humans can find errors that computers cannot. For example, when there are two variables with similar names and the programmer used a “wrong” variable by mistake in an expression, the computer will not detect the error but execute the statement and produce incorrect results, whereas a human being can spot such an error.
+
+2.
+By making multiple humans read and evaluate the program, we can get multiple perspectives and therefore have more problems identified upfront than a computer could.
+
+3.
+A human evaluation of the code can compare it against the specifications or design and thus ensure that it does what is intended to do. This may not always be possible when a computer runs a test.
+
+4.
+A human evaluation can detect many problems at one go and can even try to identify the root causes of the problems. More often than not, multiple problems can get fixed by attending to the same root cause. Typically, in a reactive testing, a test uncovers one problem (or, at best, a few problems) at a time. Often, such testing only reveals the symptoms rather than the root causes. Thus, the overall time required to fix all the problems can be reduced substantially by a human evaluation.
+
+5.
+By making humans test the code before execution, computer resources can be saved. Of course, this comes at the expense of human resources.
+
+6.
+A proactive method of testing like static testing minimizes the delay in identification of the problems. As we have seen in Chapter 1, the sooner a defect is identified and corrected, lesser is the cost of fixing the defect.
+
+7.
+From a psychological point of view, finding defects later in the cycle (for example, after the code is compiled and the system is being put together) creates immense pressure on programmers. They have to fix defects with less time to spare. With this kind of pressure, there are higher chances of other defects creeping in.
+
+There are multiple methods to achieve static testing by humans. They are (in the increasing order of formalism) as follows.
+
+Desk checking of the code
+
+Code walkthrough
+
+Code review
+
+Code inspection
+
+Since static testing by humans is done before the code is compiled and executed, some of these methods can be viewed as process-oriented or defect prevention-oriented or quality assurance-oriented activities rather than pure testing activities. Especially as the methods become increasingly formal (for example, Fagan Inspection), these traditionally fall under the “process” domain. They find a place in formal process models such as ISO 9001, CMMI, and so on and are seldom treated as part of the “testing” domain. Nevertheless, as mentioned earlier in this book, we take a holistic view of “testing” as anything that furthers the quality of a product. These methods have been included in this chapter because they have visibility into the program code.
+
+We will now look into each of these methods in more detail.
+
+3.2.1.1. Desk checking
+
+Normally done manually by the author of the code, desk checking is a method to verify the portions of the code for correctness. Such verification is done by comparing the code with the design or specifications to make sure that the code does what it is supposed to do and effectively. This is the desk checking that most programmers do before compiling and executing the code. Whenever errors are found, the author applies the corrections for errors on the spot. This method of catching and correcting errors is characterized by:
+
+No structured method or formalism to ensure completeness and
+
+No maintaining of a log or checklist.
+
+In effect, this method relies completely on the author’s thoroughness, diligence, and skills. There is no process or structure that guarantees or verifies the effectiveness of desk checking. This method is effective for correcting “obvious” coding errors but will not be effective in detecting errors that arise due to incorrect understanding of requirements or incomplete requirements. This is because developers (or, more precisely, programmers who are doing the desk checking) may not have the domain knowledge required to understand the requirements fully.
+
+The main advantage offered by this method is that the programmer who knows the code and the programming language very well is well equipped to read and understand his or her own code. Also, since this is done by one individual, there are fewer scheduling and logistics overheads. Furthermore, the defects are detected and corrected with minimum time delay.
+
+Some of the disadvantages of this method of testing are as follows.
+
+A developer is not the best person to detect problems in his or her own code. He or she may be tunnel visioned and have blind spots to certain types of problems.
+
+Developers generally prefer to write new code rather than do any form of testing! (We will see more details of this syndrome later in the section on challenges as well as when we discuss people issues in Chapter 13.)
+
+This method is essentially person-dependent and informal and thus may not work consistently across all developers.
+
+Owing to these disadvantages, the next two types of proactive methods are introduced. The basic principle of walkthroughs and formal inspections is to involve multiple people in the review process.
+
+3.2.1.2. Code walkthrough
+
+This method and formal inspection (described in the next section) are group-oriented methods. Walkthroughs are less formal than inspections. The line drawn in formalism between walkthroughs and inspections is very thin and varies from organization to organization. The advantage that walkthrough has over desk checking is that it brings multiple perspectives. In walkthroughs, a set of people look at the program code and raise questions for the author. The author explains the logic of the code, and answers the questions. If the author is unable to answer some questions, he or she then takes those questions and finds their answers. Completeness is limited to the area where questions are raised by the team.
+
+3.2.1.3. Formal inspection
+
+Code inspection—also called Fagan Inspection (named after the original formulator)—is a method, normally with a high degree of formalism. The focus of this method is to detect all faults, violations, and other side-effects. This method increases the number of defects detected by
+
+demanding thorough preparation before an inspection/review;
+
+enlisting multiple diverse views;
+
+assigning specific roles to the multiple participants; and
+
+going sequentially through the code in a structured manner.
+
+A formal inspection should take place only when the author has made sure the code is ready for inspection by performing some basic desk checking and walkthroughs. When the code is in such a reasonable state of readiness, an inspection meeting is arranged. There are four roles in inspection. First is the author of the code. Second is a moderator who is expected to formally run the inspection according to the process. Third are the inspectors. These are the people who actually provides, review comments for the code. There are typically multiple inspectors. Finally, there is a scribe, who takes detailed notes during the inspection meeting and circulates them to the inspection team after the meeting.
+
+The author or the moderator selects the review team. The chosen members have the skill sets to uncover as many defects as possible. In an introductory meeting, the inspectors get copies (These can be hard copies or soft copies) of the code to be inspected along with other supporting documents such as the design document, requirements document, and any documentation of applicable standards. The author also presents his or her perspective of what the program is intended to do along with any specific issues that he or she may want the inspection team to put extra focus on. The moderator informs the team about the date, time, and venue of the inspection meeting. The inspectors get adequate time to go through the documents and program and ascertain their compliance to the requirements, design, and standards.
+
+The inspection team assembles at the agreed time for the inspection meeting (also called the defect logging meeting). The moderator takes the team sequentially through the program code, asking each inspector if there are any defects in that part of the code. If any of the inspectors raises a defect, then the inspection team deliberates on the defect and, when agreed that there is a defect, classifies it in two dimensions—minor/major and systemic/mis-execution. A mis-execution defect is one which, as the name suggests, happens because of an error or slip on the part of the author. It is unlikely to be repeated later, either in this work product or in other work products. An example of this is using a wrong variable in a statement. Systemic defects, on the other hand, can require correction at a different level. For example, an error such as using some machine-specific idiosyncrasies may have to removed by changing the coding standards. Similarly, minor defects are defects that may not substantially affect a program, whereas major defects need immediate attention.
+
+A scribe formally documents the defects found in the inspection meeting and the author takes care of fixing these defects. In case the defects are severe, the team may optionally call for a review meeting to inspect the fixes to ensure that they address the problems. In any case, defects found through inspection need to be tracked till completion and someone in the team has to verify that the problems have been fixed properly.
+
+3.2.1.4. Combining various methods
+
+The methods discussed above are not mutually exclusive. They need to be used in a judicious combination to be effective in achieving the goal of finding defects early.
+
+Formal inspections have been found very effective in catching defects early. Some of the challenges to watch out for in conducting formal inspections are as follows.
+
+These are time consuming. Since the process calls for preparation as well as formal meetings, these can take time.
+
+The logistics and scheduling can become an issue since multiple people are involved.
+
+It is not always possible to go through every line of code, with several parameters and their combinations in mind to ensure the correctness of the logic, side-effects and appropriate error handling. It may also not be necessary to subject the entire code to formal inspection.
+
+In order to overcome the above challenges, it is necessary to identify, during the planning stages, which parts of the code will be subject to formal inspections. Portions of code can be classified on the basis of their criticality or complexity as “high,” “medium,” and “low.” High or medium complex critical code should be subject to formal inspections, while those classified as “low” can be subject to either walkthroughs or even desk checking.
+
+Desk checking, walkthrough, review and inspection are not only used for code but can be used for all other deliverables in the project life cycle such as documents, binaries, and media.
+
+3.2.2. Static Analysis Tools
+
+The review and inspection mechanisms described above involve significant amount of manual work. There are several static analysis tools available in the market that can reduce the manual work and perform analysis of the code to find out errors such as those listed below.
+
+whether there are unreachable codes (usage of GOTO statements sometimes creates this situation; there could be other reasons too)
+
+variables declared but not used
+
+mismatch in definition and assignment of values to variables
+
+illegal or error prone typecasting of variables
+
+use of non-portable or architecture-dependent programming constructs
+
+memory allocated but not having corresponding statements for freeing them up memory
+
+calculation of cyclomatic complexity (covered in the Section 3.3)
+
+These static analysis tools can also be considered as an extension of compilers as they use the same concepts and implementation to locate errors. A good compiler is also a static analysis tool. For example, most C compilers provide different “levels” of code checking which will catch the various types of programming errors given above.
+
+Some of the static analysis tools can also check compliance for coding standards as prescribed by standards such as POSIX. These tools can also check for consistency in coding guidelines (for example, naming conventions, allowed data types, permissible programming constructs, and so on).
+
+While following any of the methods of human checking—desk checking, walkthroughs, or formal inspections—it is useful to have a code review checklist. Given below is checklist that covers some of the common issues. Every organization should develop its own code review checklist. The checklist should be kept current with new learning as they come about.
+
+In a multi-product organization, the checklist may be at two levels—first, an organization-wide checklist that will include issues such as organizational coding standards, documentation standards, and so on; second, a product-or project-specific checklist that addresses issues specific to the product or project.
+
+	
+Code Review Checklist
+
+DATA ITEM DECLARATION RELATED
+
+Are the names of the variables meaningful?
+
+If the programming language allows mixed case names, are there variable names with confusing use of lower case letters and capital letters?
+
+Are the variables initialized?
+
+Are there similar sounding names (especially words in singular and plural)? [These could be possible causes of unintended errors.]
+
+Are all the common stru tures, constants, and flags to be used defined in a header file rather than in each file separately?
+
+DATA USAGE RELATED
+
+Are values of right data types being assigned to the variables?
+
+Is the access of data from any standard files, repositories, or databases done through publicly supported interfaces?
+
+If pointers are used, are they initialized properly?
+
+Are bounds to array subscripts and pointers properly checked?
+
+Has the usage of similar-looking operators (for example, = and == or & and && in C) checked?
+
+CONTROL FLOW RELATED
+
+Are all the conditional paths reachable?
+
+Are all the individal conditions in a complex condition separately evaluated?
+
+If there is a nested IF statement, are the THEN and ELSE parts appropriately delimited?
+
+In the case of a multi-way branch like SWITCH / CASE statement, is a default clause provided? Are the breaks after each CASE appropriate?
+
+Is there any part of code that is unreachable?
+
+Are there any loops that will never execute?
+
+Are there any loops where the final condition will never be met and hence cause the program to go into an infinite loop?
+
+What is the level of nesting of the conditional statements? Can the code be simplified to reduce complexity?
+
+STANDARDS RELATED
+
+Does the code follow the coding conventions of the organization?
+
+Does the code follow any coding conventions that are platform specific (for example, GUI calls specific to Windows or Swing)
+
+STYLE RELATED
+
+Are unhealthy programming constructs (for example, global variables in C, ALTER statement in COBOL) being used in the program?
+
+Is there usage of specific idiosyncrasies of a particular machine architecture or a given version of an underlying product (for example, using “undocumented” features)?
+
+Is sufficient attention being paid to readability issues like indentation of code?
+
+MISCELLANEOUS
+
+Have you checked for memory leaks (for example, memory acquired but not explicitly freed)?
+
+DOCUMENTATION RELATED
+
+Is the code adequately documented, especially where the logic is complex or the section of code is critical for product functioning?
+
+Is appropriate change history documented?
+
+Are the interfaces and the parameters thereof properly documented?
+
+
+
+3.3. Structural Testing
+
+Structural testing takes into account the code, code structure, internal design, and how they are coded. The fundamental difference between structural testing and static testing is that in structural testing tests are actually run by the computer on the built product, whereas in static testing, the product is tested by humans using just the source code and not the executables or binaries.
+
+Structural testing entails running the actual product against some pre-designed test cases to exercise as much of the code as possible or necessary. A given portion of the code is exercised if a test case causes the program to execute that portion of the code when running the test.
+
+As discussed at the beginning of this chapter, structural testing can be further classified into unit/code functional testing, code coverage, and code complexity testing.
+
+3.3.1. Unit/Code Functional Testing
+
+This initial part of structural testing corresponds to some quick checks that a developer performs before subjecting the code to more extensive code coverage testing or code complexity testing. This can happen by several methods.
+
+Initially, the developer can perform certain obvious tests, knowing the input variables and the corresponding expected output variables. This can be a quick test that checks out any obvious mistakes. By repeating these tests for multiple values of input variables, the confidence level of the developer to go to the next level increases. This can even be done prior to formal reviews of static testing so that the review mechanism does not waste time catching obvious errors.
+
+For modules with complex logic or conditions, the developer can build a “debug version” of the product by putting intermediate print statements and making sure the program is passing through the right loops and iterations the right number of times. It is important to remove the intermediate print statements after the defects are fixed.
+
+Another approach to do the initial test is to run the product under a debugger or an Integrated Development Environment (IDE). These tools allow single stepping of instructions (allowing the developer to stop at the end of each instruction, view or modify the contents of variables, and so on), setting break points at any function or instruction, and viewing the various system parameters or program variable values.
+
+All the above fall more under the “debugging” category of activities than under the “testing” category of activities. All the same, these are intimately related to the knowledge of code structure and hence we have included these under the “white box testing” head. This is consistent with our view that testing encompasses whatever it takes to detect and correct defects in a product.
+
+3.3.2. Code Coverage Testing
+
+Since a product is realized in terms of program code, if we can run test cases to exercise the different parts of the code, then that part of the product realized by the code gets tested. Code coverage testing involves designing and executing test cases and finding out the percentage of code that is covered by testing. The percentage of code covered by a test is found by adopting a technique called instrumentation of code. There are specialized tools available to achieve instrumentation. Instrumentation rebuilds the product, linking the product with a set of libraries provided by the tool vendors. This instrumented code can monitor and keep an audit of what portions of code are covered. The tools also allow reporting on the portions of the code that are covered frequently, so that the critical or most-often portions of code can be identified.
+
+Code coverage testing is made up of the following types of coverage.
+
+Statement coverage
+
+Path coverage
+
+Condition coverage
+
+Function coverage
+
+3.3.2.1. Statement coverage
+
+Program constructs in most conventional programming languages can be classified as
+
+Sequential control flow
+
+Two-way decision statements like if then else
+
+Multi-way decision statements like Switch
+
+Loops like while do, repeat until and for
+
+Object-oriented languages have all of the above and, in addition, a number of other constructs and concepts. We will take up issues pertaining to object oriented languages together in Chapter 11. We will confine our discussions here to conventional languages.
+
+Statement coverage refers to writing test cases that execute each of the program statements. One can start with the assumption that more the code covered, the better is the testing of the functionality, as the code realizes the functionality. Based on this assumption, code coverage can be achieved by providing coverage to each of the above types of statements.
+
+For a section of code that consists of statements that are sequentially executed (that is, with no conditional branches), test cases can be designed to run through from top to bottom. A test case that starts at the top would generally have to go through the full section till the bottom of the section. However, this may not always be true. First, if there are asynchronous exceptions that the code encounters (for example, a divide by zero), then, even if we start a test case at the beginning of a section, the test case may not cover all the statements in that section. Thus, even in the case of sequential statements, coverage for all statements may not be achieved. Second, a section of code may be entered from multiple points. Even though this points to not following structured programming guidelines, it is a common scenario in some of the earlier programming languages.
+
+When we consider a two-way decision construct like the if statement, then to cover all the statements, we should also cover the then and else parts of the if statement. This means we should have, for each if then else, (at least) one test case to test the Then part and (at least) one test case to test the else part.
+
+The multi-way decision construct such as a Switch statement can be reduced to multiple two-way if statements. Thus, to cover all possible switch cases, there would be multiple test cases. (We leave it as an exercise for the reader to develop this further.)
+
+Loop constructs present more variations to take care of. A loop—in various forms such as for, while, repeat, and so on—is characterized by executing a set of statements repeatedly until or while certain conditions are met. A good percentage of the defects in programs come about because of loops that do not function properly. More often, loops fail in what are called “boundary conditions.” One of the common looping errors is that the termination condition of the loop is not properly stated. In order to make sure that there is better statement coverage for statements within a loop, there should be test cases that
+
+Skip the loop completely, so that the situation of the termination condition being true before starting the loop is tested.
+
+Exercise the loop between once and the maximum number of times, to check all possible “normal” operations of the loop.
+
+Try covering the loop, around the “boundary” of n—that is, just below n, n, and just above n.
+
+The statement coverage for a program, which is an indication of the percentage of statements actually executed in a set of tests, can be calculated by the formula given alongside in the margin.
+
+Statement Coverage = (Total statements exercised / Total number of executable statements in program) * 100
+
+
+It is clear from the above discussion that as the type of statement progresses from a simple sequential statement to if then else and through to loops, the number of test cases required to achieve statement coverage increases. Taking a cue from the Dijkstra’s Doctrine in Chapter 1, just as exhaustive testing of all possible input data on a program is not possible, so also exhaustive coverage of all statements in a program will also be impossible for all practical purposes.
+
+Even if we were to achieve a very high level of statement coverage, it does not mean that the program is defect-free. First, consider a hypothetical case when we achieved 100 percent code coverage. If the program implements wrong requirements and this wrongly implemented code is “fully tested,” with 100 percent code coverage, it still is a wrong program and hence the 100 percent code coverage does not mean anything.
+
+Next, consider the following program.
+
+Total = 0; /* set total to zero */
+if (code == "M") {
+    stmt1;
+    stmt2;
+    Stmt3;
+    stmt4;
+    Stmt5;
+    stmt6;
+    Stmt7;
+}
+else percent = value/Total*100; /* divide by zero */
+
+In the above program, when we test with code = “M,” we will get 80 percent code coverage. But if the data distribution in the real world is such that 90 percent of the time, the value of code is not = “M,” then, the program will fail 90 percent of the time (because of the divide by zero in the highlighted line). Thus, even with a code coverage of 80 percent, we are left with a defect that hits the users 90 percent of the time. Path coverage, discussed in Section 3.3.2.2, overcomes this problem.
+
+3.3.2.2. Path coverage
+
+In path coverage, we split a program into a number of distinct paths. A program (or a part of a program) can start from the beginning and take any of the paths to its completion.
+
+Path Coverage = (Total paths exercised/Total number of paths in program) * 100
+
+
+Let us take an example of a date validation routine. The date is accepted as three fields mm, dd and yyyy. We have assumed that prior to entering this routine, the values are checked to be numeric. To simplify the discussion, we have assumed the existence of a function called leapyear which will return TRUE if the given year is a leap year. There is an array called DayofMonth which contains the number of days in each month. A simplified flow chart for this is given in Figure 3.2 below.
+
+Figure 3.2. Flow chart for a date validation routine.
+
+[View full size image]
+
+
+As can be seen from the figure, there are different paths that can be taken through the program. Each part of the path is shown in red. The coloured representation of Figure 3.2 is available on page 459. Some of the paths are
+
+A
+
+B-D-G
+
+B-D-H
+
+B-C-E-G
+
+B-C-E-H
+
+B-C-F-G
+
+B-C-F-H
+
+Regardless of the number of statements in each of these paths, if we can execute these paths, then we would have covered most of the typical scenarios.
+
+Path coverage provides a stronger condition of coverage than statement coverage as it relates to the various logical paths in the program rather than just program statements.
+
+3.3.2.3. Condition coverage
+
+In the above example, even if we have covered all the paths possible, it would not mean that the program is fully tested. For example, we can make the program take the path A by giving a value less than 1 (for example, 0) to mm and find that we have covered the path A and the program has detected that the month is invalid. But, the program may still not be correctly testing for the other condition namely mm > 12. Furthermore, most compliers perform optimizations to minimize the number of Boolean operations and all the conditions may not get evaluated, even though the right path is chosen. For example, when there is an OR condition (as in the first IF statement above), once the first part of the IF (for example, mm < 1) is found to be true, the second part will not be evaluated at all as the overall value of the Boolean is TRUE. Similarly, when there is an AND condition in a Boolean expression, when the first condition evaluates to FALSE, the rest of the expression need not be evaluated at all.
+
+For all these reasons, path testing may not be sufficient. It is necessary to have test cases that exercise each Boolean expression and have test cases test produce the TRUE as well as FALSE paths. Obviously, this will mean more test cases and the number of test cases will rise exponentially with the number of conditions and Boolean expressions. However, in reality, the situation may not be very bad as these conditions usually have some dependencies on one another.
+
+Condition Coverage = (Total decisions exercised / Total number of decisions in program) * 100
+
+
+The condition coverage, as defined by the formula alongside in the margin gives an indication of the percentage of conditions covered by a set of test cases. Condition coverage is a much stronger criteria than path coverage, which in turn is a much stronger criteria than statement coverage.
+
+3.3.2.4. Function coverage
+
+This is a new addition to structural testing to identify how many program functions (similar to functions in “C” language) are covered by test cases.
+
+The requirements of a product are mapped into functions during the design phase and each of the functions form a logical unit. For example, in a database software, “inserting a row into the database” could be a function. Or, in a payroll application, “calculate tax” could be a function. Each function could, in turn, be implemented using other functions. While providing function coverage, test cases can be written so as to exercise each of the different functions in the code. The advantages that function coverage provides over the other types of coverage are as follows.
+
+Functions are easier to identify in a program and hence it is easier to write test cases to provide function coverage.
+
+Since functions are at a much higher level of abstraction than code, it is easier to achieve 100 percent function coverage than 100 percent coverage in any of the earlier methods.
+
+Functions have a more logical mapping to requirements and hence can provide a more direct correlation to the test coverage of the product. In the next chapter, we will be discussing the requirements traceability matrix, which track a requirement through design, coding, and testing phases. Functions provide one means to achieve this traceability. Function coverage provides a way of testing this traceability.
+
+Since functions are a means of realizing requirements, the importance of functions can be prioritized based on the importance of the requirements they realize. Thus, it would be easier to prioritize the functions for testing. This is not necessarily the case with the earlier methods of coverage.
+
+Function coverage provides a natural transition to black box testing.
+
+We can also measure how many times a given function is called. This will indicate which functions are used most often and hence these functions become the target of any performance testing and optimization. As an example, if in a networking software, we find that the function that assembles and disassembles the data packets is being used most often, it is appropriate to spend extra effort in improving the quality and performance of that function. Thus, function coverage can help in improving the performance as well as quality of the product.
+
+Function Coverage = (Total functions exercised / Total number of functions in program) * 100
+
+
+3.3.2.5. Summary
+
+Code coverage testing involves “dynamic testing” methods of executing the product with pre-written test cases, and finding out how much of code has been covered. If a better coverage of a code is desired, several iterations of testing may be required. For each iteration, one has to go through the statistics and write a new set of test cases for covering portions of the code not covered by earlier test cases. To do this type of testing not only does one need to understand the code, logic but also need to understand how to write effective test cases that can cover good portions of the code. This type of testing can also be referred to as “gray box testing” as this uses the combination of “white box and black box methodologies” (white + black = gray) for effectiveness.
+
+Thus, better code coverage is the result of better code flow understanding and writing effective test cases. Code coverage up to 40–50 percent is usually achievable. Code coverage of more than 80 percent requires enormous amount of effort and understanding of the code.
+
+The multiple code coverage techniques we have discussed so far are not mutually exclusive. They supplement and augment one another. While statement coverage can provide a basic comfort factor, path, decision, and function coverage provide more confidence by exercising various logical paths and functions.
+
+In the above discussion, we have looked at the use of code coverage testing for various functional requirements. There are also a few other uses for these methods.
+
+Performance analysis and optimization Code coverage tests can identify the areas of a code that are executed most frequently. Extra attention can then be paid to these sections of the code. If further performance improvement is no longer possible, then other strategies like caching can be considered. Code coverage testing provides information that is useful in making such performance-oriented decisions.
+
+Resource usage analysis White box testing, especially with instrumented code, is useful in identifying bottlenecks in resource usage. For example, if a particular resource like the RAM or network is perceived as a bottleneck, then instrumented code can help identify where the bottlenecks are and point towards possible solutions.
+
+Checking of critical sections or concurrency related parts of code Critical sections are those parts of a code that cannot have multiple processes executing at the same time. Coverage tests with instrumented code is one of the best means of identifying any violations of such concurrency constraints through critical sections.
+
+Identifying memory leaks Every piece of memory that is acquired or allocated by a process (for example, by malloc in C) should be explicitly released (for example, by free in C). If not, the acquired memory is “lost” and the amount of available memory decreases correspondingly. Over time, there would be no memory available for allocation to meet fresh memory requests and processes start failing for want of memory. The various white box testing methods can help identify memory leaks. Most debuggers or instrumented code can tally allocated and freed memory.
+
+Dynamically generated code White box testing can help identify security holes effectively, especially in a dynamically generated code. In instances where a piece of code is dynamically created and executed, the functionality of the generated code should be tested on the fly. For example, when using web services, there may be situations wherein certain parameters are accepted from the users and html/java code may be generated and passed on to a remote machine for execution. Since after the transaction or service is executed, the generated code ceases to exist, testing the generated code requires code knowledge. Hence, the various techniques of white box testing discussed in this chapter come in handy.
+
+3.3.3. Code Complexity Testing
+
+In previous sections, we saw the different types of coverage that can be provided to test a program. Two questions that come to mind while using these coverage are:
+
+Which of the paths are independent? If two paths are not independent, then we may be able to minimize the number of tests.
+
+Is there an upper bound on the number of tests that must be run to ensure that all the statements have been executed at least once?
+
+Cyclomatic complexity is a metric that quantifies the complexity of a program and thus provides answers to the above questions.
+
+A program is represented in the form of a flow graph. A flow graph consists of nodes and edges. In order to convert a standard flow chart into a flow graph to compute cyclomatic complexity, the following steps can be taken.
+
+1.
+Identify the predicates or decision points (typically the Boolean conditions or conditional statements) in the program.
+
+2.
+Ensure that the predicates are simple (that is, no and/or, and so on in each predicate). Figure 3.3 shows how to break up a condition having or into simple predicates. Similarly, if there are loop constructs, break the loop termination checks into simple predicates.
+
+Figure 3.3. Flow graph translation of an OR to a simple predicate.
+
+
+
+
+3.
+Combine all sequential statements into a single node. The reasoning here is that these statements all get executed, once started.
+
+4.
+When a set of sequential statements are followed by a simple predicate (as simplified in (2) above), combine all the sequential statements and the predicate check into one node and have two edges emanating from this one node. Such nodes with two edges emanating from them are called predicate nodes.
+
+5.
+Make sure that all the edges terminate at some node; add a node to represent all the sets of sequential statements at the end of the program.
+
+We have illustrated the above transformation rules of a conventional flow chart to a flow diagram in Figure 3.4. We have color coded the different boxes (coloured figure on page 459) so that the reader can see the transformations more clearly. The flow chart elements of a given color on the left-hand side get mapped to flow graph elements of the corresponding nodes on the right-hand side.
+
+Figure 3.4. Converting a conventional flow chart to a flow graph.
+
+
+
+
+Intuitively, a flow graph and the cyclomatic complexity provide indicators to the complexity of the logic flow in a program and to the number of independent paths in a program. The primary contributors to both the complexity and independent paths are the decision points in the program. Consider a hypothetical program with no decision points. The flow graph of such a program (shown in Figure 3.5 above) would have two nodes, one for the code and one for the termination node. Since all the sequential steps are combined into one node (the first node), there is only one edge, which connects the two nodes. This edge is the only independent path. Hence, for this flow graph, cyclomatic complexity is equal to one.
+
+Figure 3.5. A hypothetical program with no decision node.
+
+
+
+
+This graph has no predicate nodes because there are no decision points. Hence, the cyclomatic complexity is also equal to the number of predicate nodes (0) + 1.
+
+Note that in this flow graph, the edges (E) = 1; nodes (N) = 2. The cyclomatic complexity is also equal to 1 = 1 + 2 – 2 = E – N + 2.
+
+When a predicate node is added to the flow graph (shown in Figure 3.6 above), there are obviously two independent paths, one following the path when the Boolean condition is TRUE and one when the Boolean condition is FALSE. Thus, the cyclomatic complexity of the graph is 2.
+
+Figure 3.6. Adding one decision node.
+
+
+
+
+Cyclomatic Complexity = Number of Predicate Nodes + 1
+
+Cyclomatic Complexity = E – N + 2
+
+
+Incidentally, this number of independent paths, 2, is again equal to the number of predicate nodes (1) + 1. When we add a predicate node (a node with two edges), complexity increases by 1, since the “E” in the E – N + 2 formula is increased by one while the “N” is unchanged. As a result, the complexity using the formula E – N + 2 also works out to 2.
+
+From the above reasoning, the reader would hopefully have got an idea about the two different ways to calculate cyclomatic complexity and the relevance of cyclomatic complexity in identifying independent paths through a program. We have summarized these formulae below. We are not going to formally prove these formulae. Suffice to say that these formulae are extremely useful.
+
+The above two formulae provide an easy means to calculate cyclomatic complexity, given a flow graph. In fact the first formula can be used even without drawing the flow graph, by simply counting the number of the basic predicates. There are other formulations of cyclomatic complexity derived from the foundations of Graph Theory, which we have not covered here. The references given at the end can provide pointers for the interested reader.
+
+Using the flow graph, an independent path can be defined as a path in the flow graph that has at least one edge that has not been traversed before in other paths. A set of independent paths that cover all the edges is a basis set. Once the basis set is formed, test cases should be written to execute all the paths in the basis set.
+
+3.3.3.1. Calculating and using cyclomatic complexity
+
+For small programs cyclomatic complexity can be calculated manually, but automated tools are essential as several thousands of lines of code are possible in each program in a project. It will be very difficult to manually create flow graphs for large programs. There are several tools that are available in the market which can compute cyclomatic complexity. But, we would like to caution that calculating the complexity of a module after it has been built and tested may be too late—it may not be possible to redesign a complex module after it has been tested. Thus some basic complexity checks must be performed on the modules before embarking upon the testing (or even coding) phase. This can become one of the items to check for in a code review. Based on the complexity number that emerges from using the tool, one can conclude what actions need to be taken for complexity measure using Table 3.1.
+
+Table 3.1.
+
+Complexity	What it means
+1–10	Well-written code, testability is high, cost/effort to maintain is low
+10–20	Moderately complex, testability is medium, cost/effort to maintain is medium
+20–40	Very complex, testability is low, cost/effort to maintain is high
+>40	Not testable, any amount of money/effort to maintain may not be enough
+
+
+3.4. Challenges in White Box Testing
+
+White box testing requires a sound knowledge of the program code and the programming language. This means that the developers should get intimately involved in white box testing. Developers, in general, do not like to perform testing functions. This applies to structural testing as well as static testing methods such as reviews. In addition, because of the timeline pressures, the programmers may not “find time” for reviews (an euphemism for wanting to do more coding). We will revisit this myth of dichotomy between testing and development functions in the chapter on people issues (Chapter 13).
+
+Human tendency of a developer being unable to find the defects in his or her code As we saw earlier, most of us have blind spots in detecting errors in our own products. Since white box testing involves programmers who write the code, it is quite possible that they may not be most effective in detecting defects in their own work products. An independent perspective could certainly help.
+
+Fully tested code may not correspond to realistic scenarios Programmers generally do not have a full appreciation of the external (customer) perspective or the domain knowledge to visualize how a product will be deployed in realistic scenarios. This may mean that even after extensive testing, some of the common user scenarios may get left out and defects may creep in.
+
+These challenges do not mean that white box testing is ineffective. But when white box testing is carried out and these challenges are addressed by other means of testing, there is a higher likelihood of more effective testing. Black box testing, to be discussed in the following chapter addresses some of these challenges.

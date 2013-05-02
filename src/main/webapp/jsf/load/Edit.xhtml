@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LoadEditDlg" widgetVar="LoadEditDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="LoadEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{loadController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditLoadLabel_releaseidRelease}" for="releaseidRelease" />
+                        <h:outputText id="releaseidRelease" value="#{loadController.selected.releaseidRelease}" />
+
+                        <p:outputLabel value="#{bundle.EditLoadLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{loadController.selected.name}" title="#{bundle.EditLoadTitle_name}" />
+
+                        <p:outputLabel value="#{bundle.EditLoadLabel_startDate}" for="startDate" />
+                        <p:calendar id="startDate" pattern="MM/dd/yyyy" value="#{loadController.selected.startDate}" title="#{bundle.EditLoadTitle_startDate}"  showOn="button"/>
+
+                        <p:outputLabel value="#{bundle.EditLoadLabel_endDate}" for="endDate" />
+                        <p:inputText id="endDate" value="#{loadController.selected.endDate}" title="#{bundle.EditLoadTitle_endDate}" />
+
+                        <p:outputLabel value="#{bundle.EditLoadLabel_release}" for="release" />
+                        <p:selectOneMenu id="release" value="#{loadController.selected.release}" required="true" requiredMessage="#{bundle.EditLoadRequiredMessage_release}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{releaseController.items}"
+                                           var="releaseItem"
+                                           itemValue="#{releaseItem}"
+                                           itemLabel="#{releaseItem.idRelease.toString()}"
+                                           />
+                            <f:converter binding="#{releaseConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{loadController.save}" value="#{bundle.Save}" update="display,:LoadListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,LoadEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LoadEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

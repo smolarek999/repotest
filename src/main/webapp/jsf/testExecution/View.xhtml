@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestExecutionViewDlg" widgetVar="TestExecutionViewDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="TestExecutionViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testExecutionController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_idTestExecution}"/>
+                        <h:outputText value="#{testExecutionController.selected.idTestExecution}" title="#{bundle.ViewTestExecutionTitle_idTestExecution}"/>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_comments}"/>
+                        <h:outputText value="#{testExecutionController.selected.comments}" title="#{bundle.ViewTestExecutionTitle_comments}"/>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_lastModificationDate}"/>
+                        <h:outputText value="#{testExecutionController.selected.lastModificationDate}" title="#{bundle.ViewTestExecutionTitle_lastModificationDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_state}"/>
+                        <h:outputText value="#{testExecutionController.selected.state}" title="#{bundle.ViewTestExecutionTitle_state}"/>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_usersid}"/>
+                        <h:outputText value="#{testExecutionController.selected.usersid.username}"/>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_loadReleaseidRelease}"/>
+                        <h:outputText value="#{testExecutionController.selected.loadReleaseidRelease.name}"/>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_testidTest}"/>
+                        <h:outputText value="#{testExecutionController.selected.testidTest.name}"/>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_strategyExecutionidStrategyExecution}"/>
+                        <h:outputText value="#{testExecutionController.selected.strategyExecutionidStrategyExecution.idStrategyExecution}"/>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_modeidMode}"/>
+                        <h:outputText value="#{testExecutionController.selected.modeidMode.name}"/>
+
+                        <h:outputText value="#{bundle.ViewTestExecutionLabel_deviceidDevice}"/>
+                        <h:outputText value="#{testExecutionController.selected.deviceidDevice.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TestExecutionViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

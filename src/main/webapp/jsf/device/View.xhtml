@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DeviceViewDlg" widgetVar="DeviceViewDialog" modal="true" resizable="false" appendToBody="true">
+
+            <h:form id="DeviceViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{deviceController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewDeviceLabel_idDevice}"/>
+                        <h:outputText value="#{deviceController.selected.idDevice}" title="#{bundle.ViewDeviceTitle_idDevice}"/>
+
+                        <h:outputText value="#{bundle.ViewDeviceLabel_name}"/>
+                        <h:outputText value="#{deviceController.selected.name}" title="#{bundle.ViewDeviceTitle_name}"/>
+
+                        <h:outputText value="#{bundle.ViewDeviceLabel_manualUrl}"/>
+                        <h:outputText value="#{deviceController.selected.manualUrl}" title="#{bundle.ViewDeviceTitle_manualUrl}"/>
+
+                        <h:outputText value="#{bundle.ViewDeviceLabel_testCollection}"/>
+                        <h:selectManyMenu>
+                            <f:selectItems value="#{deviceController.selected.testCollection}"
+                                           var="testCollectionItem"
+                                           itemValue="#{testCollectionItem}"
+                                           itemLabel="#{testCollectionItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{testConverter}"/>
+                        </h:selectManyMenu>
+
+                        <h:outputText value="#{bundle.ViewDeviceLabel_testExecutionCollection}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DeviceViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
