@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReleaseTableViewDlg" widgetVar="ReleaseTableViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewReleaseTableTitle}">
+
+            <h:form id="ReleaseTableViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{releaseTableController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewReleaseTableLabel_idRelease}"/>
+                        <h:outputText value="#{releaseTableController.selected.idRelease}" title="#{bundle.ViewReleaseTableTitle_idRelease}"/>
+
+                        <h:outputText value="#{bundle.ViewReleaseTableLabel_releasecol}"/>
+                        <h:outputText value="#{releaseTableController.selected.releasecol}" title="#{bundle.ViewReleaseTableTitle_releasecol}"/>
+
+                        <h:outputText value="#{bundle.ViewReleaseTableLabel_loadTable}"/>
+                        <h:outputText value="#{releaseTableController.selected.loadTable.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ReleaseTableViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

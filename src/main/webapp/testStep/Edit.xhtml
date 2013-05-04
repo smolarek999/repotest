@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestStepEditDlg" widgetVar="TestStepEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditTestStepTitle}">
+
+            <h:form id="TestStepEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{testStepController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.EditTestStepLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{testStepController.selected.description}" title="#{bundle.EditTestStepTitle_description}" />
+
+                        <p:outputLabel value="#{bundle.EditTestStepLabel_condition}" for="condition" />
+                        <p:inputText id="condition" value="#{testStepController.selected.condition}" title="#{bundle.EditTestStepTitle_condition}" />
+
+                        <h:outputLabel value="#{bundle.EditTestStepLabel_idTestStep}" for="idTestStep" />
+                        <h:outputText id="idTestStep" value="#{testStepController.selected.idTestStep}" />
+
+                        <p:outputLabel value="#{bundle.EditTestStepLabel_testidTest}" for="testidTest" />
+                        <p:selectOneMenu id="testidTest" value="#{testStepController.selected.testidTest}" required="true" requiredMessage="#{bundle.EditTestStepRequiredMessage_testidTest}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{testController.items}"
+                                           var="testidTestItem"
+                                           itemValue="#{testidTestItem}"
+                                           itemLabel="#{testidTestItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{testConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{testStepController.save}" value="#{bundle.Save}" update="display,:TestStepListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,TestStepEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TestStepEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TesthasEquipmentViewDlg" widgetVar="TesthasEquipmentViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewTesthasEquipmentTitle}">
+
+            <h:form id="TesthasEquipmentViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testhasEquipmentController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewTesthasEquipmentLabel_condition}"/>
+                        <h:outputText value="#{testhasEquipmentController.selected.condition}" title="#{bundle.ViewTesthasEquipmentTitle_condition}"/>
+
+                        <h:outputText value="#{bundle.ViewTesthasEquipmentLabel_equipment}"/>
+                        <h:outputText value="#{testhasEquipmentController.selected.equipment.name}"/>
+
+                        <h:outputText value="#{bundle.ViewTesthasEquipmentLabel_test}"/>
+                        <h:outputText value="#{testhasEquipmentController.selected.test.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TesthasEquipmentViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

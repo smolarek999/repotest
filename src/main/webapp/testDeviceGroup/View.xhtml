@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestDeviceGroupViewDlg" widgetVar="TestDeviceGroupViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewTestDeviceGroupTitle}">
+
+            <h:form id="TestDeviceGroupViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testDeviceGroupController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewTestDeviceGroupLabel_testDeviceGroupPK_idTestDeviceGroup}"/>
+                        <h:outputText value="#{testDeviceGroupController.selected.testDeviceGroupPK.idTestDeviceGroup}" title="#{bundle.ViewTestDeviceGroupTitle_testDeviceGroupPK_idTestDeviceGroup}"/>
+
+                        <h:outputText value="#{bundle.ViewTestDeviceGroupLabel_testDeviceGroupcol}"/>
+                        <h:outputText value="#{testDeviceGroupController.selected.testDeviceGroupcol}" title="#{bundle.ViewTestDeviceGroupTitle_testDeviceGroupcol}"/>
+
+                        <h:outputText value="#{bundle.ViewTestDeviceGroupLabel_testDeviceGrouphasDeviceCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewTestDeviceGroupLabel_test}"/>
+                        <h:outputText value="#{testDeviceGroupController.selected.test.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TestDeviceGroupViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestDeviceGrouphasDeviceCreateDlg" widgetVar="TestDeviceGrouphasDeviceCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateTestDeviceGrouphasDeviceTitle}">
+
+            <h:form id="TestDeviceGrouphasDeviceCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testDeviceGrouphasDeviceController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateTestDeviceGrouphasDeviceLabel_executionCount}" for="executionCount" />
+                        <p:inputText id="executionCount" value="#{testDeviceGrouphasDeviceController.selected.executionCount}" title="#{bundle.CreateTestDeviceGrouphasDeviceTitle_executionCount}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestDeviceGrouphasDeviceLabel_device}" for="device" />
+                        <p:selectOneMenu id="device" value="#{testDeviceGrouphasDeviceController.selected.device}" required="true" requiredMessage="#{bundle.EditTestDeviceGrouphasDeviceRequiredMessage_device}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{deviceController.items}"
+                                           var="deviceItem"
+                                           itemValue="#{deviceItem}"
+                                           itemLabel="#{deviceItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{deviceConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.CreateTestDeviceGrouphasDeviceLabel_testDeviceGroup}" for="testDeviceGroup" />
+                        <p:selectOneMenu id="testDeviceGroup" value="#{testDeviceGrouphasDeviceController.selected.testDeviceGroup}" required="true" requiredMessage="#{bundle.EditTestDeviceGrouphasDeviceRequiredMessage_testDeviceGroup}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{testDeviceGroupController.items}"
+                                           var="testDeviceGroupItem"
+                                           itemValue="#{testDeviceGroupItem}"
+                                           itemLabel="#{testDeviceGroupItem.testDeviceGroupPK.toString()}"
+                                           />
+                            <f:converter binding="#{testDeviceGroupConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{testDeviceGrouphasDeviceController.saveNew}" value="#{bundle.Save}" update="display,:TestDeviceGrouphasDeviceListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,TestDeviceGrouphasDeviceCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TestDeviceGrouphasDeviceCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

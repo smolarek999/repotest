@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReleaseTableCreateDlg" widgetVar="ReleaseTableCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateReleaseTableTitle}">
+
+            <h:form id="ReleaseTableCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{releaseTableController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateReleaseTableLabel_releasecol}" for="releasecol" />
+                        <p:inputText id="releasecol" value="#{releaseTableController.selected.releasecol}" title="#{bundle.CreateReleaseTableTitle_releasecol}" />
+
+                        <p:outputLabel value="#{bundle.CreateReleaseTableLabel_loadTable}" for="loadTable" />
+                        <p:selectOneMenu id="loadTable" value="#{releaseTableController.selected.loadTable}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{loadTableController.items}"
+                                           var="loadTableItem"
+                                           itemValue="#{loadTableItem}"
+                                           itemLabel="#{loadTableItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{loadTableConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{releaseTableController.saveNew}" value="#{bundle.Save}" update="display,:ReleaseTableListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ReleaseTableCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReleaseTableCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

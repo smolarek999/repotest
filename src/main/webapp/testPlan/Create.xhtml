@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestPlanCreateDlg" widgetVar="TestPlanCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateTestPlanTitle}">
+
+            <h:form id="TestPlanCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testPlanController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateTestPlanLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{testPlanController.selected.name}" title="#{bundle.CreateTestPlanTitle_name}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestPlanLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{testPlanController.selected.description}" title="#{bundle.CreateTestPlanTitle_description}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestPlanLabel_creationDate}" for="creationDate" />
+                        <p:inputText id="creationDate" value="#{testPlanController.selected.creationDate}" title="#{bundle.CreateTestPlanTitle_creationDate}" />
+
+                        <p:outputLabel value="#{bundle.CreateTestPlanLabel_featureCollection}" for="featureCollection" />
+                        <p:selectManyMenu id="featureCollection" value="#{testPlanController.selected.featureCollection}" >
+                            <f:selectItems value="#{featureController.items}"
+                                           var="featureCollectionItem"
+                                           itemValue="#{featureCollectionItem}"
+                                           itemLabel="#{featureCollectionItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{featureConverter}"/>
+                        </p:selectManyMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{testPlanController.saveNew}" value="#{bundle.Save}" update="display,:TestPlanListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,TestPlanCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TestPlanCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

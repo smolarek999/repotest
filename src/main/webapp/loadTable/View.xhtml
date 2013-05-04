@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LoadTableViewDlg" widgetVar="LoadTableViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewLoadTableTitle}">
+
+            <h:form id="LoadTableViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{loadTableController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewLoadTableLabel_releaseidRelease}"/>
+                        <h:outputText value="#{loadTableController.selected.releaseidRelease}" title="#{bundle.ViewLoadTableTitle_releaseidRelease}"/>
+
+                        <h:outputText value="#{bundle.ViewLoadTableLabel_name}"/>
+                        <h:outputText value="#{loadTableController.selected.name}" title="#{bundle.ViewLoadTableTitle_name}"/>
+
+                        <h:outputText value="#{bundle.ViewLoadTableLabel_startDate}"/>
+                        <h:outputText value="#{loadTableController.selected.startDate}" title="#{bundle.ViewLoadTableTitle_startDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{bundle.ViewLoadTableLabel_endDate}"/>
+                        <h:outputText value="#{loadTableController.selected.endDate}" title="#{bundle.ViewLoadTableTitle_endDate}"/>
+
+                        <h:outputText value="#{bundle.ViewLoadTableLabel_testPlanExecutionCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewLoadTableLabel_releaseTable}"/>
+                        <h:outputText value="#{loadTableController.selected.releaseTable.idRelease}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LoadTableViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

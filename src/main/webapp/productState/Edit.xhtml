@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProductStateEditDlg" widgetVar="ProductStateEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditProductStateTitle}">
+
+            <h:form id="ProductStateEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{productStateController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditProductStateLabel_productidProduct}" for="productidProduct" />
+                        <h:outputText id="productidProduct" value="#{productStateController.selected.productidProduct}" />
+
+                        <p:outputLabel value="#{bundle.EditProductStateLabel_description}" for="description" />
+                        <p:inputText id="description" value="#{productStateController.selected.description}" title="#{bundle.EditProductStateTitle_description}" />
+
+                        <p:outputLabel value="#{bundle.EditProductStateLabel_productStatecol}" for="productStatecol" />
+                        <p:inputText id="productStatecol" value="#{productStateController.selected.productStatecol}" title="#{bundle.EditProductStateTitle_productStatecol}" />
+
+                        <p:outputLabel value="#{bundle.EditProductStateLabel_product}" for="product" />
+                        <p:selectOneMenu id="product" value="#{productStateController.selected.product}" required="true" requiredMessage="#{bundle.EditProductStateRequiredMessage_product}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productController.items}"
+                                           var="productItem"
+                                           itemValue="#{productItem}"
+                                           itemLabel="#{productItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{productConverter}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{bundle.EditProductStateLabel_testidTest}" for="testidTest" />
+                        <p:selectOneMenu id="testidTest" value="#{productStateController.selected.testidTest}" required="true" requiredMessage="#{bundle.EditProductStateRequiredMessage_testidTest}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{testController.items}"
+                                           var="testidTestItem"
+                                           itemValue="#{testidTestItem}"
+                                           itemLabel="#{testidTestItem.name.toString()}"
+                                           />
+                            <f:converter binding="#{testConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{productStateController.save}" value="#{bundle.Save}" update="display,:ProductStateListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProductStateEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProductStateEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

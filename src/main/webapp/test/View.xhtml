@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestViewDlg" widgetVar="TestViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewTestTitle}">
+
+            <h:form id="TestViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewTestLabel_idTest}"/>
+                        <h:outputText value="#{testController.selected.idTest}" title="#{bundle.ViewTestTitle_idTest}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_name}"/>
+                        <h:outputText value="#{testController.selected.name}" title="#{bundle.ViewTestTitle_name}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_description}"/>
+                        <h:outputText value="#{testController.selected.description}" title="#{bundle.ViewTestTitle_description}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_grouppath}"/>
+                        <h:outputText value="#{testController.selected.grouppath}" title="#{bundle.ViewTestTitle_grouppath}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_variationNumber}"/>
+                        <h:outputText value="#{testController.selected.variationNumber}" title="#{bundle.ViewTestTitle_variationNumber}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_productCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_testExecutionCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_testhasEquipmentCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_productStateCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_testGroupidTestGroup}"/>
+                        <h:outputText value="#{testController.selected.testGroupidTestGroup.name}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_featureidFeature}"/>
+                        <h:outputText value="#{testController.selected.featureidFeature.name}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_testStepCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewTestLabel_testDeviceGroupCollection}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TestViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

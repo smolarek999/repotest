@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="TestStepListForm">
+
+        <p:panel header="#{bundle.ListTestStepTitle}">
+
+            <p:dataTable id="datalist" value="#{testStepController.items}" var="item"
+                         selectionMode="single" selection="#{testStepController.selected}"
+                         rowKey="#{item.idTestStep}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.description}" filterBy="#{item.description}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestStepTitle_description}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.description}"/>
+                </p:column>
+                <p:column sortBy="#{item.condition}" filterBy="#{item.condition}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestStepTitle_condition}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.condition}"/>
+                </p:column>
+                <p:column sortBy="#{item.idTestStep}" filterBy="#{item.idTestStep}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestStepTitle_idTestStep}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idTestStep}"/>
+                </p:column>
+                <p:column sortBy="#{item.testidTest.name}" filterBy="#{item.testidTest.name}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListTestStepTitle_testidTest}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.testidTest.name}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{testStepController.prepareCreate}" update=":TestStepCreateForm" oncomplete="TestStepCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TestStepViewForm" oncomplete="TestStepViewDialog.show()" disabled="#{empty testStepController.selected}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TestStepEditForm" oncomplete="TestStepEditDialog.show()" disabled="#{empty testStepController.selected}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{testStepController.delete}" update=":growl,datalist" disabled="#{empty testStepController.selected}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

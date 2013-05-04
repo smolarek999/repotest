@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TestStepViewDlg" widgetVar="TestStepViewDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.ViewTestStepTitle}">
+
+            <h:form id="TestStepViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{testStepController.selected != null}">
+
+                        <h:outputText value="#{bundle.ViewTestStepLabel_description}"/>
+                        <h:outputText value="#{testStepController.selected.description}" title="#{bundle.ViewTestStepTitle_description}"/>
+
+                        <h:outputText value="#{bundle.ViewTestStepLabel_condition}"/>
+                        <h:outputText value="#{testStepController.selected.condition}" title="#{bundle.ViewTestStepTitle_condition}"/>
+
+                        <h:outputText value="#{bundle.ViewTestStepLabel_idTestStep}"/>
+                        <h:outputText value="#{testStepController.selected.idTestStep}" title="#{bundle.ViewTestStepTitle_idTestStep}"/>
+
+                        <h:outputText value="#{bundle.ViewTestStepLabel_testExecutionhasTestStepCollection}"/>
+
+                        <h:outputText value="#{bundle.ViewTestStepLabel_testidTest}"/>
+                        <h:outputText value="#{testStepController.selected.testidTest.name}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TestStepViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

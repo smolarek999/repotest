@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LoadTableEditDlg" widgetVar="LoadTableEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditLoadTableTitle}">
+
+            <h:form id="LoadTableEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{loadTableController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditLoadTableLabel_releaseidRelease}" for="releaseidRelease" />
+                        <h:outputText id="releaseidRelease" value="#{loadTableController.selected.releaseidRelease}" />
+
+                        <p:outputLabel value="#{bundle.EditLoadTableLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{loadTableController.selected.name}" title="#{bundle.EditLoadTableTitle_name}" />
+
+                        <p:outputLabel value="#{bundle.EditLoadTableLabel_startDate}" for="startDate" />
+                        <p:calendar id="startDate" pattern="MM/dd/yyyy" value="#{loadTableController.selected.startDate}" title="#{bundle.EditLoadTableTitle_startDate}"  showOn="button"/>
+
+                        <p:outputLabel value="#{bundle.EditLoadTableLabel_endDate}" for="endDate" />
+                        <p:inputText id="endDate" value="#{loadTableController.selected.endDate}" title="#{bundle.EditLoadTableTitle_endDate}" />
+
+                        <p:outputLabel value="#{bundle.EditLoadTableLabel_releaseTable}" for="releaseTable" />
+                        <p:selectOneMenu id="releaseTable" value="#{loadTableController.selected.releaseTable}" required="true" requiredMessage="#{bundle.EditLoadTableRequiredMessage_releaseTable}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{releaseTableController.items}"
+                                           var="releaseTableItem"
+                                           itemValue="#{releaseTableItem}"
+                                           itemLabel="#{releaseTableItem.idRelease.toString()}"
+                                           />
+                            <f:converter binding="#{releaseTableConverter}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{loadTableController.save}" value="#{bundle.Save}" update="display,:LoadTableListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,LoadTableEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LoadTableEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
