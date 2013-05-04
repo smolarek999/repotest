@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EquipmentCreateDlg" widgetVar="EquipmentCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateEquipmentTitle}">
+
+            <h:form id="EquipmentCreateForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{equipmentController.selected != null}">
+
+                        <p:outputLabel value="#{bundle.CreateEquipmentLabel_idEquipment}" for="idEquipment" />
+                        <p:inputText id="idEquipment" value="#{equipmentController.selected.idEquipment}" title="#{bundle.CreateEquipmentTitle_idEquipment}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_idEquipment}"/>
+
+                        <p:outputLabel value="#{bundle.CreateEquipmentLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{equipmentController.selected.name}" title="#{bundle.CreateEquipmentTitle_name}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{equipmentController.saveNew}" value="#{bundle.Save}" update="display,:EquipmentListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,EquipmentCreateDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EquipmentCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

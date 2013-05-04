@@ -1,7 +1,7 @@
 package edu.agh.repotest.jsf;
 
-import edu.agh.repotest.domain.Authorities;
-import edu.agh.repotest.dao.AuthoritiesFacade;
+import edu.agh.repotest.dao.Authorities;
+import edu.agh.repotest.session.AuthoritiesFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;

@@ -6,124 +6,33 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-
-
-
-
         <title><ui:insert name="title">Default Title</ui:insert></title>
-        <h:outputStylesheet library="css" name="reset.css"/>
         <h:outputStylesheet library="css" name="pfcrud.css"/>
-        <h:outputStylesheet library="css" name="text.css"/>
-        <h:outputStylesheet library="css" name="grid.css"/>
-        <h:outputStylesheet library="css" name="layout.css"/>
-        <h:outputStylesheet library="css" name="nav.css"/>
-
-       <!-- <h:outputScript library="scripts" name="pfcrud.js"/> -->
-
+        <h:outputScript library="scripts" name="pfcrud.js"/>
     </h:head>
 
     <h:body>
 
-
         <p:growl id="growl" life="3000"/>
-        <div class="container_12">
-            <div class="grid_12 header-repeat">
-                <div id="branding">
-                    <div class="floatleft">
-                        <img src="img/logo.png" alt="Logo" /></div>
-                    <div class="floatright">
-                        <div class="floatleft">
-                            <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
-                        <div class="floatleft marginleft10">
-                            <ul class="inline-ul floatleft">
-                                <li>Hello Admin</li>
-                                <li><a href="#">Config</a></li>
-                                <li><a href="#">Logout</a></li>
-                            </ul>
-                            <br />
-                            <span class="small grey">Last Login: 3 hours ago</span>
-                        </div>
-                    </div>
-                    <div class="clear">
-                    </div>
-                </div>
-            </div>
-            <div class="clear">
-            </div>
-            <div class="grid_12" id="top-menu">
 
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="100" header="Test repo - multidevices">
+                <!-- Menu here. Also a layout and a way to log a user out -->
                 <ui:include src="/appmenu.xhtml"/>
-            </div>
-            <div class="clear">
-            </div>
-            <div class="clear">
-            </div>
-            <div class="grid_2">
-                <div class="box sidemenu">
-                    <div class="block" id="section-menu">
-                    <p:panelMenu>  
-                       <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                            <p:submenu label="#{bundle.Users}">
-                                <p:menuitem value="Authorities" outcome="/jsf/authorities/index" />
-                                <p:menuitem value="Users" outcome="/jsf/users/index" />
-                            </p:submenu>
-                            <p:submenu label="#{bundle.TestsDefinitions}">
-                                <p:menuitem value="TestGroup" outcome="/jsf/testGroup/index" />
-                                <p:menuitem value="Test" outcome="/jsf/test/index" />
+            </p:layoutUnit>
 
-                                <p:menuitem value="Device" outcome="/jsf/device/index" />
-                                <p:menuitem value="Feature" outcome="/jsf/feature/index" />
-                                <p:menuitem value="Load" outcome="/jsf/load/index" />
-                                <p:menuitem value="Mode" outcome="/jsf/mode/index" />
-                                <p:menuitem value="Product" outcome="/jsf/product/index" />
-                                <p:menuitem value="Release" outcome="/jsf/release/index" />
-                                <p:menuitem value="Strategy" outcome="/jsf/strategy/index" />
-                            </p:submenu>
-                            <p:submenu label="#{bundle.TestExecutions}">
-                                <p:menuitem value="StrategyExecution" outcome="/jsf/strategyExecution/index" />
+            <p:layoutUnit position="west" size="50"/>
+            <p:layoutUnit position="east" size="50"/>
 
-                                <p:menuitem value="TestExecution" outcome="/jsf/testExecution/index" />
-                            </p:submenu>
- 
-                    </p:panelMenu>  
-                    
-                    
-                        <!--<ui:include src="/appmenu.xhtml"/> -->
-                        <!--
-                        <ul class="section menu">
-                            <li><a class="menuitem">Menu 1</a>
-                                <ul class="submenu">
-                                    <li><a>Submenu 1</a> </li>
-                                    <li><a>Submenu 2</a> </li>
-                                    <li><a class="active">Submenu 3</a> </li>
-                                    <li><a>Submenu 4</a> </li>
-                                    <li><a>Submenu 5</a> </li>
-                                </ul>
-                            </li>
-                        -->
-
-                    </div>
-                </div>
-            </div>
-            <div class="grid_10">
-                <div class="box round first fullpage">
-                    <h2>
-                        <ui:insert name="title"/></h2>
-                    <div class="block ">
-                        <ui:insert name="body"/>
-                    </div>
-                </div>
-            </div>
-            <div class="clear">
-            </div>
-        </div>
-        <div class="clear">
-        </div>
-        <div id="site_info">
-            <p>
+            <p:layoutUnit position="south" size="60">
                 <ui:insert name="footer"/>
-            </p>
-        </div>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
 
     </h:body>
 

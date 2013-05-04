@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AuthoritiesListForm">
+
+        <p:panel header="#{bundle.ListAuthoritiesTitle}">
+
+            <p:dataTable id="datalist" value="#{authoritiesController.items}" var="item"
+                         selectionMode="single" selection="#{authoritiesController.selected}"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"
+                         >
+
+                <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListAuthoritiesTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column sortBy="#{item.authorityname}" filterBy="#{item.authorityname}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.ListAuthoritiesTitle_authorityname}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.authorityname}"/>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{authoritiesController.prepareCreate}" update=":AuthoritiesCreateForm" oncomplete="AuthoritiesCreateDialog.show()"/>
+                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":AuthoritiesViewForm" oncomplete="AuthoritiesViewDialog.show()" disabled="#{empty authoritiesController.selected}"/>
+                    <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":AuthoritiesEditForm" oncomplete="AuthoritiesEditDialog.show()" disabled="#{empty authoritiesController.selected}"/>
+                    <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{authoritiesController.delete}" update=":growl,datalist" disabled="#{empty authoritiesController.selected}"/>
+                </f:facet>
+
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+
+</ui:composition>

@@ -1,6 +1,6 @@
 package edu.agh.repotest.jsf;
 
-import edu.agh.repotest.dao.AbstractFacade;
+import edu.agh.repotest.session.AbstractFacade;
 import edu.agh.repotest.jsf.util.JsfUtil;
 import java.util.List;
 import java.util.logging.Level;
@@ -131,6 +131,7 @@ public abstract class AbstractController<T> {
      * @return
      */
     public T prepareCreate(ActionEvent event) {
+        System.err.print("Generic prepare create");
         T newItem;
         try {
             newItem = itemClass.newInstance();

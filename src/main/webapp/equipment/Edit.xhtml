@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EquipmentEditDlg" widgetVar="EquipmentEditDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.EditEquipmentTitle}">
+
+            <h:form id="EquipmentEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" rendered="#{equipmentController.selected != null}">
+
+                        <h:outputLabel value="#{bundle.EditEquipmentLabel_idEquipment}" for="idEquipment" />
+                        <h:outputText id="idEquipment" value="#{equipmentController.selected.idEquipment}" />
+
+                        <p:outputLabel value="#{bundle.EditEquipmentLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{equipmentController.selected.name}" title="#{bundle.EditEquipmentTitle_name}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{equipmentController.save}" value="#{bundle.Save}" update="display,:EquipmentListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,EquipmentEditDialog);"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EquipmentEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

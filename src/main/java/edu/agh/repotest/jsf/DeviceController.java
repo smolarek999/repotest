@@ -1,7 +1,7 @@
 package edu.agh.repotest.jsf;
 
-import edu.agh.repotest.domain.Device;
-import edu.agh.repotest.dao.DeviceFacade;
+import edu.agh.repotest.dao.Device;
+import edu.agh.repotest.session.DeviceFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;

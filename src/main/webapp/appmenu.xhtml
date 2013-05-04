@@ -10,28 +10,42 @@
         <h:form id="menuForm">
             <p:menubar>
                 <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                <p:submenu label="#{bundle.Users}">
-                    <p:menuitem value="Authorities" outcome="/jsf/authorities/index" />
-                    <p:menuitem value="Users" outcome="/jsf/users/index" />
+                <p:submenu label="Administration">
+                    <p:menuitem value="Authorities" outcome="/authorities/index" />
+                    <p:menuitem value="Users" outcome="/users/index" />
                 </p:submenu>
-                <p:submenu label="#{bundle.TestsDefinitions}">
-                    <p:menuitem value="TestGroup" outcome="/jsf/testGroup/index" />
-                    <p:menuitem value="Test" outcome="/jsf/test/index" />
-
-                    <p:menuitem value="Device" outcome="/jsf/device/index" />
-                    <p:menuitem value="Feature" outcome="/jsf/feature/index" />
-                    <p:menuitem value="Load" outcome="/jsf/load/index" />
-                    <p:menuitem value="Mode" outcome="/jsf/mode/index" />
-                    <p:menuitem value="Product" outcome="/jsf/product/index" />
-                    <p:menuitem value="Release" outcome="/jsf/release/index" />
-                    <p:menuitem value="Strategy" outcome="/jsf/strategy/index" />
+                <p:submenu label="Test definition">
+                    <p:menuitem value="Test" outcome="/test/index" />
+                    <p:menuitem value="TestGroup" outcome="/testGroup/index" />
+                    <p:menuitem value="TestPlan" outcome="/testPlan/index" />
                 </p:submenu>
-                <p:submenu label="#{bundle.TestExecutions}">
-                    <p:menuitem value="StrategyExecution" outcome="/jsf/strategyExecution/index" />
-
-                    <p:menuitem value="TestExecution" outcome="/jsf/testExecution/index" />
+                <p:submenu label="Test execution">
                 </p:submenu>
-
+                <p:submenu label="System data">
+                    <p:menuitem value="Device" outcome="/device/index" />
+                    <p:menuitem value="Equipment" outcome="/equipment/index" />
+                    <p:menuitem value="Feature" outcome="/feature/index" />
+                    <p:menuitem value="LoadTable" outcome="/loadTable/index" />
+                    <p:menuitem value="Product" outcome="/product/index" />
+                    <p:menuitem value="ReleaseTable" outcome="/releaseTable/index" />
+                </p:submenu>
+                <!--
+                <p:submenu label="#{bundle.Maintenance}">
+                    
+                    
+                    
+                    <p:menuitem value="ProductState" outcome="/productState/index" />
+                    
+                    
+                    <p:menuitem value="TestDeviceGroup" outcome="/testDeviceGroup/index" />
+                    <p:menuitem value="TestDeviceGrouphasDevice" outcome="/testDeviceGrouphasDevice/index" />
+                    
+                    
+                    <p:menuitem value="TestStep" outcome="/testStep/index" />
+                    <p:menuitem value="TesthasEquipment" outcome="/testhasEquipment/index" />
+                    
+                </p:submenu>
+                -->
             </p:menubar>
         </h:form>
     </ui:composition>

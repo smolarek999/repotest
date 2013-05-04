@@ -1,7 +1,7 @@
 package edu.agh.repotest.converter;
 
-import edu.agh.repotest.domain.TestGroup;
-import edu.agh.repotest.dao.TestGroupFacade;
+import edu.agh.repotest.dao.TestGroup;
+import edu.agh.repotest.session.TestGroupFacade;
 import edu.agh.repotest.jsf.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +19,7 @@ public class TestGroupConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+        System.err.println("getAsObject");
         if (value == null || value.length() == 0 || JsfUtil.isDummySelectItem(component, value)) {
             return null;
         }
@@ -39,6 +40,7 @@ public class TestGroupConverter implements Converter {
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+        System.err.println("getAsString" + object);
         if (object == null
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;

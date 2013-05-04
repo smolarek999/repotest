@@ -1,7 +1,7 @@
 package edu.agh.repotest.converter;
 
-import edu.agh.repotest.domain.Test;
-import edu.agh.repotest.dao.TestFacade;
+import edu.agh.repotest.dao.Test;
+import edu.agh.repotest.session.TestFacade;
 import edu.agh.repotest.jsf.util.JsfUtil;
 import java.util.logging.Level;
 import java.util.logging.Logger;

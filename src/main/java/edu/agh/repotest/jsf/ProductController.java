@@ -1,7 +1,7 @@
 package edu.agh.repotest.jsf;
 
-import edu.agh.repotest.domain.Product;
-import edu.agh.repotest.dao.ProductFacade;
+import edu.agh.repotest.dao.Product;
+import edu.agh.repotest.session.ProductFacade;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
