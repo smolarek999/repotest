@@ -41,7 +41,7 @@ public class TestDeviceGroup implements Serializable {
     private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "deviceGroups")
     private Collection<TestDeviceGroupDevices> devices;
-    @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest", insertable = false, updatable = false)
+    @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest", insertable = true, updatable = true)
     @ManyToOne(optional = false)
     private Test test;
     

@@ -1,14 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <p:inputText id="newDeviceGroupName" value="#{testDeviceGroupController.newDeviceGroupName}" title="New device group name" />
+
+    <p:commandButton value="Add new" type="button" onclick="addNewGroup();" id="btnLoad" />  
+    <p:remoteCommand name="addNewGroup" update="deviceSelectes" action="#{testDeviceGroupController.addNew()}"  process="@this newDeviceGroupName" >  
+    </p:remoteCommand> 
+    <p:panel id="deviceSelectes">
+        <p:fieldset legend="Devices">  
+
+            <p:dataGrid id="availableDevices" var="device"  
+                        value="#{testDeviceGroupController.getDevices()}" columns="3">  
+
+                <p:column>  
+
+                    <p:panel id="pnl" header="#{device.name}" style="text-align:center">  
+
+                    </p:panel>  
+
+                    <p:draggable for="pnl" revert="true"  
+                                 handle=".ui-panel-titlebar" stack=".ui-panel"/>  
+
+                </p:column>  
+
+            </p:dataGrid>  
+
+        </p:fieldset>  
+
+        <ui:repeat var="gr" value="#{testDeviceGroupController.devicesGroups}" varStatus="status">
+
+            <p:fieldset id="selectedDevice" legend="Devices groups: #{gr.name}" style="margin-top:20px">  
+
+                <p:outputPanel id="dropArea">  
+
+                    <h:outputText value="!!!Drop here!!!"  
+                                  rendered="#{empty testDeviceGroupController.devicesGroups[status.index].getDevices()}"  
+                                  style="font-size:24px;" />  
+
+                    <p:dataTable var="device" value="#{testDeviceGroupController.devicesGroups[status.index].getDevices()}"  
+                                 rendered="#{not empty testDeviceGroupController.devicesGroups[status.index].getDevices()}">  
+
+                        <p:column headerText="Device name">  
+                            <h:outputText value="#{device.getName()}" />  
+                        </p:column>  
+
+
+                    </p:dataTable>  
+
+                </p:outputPanel>  
+
+            </p:fieldset>  
+
+            <p:droppable for="selectedDevice" tolerance="touch" activeStyleClass="ui-state-highlight" datasource=":TestCreateForm:availableDevices" >  
+                <p:ajax listener="#{testDeviceGroupController.onDeviceDrop}" update="dropArea :TestCreateForm:availableDevices" />  
+            </p:droppable>  
+
+        </ui:repeat>
+        <p:commandButton actionListener="#{testDeviceGroupController.saveNew}" value="#{bundle.Save}" update="TestCreateForm :TestGroupListForm:tree,:growl" />
+    </p:panel>
+
+
 </html>

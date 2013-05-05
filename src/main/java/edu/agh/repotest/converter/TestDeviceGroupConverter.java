@@ -2,6 +2,7 @@ package edu.agh.repotest.converter;
 
 import edu.agh.repotest.dao.TestDeviceGroup;
 import edu.agh.repotest.jsf.TestController;
+import edu.agh.repotest.jsf.TestDeviceGroupController;
 import edu.agh.repotest.session.TestDeviceGroupFacade;
 import edu.agh.repotest.jsf.util.JsfUtil;
 import java.util.logging.Level;
@@ -27,7 +28,7 @@ public class TestDeviceGroupConverter implements Converter {
             return null;
         }
         FacesContext context = FacesContext.getCurrentInstance();
-        TestController bean = (TestController) context.getApplication().evaluateExpressionGet(context, "#{testController}", TestController.class);
+        TestDeviceGroupController bean = (TestDeviceGroupController) context.getApplication().evaluateExpressionGet(context, "#{testDeviceGroupController}", TestDeviceGroupController.class);
         
         return bean.getDevicesGroups().get(Integer.valueOf(value));
     }
@@ -44,7 +45,7 @@ public class TestDeviceGroupConverter implements Converter {
     @Override
     public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
         FacesContext context = FacesContext.getCurrentInstance();
-        TestController bean = (TestController) context.getApplication().evaluateExpressionGet(context, "#{testController}", TestController.class);
+        TestDeviceGroupController bean = (TestDeviceGroupController) context.getApplication().evaluateExpressionGet(context, "#{testDeviceGroupController}", TestDeviceGroupController.class);
         if (object == null
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;

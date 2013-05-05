@@ -101,7 +101,12 @@ public abstract class AbstractController<T> {
             this.setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    this.ejbFacade.edit(selected);
+                    if( persistAction == PersistAction.CREATE){
+                        this.ejbFacade.create(selected);
+                    }else{
+                        this.ejbFacade.edit(selected);
+                    }
+                    
                 } else {
                     this.ejbFacade.remove(selected);
                 }

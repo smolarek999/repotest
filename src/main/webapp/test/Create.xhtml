@@ -9,144 +9,29 @@
     <ui:composition>
 
         <p:dialog id="TestCreateDlg" widgetVar="TestCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateTestTitle}">
-
-            <h:form id="TestCreateForm">
+<h:form id="TestCreateForm">
                 <p:wizard > 
 
                     <p:tab id="tab1" title="Basic options">
-                        <p:panelGrid columns="2" rendered="#{testController.selected != null}">
-                            <h:outputText value="Parent " />
-                            <h:outputText value="#{testController.selected.testGroupidTestGroup.getName()}" />
-
-
-                            <p:outputLabel value="#{bundle.CreateTestLabel_name}" for="name" />
-                            <p:inputText id="name" value="#{testController.selected.name}" title="#{bundle.CreateTestTitle_name}" />
-
-
-
-                            <p:outputLabel value="#{bundle.CreateTestLabel_description}" for="description" />
-                            <p:inputTextarea rows="6" cols="33" id="description" value="#{testController.selected.description}" title="#{bundle.CreateTestTitle_description}" />
-
-
-                            <p:outputLabel value="Products" for="products" />
-                            <p:selectManyMenu id="products" value="#{testController.selected.products}" >
-                                <f:selectItem itemLabel="#{bundle.SelectManyMessage}"/>
-                                <f:selectItems value="#{productController.items}"
-                                               var="product"
-                                               itemValue="#{product}"
-                                               itemLabel="#{product.name.toString()}"
-                                               />
-                                <f:converter binding="#{productConverter}"/>
-                            </p:selectManyMenu>
-
-                            <p:outputLabel value="#{bundle.CreateTestLabel_featureidFeature}" for="featureidFeature" />
-                            <p:selectOneMenu id="featureidFeature" value="#{testController.selected.featureidFeature}" >
-                                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                                <f:selectItems value="#{featureController.items}"
-                                               var="featureidFeatureItem"
-                                               itemValue="#{featureidFeatureItem}"
-                                               itemLabel="#{featureidFeatureItem.name.toString()}"
-                                               />
-                                <f:converter binding="#{featureConverter}"/>
-                            </p:selectOneMenu>
-                        </p:panelGrid>
+                        <ui:include src="steps/basic.xhtml"/>
                     </p:tab>
                     <p:tab id="tab2" title="Devices">
-
-                        <p:inputText id="newDeviceGroupName" value="#{testController.newDeviceGroupName}" title="New device group name" />
-
-                        <p:commandButton value="Add new" type="button" onclick="addNewGroup();" id="btnLoad" />  
-                        <p:remoteCommand name="addNewGroup" update="deviceSelectes" action="#{testController.addNewGroupName()}"  process="@this newDeviceGroupName" >  
-                        </p:remoteCommand> 
-                        <p:panel id="deviceSelectes">
-                            <p:fieldset legend="Devices">  
-
-                                <p:dataGrid id="availableDevices" var="device"  
-                                            value="#{testController.getDevices()}" columns="3">  
-
-                                    <p:column>  
-
-                                        <p:panel id="pnl" header="#{device.name}" style="text-align:center">  
-
-                                        </p:panel>  
-
-                                        <p:draggable for="pnl" revert="true"  
-                                                     handle=".ui-panel-titlebar" stack=".ui-panel"/>  
-
-                                    </p:column>  
-
-                                </p:dataGrid>  
-
-                            </p:fieldset>  
-
-                            <ui:repeat var="gr" value="#{testController.devicesGroups}" varStatus="status">
-
-                                <p:fieldset id="selectedDevice" legend="Devices groups: #{gr.name}" style="margin-top:20px">  
-
-                                    <p:outputPanel id="dropArea">  
-
-                                        <h:outputText value="!!!Drop here!!!"  
-                                                      rendered="#{empty testController.devicesGroups[status.index].getDevices()}"  
-                                                      style="font-size:24px;" />  
-
-                                        <p:dataTable var="device" value="#{testController.devicesGroups[status.index].getDevices()}"  
-                                                     rendered="#{not empty testController.devicesGroups[status.index].getDevices()}">  
-
-                                            <p:column headerText="Device name">  
-                                                <h:outputText value="#{device.getName()}" />  
-                                            </p:column>  
-
-
-                                        </p:dataTable>  
-
-                                    </p:outputPanel>  
-
-                                </p:fieldset>  
-
-                                <p:droppable for="selectedDevice" tolerance="touch" activeStyleClass="ui-state-highlight" datasource=":TestCreateForm:availableDevices" >  
-                                    <p:ajax listener="#{testController.onDeviceDrop}" update="dropArea :TestCreateForm:availableDevices" />  
-                                </p:droppable>  
-
-                            </ui:repeat>
-                        </p:panel>
-
-
-
-
+                        <ui:include src="steps/devicesGroups.xhtml"/> 
                     </p:tab>
 
                     <p:tab  title="Product Steps">
-                            <p:selectOneMenu id="productForStep" value="#{testController.selectedProducts}">  
-                                <f:selectItem itemLabel="Select Product" itemValue="" />  
-                                <f:selectItems value="#{testController.selectedProducts}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
-                                <p:ajax update="refreshableSome" listener="#{testController.handleCityChange()}" />  
-                                 <f:converter binding="#{testDeviceGroupConverter}"/>
-                            </p:selectOneMenu> 
-                        <h:panelGrid columns="2" cellpadding="5">  
-                            <p:selectOneMenu id="city" value="#{testController.deviceGroupForCondition}">  
-                                <f:selectItem itemLabel="Select City" itemValue="" />  
-                                <f:selectItems value="#{testController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
-                                <p:ajax update="refreshableSome" listener="#{testController.handleCityChange()}" />  
-                                 <f:converter binding="#{testDeviceGroupConverter}"/>
-                            </p:selectOneMenu>  
-                            <h:panelGroup id="refreshableSome">
-                            <p:selectManyButton  id="devices" value="#{testController.devicesForCondition}" >  
-                                <f:selectItems value="#{testController.deviceGroupForCondition.devices}" var="dev" itemLabel="#{dev.name}" rendered="#{testController.deviceGroupForCondition != null}"  />  
-                            </p:selectManyButton> 
-                            </h:panelGroup>
-                        </h:panelGrid>  
-
+                       <!-- <ui:include src="steps/productStep.xhtml"/> -->
                     </p:tab>
                     <p:tab title="Confirmation">
-                        <p:commandButton actionListener="#{testController.saveNew}" value="#{bundle.Save}" update="TestCreateForm :TestGroupListForm:tree,:growl" oncomplete="handleSubmit(xhr,status,args,TestCreateDialog);"/>
+                        
                         <p:commandButton value="#{bundle.Cancel}" onclick="TestCreateDialog.hide();"/>
                     </p:tab>
 
                 </p:wizard>
-            </h:form>
-
+            
+</h:form>
         </p:dialog>
-
+    
     </ui:composition>
 
 </html>

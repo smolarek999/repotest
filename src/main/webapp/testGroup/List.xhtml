@@ -9,29 +9,31 @@
                 xmlns:of="http://omnifaces.org/functions"
                 >
     <h:form id="TestGroupListForm">  
-   <p:commandButton process="@this" id="createButton" actionListener="#{testGroupController.nodeListener}" icon="ui-icon-plus"   value="#{bundle.CreateGroup}"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
-                        <f:attribute name="rawParentId" value="" />
-    </p:commandButton>
+        <p:commandButton process="@this" id="createButton" actionListener="#{testGroupController.nodeListener}" icon="ui-icon-plus"   value="#{bundle.CreateGroup}"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
+            <f:attribute name="rawParentId" value="" />
+        </p:commandButton>
         <p:tree value="#{testTreeController.root}" dynamic="true"  cache="true" var="node" style="width: 100%;" selectionMode="single"  selection="#{testTreeController.selectedNode}" id="tree">  
 
-               
-<p:ajax event="expand" update="tree" listener="#{testTreeController.onNodeExpand}" />
-                <p:treeNode>  
-                    <h:outputText value="#{node.getName()}" />  
-                    <p:commandButton process="@this" id="createButton" actionListener="#{testGroupController.nodeListener}" icon="ui-icon-plus"   value="#{bundle.CreateGroup}"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
-                        <f:attribute name="rawParentId" value="#{node.getIdTestGroup()}" />
-                    </p:commandButton>
-                    <p:commandButton process="@this" id="createTestButton" actionListener="#{testController.nodeListener}" icon="ui-icon-plus"   value="#{bundle.CreateTest}"  update=":TestCreateForm" oncomplete="TestCreateDialog.show()">
-                        <f:attribute name="rawParentId" value="#{node.getIdTestGroup()}" />
-                    </p:commandButton>
-                    
-                </p:treeNode>  
-            </p:tree>  
-                
-      
-        
-               
+
+            <p:ajax event="expand" update="tree" listener="#{testTreeController.onNodeExpand}" />
+            <p:treeNode>  
+                <h:outputText value="#{node.getName()}" />  
+                <p:commandButton process="@this" id="createButton" actionListener="#{testGroupController.nodeListener}" icon="ui-icon-plus"   value="#{bundle.CreateGroup}"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
+                    <f:attribute name="rawParentId" value="#{node.getIdTestGroup()}" />
+                </p:commandButton>
+                <p:commandButton process="@this" id="createTestButton" actionListener="#{testController.nodeListener}" icon="ui-icon-plus"   value="#{bundle.CreateTest}"  update=":TestCreateForm" oncomplete="TestCreateDialog.show()">
+                    <f:attribute name="rawParentId" value="#{node.getIdTestGroup()}" />
+                </p:commandButton>
+
+            </p:treeNode>  
+        </p:tree>  
+
+
+
+
     </h:form>  
+
+
 
 
 

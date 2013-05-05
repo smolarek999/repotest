@@ -1,14 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+
+        <p:panelGrid columns="2" rendered="#{testController.selected != null}">
+            <h:outputText value="Parent " />
+            <h:outputText value="#{testController.selected.testGroupidTestGroup.getName()}" />
+
+
+            <p:outputLabel value="#{bundle.CreateTestLabel_name}" for="name" />
+            <p:inputText id="name" value="#{testController.selected.name}" title="#{bundle.CreateTestTitle_name}" />
+
+
+
+            <p:outputLabel value="#{bundle.CreateTestLabel_description}" for="description" />
+            <p:inputTextarea rows="6" cols="33" id="description" value="#{testController.selected.description}" title="#{bundle.CreateTestTitle_description}" />
+
+
+            <p:outputLabel value="Products" for="products" />
+            <p:selectManyMenu id="products" value="#{testController.selected.products}" >
+                <f:selectItem itemLabel="#{bundle.SelectManyMessage}"/>
+                <f:selectItems value="#{productController.items}"
+                               var="product"
+                               itemValue="#{product}"
+                               itemLabel="#{product.name.toString()}"
+                               />
+                <f:converter binding="#{productConverter}"/>
+            </p:selectManyMenu>
+
+            <p:outputLabel value="#{bundle.CreateTestLabel_featureidFeature}" for="featureidFeature" />
+            <p:selectOneMenu id="featureidFeature" value="#{testController.selected.featureidFeature}" >
+                <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                <f:selectItems value="#{featureController.items}"
+                               var="featureidFeatureItem"
+                               itemValue="#{featureidFeatureItem}"
+                               itemLabel="#{featureidFeatureItem.name.toString()}"
+                               />
+                <f:converter binding="#{featureConverter}"/>
+            </p:selectOneMenu>
+        </p:panelGrid>
+        <p:commandButton actionListener="#{testController.saveNew}" value="#{bundle.Save}" update="TestCreateForm :TestGroupListForm:tree,:growl" />
+<!-- oncomplete="handleSubmit(xhr,status,args,TestCreateDialog);" -->
+
+
 </html>

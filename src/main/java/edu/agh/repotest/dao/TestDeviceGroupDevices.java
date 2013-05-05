@@ -122,6 +122,12 @@ public class TestDeviceGroupDevices implements Serializable {
      */
     public void setDevice(Device device) {
         this.device = device;
+        Device_idDevice = device.getIdDevice();
+    }
+    public void setTestDeviceGroup(TestDeviceGroup deviceGroup){
+        this.deviceGroups = deviceGroup;
+        TestDeviceGroup_idTestDeviceGroup = deviceGroup.getId();
+        
     }
     
 }
