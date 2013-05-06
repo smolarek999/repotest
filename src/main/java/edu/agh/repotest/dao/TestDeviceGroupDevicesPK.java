@@ -5,8 +5,8 @@
 package edu.agh.repotest.dao;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -14,51 +14,33 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class TestDeviceGroupDevicesPK implements Serializable {
-    
-   
-    @Column(name = "Device_idDevice")
-    private int deviceId;
-    
-    @Column(name = "TestDeviceGroup_idTestDeviceGroup")
-    private int deviceGroupsId;
-    
-    
 
+    @ManyToOne
+    private Device device;
+    @ManyToOne
+    private TestDeviceGroup deviceGroup;
 
-    /**
-     * @return the device
-     */
-    public int getDeviceId() {
-        return deviceId;
+    public Device getDevice() {
+        return device;
     }
 
-    /**
-     * @param device the device to set
-     */
-    public void setDeviceId(int deviceId) {
-        this.deviceId = deviceId;
+    public void setDevice(Device device) {
+        this.device = device;
     }
 
-    /**
-     * @return the deviceGroups
-     */
-    public int getDeviceGroupsId() {
-        return deviceGroupsId;
+    public TestDeviceGroup getDeviceGroup() {
+        return deviceGroup;
     }
 
-    /**
-     * @param deviceGroups the deviceGroups to set
-     */
-    public void setDeviceGroupsId(int deviceGroupsId) {
-        this.deviceGroupsId = deviceGroupsId;
+    public void setDeviceGroup(TestDeviceGroup deviceGroup) {
+        this.deviceGroup = deviceGroup;
     }
-
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) getDeviceId();
-        hash += (int) getDeviceGroupsId();
+        hash += (int) getDevice().hashCode();
+        hash += (int) getDeviceGroup().hashCode();
         return hash;
     }
 
@@ -69,20 +51,18 @@ public class TestDeviceGroupDevicesPK implements Serializable {
             return false;
         }
         TestDeviceGroupDevicesPK other = (TestDeviceGroupDevicesPK) object;
-        if (this.getDeviceGroupsId() != other.getDeviceGroupsId()) {
+        if (this.getDevice() != other.getDevice()) {
             return false;
         }
-        if (this.deviceId != other.deviceId) {
+        if (this.getDeviceGroup() != other.getDeviceGroup()) {
             return false;
         }
-        
+
         return true;
     }
 
     @Override
     public String toString() {
-        return "edu.agh.repotest.dao.TestDeviceGrouphasDevicePK[ testDeviceGroupidTestDeviceGroup=" + deviceId + ", testDeviceGroupTestidTest=" + deviceGroupsId + " ]";
+        return "edu.agh.repotest.dao.TestDeviceGrouphasDevicePK[ testDeviceGroupidTestDeviceGroup=" + getDeviceGroup() + ", testDeviceGroupTestidTest=" + getDevice() + " ]";
     }
-
-    
 }

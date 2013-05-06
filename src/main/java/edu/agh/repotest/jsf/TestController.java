@@ -1,11 +1,6 @@
 package edu.agh.repotest.jsf;
 
-import edu.agh.repotest.dao.Device;
-import edu.agh.repotest.dao.ProductStepAndCondition;
 import edu.agh.repotest.dao.Test;
-import edu.agh.repotest.dao.TestDeviceGroup;
-import edu.agh.repotest.dao.TestDeviceGroupDevices;
-import edu.agh.repotest.session.DeviceFacade;
 import edu.agh.repotest.session.TestFacade;
 import edu.agh.repotest.session.TestGroupFacade;
 import java.io.Serializable;
@@ -15,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.ActionListener;
 
 @ManagedBean(name = "testController")
 @ViewScoped

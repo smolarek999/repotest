@@ -81,7 +81,7 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
         groupDevice.setDevice(device);
         
         TestDeviceGroup group = getDevicesGroups().get(identifier);
-        groupDevice.setTestDeviceGroup(group);
+        groupDevice.setDeviceGroup(group);
         group.getDevices().add(groupDevice);
         devices.remove(device);
     }
@@ -99,8 +99,6 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
         for (TestDeviceGroup testDeviceGroup : devicesGroups) {
             
             for( TestDeviceGroupDevices td : testDeviceGroup.getDevices() ){
-                td.setTestDeviceGroup(testDeviceGroup);
-                System.err.println(td.getTestDeviceGroup().getId());
                 grouphasDeviceFacade.create(td);
             }
             

@@ -34,8 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "TestDeviceGroup.findAll", query = "SELECT t FROM TestDeviceGroup t")})
 public class TestDeviceGroup implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
     @Size(max = 45)
     @Column(name = "Name")
     private String name;
@@ -44,7 +44,6 @@ public class TestDeviceGroup implements Serializable {
     @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest", insertable = true, updatable = true)
     @ManyToOne(optional = false)
     private Test test;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -54,9 +53,12 @@ public class TestDeviceGroup implements Serializable {
         devices = new ArrayList<TestDeviceGroupDevices>();
     }
 
-    
+    public TestDeviceGroup(Integer id) {
+        this();
+        id = idTestDeviceGroup;
+    }
 
-    public Integer getId(){
+    public Integer getId() {
         return idTestDeviceGroup;
     }
 
@@ -113,5 +115,4 @@ public class TestDeviceGroup implements Serializable {
     public String toString() {
         return "edu.agh.repotest.dao.TestDeviceGroup[ testDeviceGroupPK=" + idTestDeviceGroup + " ]";
     }
-    
 }
