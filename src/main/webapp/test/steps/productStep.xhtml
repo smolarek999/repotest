@@ -5,23 +5,34 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <p:selectOneMenu id="productForStep" value="#{testController.selectedProducts}">  
-        <f:selectItem itemLabel="Select Product" itemValue="" />  
-        <f:selectItems value="#{testController.selectedProducts}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
-        <p:ajax update="refreshableSome" listener="#{testController.handleCityChange()}" />  
-        <f:converter binding="#{testDeviceGroupConverter}"/>
-    </p:selectOneMenu> 
-    <h:panelGrid columns="2" cellpadding="5">  
-        <p:selectOneMenu id="city" value="#{testController.deviceGroupForCondition}">  
-            <f:selectItem itemLabel="Select City" itemValue="" />  
-            <f:selectItems value="#{testController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
-            <p:ajax update="refreshableSome" listener="#{testController.handleCityChange()}" />  
-            <f:converter binding="#{testDeviceGroupConverter}"/>
-        </p:selectOneMenu>  
-        <h:panelGroup id="refreshableSome">
-            <p:selectManyButton  id="devices" value="#{testController.devicesForCondition}" >  
-                <f:selectItems value="#{testController.deviceGroupForCondition.devices}" var="dev" itemLabel="#{dev.name}" rendered="#{testController.deviceGroupForCondition != null}"  />  
-            </p:selectManyButton> 
-        </h:panelGroup>
-    </h:panelGrid> 
+    <ui:debug hotkey="x" />
+    <ui:repeat var="pstate" value="#{testDeviceGroupController.productStates}" varStatus="status">
+        <p:outputLabel value="Specify product for condition" for="productForStep" />
+        <p:selectOneMenu id="productForStep" value="#{pstate.product}">  
+            <f:selectItem itemLabel="Select Product" itemValue="#{null}" /> 
+            <f:selectItems value="#{testController.selected.products}"  var="prod" itemValue="#{prod}" itemLabel="#{prod.name.toString()}" />  
+            <f:converter binding="#{productConverter}"/>
+        </p:selectOneMenu> 
+        <span class="help-block">Now if you want create condition for the product state you have to : <ul>
+                <li>Select group of devices for which condition have to be created</li>
+                <li>Select for which devices from selected group condition is acceptabe 
+                    ( when other devices will be selected during creation of test plan, state will be not shown)</li>
+            </ul></span>
+        <outputText value="Select group and devices if you want to create condition"  />
+        <h:panelGrid columns="2" cellpadding="5"> 
+
+            <p:selectOneMenu id="devGroup" value="#{pstate.rawCondition[0].deviceGroup}">  
+                <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 
+                <f:selectItems value="#{testDeviceGroupController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
+                <p:ajax  update="refreshableSome"  process="@this"  listener="#{testDeviceGroupController.morePressed}" />  
+                <f:converter binding="#{testDeviceGroupConverter}"/>
+            </p:selectOneMenu>  
+            <h:panelGroup id="refreshableSome">
+                <p:selectManyButton  id="devices" value="#{pstate.rawCondition[0].devices}" >  
+                    <f:selectItems value="#{testDeviceGroupController.conditionDevicesMap[status.index]}" var="dev" itemLabel="#{dev.name}"  />  
+                </p:selectManyButton> 
+            </h:panelGroup>
+        </h:panelGrid>
+    </ui:repeat>
+
 </html>

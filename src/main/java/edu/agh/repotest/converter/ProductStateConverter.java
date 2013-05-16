@@ -45,7 +45,7 @@ public class ProductStateConverter implements Converter {
         }
         if (object instanceof ProductState) {
             ProductState o = (ProductState) object;
-            return getStringKey(o.getProductidProduct());
+            return getStringKey(o.getProduct().getIdProduct());
         } else {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), ProductState.class.getName()});
             return null;

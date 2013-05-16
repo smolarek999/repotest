@@ -4,10 +4,13 @@
  */
 package edu.agh.repotest.jsf;
 
+import edu.agh.repotest.dao.Test;
 import edu.agh.repotest.dao.TestGroup;
+import edu.agh.repotest.session.TestFacade;
 import edu.agh.repotest.session.TestGroupFacade;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -38,6 +41,9 @@ public class TestTreeController implements Serializable {
     };
     @EJB
     private TestGroupFacade ejbFacade;
+    
+    @EJB
+    private TestFacade testFacade;
 
     @PostConstruct
     public void init() {
@@ -67,6 +73,11 @@ public class TestTreeController implements Serializable {
             TestGroup group = (TestGroup) treeNode.getData();
             treeNode.getChildren().clear();
             createChildrenOfNode(ejbFacade.getByParent(group.getIdTestGroup()), treeNode, ADD_DUMMY_NODE_DECORATOR);
+            for( Test test : testFacade.getByGroup(group)){
+                
+                TreeNode node = new DefaultTreeNode("test",test, treeNode);
+            }
+            
             
 
         }else{

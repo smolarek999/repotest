@@ -5,8 +5,10 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+    <p:outputLabel value="new group name" for="newDeviceGroupName" />
     <p:inputText id="newDeviceGroupName" value="#{testDeviceGroupController.newDeviceGroupName}" title="New device group name" />
 
+    
     <p:commandButton value="Add new" type="button" onclick="addNewGroup();" id="btnLoad" />  
     <p:remoteCommand name="addNewGroup" update="deviceSelectes" action="#{testDeviceGroupController.addNew()}"  process="@this newDeviceGroupName" >  
     </p:remoteCommand> 
@@ -18,8 +20,8 @@
 
                 <p:column>  
 
-                    <p:panel id="pnl" header="#{device.name}" style="text-align:center">  
-
+                    <p:panel id="pnl"  style="text-align:center">  
+                        <h:outputText value="#{device.name}" />
                     </p:panel>  
 
                     <p:draggable for="pnl" revert="true"  
@@ -38,13 +40,13 @@
                 <p:outputPanel id="dropArea">  
 
                     <h:outputText value="!!!Drop here!!!"  
-                                  rendered="#{empty testDeviceGroupController.devicesGroups[status.index].getDevices()}"  
+                                  rendered="#{empty gr.getDevices()}"  
                                   style="font-size:24px;" />  
 
-                    <p:dataTable var="device" value="#{testDeviceGroupController.devicesGroups[status.index].getDevices()}"  
-                                 rendered="#{not empty testDeviceGroupController.devicesGroups[status.index].getDevices()}">  
+                    <p:dataTable var="device" value="#{gr.getDevices()}"  
+                                 rendered="#{not empty gr.getDevices()}">  
 
-                        <p:column headerText="Device name">  
+                        <p:column >  
                             <h:outputText value="#{device.getName()}" />  
                         </p:column>  
 

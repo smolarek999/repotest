@@ -5,65 +5,51 @@
 
 % dodatkowe pakiety
 \usepackage{enumerate}
-\usepackage{listings}
-\lstloadlanguages{TeX}
+\usepackage{listings} \lstloadlanguages{TeX}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
 
-\lstset{
-  literate={ą}{{\k{a}}}1
-           {ć}{{\'c}}1
-           {ę}{{\k{e}}}1
-           {ó}{{\'o}}1
-           {ń}{{\'n}}1
-           {ł}{{\l{}}}1
-           {ś}{{\'s}}1
-           {ź}{{\'z}}1
-           {ż}{{\.z}}1
-           {Ą}{{\k{A}}}1
-           {Ć}{{\'C}}1
-           {Ę}{{\k{E}}}1
-           {Ó}{{\'O}}1
-           {Ń}{{\'N}}1
-           {Ł}{{\L{}}}1
-           {Ś}{{\'S}}1
-           {Ź}{{\'Z}}1
-           {Ż}{{\.Z}}1
-}
+\usepackage{clrscode3e}
+
+
+
+\lstset{ literate={ą}{{\k{a}}}1 {ć}{{\'c}}1 {ę}{{\k{e}}}1 {ó}{{\'o}}1 {ń}{{\'n}}1 {ł}{{\l{}}}1 {ś}{{\'s}}1 {ź}{{\'z}}1 {ż}{{\.z}}1 {Ą}{{\k{A}}}1 {Ć}{{\'C}}1 {Ę}{{\k{E}}}1 {Ó}{{\'O}}1 {Ń}{{\'N}}1 {Ł}{{\L{}}}1 {Ś}{{\'S}}1 {Ź}{{\'Z}}1 {Ż}{{\.Z}}1 }
 
 %---------------------------------------------------------------------------
 
-\author{Paweł Englert}
-\shortauthor{P. Englert}
+\author{Paweł Englert} \shortauthor{P. Englert}
 
 \titlePL{Repozytorium testów oprogramowania dla produktów wielowydaniowych dedykowanych na wiele urządzeń}
+\titleEN{Test management repository for multi-devices and multi-releases products}
 
 
 \shorttitlePL{Repozytorium testów oprogramowania} % skrócona wersja tytułu jeśli jest bardzo długi
 
-\thesistypePL{Praca magisterska}
+\thesistypePL{Praca magisterska} \thesistypeEN{Master of Science Thesis}
 
 
-\supervisorPL{dr inż. Paweł Skrzyński}
+\supervisorPL{dr inż. Paweł Skrzyński} \supervisorEN{Paweł Skrzyński Ph.D}
 
-\date{2012}
+\departmentPL{Katedra Informatyki Stosowanej} \departmentEN{Department of Applied Computer Science}
 
-\departmentPL{Katedra Automatyki}
-
-
-\facultyPL{Wydział Elektrotechniki, Automatyki, Informatyki i Elektroniki}
-
-
-
+\facultyPL{Wydział Elektrotechniki, Automatyki, Informatyki i Elektroniki} \facultyEN{Faculty of Electrical Engineering, Automatics, Computer Science and Electronics}
+\acknowledgements{TODO}
 
 \setlength{\cftsecnumwidth}{10mm}
+
+
+\reversemarginpar
 
 %---------------------------------------------------------------------------
 
 \begin{document}
 
-%\titlepages
+\titlepages
 
-\tableofcontents
-\clearpage
+%%%%%%%%%% SPISY TREŚCI %%%%%%%%%%%%%%
+
+\tableofcontents \clearpage
 
 \include{rozdzial1}
 \include{rozdzial2}

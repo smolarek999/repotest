@@ -45,8 +45,8 @@ public class Device implements Serializable {
     private Collection<TestExecutionhasDevice> testExecutionhasDeviceCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "deviceidDevice")
     private Collection<TestExecution> testExecutionCollection;
-    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "device")
-    //private Collection<TestDeviceGroupDevices> testDeviceGroupDevices;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "device")
+    private Collection<TestDeviceGroupDevices> testDeviceGroupDevices;
 
     public Device() {
     }
@@ -96,7 +96,7 @@ public class Device implements Serializable {
     public void setTestExecutionCollection(Collection<TestExecution> testExecutionCollection) {
         this.testExecutionCollection = testExecutionCollection;
     }
-/*
+
     @XmlTransient
     public Collection<TestDeviceGroupDevices> getTestDeviceGrouphasDeviceCollection() {
         return testDeviceGroupDevices;
@@ -105,7 +105,7 @@ public class Device implements Serializable {
     public void setTestDeviceGrouphasDeviceCollection(Collection<TestDeviceGroupDevices> testDeviceGrouphasDeviceCollection) {
         this.testDeviceGroupDevices = testDeviceGrouphasDeviceCollection;
     }
-*/
+
     @Override
     public int hashCode() {
         int hash = 0;

@@ -25,6 +25,10 @@ public class TestController extends AbstractController<Test> implements Serializ
     public TestController() {
         super(Test.class);
     }
+    
+    public String goToCreate(){
+         return "test/create.xhtml?facesRedirect=true";
+    }
 
     public void nodeListener(ActionEvent event) {
         prepareCreate(event);

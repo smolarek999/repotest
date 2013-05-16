@@ -8,8 +8,8 @@
     
 
         <p:panelGrid columns="2" rendered="#{testController.selected != null}">
-            <h:outputText value="Parent " />
-            <h:outputText value="#{testController.selected.testGroupidTestGroup.getName()}" />
+            <p:outputLabel value="Parent" for="parent" />
+            <h:outputText id="parent" value="#{testController.selected.testGroupidTestGroup.getName()}" />
 
 
             <p:outputLabel value="#{bundle.CreateTestLabel_name}" for="name" />

@@ -14,6 +14,22 @@ public class TestDeviceGroupId implements Serializable {
     private long Device_idDevice;
     private long TestDeviceGroup_idTestDeviceGroup;
 
+    public long getDevice_idDevice() {
+        return Device_idDevice;
+    }
+
+    public void setDevice_idDevice(long Device_idDevice) {
+        this.Device_idDevice = Device_idDevice;
+    }
+
+    public long getTestDeviceGroup_idTestDeviceGroup() {
+        return TestDeviceGroup_idTestDeviceGroup;
+    }
+
+    public void setTestDeviceGroup_idTestDeviceGroup(long TestDeviceGroup_idTestDeviceGroup) {
+        this.TestDeviceGroup_idTestDeviceGroup = TestDeviceGroup_idTestDeviceGroup;
+    }
+
     public int hashCode() {
         return (int) (Device_idDevice + TestDeviceGroup_idTestDeviceGroup);
     }

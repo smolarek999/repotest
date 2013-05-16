@@ -10,6 +10,8 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -18,7 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -33,21 +35,25 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "ProductState.findAll", query = "SELECT p FROM ProductState p")})
 public class ProductState implements Serializable {
+
     private static final long serialVersionUID = 1L;
+    @Transient
+    List<Condition> rawCondition;
+    
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "Product_idProduct")
-    private Integer productidProduct;
+    private Integer id;
     @Size(max = 45)
     @Column(name = "Description")
     private String description;
     @Size(max = 45)
-    @Column(name = "ProductStatecol")
+    @Column(name = "ConditionCol")
     private String condition;
     @ManyToMany(mappedBy = "productStateCollection")
     private Collection<TestExecution> testExecutionCollection;
-    @JoinColumn(name = "Product_idProduct", referencedColumnName = "idProduct", insertable = false, updatable = false)
+    @JoinColumn(name = "Product_idProduct", referencedColumnName = "idProduct")
     @OneToOne(optional = false)
     private Product product;
     @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")
@@ -57,16 +63,16 @@ public class ProductState implements Serializable {
     public ProductState() {
     }
 
-    public ProductState(Integer productidProduct) {
-        this.productidProduct = productidProduct;
+    public ProductState(Integer id) {
+        this.id = id;
     }
 
-    public Integer getProductidProduct() {
-        return productidProduct;
+    public Integer getId() {
+        return id;
     }
 
-    public void setProductidProduct(Integer productidProduct) {
-        this.productidProduct = productidProduct;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -77,15 +83,18 @@ public class ProductState implements Serializable {
         this.description = description;
     }
 
-    public List<Condition>  getRawCondition() {
-        return Condition.createFromString(condition);
+    public List<Condition> getRawCondition() {
+        if( rawCondition == null ){
+            rawCondition = Condition.createFromString(condition);
+        }
+        return rawCondition;
     }
 
     public void setRawCondition(List<Condition> condition) {
         this.condition = Condition.createToString(condition);
+        this.rawCondition = condition;
     }
-    
-    
+
     public String getCondition() {
         return condition;
     }
@@ -93,7 +102,6 @@ public class ProductState implements Serializable {
     public void setCondition(String condition) {
         this.condition = condition;
     }
-    
 
     @XmlTransient
     public Collection<TestExecution> getTestExecutionCollection() {
@@ -123,7 +131,7 @@ public class ProductState implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (productidProduct != null ? productidProduct.hashCode() : 0);
+        hash += (getId() != null ? getId().hashCode() : 0);
         return hash;
     }
 
@@ -134,7 +142,7 @@ public class ProductState implements Serializable {
             return false;
         }
         ProductState other = (ProductState) object;
-        if ((this.productidProduct == null && other.productidProduct != null) || (this.productidProduct != null && !this.productidProduct.equals(other.productidProduct))) {
+        if ((this.getId() == null && other.getId() != null) || (this.getId() != null && !this.getId().equals(other.getId()))) {
             return false;
         }
         return true;
@@ -142,7 +150,6 @@ public class ProductState implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.agh.repotest.dao.ProductState[ productidProduct=" + productidProduct + " ]";
+        return "edu.agh.repotest.dao.ProductState[ productidProduct=" + getId() + " ]";
     }
-    
 }

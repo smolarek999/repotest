@@ -4,43 +4,47 @@
  */
 package edu.agh.repotest.dao;
 
-import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.ManyToOne;
 
 /**
  *
  * @author pawel
  */
 @Embeddable
-public class TestDeviceGroupDevicesPK implements Serializable {
+public class TestDeviceGroupDevicesPK  {
 
-    @ManyToOne
-    private Device device;
-    @ManyToOne
-    private TestDeviceGroup deviceGroup;
+    Integer deviceId;
+    Integer deviceGroupId;
 
-    public Device getDevice() {
-        return device;
+    public TestDeviceGroupDevicesPK() {
+    }
+    
+    
+    public TestDeviceGroupDevicesPK(Integer i1, Integer i2) {
     }
 
-    public void setDevice(Device device) {
-        this.device = device;
+    public Integer getDeviceId() {
+        return deviceId;
     }
 
-    public TestDeviceGroup getDeviceGroup() {
-        return deviceGroup;
+    public void setDeviceId(Integer deviceGroupId) {
+        this.deviceId = deviceGroupId;
     }
 
-    public void setDeviceGroup(TestDeviceGroup deviceGroup) {
-        this.deviceGroup = deviceGroup;
+    public Integer getDeviceGroupId() {
+        return deviceGroupId;
+    }
+
+    public void setDeviceGroupId(Integer deviceGroupId) {
+        this.deviceGroupId = deviceGroupId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) getDevice().hashCode();
-        hash += (int) getDeviceGroup().hashCode();
+        hash += (int) getDeviceId().hashCode();
+        hash += (int) getDeviceGroupId().hashCode();
         return hash;
     }
 
@@ -51,10 +55,10 @@ public class TestDeviceGroupDevicesPK implements Serializable {
             return false;
         }
         TestDeviceGroupDevicesPK other = (TestDeviceGroupDevicesPK) object;
-        if (this.getDevice() != other.getDevice()) {
+        if (this.getDeviceId() != other.getDeviceId()) {
             return false;
         }
-        if (this.getDeviceGroup() != other.getDeviceGroup()) {
+        if (this.getDeviceGroupId() != other.getDeviceGroupId()) {
             return false;
         }
 
@@ -63,6 +67,6 @@ public class TestDeviceGroupDevicesPK implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.agh.repotest.dao.TestDeviceGrouphasDevicePK[ testDeviceGroupidTestDeviceGroup=" + getDeviceGroup() + ", testDeviceGroupTestidTest=" + getDevice() + " ]";
+        return "edu.agh.repotest.dao.TestDeviceGrouphasDevicePK[ testDeviceGroupidTestDeviceGroup=" + getDeviceGroupId() + ", testDeviceGroupTestidTest=" + getDeviceId() + " ]";
     }
 }

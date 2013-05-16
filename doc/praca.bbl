@@ -16,6 +16,11 @@ E.~Dustin, J.~Rashka, and J.~Paul.
   performance}.
 \newblock Addison-Wesley Professional, 1999.
 
+\bibitem{istqb}
+ISTQB.
+\newblock {International Software Testing Qualifications Board: Certified
+  Tester Foundation Level Syllabus}.
+
 \bibitem{TestingMatt}
 S.~Loveland, M.~Shannon, G.~Miller, and R.~Prewitt.
 \newblock {\em Software Testing Techniques: Finding the Defects That Matter}.
@@ -30,5 +35,9 @@ S.~Morton.
 O.~Varaksin and M.~Caliskan.
 \newblock {\em JavaServer Faces 2.0:The Complete Reference}.
 \newblock Packt Publishing, 2013.
+
+\bibitem{http}
+w3c.
+\newblock {Hypertext Transfer Protocol -- HTTP/1.1}.
 
 \end{thebibliography}

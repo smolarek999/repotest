@@ -4,7 +4,9 @@
  */
 package edu.agh.repotest.dao;
 
+import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,82 +14,82 @@ import java.util.List;
  *
  * @author pawel
  */
-public class Condition {
+public class Condition implements Serializable {
+
     private static final String CONDITION_SEPARATOR = "|";
     private static final String HEAD_SEPARATOR = ":";
     private static final String ITEM_SEPARATOR = ".";
-    
     private static final String CONDITION_SEPARATOR_PATTERN = "\\" + CONDITION_SEPARATOR;
     private static final String HEAD_SEPARATOR_PATTERN = HEAD_SEPARATOR;
     private static final String ITEM_SEPARATOR_PATTERN = "\\" + ITEM_SEPARATOR;
-    public static List<Condition> createFromString( String rawCondtionions ){
-        
+
+    public static List<Condition> createFromString(String rawCondtionions) {
+
         List<Condition> conditions = new LinkedList<Condition>();
-        for( String rawCondtionin : rawCondtionions.split(CONDITION_SEPARATOR_PATTERN) ){
-            String [] headAndTail = rawCondtionin.split(HEAD_SEPARATOR_PATTERN);
-            Integer deviceGroupId = Integer.parseInt(headAndTail[0]);
-            List<Integer> devicesIds = new LinkedList<Integer>();
-            for( String deviceId : headAndTail[1].split(ITEM_SEPARATOR_PATTERN)){
-                devicesIds.add( Integer.valueOf(deviceId));
+        if (rawCondtionions == null || rawCondtionions.isEmpty()) {
+            return conditions;
+        }
+
+
+        for (String rawCondtionin : rawCondtionions.split(CONDITION_SEPARATOR_PATTERN)) {
+            String[] headAndTail = rawCondtionin.split(HEAD_SEPARATOR_PATTERN);
+            if (headAndTail.length != 2) {
+                throw new IllegalArgumentException("wrong pattern " + rawCondtionin);
             }
-            conditions.add(new Condition(deviceGroupId, devicesIds));
-            
+            Integer deviceGroupId = Integer.parseInt(headAndTail[0]);
+            TestDeviceGroup deviceGroup = new TestDeviceGroup(deviceGroupId);
+            List<Device> devices = new LinkedList<Device>();
+            for (String rawDeviceId : headAndTail[1].split(ITEM_SEPARATOR_PATTERN)) {
+                Integer deviceId = Integer.valueOf(rawDeviceId);
+
+                devices.add(new Device(deviceId));
+            }
+            conditions.add(new Condition(deviceGroup, devices));
+
         }
         return conditions;
     }
-    public static String createToString( List<Condition> condtionions ){
-        
+
+    public static String createToString(Collection<Condition> condtionions) {
+
         StringBuilder builder = new StringBuilder();
-        for( Condition cond : condtionions){
-            builder.append(cond.getDeviceGroupId());
+        for (Condition cond : condtionions) {
+            builder.append(cond.getDeviceGroup().getId());
             builder.append(HEAD_SEPARATOR);
-            for( Integer id : cond.getDevices()){
-                builder.append(id);
+            for (Device device : cond.getDevices()) {
+                builder.append(device.getIdDevice());
                 builder.append(ITEM_SEPARATOR);
             }
-            builder.deleteCharAt(builder.length() -1);
+            builder.deleteCharAt(builder.length() - 1);
             builder.append(CONDITION_SEPARATOR);
         }
-         builder.deleteCharAt(builder.length() -1);
-         return builder.toString();
+        builder.deleteCharAt(builder.length() - 1);
+        return builder.toString();
     }
-    private Integer deviceGroupId;
-    private List<Integer> devices = new LinkedList<Integer>();
-    
-    public Condition(){
-        
-    }
-    
-    public Condition( Integer deviceGroupId, List<Integer> devices ){
-        this.deviceGroupId = deviceGroupId;
-        this.devices = new LinkedList<Integer>(devices);
+    private TestDeviceGroup deviceGroup;
+    private List<Device> devices = new LinkedList<Device>();
+
+    public Condition() {
     }
 
-    /**
-     * @return the deviceGroupId
-     */
-    public Integer getDeviceGroupId() {
-        return deviceGroupId;
+    public Condition(TestDeviceGroup deviceGroup, List<Device> devices) {
+        this.deviceGroup = deviceGroup;
+        this.devices = new LinkedList<Device>(devices);
     }
 
-    /**
-     * @param deviceGroupId the deviceGroupId to set
-     */
-    public void setDeviceGroupId(Integer deviceGroupId) {
-        this.deviceGroupId = deviceGroupId;
+    public TestDeviceGroup getDeviceGroup() {
+        return deviceGroup;
     }
 
-    /**
-     * @return the allowedDevices
-     */
-    public List<Integer> getDevices() {
+    public void setDeviceGroup(TestDeviceGroup deviceGroup) {
+        this.deviceGroup = deviceGroup;
+    }
+
+    public List<Device> getDevices() {
         return devices;
     }
 
-    /**
-     * @param allowedDevices the allowedDevices to set
-     */
-    public void setDevices(List<Integer> devices) {
+    public void setDevices(List<Device> devices) {
         this.devices = devices;
     }
 
@@ -97,27 +99,20 @@ public class Condition {
             return false;
         }
         Condition other = (Condition) obj;
-        
-        return deviceGroupId.equals(other.getDeviceGroupId()) && devices.equals(other.getDevices());
+
+        return deviceGroup.equals(other.deviceGroup) && devices.equals(other.devices);
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + (this.deviceGroupId != null ? this.deviceGroupId.hashCode() : 0);
+        hash = 83 * hash + (this.deviceGroup != null ? this.deviceGroup.hashCode() : 0);
         hash = 83 * hash + (this.devices != null ? this.devices.hashCode() : 0);
         return hash;
     }
 
     @Override
     public String toString() {
-        return createToString( Arrays.asList(new Condition[]{this}));
+        return createToString(Arrays.asList(new Condition[]{this}));
     }
-    
-    
-    
-    
-    
-    
-   
 }

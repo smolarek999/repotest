@@ -180,11 +180,24 @@ Testy systemowe zakładają iż większość negatywnych scenariuszy takich jak 
 Testy systemowe powinny być przeprowadzone przez niezależny zespół który raportuje do kierownika niezależnego od departamentu produkcji. 
 
 \subsubsection{Testy akceptacyjne}
-Testy akceptacyjne to są takie testy o których będę musiał napisać
+TODO: opisać testy akceptacyjne
+
 
 \subsection{Podział ze względu na typ}
 \subsubsection{Testy funkcjonalne}
+Testowanie funkcjonalne ma na zadanie sprawdzić zgodność oprogramowania z zdefiniowanymi wymaganiami. Testy takie przeprowadzane są z punktu widzenia użytkownika końcowego, nie jest więc wymagana wiedza o działaniu i architekturze poszczególnych komponentów. Testy funkcjonalne są  zazwyczaj łatwę do testowania ręcznego. Język użyty w opisie testu powinien być dopasowany do terminologii końcowej, tak by móc zweryfikować czy nazwy używane w aplikacji są zgodne z nazwami używanymi w dziedzinie zastosowania.
+
+Przypadek testowy odnoszący się do testu funkcjonalnego powinien zawierać:
+- listę wymagań które test sprawdza
+- skrypt testu czyli listę kroków wraz z oczekiwanymi rezultatami
+- opis stanu środowiska w jakim należy wykonać test
+
+Tworząc testy funkcjonalne należy wziąć pod uwagę dwa aspekty: redundancję i strefę szarości. Redundancja testów oznacz iż podobne testy są powtarzane w różnych fazach. Należy stworzyć taki plan testów aby uniknąć duplikacji, jeżeli podobne testy występują w różnych fazach należy zadbać by sprawdzały spełnienie wymagań z różnych prespektyw. Strefa szarości, czyli taka strefa produktu która nie zostanie pokryta podczas testów. Minimalizować szarą strefę możemy poprzez dobre planowanie. Należy zadbac by całość wymagań została pokrywa przypadkami testowymi. Dodatkowo w planie testów należy zadbać o to by przypadki testowe weryfikujące najważniejsze funkcjonalności dostały większy priorytet ( więcej zasobów ), natomiast marginalne funkcjonalności mogą być testowane poprzez testy poprzeczne ( testujące większą grupę funkcjonalności).
 \subsubsection{Testy niefunkcjonalne}
+Testy niefunkcjonalne testują jakość oprogramowania, testowane są  niefunkcjonalne właściwości systemu, bez których system pomimo iz spełnia wymagania nie może zostać nazwany poprawnym. Przypadki testowe dla testów niefunkcjonalnych powinny określać jakościowe i ilościowe oczekiwane rezultaty. Przykładem rezultatu może być określenie "dla 10 000 wejść na stronę system powinien zachowywać się stabilnie co oznacza iż użytkownicy będą w stanie wykonać swoje biznesowe procesy". Wykonywanie tego wypu testów wymaga wiedzy na temat architektury prouktu Powodowane jest to faktem iż znając newralgiczne części systemu, tester może skupić na nich dodatkową uwagę wiedząc iż mogą one powodować efekt wąskiego gardła
+
+
+Testy niefunkcjonalne przez swoją złożoność są trudne lub niemożliwe do wykonania. Przykładem może być test wymagający by kilka użytkowików w tej samej chwili weszło na tą samą stronę. Jeżeli jest to możliwe, sugerowane jest by testy takie zostały zautomatyzowane.
 \chapter{Określenie problemu} % (fold)
 \label{cha:okreslenie_problemu}
 
@@ -193,11 +206,14 @@ W rozdziale zdefiniowany zostanie problem badawczy oraz dokonany zostanie szczeg
 \section{Definicja problemu} % (fold)
 \label{sec:definicja_problemu}
 
-Tematem pracy jest stworzenie aplikacji wspierającej proces zapewnienia jakości produktu informatycznego. Istnieje wiele różnych aplikacji które wpisują się w tematykę testowania oprogramowania i wspierają ten proces w różnych fazach i aspektach. Założeniem pracy jest stworzenie aplikacji służącej do przechowywania, wersjonowania i wykonywania ręcznych testów.
+Tematem pracy jest stworzenie aplikacji wspomagającej proces zapewnienia jakości produktu informatycznego. Istnieje wiele rodzai aplikacji które wpisują się w tematykę testowania oprogramowania i wspierają ten proces w różnych fazach i aspektach. Założeniem pracy jest stworzenie aplikacji która będzie repozytorium testów manualnych. Głównymi funkcjami repozytorium będzie możliwość dodawania i edycji testów, klasyfikowania i definicji, grupowania i wykonywania  testów.
 
-Odwołując się do wcześniejszych informacji, aplikacja przeznaczona jest do każdego z typów wytwarzania oprogramowania. Typem testów które znajdować się mają docelowo w aplikacji są testy integracyjne i testy systemowe. Charakterystyka testów może być zarówno funkcjonalna jak i niefunkcjonalna, należy jednak mieć świadomość i testy niefunkcjonalne przez swą złożoność mogą nie być możliwe do wykonania manualnego.
 
-Specyfiką aplikacji której projekt i implementacja przedstawione będą w niniejszej pracy jest zapewnienie użyteczności do systemów które posiadają wiele wydań a proces wytwarzania oprogramowania zbliżony jest do modelu inkrementacyjnego. Systemy takie wymagają przeprowadzenia strategii testowej dla każdej inkrementacji oprogramowania. Globalnie dla całego wydania istotne jest to by zbiór testów brany z wszystkich wykonanych strategii pokrywał nową funkcjonalność i zapewniał regresję poprzednich wydań. Dodatkowo autor zakłada iż aplikacja wspiera systemy które dedykowane są na wiele urządzeń. Powoduje to zwiększenie ilości możliwych przypadków testowych dla wydania systemu. 
+Odwołując się do wcześniejszych informacji, aplikacja przeznaczona jest do każdego z typów wytwarzania oprogramowania. Repozytorium przechowywać będzie testy integracyjne i systemowe, ponieważ to te typy testów najczęścniej wykonywane są manualnie. Charakterystyka testów może być zarówno funkcjonalna jak i niefunkcjonalna, należy jednak mieć świadomość i testy niefunkcjonalne przez swą złożoność mogą nie być możliwe do wykonania manualnego.
+
+Specyfikacjia aplikacji której projekt i implementacja przedstawione będą w niniejszej pracy umożliwiać będzie definicje testów i strategii testowych dla systemów dedykowanych na wiele urządzeń. Aplikacja wspierać będzie iteracyjny model wytwarzania oprogramowania w którym w ramach jednego wydania systemu przeprowadzonych będzie kilka strategii testowych ( dla każdej iteracji osobno). W modelu takim istotne jest to by podzielić testowanie posczególnych funkcjonalności na inkrementacje, tak by możliwe było jak najszybsze testowanie już oddanych funkcjonalności bez potrzeby wydania całego systemu. Dodatkowym aspektem jest potrzeba przeprowadzenia regresji tak by uzyskać pewność iż nowe wydanie systemu nie spowodowało defektów w już istniejących funkcjonalnościach ( z poprzednich wersji ). Należy róznież zadbać o regresje między iteracjami, gdyż nowe funkcjonalności mogą wprowadzić defekty w funkcjonalnościach już przetestowanych.
+
+Systemy dedykowane na różne kombinacje urządzeń docelowych lub urządzeń pośrednich posiadają złożoną kombinację możliwych przypadków testowych. Złożoność tą możemy przedstawić wzorem:
 
 \begin{equation}
 TC_{mix} = TC * D
@@ -209,21 +225,63 @@ TC_{mix} = TC * D
 	\end{itemize}
 
 
+Powołując się na wiedzę z zagadnień testowania oprogramowania, można stwierdzić iż niemożliwe jest testowanie wszystkich kombinacji przypadków użycia i urządzeń. Celem zapewnienia najwyższej jakości produktu a zarazem zminimalizowania kosztów testów stosowana jest strategia sterowana ryzykiem. Dla przypomnienia polega ona na określeniu które funkcjonalności objęte są najwyższym ryzykiem w aktualnym wydaniu produktu. Powoduje to iż testy odnoszące się do najbardziej ryzykownych funkcjonalności otrzymują najwyższy priorytet, tak więc z tych grup zostanie wybrana największa ilość testów które zostaną wykonane. Analogiczną strategię sterowaną ryzkiem należy zastosować dla urządzeń dla których produkt jest dedykowany. W tym przypadku pomocna może okazać się znajomość rynku na który dedykowany jest system, lub konfiguracji jeżeli system dedykowany jest dla jednego klienta. Analiza taka dostarczy dane które pozwolą skoncentrować proces testowaniach na najpopularniejszych urządzeniach. 
 
+TODO: Opisać o integracji z innymi systemami
+\section{Podział narzędzni wspomagającyh proces testowania}
+Narzędzia wspierające proces testowania możemy dzielić ze względu na różne kategorie takie jak na przykład: cel, poziom testów dla których są dedykowane, rodzaj licencji, technologia itp. Standard ISTQB stosuje podział w zależności od aktywności które są wspierane przez narzędzie. 
 
-Powołując się na wiedzę z zagadnień testowania oprogramowania, można stwierdzić iż niemożliwe jest testowanie wszystkich kombinacji przypadków użycia i urządzeń. Celem zapewnienia najwyższej jakości produktu a zarazem zminimalizowania kosztów testów stosowana jest strategia sterowana ryzykiem. Dla przypomnienia polega ona na określeniu które funkcjonalności objęte są najwyższym ryzykiem w aktualnym wydaniu produktu. Powoduje to iż testy odnoszące się do najbardziej ryzykownych funkcjonalności otrzymują najwyższy priorytet. Analogicznie ryzyko nalaży zastosować dla urządzeń dla których produkt jest dedykowany.
+\renewcommand\multirowsetup{\centering\arraybackslash}
+\begin{longtable}{| p{4cm} | p{4cm} | p{8cm} |}
+\hline
+\textbf{Rodzina narzędzi} & \textbf{Kategoria} & \textbf{Opis} \\
+\hline
+\endfirsthead
+\multicolumn{3}{c}%
+{\tablename\ \thetable\ -- \textit{Kontynuacja}} \\
+\hline
+\textbf{Rodzina narzędzi} & \textbf{Kategoria} & \textbf{Opis}  \\
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\textit{Kontynuacja na następnej stronie}} \\
+\endfoot
+\hline
+\endlastfoot
+\multirow{4}{4cm}{Narzędzia wspierające zarządzanie testami}  &
+ wspierające zaządzaniem procesem testowania & przechowują treść testów, plany testów, strategie\\ \cline{2-3}
+ & wspierające zarządzanie wymaganiami & przechowują priorytety wymagań, zapewniają unikatowość i identyfikacje wymagań, wspierają wykrywanie brakujących lub sprzecznych wymagań\\
+ & przechowujące incydenty & przechowują historię defektów, anomalii, zmian wymagań\\ \cline{2-3}
+ & zarządzające konfiguracją & przechowują informacje o konfiguracji dla wydań produktów, platform \\ \hline
+\hline
 
-W książce pisało o tym że programy powinny móc się integrować, myślę że jest to ważne i można trochę o tym napisać żeby było miło i sympatycznie
-\section{Podobne problemy i ich rozwiązania}
-Tutaj opiszę typy programów wspierających proces testowania według ISTB.
+\multirow{3}{4cm}{Narzędzia wspierające testowanie statyczne} &
+Wspierające przegląd kodu & przechowują informacje na temat przeglądu, zgłoszone problemy i ich rozwiązania, listy z wskazówkami na temat standardów, udostępniają zdalne tworzenie przeglądów\\ \cline{2-3}
+& wykonujące statyczną analizę produktu & generują metryki produktu, sprawdzają zgodność ze standardami, sprawdzają kod produktu pod kątem znanych problemów\\ \cline{2-3}
+&  modelujące  & wspierajace walidacje modelu jak na przykład modelu bazy danych, sprawdzają niezgodność relacji, generują przypadki testowe na podstawie modelu\\ \hline
+\hline
+\multirow{2}{4cm}{Wspierające specyfikacje testów} &
+Wspierające projektowanie testów & oferują automatyczne tworzenie przypadków testowych i danych wejściowych na podstawie wymagań, interfejsu użytkowika, kodu\\ \cline{2-3}
+& narzędzia przygotowujące dane dla testów & oferują automatyczne zapełnianie systemu danymi do testów ( np. generacja danych dla bazy danych )\\ \cline{2-3}
+\hline
+\multirow{5}{4cm}{Rodzina narzędzi wspierających wykonanie testów i logowania} &
+wykonujące testy & wykonują automatycznie lub pół automatycznie testy, zapisują rezultaty\\ \cline{2-3}
+& biblioteki testowe & dostarczają komponenty na podstawie których zespół tworzy testy jednostkowe, symuluje obiekty\\ \cline{2-3}
+&  porównujące wyniki & sprawdzają zgodność stanu systemu poddanego testów z wymaganiami, pozwalają na określenie czy dany test zakończył się powodzeniem\\ \cline{2-3}
+& określające metryki pokrycua & narzędzia określające pokrycie kodu przez testy \\ \cline{2-3}
+& narzędzia wspierające testowanie bezpieczeństwa & wspierają system i jego zgodność ze standardami bezpieczeństwa, dostępu do donych, autoryzacji i autentykacji itp\\ \hline
+\hline
+\multirow{5}{4cm}{Rodzina narzędzi wspierających testowanie wydajności i monitorujących}&
+ wspierające testowanie wydajności & używane dla testów niefunkcjonalnych dla tekich dziedzin jak wydajność, obciążenie. Testują wydajność dla dużej ilości wątków, transakcji \\ \cline{2-3}
+& wykonujące dynamiczne testowanie & wykonują testy sprawdzające zachowanie systemu podczas jego działania, używane do sprawdzania wycieków pamięci, zależności czasowych \\ \cline{2-3}
+& narzędzia do monitorowania & monitorują określone zasoby, pozwalają na analizę porównawczą ( na przykład między różnymi wersjami systemu ) \\ \hline
+\hline
+\multirow{1}{4cm}{Rodzina narzędzi specjalnego zastosowania} &
+narzędzia do analizy jakości danych & używane przy testowania migracji ( aktualizacja oprogramowania do nowej wersji połączona ze zmienioną strukturą danych), moniturują poprawność konwersji danych \\
+\hline
+\caption{Podział narzędzi wspomagających proces testowania oprogramowania według ISTQB (na podstawie  \cite{istqb})}\\
+\end{longtable}
 
-Następnie wrzucę screenshoty z dwóch konkurencyjnych programów
-\chapter{Programy wspierające prosces testowania}
-Istnieje wiele programów wspierających proces testowania, przydatkych w różnych fazach tego procesu.
-\chapter{Analiza problemu}
-
-
-
+TODO: Dwa podobne programy
 
 
 

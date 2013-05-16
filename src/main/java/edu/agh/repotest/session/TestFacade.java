@@ -5,6 +5,8 @@
 package edu.agh.repotest.session;
 
 import edu.agh.repotest.dao.Test;
+import edu.agh.repotest.dao.TestGroup;
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +23,12 @@ public class TestFacade extends AbstractFacade<Test> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+     
+    public Collection<Test> getByGroup( TestGroup group) {
+       return getEntityManager().createNamedQuery("Test.findByParent", Test.class).setParameter("parentId", group.getIdTestGroup()).getResultList();
+  
     }
 
     public TestFacade() {

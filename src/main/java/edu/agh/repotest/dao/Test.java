@@ -32,8 +32,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "Test")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Test.findAll", query = "SELECT t FROM Test t")})
+    @NamedQuery(name = "Test.findAll", query = "SELECT t FROM Test t"),
+    @NamedQuery(name = "Test.findByParent", query = "SELECT t FROM Test t WHERE t.testGroupidTestGroup.idTestGroup = :parentId")})
 public class Test implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -212,5 +214,4 @@ public class Test implements Serializable {
     public String toString() {
         return "edu.agh.repotest.dao.Test[ idTest=" + idTest + " ]";
     }
-    
 }
