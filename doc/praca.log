@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.11.28)  14 MAY 2013 00:06
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.11.28)  19 MAY 2013 23:11
 entering extended mode
  %&-line parsing enabled.
 **praca.tex
@@ -604,150 +604,164 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 52.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 52.
- (./praca.toc)
+ (./praca.toc [5
+
+])
 \tf@toc=\write3
 \openout3 = `praca.toc'.
 
- [5
-
-]
+ [6]
 \openout2 = `rozdzial1.aux'.
 
  (./rozdzial1.tex
 Rozdzia\l  1.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 12.
-<img/model_kaskadowy.png, id=22, 569.12625pt x 362.35374pt>
-File: img/model_kaskadowy.png Graphic file (type png)
 
-<use img/model_kaskadowy.png> [6
-
-
-
-]
-<img/water-wheel.png, id=27, 409.53pt x 246.1697pt>
-File: img/water-wheel.png Graphic file (type png)
- <use img/water-wheel.png>
-[7 <./img/model_kaskadowy.png> <./img/water-wheel.png (PNG copy)>]
-<img/vmodel.png, id=35, 310.15875pt x 210.7875pt>
-File: img/vmodel.png Graphic file (type png)
- <use img/vmodel.png>
-<img/Wmodel3.JPG, id=36, 389.95688pt x 261.97874pt>
-File: img/Wmodel3.JPG Graphic file (type jpg)
- <use img/Wmodel3.JPG>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[8 <./img/vmodel.png (PNG copy)>]
-<img/butterflymodel2.JPG, id=40, 365.11406pt x 167.12437pt>
-File: img/butterflymodel2.JPG Graphic file (type jpg)
-
-<use img/butterflymodel2.JPG> [9 <./img/Wmodel3.JPG> <./img/butterflymodel2.JPG
->] [10] [11] [12] [13] [14]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15]
-[16]
-Rozdzia\l  2.
-[17
+ [7
+
+
 
 ]
-Overfull \hbox (37.59995pt too wide) in alignment at lines 235--239
+[8]
+Rozdzia\l  2.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 31.
+<img/model_kaskadowy.png, id=34, 569.12625pt x 362.35374pt>
+File: img/model_kaskadowy.png Graphic file (type png)
+
+<use img/model_kaskadowy.png> [9
+
+]
+<img/water-wheel.png, id=39, 409.53pt x 246.1697pt>
+File: img/water-wheel.png Graphic file (type png)
+ <use img/water-wheel.png>
+[10 <./img/model_kaskadowy.png> <./img/water-wheel.png (PNG copy)>]
+<img/vmodel.png, id=44, 310.15875pt x 210.7875pt>
+File: img/vmodel.png Graphic file (type png)
+ <use img/vmodel.png>
+<img/Wmodel3.JPG, id=45, 389.95688pt x 261.97874pt>
+File: img/Wmodel3.JPG Graphic file (type jpg)
+ <use img/Wmodel3.JPG>
+[11 <./img/vmodel.png (PNG copy)> <./img/Wmodel3.JPG>]
+<img/butterflymodel2.JPG, id=49, 365.11406pt x 167.12437pt>
+File: img/butterflymodel2.JPG Graphic file (type jpg)
+
+<use img/butterflymodel2.JPG> [12 <./img/butterflymodel2.JPG>] [13] [14]
+[15] [16] [17]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+[19] [20]
+Rozdzia\l  3.
+[21
+
+]
+Overfull \hbox (37.59995pt too wide) in alignment at lines 262--266
  [] [] [] 
  []
 
 
-Overfull \hbox (37.59995pt too wide) in alignment at lines 239--245
+Overfull \hbox (37.59995pt too wide) in alignment at lines 266--272
  [] [] [] 
  []
 
 
-Overfull \hbox (37.59995pt too wide) in alignment at lines 245--247
+Overfull \hbox (37.59995pt too wide) in alignment at lines 272--274
  [] [] [] 
  []
 
 
-Overfull \hbox (37.59995pt too wide) in alignment at lines 247--249
+Overfull \hbox (37.59995pt too wide) in alignment at lines 274--276
  [] [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--252
+Underfull \hbox (badness 10000) in paragraph at lines 279--279
 []|\T1/ptm/m/n/10.95 wspieraj¡ce za-rz¡-dza-nie
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--258
+Underfull \hbox (badness 10000) in paragraph at lines 285--285
 []|\T1/ptm/m/n/10.95 Wspieraj¡ce prze-gl¡d
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--259
+Underfull \hbox (badness 10000) in paragraph at lines 286--286
 []|\T1/ptm/m/n/10.95 wykonuj¡ce sta-tyczn¡
  []
 
 
-Underfull \hbox (badness 1960) in paragraph at lines 263--263
+Underfull \hbox (badness 1960) in paragraph at lines 290--290
 []|\T1/ptm/m/n/10.95 Wspieraj¡ce pro-jek-to-wa-
  []
 
 
-Underfull \hbox (badness 3189) in paragraph at lines 270--270
+Underfull \hbox (badness 3189) in paragraph at lines 297--297
 []|\T1/ptm/m/n/10.95 okre±laj¡ce me-tryki po-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--274
+Underfull \hbox (badness 10000) in paragraph at lines 301--301
 []|\T1/ptm/m/n/10.95 wspieraj¡ce te-sto-wa-nie
  []
 
 
-Underfull \hbox (badness 3471) in paragraph at lines 275--275
+Underfull \hbox (badness 3471) in paragraph at lines 302--302
 []|\T1/ptm/m/n/10.95 wykonuj¡ce dy-na-miczne
  []
 
 
-Overfull \vbox (17.68004pt too high) detected at line 278
+Overfull \vbox (17.68004pt too high) detected at line 305
  []
 
 
-Underfull \hbox (badness 1867) in paragraph at lines 279--280
+Underfull \hbox (badness 1867) in paragraph at lines 306--307
 \T1/ptm/m/n/10.95 opro-gra-mo-wa-nia do no-wej wer-sji po-ª¡-czona ze
  []
 
 
-Overfull \hbox (37.59995pt too wide) in alignment at lines 249--282
+Overfull \hbox (37.59995pt too wide) in alignment at lines 276--309
  [] [] [] 
  []
 
-[18])
+[22]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19]
-[20]
+ [23])
+[24]
 \openout2 = `rozdzial2.aux'.
 
  (./rozdzial2.tex
-Rozdzia\l  3.
-<img/architektura.png, id=83, 746.03719pt x 471.26062pt>
+Rozdzia\l  4.
+<img/architektura.png, id=95, 746.03719pt x 471.26062pt>
 File: img/architektura.png Graphic file (type png)
 
 <use img/architektura.png>
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21
+ [25
 
 
 
- <./img/architektura.png>] [22] <img/komponenty.png, id=91, 746.79pt x 481.8pt>
+ <./img/architektura.png>] [26] <img/komponenty.png, id=104, 746.79pt x 481.8pt
+>
 File: img/komponenty.png Graphic file (type png)
 
-<use img/komponenty.png> [23] [24 <./img/komponenty.png (PNG copy)>] [25]
-[26] [27]
-Rozdzia\l  4.
-) [28
+<use img/komponenty.png> [27] [28 <./img/komponenty.png (PNG copy)>] [29]
+[30] [31]
+Rozdzia\l  5.
+[32
 
-] (./praca.bbl) [29
+]
+Rozdzia\l  6.
+[33
+
+]
+Rozdzia\l  7.
+) [34
+
+] (./praca.bbl) [35
 
 
 ] (./praca.aux (./rozdzial1.aux) (./rozdzial2.aux))
@@ -756,13 +770,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4870 strings out of 493848
- 62904 string characters out of 1152822
+ 4872 strings out of 493848
+ 62896 string characters out of 1152822
  169926 words of memory out of 3000000
- 8017 multiletter control sequences out of 15000+50000
+ 8019 multiletter control sequences out of 15000+50000
  90455 words of font info for 71 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 32i,12n,45p,1087b,367s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 32i,11n,45p,1087b,367s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/a
@@ -772,9 +786,9 @@ hare/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texliv
 e/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/ti
 mes/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr
 /share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on praca.pdf (29 pages, 550112 bytes).
+Output written on praca.pdf (35 pages, 558134 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
+ 166 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

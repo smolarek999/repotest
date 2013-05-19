@@ -1,9 +1,14 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{SEaT}
 S.~P.~T. B.~B.~Agarwal, M.~Gupta.
 \newblock {\em Software Engineering and Testing}.
 \newblock Jones and Bartlett Publishers, United Kingdom, 2008.
+
+\bibitem{Fund}
+R.~Black, E.~Veenendaal, and D.~Graham.
+\newblock {\em Fundation of Software Testing}.
+\newblock Cengage, 2012.
 
 \bibitem{jsfRef}
 R.~Davies and A.~Davis.
@@ -15,6 +20,11 @@ E.~Dustin, J.~Rashka, and J.~Paul.
 \newblock {\em Automated software testing:introduction, management, and
   performance}.
 \newblock Addison-Wesley Professional, 1999.
+
+\bibitem{wmodel}
+P.~Herzlich.
+\newblock The politics of testing.
+\newblock 1st EuroSTAR conference, London, Oct. 25-28, 1993, 1993.
 
 \bibitem{istqb}
 ISTQB.
@@ -39,5 +49,10 @@ O.~Varaksin and M.~Caliskan.
 \bibitem{http}
 w3c.
 \newblock {Hypertext Transfer Protocol -- HTTP/1.1}.
+
+\bibitem{otss}
+J.~Watkins and S.~Mills.
+\newblock {\em Testing IT: An Off-the-Shelf Software Testing Process}.
+\newblock Cambridge University Press, 2010.
 
 \end{thebibliography}

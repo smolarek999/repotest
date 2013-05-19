@@ -27,7 +27,7 @@ public class TestController extends AbstractController<Test> implements Serializ
     }
     
     public String goToCreate(){
-         return "test/create.xhtml?facesRedirect=true";
+         return "http://localhost:8080/repoTest/faces/testGroup/index.xhtml";
     }
 
     public void nodeListener(ActionEvent event) {

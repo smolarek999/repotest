@@ -43,7 +43,7 @@
                 <f:converter binding="#{featureConverter}"/>
             </p:selectOneMenu>
         </p:panelGrid>
-        <p:commandButton actionListener="#{testController.saveNew}" value="#{bundle.Save}" update="TestCreateForm :TestGroupListForm:tree,:growl" />
+        <p:commandButton actionListener="#{testController.saveNew}" value="#{bundle.Save}" update="TestCreateForm" />
 <!-- oncomplete="handleSubmit(xhr,status,args,TestCreateDialog);" -->
 
 

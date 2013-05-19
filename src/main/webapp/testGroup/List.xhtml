@@ -22,9 +22,9 @@
                 <p:commandButton process="@this" styleClass="btn btn-mini btn-success" id="createButton" actionListener="#{testGroupController.nodeListener}"  value="#{bundle.CreateGroup}"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
                     <f:attribute name="rawParentId" value="#{node.getIdTestGroup()}" />
                 </p:commandButton>
-                    <p:commandButton  styleClass="btn-mini btn-success" process="@this" id="createTestButton"  action="#{testController.goToCreate()}" actionListener="#{testController.nodeListener}"   value="#{bundle.CreateTest}"  >
-                    <f:attribute name="rawParentId" value="#{node.getIdTestGroup()}" />
-                </p:commandButton>
+                    <p:button outcome="/test/Create"  >
+                        <f:param name="rawParentId" value="#{node.getIdTestGroup()}" />
+                    </p:button>>
                 </div>
 
             </p:treeNode>  

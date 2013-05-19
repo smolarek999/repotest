@@ -81,7 +81,7 @@ Poprzez usługę internetową możliwe będzie wykonanie następujących akcji:
 Pierwszy punkt pozwala na integracje z aplikacją przechowującą wymagania. Punkt drugi i trzecie pozwala na integracje z zewnętrznymi aplikacjami do wykonywania testów. W szczególnym przypadku poprzez stworzenie fikcyjnego użytkownika np. automatyzacja, można zintegrować repozytorium z modułem wykonującym testy automatycznie.
 
 
-\subsection{Moduły aplikacji}
+\section{Moduły aplikacji}
 Funkcjonalności realizowane przez aplikację możemy podzielić na logicznę moduły.
 \begin{figure}[h]
 \centerline{\includegraphics[scale=0.5]{img/komponenty.png}}
@@ -89,7 +89,7 @@ Funkcjonalności realizowane przez aplikację możemy podzielić na logicznę mo
 \label{fig:moduly}
 \end{figure}
 
-\subsubsection{Moduł administracji}
+\subsection{Moduł administracji}
 
 Moduł ten skupia wszelkie funkcjonalności związane z zarządzaniem użytkownikami w systemie. Odpowida za tworzenie i edycję użytkowników. Każdy użytkownik posiada takie dane jak login, adres e-mailowy, hasło jak również przypisaną rolę.
 
@@ -103,7 +103,7 @@ Możemy wyróżnić kilka ról użytkowników. Rola określa jakie uprawnienia o
   \item Pośrednik ( ang. liaison ) --  Odpowiedzialny jest za komunikacje zespołu testów z zespołem programistycznym. Posiaga wgląd do aktulnie wykonywanyh testów i konfiguracji. Jego zadaniem jest rozwiązywanie problemów związanych z jego macierzystym produktem. Pomaga zakwalifikować problem powstały podczas testów, szczególnie na początku testów produktu, zespół testerki może nie posiadać wystarczającej wiedzy i błędnie kwalifikować obserwowane rezultaty jako błąd produktu. Pośrednik proponuje również tymczasowe rozwiązania które pozwalają obejść problemy wynikające z błędów w oprogramowaniu, które naprawione będą dopiero podczas przyszłych wersji oprogramowania, tak by proces testowania mógł przebiegać nieprzerwanie.
 \end{enumerate}
   
-\subsubsection{Moduł definicji}
+\subsection{Moduł definicji}
 
 Moduł ten jest odpowiedzialny za definicję podstawowych jednostek systemu czyli: testów, grup testów i planów testów. 
 
@@ -138,7 +138,7 @@ Podczas trwania procesu wytwarzania oprogramowania należy wybrać z puli istnie
   \item referencja do wersji produktu dla której wykonywane będą testy 
 \end{enumerate}
 
-\subsubsection{Moduł danych uzupełniających}
+\subsection{Moduł danych uzupełniających}
 
 Definicja testów przez swoją złożoność i potrzebę pełnej specyfikacji wymaga pewnych danych dodatkowych które muszą zostać zdefiniowane w aplikacji.
 
@@ -152,7 +152,7 @@ W module definicji testów, podczas tworzenie przypadku testowego tworzone są g
 
 
 
-\subsubsection{Moduł wykonania }
+\subsection{Moduł wykonania }
 
 Moduł ten przechowuje elementy odpowiadające wykonanym i oczekującym do wykonania przypadkom testowym. W celu rozpoczęcia testów należy utworzyć plan testów, określić zakres, wymagania które będą weryfikowane jak i dostępny sprzęd i urządzenia.
 
@@ -165,11 +165,11 @@ Definicja testów jak już zostało wcześniej wspomniane pozwala na warunkowe o
 	\li \Do   
 	\For{$warunek$ \kw{in} $warunkiDlaGrupUrzadzen$}
 	\li \Do
-	     \If $wybraneUrzadzenie  !=  preferowaneUrzadzenieDlaStanu$
+	     \If $wybraneUrzadzenie  ==  preferowaneUrzadzenieDlaStanu$
 	\li     \Then
-	          $\proc{PRZERWIJ}$
-	          \Else
-	          $\proc{dodaj-stan-do-testu}(stanProduktu)$
+	           $\proc{dodaj-stan-do-testu}(stanProduktu)$
+	         
+	         
 	        \End
 	        
 	\li  \End
@@ -178,15 +178,17 @@ Definicja testów jak już zostało wcześniej wspomniane pozwala na warunkowe o
 	  \End
 	\end{codebox}
 
-\subsubsection{Moduł hurtowni danych  }
+\subsection{Moduł hurtowni danych  }
+//TODO składowe i metryki
 
 
-\section{Składowe aplikacji}
 
 \chapter{Implementacja}
+// TODO
 Interfejs użytkownika stworzony został w technologi aplikacji internetowych przy użyciu technologii Java Server Faces która realizuje wzorzec projektowy  Model-Widok-Kontroler. Warstwa serwerowa działa na serwerze aplikacji Glassfish. Silnik bazodanowy to Mysql, silnik ten może być zmieniony podczas wdrożenia aplikacji poprzez zastosowanie tranparentności dostępu do danych. Moduł odwzorowujący obiektową architekturę systemu informatycznego na bazę danych udostępnia wiele implementacji baz danych przy czym interfejs jest wspólny.
 
-\section{Workflow}
+\chapter{Przypadki użycia aplikacji}
+// TODO 
 \begin{enumerate}
   \item Tworzony jest nowy projekt
   \item Tworzone są wymagania
@@ -195,3 +197,5 @@ Interfejs użytkownika stworzony został w technologi aplikacji internetowych pr
   \item Do planu testów dodawane są testy. Podczas dodawania testów należy wziąć pod uwagę pokrycie nowych funkcjonalności i równomierne rozplanowanie testów dla różnych urządzeń.
 
 \end{enumerate}
+
+\chapter{Wnioski i możliwości rozwoju aplikacji}

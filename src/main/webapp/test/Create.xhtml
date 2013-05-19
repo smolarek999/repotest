@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template.xhtml">
 
-    <ui:composition>
+<ui:define name="title">
+        <h:outputText value="#{bundle.TestTitle}"/>
+    </ui:define>
 
-        <p:dialog id="TestCreateDlg" widgetVar="TestCreateDialog" modal="true" resizable="false" appendToBody="true" header="#{bundle.CreateTestTitle}">
+    <ui:define name="body">
 <h:form id="TestCreateForm">
                 <p:wizard > 
 
@@ -24,17 +26,10 @@
                     </p:tab>
                     <p:tab title="Confirmation">
                         
-                        <p:commandButton value="#{bundle.Cancel}" onclick="TestCreateDialog.hide();"/>
                     </p:tab>
 
                 </p:wizard>
             
 </h:form>
-        </p:dialog>
-    
+    </ui:define>
     </ui:composition>
-
-</html>
-
-
-
