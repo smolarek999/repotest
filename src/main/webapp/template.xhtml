@@ -8,19 +8,19 @@
 
     <h:head>
         <title><ui:insert name="title">Default Title</ui:insert></title>
-<h:outputStylesheet name="css/bootstrap.css" />
+
     </h:head>
 
     <h:body>
         <f:facet name="last">
-            
+            <h:outputStylesheet name="css/bootstrap.css" />
         </f:facet>
         <p:growl id="growl" life="3000"/>
 
         <div class="container">
 
             <div class="masthead">
-                <h3 class="muted">Test Repo</h3>
+                <h2>Test Repo <span class="text-info">::</span> <small><span class="muted"><em> for multidevices systems</em> </span></small></h2>
                 <div class="navbar">
                         <div class="container">
                             <ui:include src="/appmenu.xhtml"/>
@@ -30,6 +30,7 @@
 
             <!-- Jumbotron -->
             <div class="jumbotron">
+                <h3><ui:insert name="title">Default Title</ui:insert></h3>
                 <ui:insert name="body"/>
             </div>
 

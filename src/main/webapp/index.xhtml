@@ -8,12 +8,60 @@
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
-            <h:outputText value="Test repo - multidevices"></h:outputText>
+            <h:outputText value="Welcome!"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <p:panel header="#{bundle.Welcome}">
-                <p><h:outputText value="#{bundle.WelcomeMessage}"></h:outputText></p>
-            </p:panel>
+
+            <p>This is main page of the repository. This tool is dedicated to define and track manual tests for the systems which are dedicated for many devices.</p>
+            
+            <p>To start, lets define some tests and create test plan.</p>
+            <h:form id="form">  
+
+                <p:dashboard id="board" model="#{dashboardBean.model}" >  
+                    <p:ajax event="reorder" listener="#{dashboardBean.handleReorder}" update=":growl" />  
+
+                    <p:panel id="statistics" header="Statistics" style="width:430px;height:350px">  
+                        <ul>
+                            <li>Cos</li>
+                            <li>Cos</li>
+                            <li>Cos</li>
+                            <li>Cos</li>
+                            <li>Cos</li>
+
+                        </ul>
+                    </p:panel>  
+
+                    <p:panel id="lastActions" header="Last actions"  style="width:430px;height:350px">  
+                        <ul>
+                            <li>Cos</li>
+                            <li>Cos</li>
+                            <li>Cos</li>
+                            <li>Cos</li>
+                            <li>Cos</li>
+                        </ul>
+                    </p:panel>  
+
+
+
+                    <p:panel id="testResults" header="Test results">  
+                        <p:pieChart id="sample" value="#{dashboardBean.pieModel}" legendPosition="w"  
+                                    style="width:400px;height:300px" />
+                    </p:panel>  
+
+                    <p:panel id="burndown" header="Test burning">  
+                        <p:lineChart id="category" value="#{dashboardBean.burnModel}" legendPosition="e"  
+                                     minY="0"  style="width:400px;height:300px"/> 
+
+
+                    </p:panel>  
+
+
+
+
+                </p:dashboard>
+                <div style="clear:both"/>
+            </h:form>
+
 
         </ui:define>
 

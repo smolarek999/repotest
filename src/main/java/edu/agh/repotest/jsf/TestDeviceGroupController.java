@@ -7,6 +7,7 @@ import edu.agh.repotest.dao.TestDeviceGroup;
 import edu.agh.repotest.dao.TestDeviceGroupDevices;
 import edu.agh.repotest.jsf.util.IdHelper;
 import edu.agh.repotest.session.DeviceFacade;
+import edu.agh.repotest.session.ProductStateFacade;
 import edu.agh.repotest.session.TestDeviceGroupFacade;
 import edu.agh.repotest.session.TestDeviceGrouphasDeviceFacade;
 import java.io.Serializable;
@@ -38,6 +39,9 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
     private DeviceFacade deviceFacade;
     @EJB
     private TestDeviceGrouphasDeviceFacade grouphasDeviceFacade;
+    
+    @EJB
+    private ProductStateFacade productStateFacade;
     private String newDeviceGroupName;
     private List<TestDeviceGroup> devicesGroups;
     private List<Device> devices;
@@ -94,6 +98,7 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
         groupDevice.setDevice(device);
         device.getTestDeviceGrouphasDeviceCollection().add(groupDevice);
         group.getDevices().add(groupDevice);
+        
         devices.remove(device);
     }
 
@@ -101,12 +106,11 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
     public TestDeviceGroup prepareCreate(ActionEvent event) {
         devicesGroups = new ArrayList<TestDeviceGroup>();
         productStates = new ArrayList<ProductState>();
-        ProductState productState = new ProductState();
-        productState.getRawCondition().add(new Condition());
-        productStates.add(productState);
+        addNewProductState();
         conditionDevicesMap = new HashMap<Integer, Collection<Device>>();
         conditionDevicesMap.put(0, new ArrayList<Device>());
         conditionDevicesMap.put(1, new ArrayList<Device>());
+        conditionDevicesMap.put(2, new ArrayList<Device>());
         devices = getDeviceFacade().findAll();
         return super.prepareCreate(event);
     }
@@ -123,6 +127,14 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
         }
 
     }
+    
+    public void saveProductStates(ActionEvent event) {
+        for (ProductState state : productStates) {
+            productStateFacade.create(state);
+        }
+
+    }
+    
 
     public void actionListener(ActionEvent actionEvent) {
         // Add event code here...
@@ -140,11 +152,24 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
         printMap(conditionDevicesMap);
         
         
+        
 
     }
 
     public void handleDeviceChange() {
         System.out.println("handleDeviceChange");
+    }
+    
+      public void addNewProductState() {
+          ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+        TestController testController = (TestController) FacesContext.getCurrentInstance().getApplication()
+                .getELResolver().getValue(elContext, null, "testController");
+          System.out.println("addNewProductState");
+        ProductState productState = new ProductState();
+        productState.setTestidTest(testController.getSelected());
+        productState.getRawCondition().add(new Condition());
+        productStates.add(productState);
+         System.out.println("END addNewProductState");
     }
 
     /**

@@ -12,7 +12,7 @@
     <p:commandButton value="Add new" type="button" onclick="addNewGroup();" id="btnLoad" />  
     <p:remoteCommand name="addNewGroup" update="deviceSelectes" action="#{testDeviceGroupController.addNew()}"  process="@this newDeviceGroupName" >  
     </p:remoteCommand> 
-    <p:panel id="deviceSelectes">
+    <h:panelGroup id="deviceSelectes">
         <p:fieldset legend="Devices">  
 
             <p:dataGrid id="availableDevices" var="device"  
@@ -63,7 +63,7 @@
 
         </ui:repeat>
         <p:commandButton actionListener="#{testDeviceGroupController.saveNew}" value="#{bundle.Save}" update="TestCreateForm " />
-    </p:panel>
+    </h:panelGroup>
 
 
 </html>

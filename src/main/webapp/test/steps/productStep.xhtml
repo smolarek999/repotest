@@ -6,33 +6,54 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <ui:debug hotkey="x" />
-    <ui:repeat var="pstate" value="#{testDeviceGroupController.productStates}" varStatus="status">
-        <p:outputLabel value="Specify product for condition" for="productForStep" />
-        <p:selectOneMenu id="productForStep" value="#{pstate.product}">  
-            <f:selectItem itemLabel="Select Product" itemValue="#{null}" /> 
-            <f:selectItems value="#{testController.selected.products}"  var="prod" itemValue="#{prod}" itemLabel="#{prod.name.toString()}" />  
-            <f:converter binding="#{productConverter}"/>
-        </p:selectOneMenu> 
-        <span class="help-block">Now if you want create condition for the product state you have to : <ul>
-                <li>Select group of devices for which condition have to be created</li>
-                <li>Select for which devices from selected group condition is acceptabe 
-                    ( when other devices will be selected during creation of test plan, state will be not shown)</li>
-            </ul></span>
-        <outputText value="Select group and devices if you want to create condition"  />
-        <h:panelGrid columns="2" cellpadding="5"> 
+    <span class="help-block">If you want create condition for the product state you have to : <ul>
+            <li>Select group of devices for which condition have to be created</li>
+            <li>Select for which devices from selected group condition is acceptabe 
+                (  state will be not shown if other devices will be selected during creation of test plan,)</li>
+        </ul></span>
+    <div class="btn-group">
+    <p:commandButton styleClass="btn"  value="Add new product state" type="button" onclick="addNewProductState();" id="btnAddNew" />
+    <p:commandButton ajax="true" styleClass="btn  btn-success"  actionListener="#{testDeviceGroupController.saveProductStates}" value="#{bundle.Save}" update=":growl, TestCreateForm" />
+    </div>
+    <hr/>
+    <p:remoteCommand name="addNewProductState"  update="prStates" action="#{testDeviceGroupController.addNewProductState()}"  process="@this" >  
+    </p:remoteCommand> 
+    <h:panelGroup id="prStates"> 
+        <ui:repeat var="pstate" value="#{testDeviceGroupController.productStates}" varStatus="status">
 
-            <p:selectOneMenu id="devGroup" value="#{pstate.rawCondition[0].deviceGroup}">  
-                <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 
-                <f:selectItems value="#{testDeviceGroupController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
-                <p:ajax  update="refreshableSome"  process="@this"  listener="#{testDeviceGroupController.morePressed}" />  
-                <f:converter binding="#{testDeviceGroupConverter}"/>
-            </p:selectOneMenu>  
-            <h:panelGroup id="refreshableSome">
-                <p:selectManyButton  id="devices" value="#{pstate.rawCondition[0].devices}" >  
-                    <f:selectItems value="#{testDeviceGroupController.conditionDevicesMap[status.index]}" var="dev" itemLabel="#{dev.name}"  />  
-                </p:selectManyButton> 
-            </h:panelGroup>
-        </h:panelGrid>
-    </ui:repeat>
+            <p:fieldset legend="#{status.index + 1}# Product State"> 
+
+                <table class="table table-striped">
+                    <tr><th>Select product for step</th><th>Condition (selected device for group must be...)</th></tr>
+                    <tr><td><p:selectOneMenu id="productForStep" value="#{pstate.product}">  
+                                <f:selectItem itemLabel="Select Product" itemValue="#{null}" /> 
+                                <f:selectItems value="#{testController.selected.products}"  var="prod" itemValue="#{prod}" itemLabel="#{prod.name.toString()}" />  
+                                <f:converter binding="#{productConverter}"/>
+                            </p:selectOneMenu> </td>
+                        <td><h:panelGrid columns="2" border="0"> 
+                                
+                                    <p:selectOneMenu id="devGroup" value="#{pstate.rawCondition[0].deviceGroup}">  
+                                        <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 
+                                        <f:selectItems value="#{testDeviceGroupController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
+                                        <p:ajax  update="refreshableSome"  process="@this"  listener="#{testDeviceGroupController.morePressed}" />  
+                                        <f:converter binding="#{testDeviceGroupConverter}"/>
+                                    </p:selectOneMenu>  
+                                <h:panelGroup id="refreshableSome">
+                                    <p:selectManyButton  id="devices" value="#{pstate.rawCondition[0].devices}" >  
+                                        <f:selectItems value="#{testDeviceGroupController.conditionDevicesMap[status.index]}" var="dev" itemLabel="#{dev.name}"  />  
+                                    </p:selectManyButton> 
+                                </h:panelGroup>
+                            </h:panelGrid></td></tr>
+                </table>
+
+
+                <p:outputLabel value="#{bundle.CreateTestLabel_description}" for="description" />
+                <p:inputTextarea rows="6"  cols="50" styleClass="span10" id="description" value="#{pstate.description}" title="#{bundle.CreateTestTitle_description}" />
+
+                <outputText value="Select group and devices if you want to create condition"  />
+
+            </p:fieldset>
+        </ui:repeat>
+    </h:panelGroup>
 
 </html>

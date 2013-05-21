@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui">
     
 
-        <p:panelGrid columns="2" rendered="#{testController.selected != null}">
+        <p:panelGrid columns="2" id="someForm" rendered="#{testController.selected != null}">
             <p:outputLabel value="Parent" for="parent" />
             <h:outputText id="parent" value="#{testController.selected.testGroupidTestGroup.getName()}" />
 
@@ -43,7 +43,7 @@
                 <f:converter binding="#{featureConverter}"/>
             </p:selectOneMenu>
         </p:panelGrid>
-        <p:commandButton actionListener="#{testController.saveNew}" value="#{bundle.Save}" update="TestCreateForm" />
+    <p:commandButton ajax="true"  actionListener="#{testController.saveNew}" value="#{bundle.Save}" update=":growl, TestCreateForm" />
 <!-- oncomplete="handleSubmit(xhr,status,args,TestCreateDialog);" -->
 
 

@@ -80,6 +80,7 @@ public abstract class AbstractController<T> {
     }
 
     public void saveNew(ActionEvent event) {
+        System.err.println("SAVE NEW");
         String msg = ResourceBundle.getBundle("/Bundle").getString(itemClass.getSimpleName() + "Created");
         persist(PersistAction.CREATE, msg);
         if (!isValidationFailed()) {

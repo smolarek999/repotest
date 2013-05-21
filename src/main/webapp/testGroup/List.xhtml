@@ -8,6 +8,7 @@
                 xmlns:o="http://omnifaces.org/ui"
                 xmlns:of="http://omnifaces.org/functions"
                 >
+    <p:panel >
     <h:form id="TestGroupListForm">  
         <p:commandButton process="@this" styleClass="btn btn-success" id="createButton" actionListener="#{testGroupController.nodeListener}" icon="ui-icon-plus"   value="#{bundle.CreateGroup}"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
             <f:attribute name="rawParentId" value="" />
@@ -22,8 +23,8 @@
                 <p:commandButton process="@this" styleClass="btn btn-mini btn-success" id="createButton" actionListener="#{testGroupController.nodeListener}"  value="#{bundle.CreateGroup}"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
                     <f:attribute name="rawParentId" value="#{node.getIdTestGroup()}" />
                 </p:commandButton>
-                    <p:button outcome="/test/Create"  >
-                        <f:param name="rawParentId" value="#{node.getIdTestGroup()}" />
+                    <p:button outcome="/test/Create" styleClass="btn btn-mini btn-success" value="Create Test"  >
+                        <f:param name="parentId" value="#{node.getIdTestGroup()}" />
                     </p:button>>
                 </div>
 
@@ -41,7 +42,7 @@
 
     </h:form>  
 
-
+    </p:panel>
 
 
 
