@@ -8,10 +8,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+
 @ManagedBean(name = "deviceController")
 @ViewScoped
 public class DeviceController extends AbstractController<Device> implements Serializable {
-
     @EJB
     private DeviceFacade ejbFacade;
 

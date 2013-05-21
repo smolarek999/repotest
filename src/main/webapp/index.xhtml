@@ -33,11 +33,9 @@
 
                     <p:panel id="lastActions" header="Last actions"  style="width:430px;height:350px">  
                         <ul>
-                            <li>Cos</li>
-                            <li>Cos</li>
-                            <li>Cos</li>
-                            <li>Cos</li>
-                            <li>Cos</li>
+                            <ui:repeat var="action" value="#{dashboardBean.lastTestsExecutions}" >
+                                <li><h:outputText value="#{lastActions.TestidTest.name}"/></li>
+                             </ui:repeat>
                         </ul>
                     </p:panel>  
 
