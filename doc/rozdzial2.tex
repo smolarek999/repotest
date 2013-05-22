@@ -193,7 +193,7 @@ Plan testów określa jakie wymagania należy zweryfikować, jest to kluczowy as
 Podczas przypisania przypadku testowego do planu, należy go dookreślić w przypadku gdy posiada grupy urządzeń złożone z więcej niż jednego urządzenia. Oznacza to iż należy wybrać jedno i tylko jedno urządzenie dla każdej z grup. Wybór z jednej strony warunkowany jest dostępnymi zasobami sprzętowymi, a z drugiej strony powinien uwzględniać przetestowanie wszerz systemu dla różnych konfiguracji sprzętowych. Nalaży unikać w sytuacji w której nie zostaną wykonane testy na urządzeniach które są poprawne z perspektywy klienta.
 
 Po dokonaniu pełnej definicji przypadku testowego, rozwiązywane są wszystkie warunki określone w takich elementach jak: stany produktu, kroki testu, warunki początkowe. Dla przypomnienia dla tych elementów można określić warunki które stanowią iż dany element wchodzi w skład przypadku testowego wtedy i tylko wtedy gdy dostępna jest konkretna konfiguracja sprzętowa ( wybrane zostało konkretne urządzenie z grupy urządzeń ). Schemat dla stanów produków można przedstawić na zamieszczonym poniżej pseudokodzie.
-
+\begin{figure}
 	\begin{codebox}
 	\li \For{$stanProduktu$ \kw{in} $stanyProduktu$}
 	\li \Do   
@@ -208,7 +208,9 @@ Po dokonaniu pełnej definicji przypadku testowego, rozwiązywane są wszystkie 
 	  \End
 	  
 	\end{codebox}
-%	\caption{ Alogrytm doboru stanów produkto do przypadku testowego }
+	\caption{ Alogrytm doboru stanów produkto do przypadku testowego }
+\end{figure}
+
 
 Rezultat wykonania przypadku testowego może przyjmować jedną wartość z podanych:
 \begin{itemize}
@@ -243,97 +245,76 @@ Założeniem aplikacji jest transparentność na poziomie serweru aplikacji. Ser
 
 Struktura projektu została zorganizowana w następujący sposób:
 
+\begin{figure}
+
 \dirtree{%
-.1 lib ( lokalne biblioteki).
+.1 lib \DTcomment{ lokalne biblioteki}.
 .1 src.
 .2 main.
-.3 java ( kod źródłowy aplikacji ).
-.3 resources ( pliki konfiguracyjne aplikacji ).
-.3 webapp ( pliki dotyczące konfiguracji aplikacji internetowej ).
+.3 java \DTcomment{ kod źródłowy aplikacji }.
+.3 resources \DTcomment{ pliki konfiguracyjne aplikacji }.
+.3 webapp \DTcomment{ pliki dotyczące konfiguracji aplikacji internetowej }.
 .2 test.
-.3 java ( testy jednostkowe ).
-.1 target ( zbudowane artefakty aplikacji ).
+.3 java \DTcomment{ testy jednostkowe }.
+.1 target \DTcomment{ zbudowane artefakty aplikacji }.
 .1 pom.xml.
 }
+\caption{Organizacja plików projektu}
+\end{figure}
 
 Wszelkie zależności wymagane przez aplikacje rozwiązywane są poprzez narzędzie do automatycznego budowania projektów Maven. Maven poprzez konfiguracje zdefiniowaną w pliku pom.xml określa które biblioteki są wymagane przez aplikację i pobiera je podczas budowania aplikacji. Narzędzie to poprzez system wtyczek pozwala na zdefiniowanie celów budowania i wdrażania projektu. W zaimplementowanej aplikacji został zdefiniowany cel który: pobiera biblioteki zależne, kompiluje kod produkcyjny i kod testów jednostkowych, wykonuje wszystkie testy jednostkowe i w przypadku powodzenia instaluje archiwum aplikacji internetowej ( ang. WAR ) na serwerze aplikacji.
 
-Konfiguracja odpowiedzialna za utworzenie połączenia z bazą danych, znajduję się w lokalizacji \src\main\resources\META-INF\persistence.xml.
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-    <persistence-unit name="edu.agh.repotest_repoTest_war_1.0-SNAPSHOTPU" transaction-type="JTA">
-        <jta-data-source>java:app/jdbc/repoDataSource</jta-data-source> <!-- testrepo -->
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        <properties>
-            <property name="eclipselink.logging.level" value="FINE"/>
-        </properties>
-    </persistence-unit>
-</persistence>
+Konfiguracja odpowiedzialna za utworzenie połączenia z bazą danych, znajduję się w lokalizacji \textit{src/main/resources/META-INF/persistence.xml}. Poniżej przedstawione główne składowe pliku
 
-Plik ten określa iż aplikacja używa połącznia poprzez źródło danych ava:app/jdbc/repoDataSource. Źródło danych może zostać zdefiniowane poprzez panel konfiguracyjny serwera aplikacji, lub określone w pliku konfiguracyjnym. W zaimplementowanej aplikacji definicja źródła danych została określona w pliku src\main\webapp\WEB-INF\glassfish-resources.xml. W przypadku zmiany serwera aplikacji należy zmienić ten plik na odpowiedni dla dostawcy.
+\begin{itemize}
+	\item  {\footnotesize \begin{verbatim} <jta-data-source>java:app/jdbc/repoDataSource</jta-data-source> \end{verbatim}} -- Referencja do źródła danych
+ 	\item  {\footnotesize \begin{verbatim}<property name="eclipselink.logging.level" value="FINE"/>\end{verbatim}} -- Poziom logowania, parametr specyiczny dla dostawcy modelu orm
+\end{itemize}
 
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1
-  Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
 
-<resources>
-   <jdbc-connection-pool name="java:app/myConnectionPool"
+Plik ten określa iż aplikacja używa połącznia poprzez źródło danych \textit{java:app/jdbc/repoDataSource}. Źródło danych może zostać zdefiniowane poprzez panel konfiguracyjny serwera aplikacji, lub określone w pliku konfiguracyjnym. W zaimplementowanej aplikacji definicja źródła danych została określona w pliku \textit{src/main/webapp/WEB-INF/glassfish-resources.xml}. W przypadku zmiany serwera aplikacji należy zmienić ten plik na odpowiedni dla dostawcy.
+
+\begin{itemize}
+	\item  {\footnotesize \begin{verbatim} <jdbc-connection-pool name="java:app/myConnectionPool"
       res-type="javax.sql.ConnectionPoolDataSource"
-      datasource-classname="org.apache.derby.jdbc.ClientDataSource40">
-
-      <property name="User" value="****" />
-      <property name="Port" value="3306" />
-      <property name="DatabaseName" value="repoTest" />
-      <property name="ServerName" value="localhost" />
-      <property name="URL" value="jdbc:derby://localhost:1527/repoTest"/>
-      <property name="Password" value="****" />
-   </jdbc-connection-pool>
-
-   <jdbc-resource enabled="true"
+      datasource-classname="org.apache.derby.jdbc.ClientDataSource40"> \end{verbatim}} -- Definicja połączenia z bazą danych
+ 	\item  {\footnotesize \begin{verbatim}<property name="URL" value="jdbc:derby://localhost:1527/repoTest"/>\end{verbatim}} -- ustawienia paramaterów połączenia z bazą danych
+ 	
+ 	
+ 		\item  {\footnotesize \begin{verbatim}<jdbc-resource enabled="true"
       jndi-name="java:app/jdbc/myDatasource"
       object-type="user"
       pool-name="java:app/myConnectionPool">
       <description />
-   </jdbc-resource>
-</resources>
+   </jdbc-resource>\end{verbatim}} -- stworzenia zasobu bazodanowego do którego można odwołać się w innych plikach związanych z bazą danych
+\end{itemize}
 
-W powyższym pliku konfiguracyjnym zostało zdefiniowane połączenie do bazy danych java:app/myConnectionPool. W definicji połączenia zdefiniowane są pola określające sposób połączenia i dane służące do autoryzacji. Poprzez edycje atrybutu datasource-classname możliwa jest zmiana dostawcy silnika bazodanowego, tak więc migracja na inny silnik bazodanowy wymaga zmiany danych połączenia i klasy definiującej dostawcę bazy danych. Wdrożenia na serwerze aplikacji może również wymagać instalacji na serwerze aplikacji artefaktów dostarczających kod obsługujący zdefiniowane źródło danych. 
+W powyższym pliku konfiguracyjnym zostało zdefiniowane połączenie do bazy danych \textit{java:app/myConnectionPool}. W definicji połączenia zdefiniowane są pola określające sposób połączenia i dane służące do autoryzacji. Poprzez edycje atrybutu datasource-classname możliwa jest zmiana dostawcy silnika bazodanowego, tak więc migracja na inny silnik bazodanowy wymaga zmiany danych połączenia i klasy definiującej dostawcę bazy danych. Wdrożenia na serwerze aplikacji może również wymagać instalacji na serwerze aplikacji artefaktów dostarczających kod obsługujący zdefiniowane źródło danych. Następnie definicja połączenia mapowana jest w definicji zasobu bazodanowego który użyty został w pliku persistence.xml.
 
-Następnie definicja połączenia mapowana jest w definicji zasobu bazodanowego który użyty został w pliku persistence.xml.
+W celu wdrożenia aplikacji internetowej na serwerze aplikacji należy zdefiniować pliki \textit{web.xml}, dodatkowo w związku z wykorzystywaniem technologii JSF w pliku \textit{faces-config.xml} definiowane są argumenty dla tej technologii, w przypadku stworzonej aplikacji znajdują się tam definicje słowników dla tektów wyświetlanych w aplikacji.
 
-W celu wdrożenia aplikacji internetowej na serwerze aplikacji należy zdefiniować pliki web.xml, dodatkowo w związku z wykorzystywaniem technologii JSF w pliku faces-config.xml definiowane są argumenty dla tej technologii, w przypadku stworzonej aplikacji znajdują się tam definicje słowników dla tektów wyświetlanych w aplikacji.
+Poniżej przedstawione są główne składowe pliku \textit{web.xml}
 
-
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-	<!-- contex parameters sections -->
-    <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>bootstrap</param-value>
-    </context-param>
-	<!-- servlet sections -->
-    <servlet>
+\begin{itemize}
+	\item  {\footnotesize \begin{verbatim} <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
-    </servlet>
-	<!-- servlet mapping sections -->
-    <servlet-mapping>
+    </servlet> \end{verbatim}} -- deinicja serwletu
+ 	\item  {\footnotesize \begin{verbatim}<servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
-    </servlet-mapping>
-	<!-- another configuration -->
-    <session-config>
-        <session-timeout>30</session-timeout>
-    </session-config>
-    <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
-    </welcome-file-list>
-</web-app>
+    </servlet-mapping>\end{verbatim}} -- Mapowanie żądań klienta do serwletu
+    
+    \item  {\footnotesize \begin{verbatim}<context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>bootstrap</param-value>
+    </context-param>\end{verbatim}} -- Ustawienia dotyczące szablonu aplikacji internetowej
+\end{itemize}
 
-W powyższym piku konfuguracyjnych określona została implementacja klasy serwletu, dla technologii JSF klasą implementującą serwlet jest javax.faces.webapp.FacesServlet. Następnie wszystkie ścieżki zaczynające się od wzorca /facet/ zostały przypisane do wyżej zdefiniowanego serwletu. Oznacza to iż gdy klient wpisze adres http://adres-aplikacji.org/faces/*, żądanie zostanie przekazane do serwletu JSF który stworzy i prześlę treść strony.
+W powyższym piku konfuguracyjnych określona została implementacja klasy serwletu, dla technologii JSF klasą implementującą serwlet jest \textit{javax.faces.webapp.FacesServlet}. Następnie wszystkie ścieżki zaczynające się od wzorca \textit{/facet/} zostały przypisane do wyżej zdefiniowanego serwletu. Oznacza to iż gdy klient wpisze adres \textit{http://adres-aplikacji.org/faces/*}, żądanie zostanie przekazane do serwletu JSF który stworzy i prześlę treść strony.
 
-W pliku konfiguracyjnym określony został wzorzec domyślnej strony ( strony domowej). Określony został również szablon prezentacji graficznej aplikacji internetowej. Parametr primefaces.THEME używany jest przez silnik primefaces który określa który szablon aplikacji powinien zostać załadowany. Użyty został szablon bootstrap, jest to szablon który wyglądem zbliżony jest do powszechnie stosowanej bazy szablonów warstwy klienckiej twitter bootstrap. 
+Określony został również szablon prezentacji graficznej aplikacji internetowej. Parametr \textit{primefaces.THEME} określa który szablon aplikacji powinien zostać załadowany. Użyty został szablon \textit{bootstrap}, jest to szablon który wyglądem zbliżony jest do bazy szablonów warstwy klienckiej \textit{twitter bootstrap}. 
 
 
 \chapter{Przypadki użycia aplikacji}

@@ -136,6 +136,8 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
     public void refreshDeviceForState(AjaxBehaviorEvent e) {
         SelectOneMenu menu = (SelectOneMenu)e.getComponent();
         TestDeviceGroup deviceGroup = (TestDeviceGroup)menu.getValue();
+        System.err.println(changedProductStateIndex);
+        System.err.println(deviceGroup);
         //ProductState productState = productStates.get(changedProductStateIndex);
 
         conditionDevicesMapForStates.put(changedProductStateIndex, deviceGroup.getRawDevices());
@@ -281,6 +283,8 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
     }
 
     public void setChangedProductStateIndex(int changedProductStateIndex) {
+        System.out.println("setChangedProductStateIndex");
+        
         this.changedProductStateIndex = changedProductStateIndex;
     }
 

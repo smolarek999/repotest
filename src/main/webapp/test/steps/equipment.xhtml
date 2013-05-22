@@ -12,7 +12,7 @@
                 (  state will be not shown if other devices will be selected during creation of test plan,)</li>
         </ul></span>
     <div class="btn-group">
-        <p:commandButton styleClass="btn"  value="Add new equipment" type="button" onclick="addNewEquipment();" id="btnAddNew" />
+        <p:commandButton styleClass="btn"  value="Add new equipment" type="button" onclick="addNewEquipment();" id="addNewEquipment" />
         <p:commandButton ajax="true" styleClass="btn  btn-success"  actionListener="#{testDeviceGroupController.saveEquipments}" value="#{bundle.Save}" update=":growl, TestCreateForm" />
     </div>
     <hr/>
@@ -23,7 +23,7 @@
 
             <p:fieldset legend="#{status.index + 1}# Equipment"> 
                 <p:panelGrid  columns="2" >
-                    <p:outputLabel value="Select required equipment" for="quantity" />
+                    <p:outputLabel value="Select required equipment" for="equipment" />
                     <p:selectOneMenu id="equipment" value="#{equip.equipment}">  
                         <f:selectItem itemLabel="Select Product" itemValue="#{null}" /> 
                         <f:selectItems value="#{equipmentController.items}"  var="equi" itemValue="#{equi}" itemLabel="#{equi.name.toString()}" />  
@@ -31,7 +31,7 @@
                     </p:selectOneMenu> 
 
                     <p:outputLabel value="Quantity" for="quantity" />
-                    <p:inputText  value="#{equip.quantity}" title="Quantity" />
+                    <p:inputText  value="#{equip.quantity}" title="Quantity"  id="quantity"/>
                 </p:panelGrid>
                 <p:selectOneMenu id="devGroup" value="#{pstate.rawCondition[0].deviceGroup}">  
                     <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 

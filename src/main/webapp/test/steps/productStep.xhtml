@@ -35,8 +35,8 @@
                                     <p:selectOneMenu id="devGroup" value="#{pstate.rawCondition[0].deviceGroup}">  
                                         <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 
                                         <f:selectItems value="#{testDeviceGroupController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
-                                        <p:ajax  update="refreshableSome"  process="@this"  listener="#{testDeviceGroupController.refreshDeviceForState}" >
-                                            <f:setPropertyActionListener target="#{testDeviceGroupController.changedProductStateIndex}" value="#{status.index}"/>
+                                        <p:ajax  update="refreshableSome"  process="devGroup, @this"  listener="#{testDeviceGroupController.refreshDeviceForState}" >
+                                            <f:setPropertyActionListener target="#{testDeviceGroupController.changedProductStateIndex}" value="25"/>
                                         </p:ajax>
                                         <f:converter binding="#{testDeviceGroupConverter}"/>
                                     </p:selectOneMenu>  
