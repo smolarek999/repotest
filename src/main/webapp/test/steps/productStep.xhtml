@@ -8,7 +8,7 @@
     <ui:debug hotkey="x" />
     <span class="help-block">If you want create condition for the product state you have to : <ul>
             <li>Select group of devices for which condition have to be created</li>
-            <li>Select for which devices from selected group condition is acceptabe 
+            <li>Select for which devices from selected group condition is passed 
                 (  state will be not shown if other devices will be selected during creation of test plan,)</li>
         </ul></span>
     <div class="btn-group">
@@ -35,12 +35,14 @@
                                     <p:selectOneMenu id="devGroup" value="#{pstate.rawCondition[0].deviceGroup}">  
                                         <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 
                                         <f:selectItems value="#{testDeviceGroupController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
-                                        <p:ajax  update="refreshableSome"  process="@this"  listener="#{testDeviceGroupController.morePressed}" />  
+                                        <p:ajax  update="refreshableSome"  process="@this"  listener="#{testDeviceGroupController.refreshDeviceForState}" >
+                                            <f:setPropertyActionListener target="#{testDeviceGroupController.changedProductStateIndex}" value="#{status.index}"/>
+                                        </p:ajax>
                                         <f:converter binding="#{testDeviceGroupConverter}"/>
                                     </p:selectOneMenu>  
                                 <h:panelGroup id="refreshableSome">
                                     <p:selectManyButton  id="devices" value="#{pstate.rawCondition[0].devices}" >  
-                                        <f:selectItems value="#{testDeviceGroupController.conditionDevicesMap[status.index]}" var="dev" itemLabel="#{dev.name}"  />  
+                                        <f:selectItems value="#{testDeviceGroupController.conditionDevicesMapForStates[status.index]}" var="dev" itemLabel="#{dev.name}"  />  
                                     </p:selectManyButton> 
                                 </h:panelGroup>
                             </h:panelGrid></td></tr>

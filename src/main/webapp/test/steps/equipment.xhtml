@@ -1,14 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:debug hotkey="x" />
+    <span class="help-block">If you want create condition for the equipment you have to : <ul>
+            <li>Select group of devices for which condition have to be created</li>
+            <li>Select for which devices from selected group condition is passed 
+                (  state will be not shown if other devices will be selected during creation of test plan,)</li>
+        </ul></span>
+    <div class="btn-group">
+        <p:commandButton styleClass="btn"  value="Add new equipment" type="button" onclick="addNewEquipment();" id="btnAddNew" />
+        <p:commandButton ajax="true" styleClass="btn  btn-success"  actionListener="#{testDeviceGroupController.saveEquipments}" value="#{bundle.Save}" update=":growl, TestCreateForm" />
+    </div>
+    <hr/>
+    <p:remoteCommand name="addNewEquipment"  update="eqStates" action="#{testDeviceGroupController.addNewEquipment()}"  process="@this" >  
+    </p:remoteCommand> 
+    <h:panelGroup id="eqStates"> 
+        <ui:repeat var="equip" value="#{testDeviceGroupController.equipments}" varStatus="status">
+
+            <p:fieldset legend="#{status.index + 1}# Equipment"> 
+                <p:panelGrid  columns="2" >
+                    <p:outputLabel value="Select required equipment" for="quantity" />
+                    <p:selectOneMenu id="equipment" value="#{equip.equipment}">  
+                        <f:selectItem itemLabel="Select Product" itemValue="#{null}" /> 
+                        <f:selectItems value="#{equipmentController.items}"  var="equi" itemValue="#{equi}" itemLabel="#{equi.name.toString()}" />  
+                        <f:converter binding="#{testhasEquipmentConverter}"/>
+                    </p:selectOneMenu> 
+
+                    <p:outputLabel value="Quantity" for="quantity" />
+                    <p:inputText  value="#{equip.quantity}" title="Quantity" />
+                </p:panelGrid>
+                <p:selectOneMenu id="devGroup" value="#{pstate.rawCondition[0].deviceGroup}">  
+                    <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 
+                    <f:selectItems value="#{testDeviceGroupController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
+                    <p:ajax  update="refreshableSome"  process="@this"  listener="#{testDeviceGroupController.refreshDeviceForEquipment}" >
+                        <f:setPropertyActionListener target="#{testDeviceGroupController.changedEquipmentIndex}" value="#{status.index}"/>
+                    </p:ajax>
+                    <f:converter binding="#{testDeviceGroupConverter}"/>
+                </p:selectOneMenu>  
+                <h:panelGroup id="refreshableSome">
+                    <p:selectManyButton  id="devices" value="#{equip.rawCondition[0].devices}" >  
+                        <f:selectItems value="#{testDeviceGroupController.conditionDevicesMapForEquip[status.index]}" var="dev" itemLabel="#{dev.name}"  />  
+                    </p:selectManyButton> 
+                </h:panelGroup>
+
+            </p:fieldset>
+        </ui:repeat>
+    </h:panelGroup>
+
 </html>

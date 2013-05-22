@@ -186,8 +186,6 @@ Pierwszym krokiem jest utworzenie planu testów. Plan testów określa ramy test
  \caption{ Składowe planu testów}
 \end{longtable}
 
-
-
 Po utworzeniu planu testowego należy przypisać do planu testy które mają zostać wykonane. Wybóru należy dokonać biorąc po uwagę potrzebę spełnienia planu przy określonych zasobach ludzkich, pokrycia wymagań i ograniczeń wynikających z dostępności sprzętu i urządzeń.
 
 Plan testów określa jakie wymagania należy zweryfikować, jest to kluczowy aspekt podczas doboru przypadków testowych. Należy dobrać takie przypadki testowe które weryfikuję potrzebne wymagania. Na tym jednak dobór przypadków testowych nie powinien być zakończony. Należy pamiętać o potrzebie przeprowadzenia regresji. Fakt iż określona wersja systemu dostarcza pewne funkcjonalności nie oznacza iż poprzednio przetestowane funkjonalności dalej działają poprawnie.
@@ -240,8 +238,103 @@ Czwarta grupa dotyczy procentowego stanu przypadków testowych. Analiza danych d
 
 
 \chapter{Implementacja}
-// TODO
-Interfejs użytkownika stworzony został w technologi aplikacji internetowych przy użyciu technologii Java Server Faces która realizuje wzorzec projektowy  Model-Widok-Kontroler. Warstwa serwerowa działa na serwerze aplikacji Glassfish. Silnik bazodanowy to Mysql, silnik ten może być zmieniony podczas wdrożenia aplikacji poprzez zastosowanie tranparentności dostępu do danych. Moduł odwzorowujący obiektową architekturę systemu informatycznego na bazę danych udostępnia wiele implementacji baz danych przy czym interfejs jest wspólny.
+
+Założeniem aplikacji jest transparentność na poziomie serweru aplikacji. Serwer aplikacji służy między innymi do zarządzania połączeniami z bazą danych, zarządzaniem sesjami i żądaniami użytkowników, serwowania treści, pełni rolę serwera internetowego. Podczas tworzenia i wdrażania aplikacji użyty został serwer aplikacji Glassfish, jest to referencyjna implementacja serweru aplikacji stworzona przez firmę Oracle. Serwer aplikacji dostarcza implementacje modułu mapującego relacyjną bazę danych na obiektową strukturę. W przypadku serweru Glassfish dostarczana jest biblioteka EclipseLink która spełnia standardy m.in warstywy dostępu do danych (ang. JPA ) i łączenia danych do i z formatu XML ( JAXB ). Na poziomie kodu JAVA aplikacji, struktura połączenia obiektów z bazą relacyjną jest rozwiązywana poprzez zastosowanie standardowych adnotacji. Zastosowania standardowych adnotacji zgodnych ze standardem JPA pozwala na transparentność dostawcy modułu mapującego relacyjną bazę danych. W przypadku zmiany dostawcy, migracja dotyka jedynie pewnych plków konfiguracyjnych które zawierają specyficzne ustawienia dla dostawcy ( np. sposób logowania czy automatycznego tworzenia schematu bazy danych z encji kodu JAVA).
+
+Struktura projektu została zorganizowana w następujący sposób:
+
+\dirtree{%
+.1 lib ( lokalne biblioteki).
+.1 src.
+.2 main.
+.3 java ( kod źródłowy aplikacji ).
+.3 resources ( pliki konfiguracyjne aplikacji ).
+.3 webapp ( pliki dotyczące konfiguracji aplikacji internetowej ).
+.2 test.
+.3 java ( testy jednostkowe ).
+.1 target ( zbudowane artefakty aplikacji ).
+.1 pom.xml.
+}
+
+Wszelkie zależności wymagane przez aplikacje rozwiązywane są poprzez narzędzie do automatycznego budowania projektów Maven. Maven poprzez konfiguracje zdefiniowaną w pliku pom.xml określa które biblioteki są wymagane przez aplikację i pobiera je podczas budowania aplikacji. Narzędzie to poprzez system wtyczek pozwala na zdefiniowanie celów budowania i wdrażania projektu. W zaimplementowanej aplikacji został zdefiniowany cel który: pobiera biblioteki zależne, kompiluje kod produkcyjny i kod testów jednostkowych, wykonuje wszystkie testy jednostkowe i w przypadku powodzenia instaluje archiwum aplikacji internetowej ( ang. WAR ) na serwerze aplikacji.
+
+Konfiguracja odpowiedzialna za utworzenie połączenia z bazą danych, znajduję się w lokalizacji \src\main\resources\META-INF\persistence.xml.
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="edu.agh.repotest_repoTest_war_1.0-SNAPSHOTPU" transaction-type="JTA">
+        <jta-data-source>java:app/jdbc/repoDataSource</jta-data-source> <!-- testrepo -->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="eclipselink.logging.level" value="FINE"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+
+Plik ten określa iż aplikacja używa połącznia poprzez źródło danych ava:app/jdbc/repoDataSource. Źródło danych może zostać zdefiniowane poprzez panel konfiguracyjny serwera aplikacji, lub określone w pliku konfiguracyjnym. W zaimplementowanej aplikacji definicja źródła danych została określona w pliku src\main\webapp\WEB-INF\glassfish-resources.xml. W przypadku zmiany serwera aplikacji należy zmienić ten plik na odpowiedni dla dostawcy.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1
+  Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+
+<resources>
+   <jdbc-connection-pool name="java:app/myConnectionPool"
+      res-type="javax.sql.ConnectionPoolDataSource"
+      datasource-classname="org.apache.derby.jdbc.ClientDataSource40">
+
+      <property name="User" value="****" />
+      <property name="Port" value="3306" />
+      <property name="DatabaseName" value="repoTest" />
+      <property name="ServerName" value="localhost" />
+      <property name="URL" value="jdbc:derby://localhost:1527/repoTest"/>
+      <property name="Password" value="****" />
+   </jdbc-connection-pool>
+
+   <jdbc-resource enabled="true"
+      jndi-name="java:app/jdbc/myDatasource"
+      object-type="user"
+      pool-name="java:app/myConnectionPool">
+      <description />
+   </jdbc-resource>
+</resources>
+
+W powyższym pliku konfiguracyjnym zostało zdefiniowane połączenie do bazy danych java:app/myConnectionPool. W definicji połączenia zdefiniowane są pola określające sposób połączenia i dane służące do autoryzacji. Poprzez edycje atrybutu datasource-classname możliwa jest zmiana dostawcy silnika bazodanowego, tak więc migracja na inny silnik bazodanowy wymaga zmiany danych połączenia i klasy definiującej dostawcę bazy danych. Wdrożenia na serwerze aplikacji może również wymagać instalacji na serwerze aplikacji artefaktów dostarczających kod obsługujący zdefiniowane źródło danych. 
+
+Następnie definicja połączenia mapowana jest w definicji zasobu bazodanowego który użyty został w pliku persistence.xml.
+
+W celu wdrożenia aplikacji internetowej na serwerze aplikacji należy zdefiniować pliki web.xml, dodatkowo w związku z wykorzystywaniem technologii JSF w pliku faces-config.xml definiowane są argumenty dla tej technologii, w przypadku stworzonej aplikacji znajdują się tam definicje słowników dla tektów wyświetlanych w aplikacji.
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<!-- contex parameters sections -->
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>bootstrap</param-value>
+    </context-param>
+	<!-- servlet sections -->
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+	<!-- servlet mapping sections -->
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+	<!-- another configuration -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
+    </welcome-file-list>
+</web-app>
+
+W powyższym piku konfuguracyjnych określona została implementacja klasy serwletu, dla technologii JSF klasą implementującą serwlet jest javax.faces.webapp.FacesServlet. Następnie wszystkie ścieżki zaczynające się od wzorca /facet/ zostały przypisane do wyżej zdefiniowanego serwletu. Oznacza to iż gdy klient wpisze adres http://adres-aplikacji.org/faces/*, żądanie zostanie przekazane do serwletu JSF który stworzy i prześlę treść strony.
+
+W pliku konfiguracyjnym określony został wzorzec domyślnej strony ( strony domowej). Określony został również szablon prezentacji graficznej aplikacji internetowej. Parametr primefaces.THEME używany jest przez silnik primefaces który określa który szablon aplikacji powinien zostać załadowany. Użyty został szablon bootstrap, jest to szablon który wyglądem zbliżony jest do powszechnie stosowanej bazy szablonów warstwy klienckiej twitter bootstrap. 
+
 
 \chapter{Przypadki użycia aplikacji}
 // TODO 

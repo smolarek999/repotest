@@ -34,11 +34,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ProductState.findAll", query = "SELECT p FROM ProductState p")})
-public class ProductState implements Serializable {
+public class ProductState extends EnityWithCondition{
 
     private static final long serialVersionUID = 1L;
-    @Transient
-    List<Condition> rawCondition;
+    
     
     
     @Id
@@ -83,17 +82,7 @@ public class ProductState implements Serializable {
         this.description = description;
     }
 
-    public List<Condition> getRawCondition() {
-        if( rawCondition == null ){
-            rawCondition = Condition.createFromString(condition);
-        }
-        return rawCondition;
-    }
-
-    public void setRawCondition(List<Condition> condition) {
-        this.condition = Condition.createToString(condition);
-        this.rawCondition = condition;
-    }
+    
 
     public String getCondition() {
         return condition;

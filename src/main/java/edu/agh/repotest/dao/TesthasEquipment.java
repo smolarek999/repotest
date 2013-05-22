@@ -25,13 +25,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TesthasEquipment.findAll", query = "SELECT t FROM TesthasEquipment t")})
-public class TesthasEquipment implements Serializable {
+public class TesthasEquipment extends EnityWithCondition {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected TesthasEquipmentPK testhasEquipmentPK;
     @Size(max = 45)
     @Column(name = "Condition")
     private String condition;
+    @Column(name = "Quantity")
+    private int quantity;
     @JoinColumn(name = "Equipment_idEquipment", referencedColumnName = "idEquipment", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Equipment equipment;
@@ -58,12 +61,22 @@ public class TesthasEquipment implements Serializable {
         this.testhasEquipmentPK = testhasEquipmentPK;
     }
 
+    @Override
     public String getCondition() {
         return condition;
     }
 
+    @Override
     public void setCondition(String condition) {
         this.condition = condition;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Equipment getEquipment() {
@@ -106,5 +119,4 @@ public class TesthasEquipment implements Serializable {
     public String toString() {
         return "edu.agh.repotest.dao.TesthasEquipment[ testhasEquipmentPK=" + testhasEquipmentPK + " ]";
     }
-    
 }
