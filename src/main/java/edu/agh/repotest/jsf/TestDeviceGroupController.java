@@ -2,6 +2,7 @@ package edu.agh.repotest.jsf;
 
 import edu.agh.repotest.dao.Condition;
 import edu.agh.repotest.dao.Device;
+import edu.agh.repotest.dao.EnityWithCondition;
 import edu.agh.repotest.dao.Equipment;
 import edu.agh.repotest.dao.ProductState;
 import edu.agh.repotest.dao.Test;
@@ -48,11 +49,9 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
     private String newDeviceGroupName;
     private List<TestDeviceGroup> devicesGroups;
     private List<Device> devices;
-    
     private int changedProductStateIndex;
     private Map<Integer, Collection<Device>> conditionDevicesMapForStates;
     private List<ProductState> productStates;
-    
     private int changedEquipmentIndex;
     private Map<Integer, Collection<Device>> conditionDevicesMapForEquip;
     private List<TesthasEquipment> equipments;
@@ -122,11 +121,13 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
         for (TestDeviceGroup testDeviceGroup : devicesGroups) {
             for (TestDeviceGroupDevices td : testDeviceGroup.getDevices()) {
                 grouphasDeviceFacade.create(td);
+
             }
         }
     }
 
     public void saveProductStates(ActionEvent event) {
+
         for (ProductState state : productStates) {
             productStateFacade.create(state);
         }
@@ -134,28 +135,32 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
     }
 
     public void refreshDeviceForState(AjaxBehaviorEvent e) {
-        SelectOneMenu menu = (SelectOneMenu)e.getComponent();
-        TestDeviceGroup deviceGroup = (TestDeviceGroup)menu.getValue();
-        System.err.println(changedProductStateIndex);
-        System.err.println(deviceGroup);
-        //ProductState productState = productStates.get(changedProductStateIndex);
 
-        conditionDevicesMapForStates.put(changedProductStateIndex, deviceGroup.getRawDevices());
-        //printMap(conditionDevicesMapForStates);
 
+        String rawIndexOfSelected = IdHelper.getIdPart(e.getComponent().getClientId(), -2);
+        int indexOfSelected = Integer.parseInt(rawIndexOfSelected);
+        final ProductState selectedState = productStates.get(indexOfSelected);
+        conditionDevicesMapForStates.put(indexOfSelected, getDevicesForGroup(selectedState));
+        System.out.println(String.format("index %s, productState %s, productStateGroup %s", indexOfSelected, selectedState, selectedState.getRawCondition().get(0).getDeviceGroup()));
+        printMap(conditionDevicesMapForStates);
     }
 
     public void refreshDeviceForEquipment(AjaxBehaviorEvent e) {
 
-        SelectOneMenu menu = (SelectOneMenu)e.getComponent();
-        TestDeviceGroup deviceGroup = (TestDeviceGroup)menu.getValue();
-        //ProductState productState = productStates.get(changedProductStateIndex);
+        String rawIndexOfSelected = IdHelper.getIdPart(e.getComponent().getClientId(), -2);
+        int indexOfSelected = Integer.parseInt(rawIndexOfSelected);
+        final TesthasEquipment equipment = equipments.get(indexOfSelected);
 
-        conditionDevicesMapForEquip.put(changedEquipmentIndex, deviceGroup.getRawDevices());
-        //printMap(conditionDevicesMapForStates);
+        conditionDevicesMapForEquip.put(indexOfSelected, getDevicesForGroup(equipment));
+        printMap(conditionDevicesMapForEquip);
+
 
     }
 
+    private Collection<Device> getDevicesForGroup(EnityWithCondition enityWithCondition) {
+        int idx = devicesGroups.indexOf(enityWithCondition.getRawCondition().get(0).getDeviceGroup());
+        return devicesGroups.get(idx).getRawDevices();
+    }
 
     public void addNewProductState() {
         ProductState productState = new ProductState();
@@ -163,39 +168,39 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
         productState.getRawCondition().add(new Condition());
         productStates.add(productState);
     }
-    
-     public void addNewEquipment() {
-        
+
+    public void addNewEquipment() {
+
         TesthasEquipment testhasEquipment = new TesthasEquipment();
         testhasEquipment.setTest(getTest());
         testhasEquipment.getRawCondition().add(new Condition());
         equipments.add(testhasEquipment);
     }
 
-        
-    private Test getTest(){
+    private Test getTest() {
         ELContext elContext = FacesContext.getCurrentInstance().getELContext();
         TestController testController = (TestController) FacesContext.getCurrentInstance().getApplication()
                 .getELResolver().getValue(elContext, null, "testController");
+
         return testController.getSelected();
     }
-    
-    
-        private void printMap(Map<Integer, Collection<Device>> map) {
+
+    private void printMap(Map<Integer, Collection<Device>> map) {
         System.err.println("Begin" + map.size());
         StringBuilder builder = new StringBuilder();
 
         for (Map.Entry<Integer, Collection<Device>> entry : map.entrySet()) {
-            builder.append(entry.getKey());
+            builder.append("Map KEY::" + entry.getKey());
             builder.append("\n");
             for (Device device : entry.getValue()) {
-                builder.append("\t").append(device.getIdDevice()).append("\n");
+                builder.append("\t").append("device id::" + device.getIdDevice()).append("\n");
             }
         }
         System.err.println(builder);
 
 
     }
+
     /**
      * @return the devicesGroups
      */
@@ -284,7 +289,7 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
 
     public void setChangedProductStateIndex(int changedProductStateIndex) {
         System.out.println("setChangedProductStateIndex");
-        
+
         this.changedProductStateIndex = changedProductStateIndex;
     }
 
@@ -319,9 +324,4 @@ public class TestDeviceGroupController extends AbstractController<TestDeviceGrou
     public void setChangedEquipmentIndex(int changedEquipmentIndex) {
         this.changedEquipmentIndex = changedEquipmentIndex;
     }
-    
-    
-    
-
-
 }
