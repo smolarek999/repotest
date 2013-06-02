@@ -27,16 +27,7 @@
                         <p:outputLabel value="#{bundle.EditUsersLabel_username}" for="username" />
                         <p:inputText id="username" value="#{usersController.selected.username}" title="#{bundle.EditUsersTitle_username}" />
 
-                        <p:outputLabel value="#{bundle.EditUsersLabel_testPlanExecutionCollection}" for="testPlanExecutionCollection" />
-                        <p:selectManyMenu id="testPlanExecutionCollection" value="#{usersController.selected.testPlanExecutionCollection}" >
-                            <f:selectItems value="#{testPlanExecutionController.items}"
-                                           var="testPlanExecutionCollectionItem"
-                                           itemValue="#{testPlanExecutionCollectionItem}"
-                                           itemLabel="#{testPlanExecutionCollectionItem.idTestPlanExecution.toString()}"
-                                           />
-                            <f:converter binding="#{testPlanExecutionConverter}"/>
-                        </p:selectManyMenu>
-
+                       
                         <p:outputLabel value="#{bundle.EditUsersLabel_authoritiesCollection}" for="authoritiesCollection" />
                         <p:selectManyMenu id="authoritiesCollection" value="#{usersController.selected.authoritiesCollection}" >
                             <f:selectItems value="#{authoritiesController.items}"

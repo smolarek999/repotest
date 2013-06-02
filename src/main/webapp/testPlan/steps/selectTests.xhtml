@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+
+ <p:dataTable id="avaiableTests" var="test" paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30"  value="#{testPlanController.testsAvailableToAdd}" selectionMode="multiple"  
+                             emptyMessage="No test found with given criteria" rowKey="#{test.idTest}" selection="#{testPlanController.testsToAdd}"> 
+                    <f:facet name="header">
+                        Tests available to add
+                    </f:facet>
+
+
+                    <p:column id="nameColumn"  filterBy="#{test.name}" sortBy="#{test.name}"   
+                              headerText="Name" footerText="contains"  
+                              >  
+                        <h:outputText value="#{test.name}" />  
+                    </p:column>  
+
+                    <p:column id="parentColumn" filterBy="parent"  
+                              headerText="Parent" footerText="testPlanController">  
+                        <h:outputText value="#{test.testGroupidTestGroup.name}" />  
+                    </p:column>  
+
+                    <p:column id="featureColumn" filterBy="#{test.featureidFeature.name}"   
+                              headerText="Feature" footerText="feature"  
+
+                              >  
+                        <h:outputText value="#{test.featureidFeature.name}" />  
+                    </p:column>  
+
+                    <p:column >  
+                        <p:commandButton value="Add" update=":TestPlanCreateForm:avaiableTests :TestPlanCreateForm:addedTests" action="#{testPlanController.addSelectedTest()}" ><f:setPropertyActionListener value="#{test}" target="#{testPlanController.selectedTest}"/></p:commandButton>
+                    </p:column>  
+                    <f:facet name="footer"><p:commandButton value="Add selected"  update=":TestPlanCreateForm:avaiableTests :TestPlanCreateForm:addedTests" action="#{testPlanController.addMultipleTests()}" ></p:commandButton></f:facet>
+
+                </p:dataTable>  
+                <p:dataTable id="addedTests" var="testx" rowKey="#{testx.testDefinition.idTest}" value="#{testPlanController.addedTests}"    
+                             emptyMessage="No test found with given criteria" selectionMode="multiple" selection="#{testPlanController.testsToRemove}" > 
+
+                    <f:facet name="header">
+                        Added tests
+                    </f:facet>
+                    <p:column id="nameColumn"  
+                              headerText="Name" footerText="contains"  
+                              >  
+                        <h:outputText value="#{testx.name}" />  
+                    </p:column>  
+
+                    <p:column >  
+                        <p:commandButton value="Remove"  update=":TestPlanCreateForm:avaiableTests :TestPlanCreateForm:addedTests" action="#{testPlanController.removeTest()}" ><f:setPropertyActionListener value="#{testx.testDefinition}" target="#{testPlanController.selectedTest}"/></p:commandButton>
+                    </p:column>  
+                    <f:facet name="footer"><p:commandButton update=":TestPlanCreateForm:avaiableTests :TestPlanCreateForm:addedTests" value="Remove selected" action="#{testPlanController.removeMultipleTests()}" ></p:commandButton></f:facet>
+
+                </p:dataTable>
+
+
+</html>

@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +26,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -36,8 +39,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "TestExecution")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TestExecution.findAll", query = "SELECT t FROM TestExecution t")})
+    @NamedQuery(name = "TestExecution.findAll", query = "SELECT t FROM TestExecution t"),
+    @NamedQuery(name = "TestExecution.findByTestPlanUserAndStatus", query = "SELECT t FROM TestExecution t JOIN t.testPlan.team as user WHERE t.status = :status AND user = :user"),
+    @NamedQuery(name = "TestExecution.findByUserAndStatus", query = "SELECT t FROM TestExecution t  WHERE t.status = :status AND t.tester = :user")})
 public class TestExecution implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,35 +56,36 @@ public class TestExecution implements Serializable {
     @Column(name = "lastModificationDate")
     @Temporal(TemporalType.DATE)
     private Date lastModificationDate;
-    @Size(max = 45)
-    @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "testStatus")
+    private TestStatus status;
     @JoinTable(name = "TestExecution_has_ProductState", joinColumns = {
         @JoinColumn(name = "TestExecution_idTestExecution", referencedColumnName = "idTestExecution")}, inverseJoinColumns = {
         @JoinColumn(name = "ProductState_Product_idProduct", referencedColumnName = "Product_idProduct")})
     @ManyToMany
-    private Collection<ProductState> productStateCollection;
+    private Collection<ProductState> productStates;
     @JoinTable(name = "TestExecution_has_Equipment", joinColumns = {
         @JoinColumn(name = "TestExecution_idTestExecution", referencedColumnName = "idTestExecution")}, inverseJoinColumns = {
-        @JoinColumn(name = "Equipment_idEquipment", referencedColumnName = "idEquipment")})
+        @JoinColumn(name = "Equipment_id", referencedColumnName = "id")})
     @ManyToMany
-    private Collection<Equipment> equipmentCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testExecution")
-    private Collection<TestExecutionhasDevice> testExecutionhasDeviceCollection;
-    @JoinColumn(name = "Users_id", referencedColumnName = "id")
+    private Collection<TesthasEquipment> equipments;
+    @JoinColumn(name = "Users_id", referencedColumnName = "userId")
     @ManyToOne(optional = false)
-    private Users usersid;
+    private Users tester;
     @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")
     @ManyToOne(optional = false)
-    private Test testidTest;
-    @JoinColumn(name = "StrategyExecution_idStrategyExecution", referencedColumnName = "idTestPlanExecution")
-    @ManyToOne(optional = false)
-    private TestPlanExecution strategyExecutionidStrategyExecution;
-    @JoinColumn(name = "Device_idDevice", referencedColumnName = "idDevice")
-    @ManyToOne(optional = false)
-    private Device deviceidDevice;
+    private Test testDefinition;
+    @ManyToMany
+    @JoinTable(name = "TestExecution_has_Device", joinColumns =
+            @JoinColumn(name = "TestExecution_idTestExecution", referencedColumnName = "idTestExecution"), inverseJoinColumns =
+            @JoinColumn(name = "Device_idDevice", referencedColumnName = "idDevice"))
+    private Collection<Device> devices;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "testExecution")
-    private Collection<TestExecutionhasTestStep> testExecutionhasTestStepCollection;
+    private Collection<TestExecutionStep> steps;
+    
+    @ManyToOne
+    @JoinColumn(name = "TestPlan_idTestPlan", referencedColumnName = "idTestPlan")
+    private TestPlan testPlan;
 
     public TestExecution() {
     }
@@ -89,6 +96,14 @@ public class TestExecution implements Serializable {
 
     public Integer getIdTestExecution() {
         return idTestExecution;
+    }
+
+    public Collection<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(Collection<Device> devices) {
+        this.devices = devices;
     }
 
     public void setIdTestExecution(Integer idTestExecution) {
@@ -111,80 +126,73 @@ public class TestExecution implements Serializable {
         this.lastModificationDate = lastModificationDate;
     }
 
-    public String getState() {
-        return state;
+    public TestStatus getStatus() {
+        return status;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStatus(TestStatus status) {
+        this.status = status;
     }
 
-    @XmlTransient
-    public Collection<ProductState> getProductStateCollection() {
-        return productStateCollection;
+    public TestPlan getTestPlan() {
+        return testPlan;
     }
 
-    public void setProductStateCollection(Collection<ProductState> productStateCollection) {
-        this.productStateCollection = productStateCollection;
-    }
-
-    @XmlTransient
-    public Collection<Equipment> getEquipmentCollection() {
-        return equipmentCollection;
-    }
-
-    public void setEquipmentCollection(Collection<Equipment> equipmentCollection) {
-        this.equipmentCollection = equipmentCollection;
+    public void setTestPlan(TestPlan testPlan) {
+        this.testPlan = testPlan;
     }
 
     @XmlTransient
-    public Collection<TestExecutionhasDevice> getTestExecutionhasDeviceCollection() {
-        return testExecutionhasDeviceCollection;
+    public Collection<ProductState> getProductStates() {
+        return productStates;
     }
 
-    public void setTestExecutionhasDeviceCollection(Collection<TestExecutionhasDevice> testExecutionhasDeviceCollection) {
-        this.testExecutionhasDeviceCollection = testExecutionhasDeviceCollection;
-    }
-
-    public Users getUsersid() {
-        return usersid;
-    }
-
-    public void setUsersid(Users usersid) {
-        this.usersid = usersid;
-    }
-
-    public Test getTestidTest() {
-        return testidTest;
-    }
-
-    public void setTestidTest(Test testidTest) {
-        this.testidTest = testidTest;
-    }
-
-    public TestPlanExecution getStrategyExecutionidStrategyExecution() {
-        return strategyExecutionidStrategyExecution;
-    }
-
-    public void setStrategyExecutionidStrategyExecution(TestPlanExecution strategyExecutionidStrategyExecution) {
-        this.strategyExecutionidStrategyExecution = strategyExecutionidStrategyExecution;
-    }
-
-    public Device getDeviceidDevice() {
-        return deviceidDevice;
-    }
-
-    public void setDeviceidDevice(Device deviceidDevice) {
-        this.deviceidDevice = deviceidDevice;
+    public void setProductStates(Collection<ProductState> productStateCollection) {
+        this.productStates = productStateCollection;
     }
 
     @XmlTransient
-    public Collection<TestExecutionhasTestStep> getTestExecutionhasTestStepCollection() {
-        return testExecutionhasTestStepCollection;
+    public Collection<TesthasEquipment> getEquipments() {
+        return equipments;
     }
 
-    public void setTestExecutionhasTestStepCollection(Collection<TestExecutionhasTestStep> testExecutionhasTestStepCollection) {
-        this.testExecutionhasTestStepCollection = testExecutionhasTestStepCollection;
+    public void setEquipments(Collection<TesthasEquipment> equipmentCollection) {
+        this.equipments = equipmentCollection;
+    }
+
+    public Users getTester() {
+        return tester;
+    }
+
+    public void setTester(Users usersid) {
+        this.tester = usersid;
+    }
+
+    public Test getTestDefinition() {
+        return testDefinition;
+    }
+
+    public void setTestDefinition(Test testidTest) {
+        this.testDefinition = testidTest;
+    }
+
+    @XmlTransient
+    public Collection<TestExecutionStep> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(Collection<TestExecutionStep> testExecutionhasTestStepCollection) {
+        this.steps = testExecutionhasTestStepCollection;
+    }
+
+    @Transient
+    public String getName() {
+        return testDefinition.getName();
+    }
+
+    @Transient
+    public Feature getFeatureidFeature() {
+        return testDefinition.getFeatureidFeature();
     }
 
     @Override
@@ -211,5 +219,4 @@ public class TestExecution implements Serializable {
     public String toString() {
         return "edu.agh.repotest.dao.TestExecution[ idTestExecution=" + idTestExecution + " ]";
     }
-    
 }

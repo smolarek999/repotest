@@ -4,9 +4,8 @@
  */
 package edu.agh.repotest.dao;
 
+import edu.agh.repotest.util.ConditionHelper;
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,80 +15,38 @@ import java.util.List;
  */
 public class Condition implements Serializable {
 
-    private static final String CONDITION_SEPARATOR = "|";
-    private static final String HEAD_SEPARATOR = ":";
-    private static final String ITEM_SEPARATOR = ".";
-    private static final String CONDITION_SEPARATOR_PATTERN = "\\" + CONDITION_SEPARATOR;
-    private static final String HEAD_SEPARATOR_PATTERN = HEAD_SEPARATOR;
-    private static final String ITEM_SEPARATOR_PATTERN = "\\" + ITEM_SEPARATOR;
-
-    public static List<Condition> createFromString(String rawCondtionions) {
-
-        List<Condition> conditions = new LinkedList<Condition>();
-        if (rawCondtionions == null || rawCondtionions.isEmpty()) {
-            return conditions;
-        }
-
-
-        for (String rawCondtionin : rawCondtionions.split(CONDITION_SEPARATOR_PATTERN)) {
-            String[] headAndTail = rawCondtionin.split(HEAD_SEPARATOR_PATTERN);
-            if (headAndTail.length != 2) {
-                throw new IllegalArgumentException("wrong pattern " + rawCondtionin);
-            }
-            Integer deviceGroupId = Integer.parseInt(headAndTail[0]);
-            TestDeviceGroup deviceGroup = new TestDeviceGroup(deviceGroupId);
-            List<Device> devices = new LinkedList<Device>();
-            for (String rawDeviceId : headAndTail[1].split(ITEM_SEPARATOR_PATTERN)) {
-                Integer deviceId = Integer.valueOf(rawDeviceId);
-
-                devices.add(new Device(deviceId));
-            }
-            conditions.add(new Condition(deviceGroup, devices));
-
-        }
-        return conditions;
-    }
-
-    public static String createToString(Collection<Condition> condtionions) {
-
-        StringBuilder builder = new StringBuilder();
-        for (Condition cond : condtionions) {
-            builder.append(cond.getDeviceGroup().getId());
-            builder.append(HEAD_SEPARATOR);
-            for (Device device : cond.getDevices()) {
-                builder.append(device.getIdDevice());
-                builder.append(ITEM_SEPARATOR);
-            }
-            builder.deleteCharAt(builder.length() - 1);
-            builder.append(CONDITION_SEPARATOR);
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        return builder.toString();
-    }
-    private TestDeviceGroup deviceGroup;
+    private GroupOfDevices deviceGroup;
     private List<Device> devices = new LinkedList<Device>();
 
     public Condition() {
+        this(new GroupOfDevices(), new LinkedList<Device>());
     }
 
-    public Condition(TestDeviceGroup deviceGroup, List<Device> devices) {
+    public Condition(GroupOfDevices deviceGroup, List<Device> devices) {
         this.deviceGroup = deviceGroup;
         this.devices = new LinkedList<Device>(devices);
     }
 
-    public TestDeviceGroup getDeviceGroup() {
+    public GroupOfDevices getDeviceGroup() {
+        System.out.println("Condition::" + "getDeviceGroup");
         return deviceGroup;
     }
 
-    public void setDeviceGroup(TestDeviceGroup deviceGroup) {
+    public void setDeviceGroup(GroupOfDevices deviceGroup) {
+        System.out.println("Condition::" + "getDeviceGroup");
         this.deviceGroup = deviceGroup;
     }
 
     public List<Device> getDevices() {
+        System.out.println("Condition::" + "getDevices" + devices.size());
+        for (Device device : devices) {
+            System.out.println("\t" + device.getName() + device.getIdDevice());
+        }
         return devices;
     }
 
     public void setDevices(List<Device> devices) {
+        System.out.println("Condition::" + "setDevices");
         this.devices = devices;
     }
 
@@ -113,6 +70,6 @@ public class Condition implements Serializable {
 
     @Override
     public String toString() {
-        return createToString(Arrays.asList(new Condition[]{this}));
+        return ConditionHelper.createToString(this);
     }
 }

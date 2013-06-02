@@ -13,7 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -47,10 +49,11 @@ public class Feature implements Serializable {
     @Size(max = 45)
     @Column(name = "releaseSince")
     private String releaseSince;
-    @Size(max = 45)
-    @Column(name = "productId")
-    private String productId;
-    @ManyToMany(mappedBy = "featureCollection")
+    
+    @ManyToOne
+    @JoinColumn(name = "productId",referencedColumnName = "idProduct")
+    private Product product;
+    @ManyToMany(mappedBy = "features")
     private Collection<TestPlan> testPlanCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "featureidFeature")
     private Collection<Test> testCollection;
@@ -94,12 +97,12 @@ public class Feature implements Serializable {
         this.releaseSince = releaseSince;
     }
 
-    public String getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @XmlTransient

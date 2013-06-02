@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            Please log in
+        </ui:define>
+        <ui:define name="body">
+            <div class="row-fluid">
+                <div class="span4 offset4">
+                    <form class="form-signin"  method="POST" action="j_security_check">
+                        <input type="text" class="input-block-level" name="j_username" placeholder="Login" />
+                        <input type="password" class="input-block-level" name="j_password" placeholder="Password" />
+
+                        <button class="btn btn-large btn-primary"  value="Login" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,8 +1,8 @@
 package edu.agh.repotest.converter;
 
-import edu.agh.repotest.dao.TestDeviceGroup;
-import edu.agh.repotest.jsf.TestController;
-import edu.agh.repotest.jsf.TestDeviceGroupController;
+import edu.agh.repotest.dao.GroupOfDevices;
+import edu.agh.repotest.jsf.controller.TestController;
+import edu.agh.repotest.jsf.controller.TestDeviceGroupController;
 import edu.agh.repotest.session.TestDeviceGroupFacade;
 import edu.agh.repotest.jsf.util.JsfUtil;
 import java.util.logging.Level;
@@ -41,12 +41,12 @@ public class TestDeviceGroupConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof TestDeviceGroup) {
+        if (object instanceof GroupOfDevices) {
             
-            TestDeviceGroup o = (TestDeviceGroup) object;
+            GroupOfDevices o = (GroupOfDevices) object;
             return String.valueOf(o.getId());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), TestDeviceGroup.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), GroupOfDevices.class.getName()});
             return null;
         }
     }

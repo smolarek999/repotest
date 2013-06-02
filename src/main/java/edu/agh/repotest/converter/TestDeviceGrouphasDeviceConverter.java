@@ -1,8 +1,8 @@
 package edu.agh.repotest.converter;
 
 import edu.agh.repotest.dao.Device;
-import edu.agh.repotest.dao.TestDeviceGroup;
-import edu.agh.repotest.dao.TestDeviceGroupDevices;
+import edu.agh.repotest.dao.GroupOfDevices;
+import edu.agh.repotest.dao.DeviceInGroupOfDevices;
 import edu.agh.repotest.session.TestDeviceGrouphasDeviceFacade;
 import edu.agh.repotest.jsf.util.JsfUtil;
 import java.util.logging.Level;
@@ -37,7 +37,7 @@ public class TestDeviceGrouphasDeviceConverter implements Converter {
         return key;
     }
 
-    String getStringKey(Device device ,  TestDeviceGroup deviceGroup) {
+    String getStringKey(Device device ,  GroupOfDevices deviceGroup) {
         StringBuffer sb = new StringBuffer();
         sb.append(device.getIdDevice());
         sb.append(SEPARATOR);
@@ -51,11 +51,11 @@ public class TestDeviceGrouphasDeviceConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof TestDeviceGroupDevices) {
-            TestDeviceGroupDevices o = (TestDeviceGroupDevices) object;
+        if (object instanceof DeviceInGroupOfDevices) {
+            DeviceInGroupOfDevices o = (DeviceInGroupOfDevices) object;
             return getStringKey(o.getDevice(), o.getTestDeviceGroup());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), TestDeviceGroupDevices.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), DeviceInGroupOfDevices.class.getName()});
             return null;
         }
     }

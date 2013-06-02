@@ -15,6 +15,9 @@ public class LifeCycleListener implements PhaseListener {
     }
 
     public void beforePhase(PhaseEvent event) {
+        if(event.getPhaseId() == PhaseId.RESTORE_VIEW){
+            System.out.println("");
+        }
         System.out.println("START PHASE " + event.getPhaseId());
     }
 

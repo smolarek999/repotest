@@ -38,6 +38,16 @@ import javax.xml.bind.annotation.XmlTransient;
 public class TestGroup implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    public static final void recalculatePath( TestGroup group){
+        TestGroup parent = group.getParentId();
+        String path = "/";
+        if( parent != null ){
+            path = parent.getPathForChild();
+        }
+        group.setPath(path);
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

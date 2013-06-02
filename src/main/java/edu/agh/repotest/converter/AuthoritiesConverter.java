@@ -45,7 +45,7 @@ public class AuthoritiesConverter implements Converter {
         }
         if (object instanceof Authorities) {
             Authorities o = (Authorities) object;
-            return getStringKey(o.getId());
+            return o.getId().toString();
         } else {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Authorities.class.getName()});
             return null;

@@ -5,6 +5,7 @@
 package edu.agh.repotest.session;
 
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
 
 /**
@@ -51,13 +52,16 @@ public abstract class AbstractFacade<T> {
         q.setFirstResult(range[0]);
         return q.getResultList();
     }
-
     public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
+    }
+    
+    public Map<String, Object> getEmProperties(){
+        return getEntityManager().getProperties();
     }
     
 }

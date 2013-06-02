@@ -4,6 +4,7 @@
  */
 package edu.agh.repotest.dao;
 
+import edu.agh.repotest.util.ConditionHelper;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Transient;
@@ -14,22 +15,30 @@ import javax.persistence.Transient;
  */
 public abstract class EnityWithCondition implements Serializable{
     @Transient
-    List<Condition> rawCondition;
+    Condition rawCondition;
     
-    
-    public List<Condition> getRawCondition() {
+    public void refreshCondition(){
+         setCondition(ConditionHelper.createToString(rawCondition)) ;
+    }
+    public Condition getRawCondition() {
+        System.out.println("getRawCondition");
+        
         if( rawCondition == null ){
-            rawCondition = Condition.createFromString(getCondition());
+            rawCondition = ConditionHelper.createFromString(getConditionInner());
         }
         return rawCondition;
     }
 
-    public void setRawCondition(List<Condition> condition) {
-        setCondition(Condition.createToString(condition)) ;
+    public void setRawCondition(Condition condition) {
+        System.out.println("setRawCondition");
+        setCondition(ConditionHelper.createToString(condition)) ;
         this.rawCondition = condition;
+        
     }
     
         public abstract String getCondition() ;
+        
+        public abstract String getConditionInner() ;
 
     public abstract void setCondition(String condition);
 }

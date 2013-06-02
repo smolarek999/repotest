@@ -8,7 +8,10 @@
 
     <ui:composition>
         <h:form id="menuForm">
-            <p:menubar>
+                <p:menubar rendered="#{loggedUserController.isNonLoggedUser()}">
+                    <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/> 
+                </p:menubar>
+                <p:menubar rendered="#{loggedUserController.isAdmin()}">
                 <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
                 <p:submenu label="Administration">
                     <p:menuitem value="Authorities" outcome="/authorities/index" />
@@ -29,24 +32,15 @@
                     <p:menuitem value="ReleaseTable" outcome="/releaseTable/index" />
                 </p:submenu>
                 <p:submenu label="Statistics"></p:submenu>
-                <!--
-                <p:submenu label="#{bundle.Maintenance}">
-                    
-                    
-                    
-                    <p:menuitem value="ProductState" outcome="/productState/index" />
-                    
-                    
-                    <p:menuitem value="TestDeviceGroup" outcome="/testDeviceGroup/index" />
-                    <p:menuitem value="TestDeviceGrouphasDevice" outcome="/testDeviceGrouphasDevice/index" />
-                    
-                    
-                    <p:menuitem value="TestStep" outcome="/testStep/index" />
-                    <p:menuitem value="TesthasEquipment" outcome="/testhasEquipment/index" />
-                    
-                </p:submenu>
-                -->
-            </p:menubar>
+                </p:menubar>
+
+            <p:menubar rendered="#{loggedUserController.isUser()}"> 
+                    <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                    <p:menuitem value="Test execution" outcome="/userflow/executeTests" />
+                    <p:menuitem value="Select tests"  outcome="/userflow/selectMyTests" />
+                    <p:menuitem value="Show assigned plans" outcome="/userflow/showPlans" />
+                </p:menubar>
+
         </h:form>
     </ui:composition>
 

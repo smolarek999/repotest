@@ -12,11 +12,11 @@
                 (  state will be not shown if other devices will be selected during creation of test plan,)</li>
         </ul></span>
     <div class="btn-group">
-    <p:commandButton styleClass="btn"  value="Add new product state" type="button" onclick="addNewProductState();" id="btnAddNew" />
-    <p:commandButton ajax="true" styleClass="btn  btn-success"  actionListener="#{testDeviceGroupController.saveProductStates}" value="#{bundle.Save}" update=":growl, TestCreateForm" />
+        <p:commandButton styleClass="btn"  value="Add new product state" type="button" onclick="addNewProductState();" id="btnAddNew" />
+        <p:commandButton ajax="true" styleClass="btn  btn-success"  actionListener="#{testDeviceGroupController.saveProductStates}" value="#{bundle.Save}" update=":growl, TestCreateForm" />
     </div>
     <hr/>
-    <p:remoteCommand name="addNewProductState"  update="prStates" action="#{testDeviceGroupController.addNewProductState()}"  process="@this" >  
+    <p:remoteCommand name="addNewProductState"  update="prStates" action="#{testDeviceGroupController.addNewProductState()}"  process="@this, prStates" >  
     </p:remoteCommand> 
     <h:panelGroup id="prStates"> 
         <ui:repeat var="pstate" value="#{testDeviceGroupController.productStates}" varStatus="status">
@@ -30,22 +30,18 @@
                                 <f:selectItems value="#{testController.selected.products}"  var="prod" itemValue="#{prod}" itemLabel="#{prod.name.toString()}" />  
                                 <f:converter binding="#{productConverter}"/>
                             </p:selectOneMenu> </td>
-                        <td><h:panelGrid columns="2" border="0"> 
-                                
-                                    <p:selectOneMenu id="devGroup" value="#{pstate.rawCondition[0].deviceGroup}">  
-                                        <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 
-                                        <f:selectItems value="#{testDeviceGroupController.devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
-                                        <p:ajax  update="refreshableSome"  process="devGroup, @this"  listener="#{testDeviceGroupController.refreshDeviceForState}" >
-                                            <f:setPropertyActionListener target="#{testDeviceGroupController.changedProductStateIndex}" value="25"/>
-                                        </p:ajax>
-                                        <f:converter binding="#{testDeviceGroupConverter}"/>
-                                    </p:selectOneMenu>  
-                                <h:panelGroup id="refreshableSome">
-                                    <p:selectManyButton  id="devices" value="#{pstate.rawCondition[0].devices}" >  
-                                        <f:selectItems value="#{testDeviceGroupController.conditionDevicesMapForStates[status.index]}" var="dev" itemLabel="#{dev.name}"  />  
-                                    </p:selectManyButton> 
-                                </h:panelGroup>
-                            </h:panelGrid></td></tr>
+
+                        <td>
+                            <ui:decorate template="/reusable/deviceCombo.xhtml">
+                                <ui:param name="itemBean" value="#{testDeviceGroupController}" />
+                                <ui:param name="itemEditAction" value="refreshDeviceForState" />
+                                <ui:param name="selected" value="#{pstate.rawCondition}" />
+                                <ui:param name="devicesGroups" value="#{testDeviceGroupController.devicesGroups}" />
+                                 <ui:param name="index" value="#{status.index}" />
+                                <ui:param name="map" value="#{testDeviceGroupController.conditionDevicesMapForStates[status.index]}" />
+                            </ui:decorate>
+
+                     </td></tr>
                 </table>
 
 

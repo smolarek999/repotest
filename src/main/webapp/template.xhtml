@@ -8,6 +8,7 @@
 
     <h:head>
         <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputScript library="scripts" name="pfcrud.js"/>
 
     </h:head>
 
@@ -17,14 +18,37 @@
         </f:facet>
         <p:growl id="growl" life="3000"/>
 
+
         <div class="container">
 
             <div class="masthead">
-                <h2>Test Repo <span class="text-info">::</span> <small><span class="muted"><em> for multidevices systems</em> </span></small></h2>
+                <div class="row">
+                    <div class="span9"><h2>Test Repo <span class="text-info">::</span> <small><span class="muted"><em> for multidevices systems</em> </span></small></h2>
+                    </div>
+                    <div class="span3"> 
+
+                        <p class="navbar-text pull-right">
+                            <ui:fragment rendered="#{loggedUserController.loggedUser != null}">
+
+                                <h:form>
+                                    Logged as <a href="#" class="navbar-link">#{loggedUserController.loggedUser.username}</a>
+                                    <h:commandLink value="[ logout ]"
+                                                   action="#{loggedUserController.logout()}"
+                                                   />
+                                </h:form>
+                            </ui:fragment >
+                            <ui:fragment rendered="#{loggedUserController.loggedUser == null}">
+                                <h:link outcome="login" value="Login" />
+
+                            </ui:fragment >
+                        </p>
+                    </div>
+                </div>
+
                 <div class="navbar">
-                        <div class="container">
-                            <ui:include src="/appmenu.xhtml"/>
-                        </div>
+                    <div class="container">
+                        <ui:include src="/appmenu.xhtml"/>
+                    </div>
                 </div><!-- /.navbar -->
             </div>
 
@@ -38,9 +62,9 @@
 
             <hr />
 
-                <div class="footer">
-                    <p>&copy; AGH by Pawel Englert 2013</p>
-                </div>
+            <div class="footer">
+                <p>&copy; AGH by Pawel Englert 2013</p>
+            </div>
 
         </div> <!-- /container -->
 

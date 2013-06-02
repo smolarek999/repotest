@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,14 +34,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "TestPlan")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TestPlan.findAll", query = "SELECT t FROM TestPlan t")})
+    @NamedQuery(name = "TestPlan.findAll", query = "SELECT t FROM TestPlan t"),
+    @NamedQuery(name = "TestPlan.findByUser", query = "SELECT t FROM TestPlan t JOIN t.team as user WHERE user = :user ")})
 public class TestPlan implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idTestPlan")
-    private Integer idTestPlan;
+    private Integer id;
     @Size(max = 45)
     @Column(name = "name")
     private String name;
@@ -53,23 +57,31 @@ public class TestPlan implements Serializable {
         @JoinColumn(name = "TestPlan_idTestPlan", referencedColumnName = "idTestPlan")}, inverseJoinColumns = {
         @JoinColumn(name = "Feature_idFeature", referencedColumnName = "idFeature")})
     @ManyToMany
-    private Collection<Feature> featureCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testPlanidTestPlan")
-    private Collection<TestPlanExecution> testPlanExecutionCollection;
+    private Collection<Feature> features;
+    @ManyToMany
+    @JoinTable(name = "Users_has_TestPlan", joinColumns =
+            @JoinColumn(name = "TestPlan_idTestPlan", referencedColumnName = "idTestPlan"), inverseJoinColumns =
+            @JoinColumn(name = "Users_id", referencedColumnName = "userId"))
+    private Collection<Users> team;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testPlan")
+    private Collection<TestExecution> tests;
+    @Enumerated(EnumType.STRING)
+    State planState;
 
     public TestPlan() {
     }
 
     public TestPlan(Integer idTestPlan) {
-        this.idTestPlan = idTestPlan;
+        this.id = idTestPlan;
+
     }
 
     public Integer getIdTestPlan() {
-        return idTestPlan;
+        return id;
     }
 
     public void setIdTestPlan(Integer idTestPlan) {
-        this.idTestPlan = idTestPlan;
+        this.id = idTestPlan;
     }
 
     public String getName() {
@@ -97,27 +109,42 @@ public class TestPlan implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Feature> getFeatureCollection() {
-        return featureCollection;
+    public Collection<Feature> getFeatures() {
+        return features;
     }
 
-    public void setFeatureCollection(Collection<Feature> featureCollection) {
-        this.featureCollection = featureCollection;
+    public void setFeatures(Collection<Feature> featureCollection) {
+        this.features = featureCollection;
     }
 
-    @XmlTransient
-    public Collection<TestPlanExecution> getTestPlanExecutionCollection() {
-        return testPlanExecutionCollection;
+    public Collection<Users> getTeam() {
+        return team;
     }
 
-    public void setTestPlanExecutionCollection(Collection<TestPlanExecution> testPlanExecutionCollection) {
-        this.testPlanExecutionCollection = testPlanExecutionCollection;
+    public void setTeam(Collection<Users> team) {
+        this.team = team;
+    }
+
+    public Collection<TestExecution> getTests() {
+        return tests;
+    }
+
+    public void setTests(Collection<TestExecution> tests) {
+        this.tests = tests;
+    }
+
+    public State getPlanState() {
+        return planState;
+    }
+
+    public void setPlanState(State planState) {
+        this.planState = planState;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTestPlan != null ? idTestPlan.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -128,15 +155,20 @@ public class TestPlan implements Serializable {
             return false;
         }
         TestPlan other = (TestPlan) object;
-        if ((this.idTestPlan == null && other.idTestPlan != null) || (this.idTestPlan != null && !this.idTestPlan.equals(other.idTestPlan))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
+    public enum State {
+
+        Open,
+        Closed
+    }
+
     @Override
     public String toString() {
-        return "edu.agh.repotest.dao.TestPlan[ idTestPlan=" + idTestPlan + " ]";
+        return "edu.agh.repotest.dao.TestPlan[ idTestPlan=" + id + " ]";
     }
-    
 }

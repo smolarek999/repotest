@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h3><ul class="breadcrumb">
+            <li><a href="#">#{testController.selected.testGroupidTestGroup.getName()}</a> <span class="divider">/</span></li>
+            <li class="active"> #{testController.selected.name}</li>
+        </ul></h3>
+    <table class="table table-hover">
+        <tr><th>Name</th><th>Value</th></tr>
+        <tr><td>Features</td><td>#{testController.selected.featureidFeature.name}</td></tr> 
+        <tr><td>Products</td><td><ui:repeat var="pr" varStatus="idx" value="#{testController.selected.products}">#{pr.name}<h:outputText value="," rendered="#{!idx.last}"/> </ui:repeat></td></tr> 
+    </table>
+
+    <h3>Groups of devices</h3>
+    <table class="table table-hover">
+        <tr><th>Group name</th><th>List of devices</th></tr>
+        <ui:repeat var="gr" value="#{testDeviceGroupController.devicesGroups}" varStatus="status">
+
+            <tr><td>#{gr.name}</td><td><ui:repeat var="dev" varStatus="idx" value="#{gr.devices}">#{dev.name}<h:outputText value="," rendered="#{!idx.last}"/> </ui:repeat></td></tr>  
+        </ui:repeat>
+    </table>
+    <h3>Test script steps</h3>
+    <table class="table table-hover">
+        <tr><th>#</th><th>Instruction</th><th>Expected results</th><th>Condition</th></tr>
+        <ui:repeat var="step" varStatus="status" value="#{testDeviceGroupController.scriptSteps}" >
+            <tr><td>#{status.index +1}</td><td>#{step.description}</td><td>#{step.expectedResult}</td>
+                <td> <ui:decorate template="/reusable/condition.xhtml">
+                        <ui:param name="condition" value="#{step.rawCondition}" />
+                    </ui:decorate>
+                </td>
+            </tr>  
+        </ui:repeat>
+    </table>
+
+    <h3>Required products states - preconditions </h3>
+    <table class="table table-hover">
+        <tr><th>Product name</th><th>Precondition</th><th>Condition</th></tr>
+        <ui:repeat var="productState" value="#{testDeviceGroupController.productStates}" >
+            <tr><td>#{productState.product.name}</td><td>#{productState.description}</td>
+                <td> <ui:decorate template="/reusable/condition.xhtml">
+                        <ui:param name="condition" value="#{productState.rawCondition}" />
+                    </ui:decorate>
+                </td>
+            </tr>  
+        </ui:repeat>
+    </table>
+
+    <h3>Required equipment </h3>
+    <table class="table table-hover">
+        <tr><th>Equipment</th><th>Quantity</th><th>Condition</th></tr>
+        <ui:repeat var="equipment" value="#{testDeviceGroupController.equipments}" >
+            <tr><td>#{equipment.equipment.name}</td><td>#{equipment.quantity}</td>
+                <td> <ui:decorate template="/reusable/condition.xhtml">
+                        <ui:param name="condition" value="#{equipment.rawCondition}" />
+                    </ui:decorate>
+                </td>
+            </tr>  
+        </ui:repeat>
+    </table>
+
+
+</html>

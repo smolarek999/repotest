@@ -10,6 +10,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -55,6 +57,9 @@ public class Product implements Serializable {
     private Collection<Test> testCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "product")
     private ProductState productState;
+    
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private Collection<Feature> features;
 
     public Product() {
     }
@@ -103,6 +108,15 @@ public class Product implements Serializable {
     public void setProductState(ProductState productState) {
         this.productState = productState;
     }
+
+    public Collection<Feature> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(Collection<Feature> features) {
+        this.features = features;
+    }
+    
 
     @Override
     public int hashCode() {

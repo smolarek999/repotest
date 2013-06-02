@@ -25,10 +25,8 @@ public class UsersConverter implements Converter {
         return this.ejbFacade.find(getKey(value));
     }
 
-    java.lang.String getKey(String value) {
-        java.lang.String key;
-        key = value;
-        return key;
+    java.lang.Integer getKey(String value) {
+        return Integer.valueOf(value);
     }
 
     String getStringKey(java.lang.String value) {
@@ -45,7 +43,7 @@ public class UsersConverter implements Converter {
         }
         if (object instanceof Users) {
             Users o = (Users) object;
-            return getStringKey(o.getId());
+            return o.getId().toString();
         } else {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Users.class.getName()});
             return null;

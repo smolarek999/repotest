@@ -4,7 +4,7 @@
  */
 package edu.agh.repotest.session;
 
-import edu.agh.repotest.dao.LoadTable;
+import edu.agh.repotest.dao.Load;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author pawel
  */
 @Stateless
-public class LoadTableFacade extends AbstractFacade<LoadTable> {
+public class LoadTableFacade extends AbstractFacade<Load> {
     @PersistenceContext(unitName = "edu.agh.repotest_repoTest_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -24,7 +24,7 @@ public class LoadTableFacade extends AbstractFacade<LoadTable> {
     }
 
     public LoadTableFacade() {
-        super(LoadTable.class);
+        super(Load.class);
     }
     
 }

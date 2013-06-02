@@ -10,6 +10,9 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -31,15 +34,18 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "Users")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")})
+    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
+    @NamedQuery(name = "Users.findByName", query = "SELECT u FROM Users u WHERE u.username = :username"),
+    @NamedQuery(name = "Users.findByAuthorityname", query = "SELECT u FROM Users u JOIN u.authoritiesCollection as a WHERE a.authorityname = :authorityname")
+})
 public class Users implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "id")
-    private String id;
+    @Column(name = "userId")
+    private Integer id;
     @Column(name = "enabled")
     private Boolean enabled;
     @Size(max = 255)
@@ -48,31 +54,28 @@ public class Users implements Serializable {
     @Size(max = 255)
     @Column(name = "username")
     private String username;
-    @JoinTable(name = "Users_has_TestPlanExecution", joinColumns = {
-        @JoinColumn(name = "Users_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "TestPlanExecution_idTestPlanExecution", referencedColumnName = "idTestPlanExecution")})
-    @ManyToMany
-    private Collection<TestPlanExecution> testPlanExecutionCollection;
+    @ManyToMany(mappedBy = "team")
+    private Collection<TestPlan> testPlans;
     @JoinTable(name = "Users_Authorities", joinColumns = {
-        @JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "authorities_id", referencedColumnName = "id")})
+        @JoinColumn(name = "userId", referencedColumnName = "userId")}, inverseJoinColumns = {
+        @JoinColumn(name = "authorityId", referencedColumnName = "authorityId")})
     @ManyToMany
     private Collection<Authorities> authoritiesCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usersid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tester", fetch = FetchType.LAZY)
     private Collection<TestExecution> testExecutionCollection;
 
     public Users() {
     }
 
-    public Users(String id) {
+    public Users(Integer id) {
         this.id = id;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -101,12 +104,12 @@ public class Users implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TestPlanExecution> getTestPlanExecutionCollection() {
-        return testPlanExecutionCollection;
+    public Collection<TestPlan> getTestPlans() {
+        return testPlans;
     }
 
-    public void setTestPlanExecutionCollection(Collection<TestPlanExecution> testPlanExecutionCollection) {
-        this.testPlanExecutionCollection = testPlanExecutionCollection;
+    public void setTestPlans(Collection<TestPlan> testPlanExecutionCollection) {
+        this.testPlans = testPlanExecutionCollection;
     }
 
     @XmlTransient
@@ -151,5 +154,4 @@ public class Users implements Serializable {
     public String toString() {
         return "edu.agh.repotest.dao.Users[ id=" + id + " ]";
     }
-    
 }

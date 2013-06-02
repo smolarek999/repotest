@@ -18,7 +18,7 @@
                         <p:outputLabel value="#{bundle.CreateAuthoritiesLabel_id}" for="id" />
                         <p:inputText id="id" value="#{authoritiesController.selected.id}" title="#{bundle.CreateAuthoritiesTitle_id}" required="true" requiredMessage="#{bundle.CreateAuthoritiesRequiredMessage_id}"/>
 
-                        <p:outputLabel value="#{bundle.CreateAuthoritiesLabel_authorityname}" for="authorityname" />
+                        <p:outputLabel value="Roles" for="authorityname" />
                         <p:inputText id="authorityname" value="#{authoritiesController.selected.authorityname}" title="#{bundle.CreateAuthoritiesTitle_authorityname}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{authoritiesController.saveNew}" value="#{bundle.Save}" update="display,:AuthoritiesListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,AuthoritiesCreateDialog);"/>

@@ -41,12 +41,9 @@ public class Device implements Serializable {
     @Size(max = 45)
     @Column(name = "manualUrl")
     private String manualUrl;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Collection<TestExecutionhasDevice> testExecutionhasDeviceCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deviceidDevice")
-    private Collection<TestExecution> testExecutionCollection;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "device")
-    private Collection<TestDeviceGroupDevices> testDeviceGroupDevices;
+    private Collection<DeviceInGroupOfDevices> testDeviceGroupDevices;
 
     public Device() {
     }
@@ -79,30 +76,14 @@ public class Device implements Serializable {
         this.manualUrl = manualUrl;
     }
 
-    @XmlTransient
-    public Collection<TestExecutionhasDevice> getTestExecutionhasDeviceCollection() {
-        return testExecutionhasDeviceCollection;
-    }
 
-    public void setTestExecutionhasDeviceCollection(Collection<TestExecutionhasDevice> testExecutionhasDeviceCollection) {
-        this.testExecutionhasDeviceCollection = testExecutionhasDeviceCollection;
-    }
 
     @XmlTransient
-    public Collection<TestExecution> getTestExecutionCollection() {
-        return testExecutionCollection;
-    }
-
-    public void setTestExecutionCollection(Collection<TestExecution> testExecutionCollection) {
-        this.testExecutionCollection = testExecutionCollection;
-    }
-
-    @XmlTransient
-    public Collection<TestDeviceGroupDevices> getTestDeviceGrouphasDeviceCollection() {
+    public Collection<DeviceInGroupOfDevices> getTestDeviceGrouphasDeviceCollection() {
         return testDeviceGroupDevices;
     }
 
-    public void setTestDeviceGrouphasDeviceCollection(Collection<TestDeviceGroupDevices> testDeviceGrouphasDeviceCollection) {
+    public void setTestDeviceGrouphasDeviceCollection(Collection<DeviceInGroupOfDevices> testDeviceGrouphasDeviceCollection) {
         this.testDeviceGroupDevices = testDeviceGrouphasDeviceCollection;
     }
 

@@ -5,12 +5,14 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+    <p:panelGrid columns="3"> 
     <p:outputLabel value="new group name" for="newDeviceGroupName" />
     <p:inputText id="newDeviceGroupName" value="#{testDeviceGroupController.newDeviceGroupName}" title="New device group name" />
 
     
     <p:commandButton value="Add new" type="button" onclick="addNewGroup();" id="btnLoad" />  
-    <p:remoteCommand name="addNewGroup" update="deviceSelectes" action="#{testDeviceGroupController.addNew()}"  process="@this newDeviceGroupName" >  
+    </p:panelGrid>
+    <p:remoteCommand name="addNewGroup" update="deviceSelectes, newDeviceGroupName,:growl " action="#{testDeviceGroupController.addNew()}"  process="@this newDeviceGroupName" >  
     </p:remoteCommand> 
     <h:panelGroup id="deviceSelectes">
         <p:fieldset legend="Devices">  
@@ -62,7 +64,7 @@
             </p:droppable>  
 
         </ui:repeat>
-        <p:commandButton actionListener="#{testDeviceGroupController.saveNew}" value="#{bundle.Save}" update="TestCreateForm " />
+        <p:commandButton actionListener="#{testDeviceGroupController.saveNew}" value="#{bundle.Save}" update="TestCreateForm, :growl " />
     </h:panelGroup>
 
 

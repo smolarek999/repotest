@@ -4,7 +4,6 @@
  */
 package edu.agh.repotest.dao;
 
-import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -32,13 +31,18 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TestStep.findAll", query = "SELECT t FROM TestStep t")})
-public class TestStep implements Serializable {
+public class TestStep extends EnityWithCondition {
+
     private static final long serialVersionUID = 1L;
+    
     @Size(max = 45)
     @Column(name = "Description")
     private String description;
     @Size(max = 45)
-    @Column(name = "Condition")
+    @Column(name = "ExpectedResult")
+    private String expectedResult;
+    @Size(max = 45)
+    @Column(name = "ConditionCol")
     private String condition;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,12 +50,13 @@ public class TestStep implements Serializable {
     @Column(name = "idTestStep")
     private Integer idTestStep;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "testStep")
-    private Collection<TestExecutionhasTestStep> testExecutionhasTestStepCollection;
+    private Collection<TestExecutionStep> testExecutionhasTestStepCollection;
     @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")
     @ManyToOne(optional = false)
     private Test testidTest;
 
     public TestStep() {
+        
     }
 
     public TestStep(Integer idTestStep) {
@@ -59,6 +64,7 @@ public class TestStep implements Serializable {
     }
 
     public String getDescription() {
+        System.out.println("TESTSTEP" + "getDescription" + description);
         return description;
     }
 
@@ -66,15 +72,31 @@ public class TestStep implements Serializable {
         this.description = description;
     }
 
-    public String getCondition() {
+    public String getExpectedResult() {
+         System.out.println("TESTSTEP" + "getExpectedResult" + expectedResult);
+        return expectedResult;
+    }
+    @Override
+    public String getConditionInner(){
         return condition;
     }
-
+    public void setExpectedResult(String expectedResult) {
+        this.expectedResult = expectedResult;
+    }
+    
+    
+    @Override
+    public String getCondition() {
+         System.out.println("TESTSTEP" + "getCondition");
+        return condition;
+    }
+    @Override
     public void setCondition(String condition) {
         this.condition = condition;
     }
 
     public Integer getIdTestStep() {
+        System.out.println("TESTSTEP" + "getIdTestStep");
         return idTestStep;
     }
 
@@ -83,15 +105,18 @@ public class TestStep implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TestExecutionhasTestStep> getTestExecutionhasTestStepCollection() {
+    public Collection<TestExecutionStep> getTestExecutionhasTestStepCollection() {
+         System.out.println("TESTSTEP" + "getTestExecutionhasTestStepCollection");
         return testExecutionhasTestStepCollection;
     }
 
-    public void setTestExecutionhasTestStepCollection(Collection<TestExecutionhasTestStep> testExecutionhasTestStepCollection) {
+    public void setTestExecutionhasTestStepCollection(Collection<TestExecutionStep> testExecutionhasTestStepCollection) {
         this.testExecutionhasTestStepCollection = testExecutionhasTestStepCollection;
     }
 
     public Test getTestidTest() {
+         System.out.println("TESTSTEP" + "getTestidTest");
+         
         return testidTest;
     }
 
@@ -101,6 +126,7 @@ public class TestStep implements Serializable {
 
     @Override
     public int hashCode() {
+        System.out.println("TESTSTEP" + "hashCode");
         int hash = 0;
         hash += (idTestStep != null ? idTestStep.hashCode() : 0);
         return hash;
@@ -108,6 +134,7 @@ public class TestStep implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        System.out.println("TESTSTEP" + "equals");
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof TestStep)) {
             return false;

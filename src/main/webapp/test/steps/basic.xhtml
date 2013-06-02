@@ -23,7 +23,6 @@
 
             <p:outputLabel value="Products" for="products" />
             <p:selectManyMenu id="products" value="#{testController.selected.products}" >
-                <f:selectItem itemLabel="#{bundle.SelectManyMessage}"/>
                 <f:selectItems value="#{productController.items}"
                                var="product"
                                itemValue="#{product}"

@@ -10,7 +10,7 @@
                 >
     <p:panel >
     <h:form id="TestGroupListForm">  
-        <p:commandButton process="@this" styleClass="btn btn-success" id="createButton" actionListener="#{testGroupController.nodeListener}" icon="ui-icon-plus"   value="#{bundle.CreateGroup}"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
+        <p:commandButton process="@this" styleClass="btn btn-success" id="createButton" actionListener="#{testGroupController.nodeListener}" icon="ui-icon-plus"   value="Create Root Group"  update=":TestGroupCreateForm" oncomplete="TestGroupCreateDialog.show()">
             <f:attribute name="rawParentId" value="" />
         </p:commandButton>
         <p:tree value="#{testTreeController.root}" dynamic="true"  cache="true" var="node" style="width: 100%;" selectionMode="single"  selection="#{testTreeController.selectedNode}" id="tree">  

@@ -4,7 +4,7 @@
  */
 package edu.agh.repotest.session;
 
-import edu.agh.repotest.dao.TestDeviceGroup;
+import edu.agh.repotest.dao.GroupOfDevices;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author pawel
  */
 @Stateless
-public class TestDeviceGroupFacade extends AbstractFacade<TestDeviceGroup> {
+public class TestDeviceGroupFacade extends AbstractFacade<GroupOfDevices> {
     @PersistenceContext(unitName = "edu.agh.repotest_repoTest_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -24,7 +24,7 @@ public class TestDeviceGroupFacade extends AbstractFacade<TestDeviceGroup> {
     }
 
     public TestDeviceGroupFacade() {
-        super(TestDeviceGroup.class);
+        super(GroupOfDevices.class);
     }
     
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:repeat var="test" value="#{testPlanController.addedTests}">
+        <p:fieldset legend="Please define devices for: #{test.testDefinition.name}"> 
+            <ui:repeat var="devGroup" value="#{test.testDefinition.devicesGroups}">
+               This is iteration over device group
+                <p:outputLabel for="device" value="Select device for #{devGroup.name}"/>
+                <p:selectOneMenu id="device" required="true" value="#{testPlanController.devicesGroupSelectedDevice[devGroup.id]}" >
+                    <f:selectItems  value="#{devGroup.rawDevices}" var="device" itemLabel="#{device.name}" itemValue="#{device}" />
+                    <f:converter binding="#{deviceConverter}"/>
+              </p:selectOneMenu>
+            </ui:repeat>
+        </p:fieldset>
+    </ui:repeat>
+
+
+</html>

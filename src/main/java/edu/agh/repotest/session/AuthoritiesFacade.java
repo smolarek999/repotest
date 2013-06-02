@@ -21,6 +21,7 @@ public class AuthoritiesFacade extends AbstractFacade<Authorities> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+        
     }
 
     public AuthoritiesFacade() {

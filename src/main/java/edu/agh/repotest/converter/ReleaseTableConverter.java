@@ -1,6 +1,6 @@
 package edu.agh.repotest.converter;
 
-import edu.agh.repotest.dao.ReleaseTable;
+import edu.agh.repotest.dao.Release;
 import edu.agh.repotest.session.ReleaseTableFacade;
 import edu.agh.repotest.jsf.util.JsfUtil;
 import java.util.logging.Level;
@@ -43,11 +43,11 @@ public class ReleaseTableConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof ReleaseTable) {
-            ReleaseTable o = (ReleaseTable) object;
+        if (object instanceof Release) {
+            Release o = (Release) object;
             return getStringKey(o.getIdRelease());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), ReleaseTable.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Release.class.getName()});
             return null;
         }
     }

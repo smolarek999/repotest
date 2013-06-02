@@ -5,13 +5,18 @@
 package edu.agh.repotest.dao;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,40 +32,42 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TesthasEquipment.findAll", query = "SELECT t FROM TesthasEquipment t")})
 public class TesthasEquipment extends EnityWithCondition {
 
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    private Integer id;
+    
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected TesthasEquipmentPK testhasEquipmentPK;
     @Size(max = 45)
-    @Column(name = "Condition")
+    @Column(name = "ConditionCol")
     private String condition;
     @Column(name = "Quantity")
     private int quantity;
-    @JoinColumn(name = "Equipment_idEquipment", referencedColumnName = "idEquipment", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "Equipment_idEquipment", referencedColumnName = "idEquipment")
+    @OneToOne(optional = false)
     private Equipment equipment;
-    @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest", insertable = false, updatable = false)
+    @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")
     @ManyToOne(optional = false)
     private Test test;
+    
 
     public TesthasEquipment() {
     }
 
-    public TesthasEquipment(TesthasEquipmentPK testhasEquipmentPK) {
-        this.testhasEquipmentPK = testhasEquipmentPK;
+    public Integer getId() {
+        return id;
     }
 
-    public TesthasEquipment(int testidTest, int equipmentidEquipment) {
-        this.testhasEquipmentPK = new TesthasEquipmentPK(testidTest, equipmentidEquipment);
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public TesthasEquipmentPK getTesthasEquipmentPK() {
-        return testhasEquipmentPK;
-    }
 
-    public void setTesthasEquipmentPK(TesthasEquipmentPK testhasEquipmentPK) {
-        this.testhasEquipmentPK = testhasEquipmentPK;
+    @Override
+    public String getConditionInner(){
+        return condition;
     }
-
     @Override
     public String getCondition() {
         return condition;
@@ -80,10 +87,12 @@ public class TesthasEquipment extends EnityWithCondition {
     }
 
     public Equipment getEquipment() {
+        System.out.println("getEquipment"+equipment);
         return equipment;
     }
 
     public void setEquipment(Equipment equipment) {
+         System.out.println("setEquipment");
         this.equipment = equipment;
     }
 
@@ -98,7 +107,7 @@ public class TesthasEquipment extends EnityWithCondition {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (testhasEquipmentPK != null ? testhasEquipmentPK.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -109,7 +118,7 @@ public class TesthasEquipment extends EnityWithCondition {
             return false;
         }
         TesthasEquipment other = (TesthasEquipment) object;
-        if ((this.testhasEquipmentPK == null && other.testhasEquipmentPK != null) || (this.testhasEquipmentPK != null && !this.testhasEquipmentPK.equals(other.testhasEquipmentPK))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -117,6 +126,6 @@ public class TesthasEquipment extends EnityWithCondition {
 
     @Override
     public String toString() {
-        return "edu.agh.repotest.dao.TesthasEquipment[ testhasEquipmentPK=" + testhasEquipmentPK + " ]";
+        return "edu.agh.repotest.dao.TesthasEquipment[ testhasEquipmentPK=" + id + " ]";
     }
 }

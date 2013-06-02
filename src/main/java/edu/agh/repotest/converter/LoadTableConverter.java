@@ -1,6 +1,6 @@
 package edu.agh.repotest.converter;
 
-import edu.agh.repotest.dao.LoadTable;
+import edu.agh.repotest.dao.Load;
 import edu.agh.repotest.session.LoadTableFacade;
 import edu.agh.repotest.jsf.util.JsfUtil;
 import java.util.logging.Level;
@@ -43,11 +43,11 @@ public class LoadTableConverter implements Converter {
                 || (object instanceof String && ((String) object).length() == 0)) {
             return null;
         }
-        if (object instanceof LoadTable) {
-            LoadTable o = (LoadTable) object;
-            return getStringKey(o.getReleaseidRelease());
+        if (object instanceof Load) {
+            Load o = (Load) object;
+            return getStringKey(o.getIdLoad());
         } else {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), LoadTable.class.getName()});
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Load.class.getName()});
             return null;
         }
     }

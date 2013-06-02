@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template.xhtml">
+    <f:metadata>
+        <f:viewParam name="id" value="#{testExecutionController.idTestExecution}" />
+        <f:event type="preRenderComponent" listener="#{testExecutionController.loadFromGetParameters()}"/>
+    </f:metadata>
+    <ui:define name="title">Execution of the test</ui:define>
+    <ui:define name="body">
+        <h3><ul class="breadcrumb">
+                <li><a href="#">#{testExecutionController.testDefinition.testGroupidTestGroup.getName()}</a> <span class="divider">/</span></li>
+                <li class="active"> #{testExecutionController.testDefinition.name}</li>
+            </ul></h3>
+        <table class="table table-hover">
+            <tr><th>Name</th><th>Value</th></tr>
+            <tr><td>Features</td><td>#{testExecutionController.testDefinition.featureidFeature.name}</td></tr> 
+            <tr><td>Products</td><td><ui:repeat var="pr" varStatus="idx" value="#{testExecutionController.testDefinition.products}">#{pr.name}<h:outputText value="," rendered="#{!idx.last}"/> </ui:repeat></td></tr> 
+            <tr><td>Comment</td><td><p:inputTextarea value="#{testExecutionController.selected.comment}"/></td></tr>
+        </table>
+    </ui:define>
+
+    <h3>Required equipment for test</h3>
+    <table class="table table-hover">
+        <tr><th>Equipment</th><th>Quantity</th></tr>
+        <ui:repeat var="equipment" value="#{testExecutionController.selected.equipments}" >
+            <tr><td>#{equipment.equipment.name}</td><td>#{equipment.quantity}</td>
+
+            </tr>  
+        </ui:repeat>
+    </table>
+    <h3>Required products states - preconditions </h3>
+    <table class="table table-hover">
+        <tr><th>Product name</th><th>Precondition</th></tr>
+        <ui:repeat var="productState" value="#{testExecutionController.selected.productStates}" >
+            <tr><td>#{productState.product.name}</td><td>#{productState.description}</td>
+            </tr>  
+        </ui:repeat>
+    </table>
+    <h3>Test script steps</h3>
+    <table class="table table-hover">
+        <tr><th>#</th><th>Instruction</th><th>Expected results</th><th>Comment</th></tr>
+        <ui:repeat var="step" varStatus="status" value="#{testExecutionController.selected.steps}" >
+            <tr><td>#{status.index +1}</td><td>#{step.description}</td><td>#{step.expectedResult}</td>
+                <td><p:inputTextarea id="comment" value="#{step.comment}" /></td>
+            </tr>  
+        </ui:repeat>
+    </table>
+
+
+
+
+</ui:composition>

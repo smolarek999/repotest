@@ -15,9 +15,6 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{usersController.selected != null}">
 
-                        <h:outputText value="#{bundle.ViewUsersLabel_id}"/>
-                        <h:outputText value="#{usersController.selected.id}" title="#{bundle.ViewUsersTitle_id}"/>
-
                         <h:outputText value="#{bundle.ViewUsersLabel_enabled}"/>
                         <h:outputText value="#{usersController.selected.enabled}" title="#{bundle.ViewUsersTitle_enabled}"/>
 
@@ -28,14 +25,7 @@
                         <h:outputText value="#{usersController.selected.username}" title="#{bundle.ViewUsersTitle_username}"/>
 
                         <h:outputText value="#{bundle.ViewUsersLabel_testPlanExecutionCollection}"/>
-                        <h:selectManyMenu>
-                            <f:selectItems value="#{usersController.selected.testPlanExecutionCollection}"
-                                           var="testPlanExecutionCollectionItem"
-                                           itemValue="#{testPlanExecutionCollectionItem}"
-                                           itemLabel="#{testPlanExecutionCollectionItem.idTestPlanExecution.toString()}"
-                                           />
-                            <f:converter binding="#{testPlanExecutionConverter}"/>
-                        </h:selectManyMenu>
+                     
 
                         <h:outputText value="#{bundle.ViewUsersLabel_authoritiesCollection}"/>
                         <h:selectManyMenu>

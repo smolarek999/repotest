@@ -10,6 +10,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,7 +57,7 @@ public class Test implements Serializable {
     private String variationNumber;
     @ManyToMany(mappedBy = "testCollection")
     private Collection<Product> products;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testidTest")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testDefinition")
     private Collection<TestExecution> testExecutionCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "test")
     private Collection<TesthasEquipment> testhasEquipmentCollection;
@@ -70,8 +71,8 @@ public class Test implements Serializable {
     private Feature featureidFeature;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "testidTest")
     private Collection<TestStep> testStepCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "test")
-    private Collection<TestDeviceGroup> testDeviceGroupCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "test", fetch = FetchType.LAZY)
+    private Collection<GroupOfDevices> devicesGroups;
 
     public Test() {
     }
@@ -79,7 +80,6 @@ public class Test implements Serializable {
     public Test(Integer idTest) {
         this.idTest = idTest;
     }
-
     public Integer getIdTest() {
         return idTest;
     }
@@ -95,7 +95,6 @@ public class Test implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getDescription() {
         return description;
     }
@@ -124,7 +123,6 @@ public class Test implements Serializable {
     public Collection<Product> getProducts() {
         return products;
     }
-
     public void setProducts(Collection<Product> productCollection) {
         this.products = productCollection;
     }
@@ -182,12 +180,12 @@ public class Test implements Serializable {
     }
 
     @XmlTransient
-    public Collection<TestDeviceGroup> getTestDeviceGroupCollection() {
-        return testDeviceGroupCollection;
+    public Collection<GroupOfDevices> getDevicesGroups() {
+        return devicesGroups;
     }
 
-    public void setTestDeviceGroupCollection(Collection<TestDeviceGroup> testDeviceGroupCollection) {
-        this.testDeviceGroupCollection = testDeviceGroupCollection;
+    public void setDevicesGroups(Collection<GroupOfDevices> testDeviceGroupCollection) {
+        this.devicesGroups = testDeviceGroupCollection;
     }
 
     @Override

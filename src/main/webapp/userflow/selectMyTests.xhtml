@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template.xhtml">
+    <ui:define name="title">Select test for execution</ui:define>
+    <ui:define name="body">
+        <h:form id="testSelectionForm">
+            <p:dataTable id="avaiableTests" var="test" paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30"  value="#{testSelectionController.availableTests}"   
+                         emptyMessage="There is no waiting tests" rowKey="#{test.idTestExecution}"> 
+                <f:facet name="header">
+                    Tests available to add
+                </f:facet>
+
+
+                <p:column id="nameColumn"  filterBy="#{test.name}" sortBy="#{test.name}"   
+                          headerText="Name" footerText="contains"  
+                          >  
+                    <h:outputText value="#{test.name}" />  
+                </p:column>  
+
+                <p:column id="parentColumn" filterBy="parent"  
+                          headerText="Parent" footerText="testPlanController">  
+                    <h:outputText value="#{test.testDefinition.testGroupidTestGroup.name}" />  
+                </p:column>  
+
+                <p:column >  
+                    <p:commandButton value="Add" update=":testSelectionForm :growl" action="#{testSelectionController.signMeUpForTest()}" ><f:setPropertyActionListener value="#{test}" target="#{testSelectionController.selectedTest}"/></p:commandButton>
+                </p:column>  
+
+            </p:dataTable>  
+        </h:form>
+
+
+
+
+    </ui:define>
+
+
+
+
+</ui:composition>

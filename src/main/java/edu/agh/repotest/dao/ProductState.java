@@ -4,6 +4,7 @@
  */
 package edu.agh.repotest.dao;
 
+import edu.agh.repotest.util.ConditionHelper;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -50,7 +51,7 @@ public class ProductState extends EnityWithCondition{
     @Size(max = 45)
     @Column(name = "ConditionCol")
     private String condition;
-    @ManyToMany(mappedBy = "productStateCollection")
+    @ManyToMany(mappedBy = "productStates")
     private Collection<TestExecution> testExecutionCollection;
     @JoinColumn(name = "Product_idProduct", referencedColumnName = "idProduct")
     @OneToOne(optional = false)
@@ -75,6 +76,7 @@ public class ProductState extends EnityWithCondition{
     }
 
     public String getDescription() {
+        
         return description;
     }
 
@@ -85,7 +87,7 @@ public class ProductState extends EnityWithCondition{
     
 
     public String getCondition() {
-        return condition;
+        return ConditionHelper.createToString(getRawCondition());
     }
 
     public void setCondition(String condition) {
@@ -107,6 +109,10 @@ public class ProductState extends EnityWithCondition{
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+    @Override
+    public String getConditionInner(){
+        return condition;
     }
 
     public Test getTestidTest() {

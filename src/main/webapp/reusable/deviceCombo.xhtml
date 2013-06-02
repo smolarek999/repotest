@@ -1,0 +1,36 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    >
+    <p:panelGrid  >  
+        <f:facet name="header">  
+            <p:row>  
+                <p:column >Select device group</p:column>  
+                <p:column >Select applicable devices from group</p:column>  
+            </p:row>  
+        </f:facet>  
+        <p:row> 
+            <p:column >
+                <p:selectOneMenu id="devGroup" value="#{selected.deviceGroup}">  
+                    <f:selectItem itemLabel="Select group devices" itemValue="#{null}" /> 
+                    <f:selectItems value="#{devicesGroups}"  var="devGroup" itemValue="#{devGroup}" itemLabel="#{devGroup.name.toString()}" />  
+                    <p:ajax  update="refreshableSome"  process="@this"  listener="#{itemBean[itemEditAction]}" />
+                    <f:attribute name="index" value="#{index}" />
+                    <f:converter binding="#{testDeviceGroupConverter}"/>
+                </p:selectOneMenu>  
+            </p:column>
+            <p:column>
+                <h:panelGroup id="refreshableSome">
+                    <h:outputText value="select device first" rendered="#{map.size() == 0}"/>
+                    <p:selectManyButton  id="devices" value="#{selected.devices}"  >  
+                        <f:selectItems value="#{map}" var="dev" itemLabel="#{dev.name}" itemValue="#{dev}"  />
+                        <f:converter binding="#{deviceConverter}"/>
+                    </p:selectManyButton> 
+                </h:panelGroup>
+            </p:column>
+        </p:row>
+    </p:panelGrid>
+</ui:composition>

@@ -52,7 +52,7 @@ public class TesthasEquipmentConverter implements Converter {
         }
         if (object instanceof TesthasEquipment) {
             TesthasEquipment o = (TesthasEquipment) object;
-            return getStringKey(o.getTesthasEquipmentPK());
+            return o.getId().toString();
         } else {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), TesthasEquipment.class.getName()});
             return null;
