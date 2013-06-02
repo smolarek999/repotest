@@ -8,14 +8,12 @@
     <ui:define name="title">Plan for which you are assigned</ui:define>
     <ui:define name="body">
 
-        <table class="table table-hover">
+        <p:dataTable   styleClass="table table-hover">
             <f:facet name="header" >Test plans</f:facet>
+            <p:column headerText="name" >#{testPlan.name}</p:column>
+            <p:column headerText="description" >#{testPlan.description}</p:column>
             <tr><th>name</th><th>description</th></tr>
-            <ui:repeat var="testPlan" value="#{loggedUserController.testPlans}" >
-                <tr><td>#{testPlan.name}</td><td>#{testPlan.description}</td>
-                </tr>  
-            </ui:repeat>
-        </table>
+        </p:dataTable>
     </ui:define>
 
 

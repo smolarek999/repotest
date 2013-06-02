@@ -31,18 +31,15 @@ public class TestExecutionFacade extends AbstractFacade<TestExecution> {
 
     public TestExecutionFacade() {
         super(TestExecution.class);
-
     }
-
     public List<TestExecution> getAvailableForUser(Users user) {
         TypedQuery query = em.createNamedQuery("TestExecution.findByTestPlanUserAndStatus", TestExecution.class);
         query.setParameter("status", TestStatus.WAITING);
         query.setParameter("user", user);
         return query.getResultList();
     }
-
     public List<TestExecution> getTakenByUser(Users user) {
-        TypedQuery query = em.createNamedQuery("TestExecution.findByState", TestExecution.class);
+        TypedQuery query = em.createNamedQuery("TestExecution.findByUserAndStatus", TestExecution.class);
         query.setParameter("status", TestStatus.IN_PROGRESS);
         query.setParameter("user", user);
         return query.getResultList();

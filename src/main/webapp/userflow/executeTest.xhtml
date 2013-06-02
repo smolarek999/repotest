@@ -19,7 +19,7 @@
             <tr><th>Name</th><th>Value</th></tr>
             <tr><td>Features</td><td>#{testExecutionController.testDefinition.featureidFeature.name}</td></tr> 
             <tr><td>Products</td><td><ui:repeat var="pr" varStatus="idx" value="#{testExecutionController.testDefinition.products}">#{pr.name}<h:outputText value="," rendered="#{!idx.last}"/> </ui:repeat></td></tr> 
-            <tr><td>Comment</td><td><p:inputTextarea value="#{testExecutionController.selected.comment}"/></td></tr>
+            <tr><td>Comment</td><td><p:inputTextarea value="#{testExecutionController.selected.comments}"/></td></tr>
         </table>
     </ui:define>
 
