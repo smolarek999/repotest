@@ -19,6 +19,7 @@ import edu.agh.repotest.dao.DeviceInGroupOfDevices;
 import edu.agh.repotest.dao.TestGroup;
 import edu.agh.repotest.dao.TestStep;
 import edu.agh.repotest.dao.TesthasEquipment;
+import edu.agh.repotest.dao.UserRole;
 import edu.agh.repotest.dao.Users;
 import edu.agh.repotest.session.AuthoritiesFacade;
 import edu.agh.repotest.session.DeviceFacade;
@@ -104,9 +105,9 @@ public class PreloadController {
     private void doPreloadInternal() {
 
         Authorities adminRole = new Authorities();
-        adminRole.setAuthorityname(Authorities.ADMIN_ROLE);
+        adminRole.setRole(UserRole.ADMIN);
         Authorities userRole = new Authorities();
-        userRole.setAuthorityname(Authorities.USER_ROLE);
+        userRole.setRole(UserRole.TESTER);
         authoritiesFacade.create(userRole);
         authoritiesFacade.create(adminRole);
         Authorities[] adminAuthorities = {adminRole};
@@ -126,11 +127,11 @@ public class PreloadController {
         }
         List<Device> routersDevices = new ArrayList<Device>();
         List<Device> switchesDevices = new ArrayList<Device>();
-        String[] routersNames = {"router 1", "router 2", "router 3"};
-        String[] switchesNames = {"switch 1", "switch 2"};
+        String[] routersNames = {"skaner1", "skaner2", "skaner3"};
+        //String[] switchesNames = {"switch 1", "switch 2"};
         List<List<?>> devicesAndNames = new ArrayList<List<?>>();
         devicesAndNames.add(Arrays.asList(new Object[]{routersDevices, routersNames}));
-        devicesAndNames.add(Arrays.asList(new Object[]{switchesDevices, switchesNames}));
+        //devicesAndNames.add(Arrays.asList(new Object[]{switchesDevices, switchesNames}));
         for (List<?> deviceAndName : devicesAndNames) {
             for (String deviceName : (String[]) deviceAndName.get(1)) {
                 Device d = new Device();
@@ -141,7 +142,7 @@ public class PreloadController {
         }
 
 
-        String[] equipmentNames = {"cable for router 1", "calble for router 2", "cable for router 3", "cable for switch 1", "cable for switch 2"};
+        String[] equipmentNames = {"kabel dla producenta A", "kabel dla producenta B"};
         Equipment e = null;
         for (String equipmentName : equipmentNames) {
             e = new Equipment();
@@ -149,29 +150,26 @@ public class PreloadController {
             equipmentFacade.create(e);
         }
 
-        Product web = new Product();
-        web.setName("web tier");
+        Product kodex = new Product();
+        kodex.setName("kodex");
 
-        Product rest = new Product();
-        rest.setName("rest tier");
+        Product backadm = new Product();
+        backadm.setName("backadm");
 
-        Product backend = new Product();
-        backend.setName("backend");
+        Product statos = new Product();
+        statos.setName("statos");
 
-        Product application = new Product();
-        application.setName("application server");
-        productFacade.create(web);
-        productFacade.create(rest);
-        productFacade.create(backend);
-        productFacade.create(application);
+        productFacade.create(kodex);
+        productFacade.create(backadm);
+        productFacade.create(statos);
 
 
-        String[] webTierFeatures = {"Manage tests", "Manage testg groups", "Manage devices", "Manage equipment", "Manage features"};
+        String[] webTierFeatures = {"Skanowanie produktu", "Dodawanie produktu", "Statystyki dla produktu"};
         Feature f = null;
         for (String featureName : webTierFeatures) {
             f = new Feature();
             f.setName(featureName);
-            f.setProduct(web);
+            f.setProduct(kodex);
             featureFacade.create(f);
         }
 
@@ -188,19 +186,37 @@ public class PreloadController {
         }
         releaseFacade.create(release);
 
-        TestGroup group = new TestGroup();
-        group.setName("FunctionalTest");
-        TestGroup.recalculatePath(group);
-        testGroupFacade.create(group);
+        TestGroup funcGroup = new TestGroup();
+        funcGroup.setName("Testy funkcjonalne");
+        TestGroup.recalculatePath(funcGroup);
+        testGroupFacade.create(funcGroup);
+        
+        TestGroup admGroup = new TestGroup();
+        admGroup.setName("Moduł administracji");
+        admGroup.setParentId(funcGroup);
+        TestGroup.recalculatePath(admGroup);
+        testGroupFacade.create(admGroup);
+        
+        TestGroup statGroup = new TestGroup();
+        statGroup.setName("Moduł statystyczny");
+        statGroup.setParentId(funcGroup);
+        TestGroup.recalculatePath(statGroup);
+        testGroupFacade.create(statGroup);
+        
+        
+        TestGroup nonFuncGroup = new TestGroup();
+        nonFuncGroup.setName("Testy niefunkcjonalne");
+        TestGroup.recalculatePath(nonFuncGroup);
+        testGroupFacade.create(nonFuncGroup);
 
         Test test = new Test();
         test.setDescription("some test");
         test.setName("some test");
-        test.setTestGroupidTestGroup(group);
+        test.setTestGroupidTestGroup(funcGroup);
         test.setFeatureidFeature(f);
         test.setProducts(new LinkedList<Product>());
-        test.getProducts().add(web);
-        test.getProducts().add(rest);
+        test.getProducts().add(kodex);
+        test.getProducts().add(backadm);
         testFacade.create(test);
 
         GroupOfDevices routers = new GroupOfDevices();
@@ -243,7 +259,7 @@ public class PreloadController {
         testhasEquipmentFacade.create(equipment);
 
         ProductState productState = new ProductState();
-        productState.setProduct(web);
+        productState.setProduct(kodex);
         productState.setDescription("description");
         productState.setTestidTest(test);
         productStateFacade.create(productState);
