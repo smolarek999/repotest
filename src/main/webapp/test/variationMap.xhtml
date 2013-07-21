@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    template="/template.xhtml">
+    <f:metadata>
+        <f:viewParam name="id" value="#{testVariationController.idTest}" />
+        <f:event type="preRenderComponent" listener="#{testVariationController.loadFromGetParameters()}"/>
+    </f:metadata>
+    <ui:define name="title">Variations</ui:define>
+    <ui:define name="body">
+        <ul>
+            <ui:repeat var="variation" value="#{testVariationController.variationNames}" >
+                <li>#{variation}</li>
+            </ui:repeat>
+        </ul>
+        <h:form>
+
+            <p:mindmap value="#{testVariationController.root}" style="width:100%;height:600px;border:1px solid black;">
+                <p:ajax event="select" listener="#{testVariationController.onNodeSelect}" />  
+                <p:ajax event="dblselect" listener="#{testVariationController.onNodeDblselect}" update="output" oncomplete="details.show()" />  
+            </p:mindmap>
+
+            <p:dialog widgetVar="details" header="Test variation details" resizable="false" modal="true" showEffect="fade" hideEffect="fade">  
+                <p:panel id="output">
+
+                    <ul>
+                        <ui:repeat var="desc" value="#{testVariationController.currentVariation.descriptions}" >
+                            <li>#{desc}</li>
+                        </ui:repeat>
+                    </ul>  
+                </p:panel>
+
+            </p:dialog>  
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

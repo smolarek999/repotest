@@ -1,0 +1,131 @@
+@Book{SEaT,
+author = {B. B. Agarwal,M. Gupta,S. P. Tayal},
+title = {Software Engineering and Testing},
+publisher = {Jones and Bartlett Publishers},
+year = {2008},
+address = {United Kingdom}
+}
+
+@Book{Fund,
+author = {R. Black and E.V. Veenendaal and Dorothy Graham},
+title = {Fundation of Software Testing},
+publisher = {Cengage},
+year = {2012}}
+% znalezc w tekscie
+
+@Book{TestingMatt,
+author = {Scott Loveland and Michael Shannon and Geoffrey Miller and Richard Prewitt},
+title = {Software Testing Techniques: Finding the Defects That Matter},
+publisher = {Cengage Learning},
+year = {2004}}
+
+
+@book{davies2011value,
+  title={Value Management: Translating Aspirations Into Performance},
+  author={Ed Burns and Chris Schalk },
+  isbn={9781409409557},
+  lccn={2011016174},
+  url={http://books.google.pl/books?id=iVhjVo3VPI0C},
+  year={2011},
+  publisher={Ashgate Publishing Company}
+}
+
+
+@book{jsfRef,
+  title={JavaServer Faces 2.0:The Complete Reference},
+  author={Davies, R.H. and Davis, A.J.},
+  isbn={0071625097},  
+  year={2009},
+  publisher={ McGraw-Hill Osborne Media}
+}
+@book{primeFaces,
+  title={JavaServer Faces 2.0:The Complete Reference},
+  author={Oleg Varaksin and Mert Caliskan},
+  isbn={978-1-84951-928-1},  
+  year={2013},
+  publisher={ Packt Publishing}
+}
+
+@book{peopleWare,
+  title={Automated software testing:introduction, management, and performance},
+  author={Elfriede Dustin and Jeff Rashka and John Paul},
+  isbn={978-1-84951-928-1},  
+  year={1999},
+  publisher={ Addison-Wesley Professional }
+}
+
+@misc{istqb,
+author = {ISTQB},
+title = {{International Software Testing Qualifications Board: Certified Tester Foundation Level Syllabus}},
+url = {http://www.istqb.org/downloads/finish/16/15.html},
+urldate = {10/05/13}
+}
+@misc{http,
+author = {w3c},
+title = {{Hypertext Transfer Protocol -- HTTP/1.1}},
+url = {http://www.w3.org/Protocols/rfc2616/rfc2616.html},
+urldate = {10/05/13}
+}
+@PROCEEDINGS{eurostar,
+  title = {1st EuroSTAR conference, London, Oct. 25-28, 1993},
+  booktitle = {1st EuroSTAR conference, London, Oct. 25-28, 1993},
+  publisher = {EuroSTAR},
+  
+}
+@INPROCEEDINGS{wmodel,
+  author = {Herzlich, P.},
+  title = {The Politics of Testing},
+  publisher = {1st EuroSTAR conference, London, Oct. 25-28, 1993},
+  year = {1993}
+}
+
+@Article{BUTTERFLY ,
+author = {Morton, S},
+title = {The Butterfly Model for Test Development},
+year = {2001},
+}
+
+@INPROCEEDINGS{sha2,
+  author = {N. Sklavos and O. Koufopavlou},
+  title = {On the hardware implementations of the sha-2(256,384,512) hash functions},
+  publisher = {Proceedings of the IEEE International Symposium on Circuits and Systems ISCAS 2003},
+  year = {2003}
+}
+
+@INPROCEEDINGS{hash,
+  author = {N. Sklavos and O. Koufopavlou},
+  title = {NIST. Announcing the secure hash standard.},
+  publisher = {Federal Information Processing Satndards Publication 180-2},
+  year = {2002}
+}
+
+@Article{Levenshtein ,
+author = {A. Levenshtein},
+title = {Binary codes capable of correcting deletions, insertions, and reversals},
+publisher = {Soviet Phys. Dokl., vol. 10, pp. 707–710},
+year = {1966},
+}
+
+@Article{materializedPath ,
+author = {H.A. Kuno and E.A. Rundensteiner},
+title = {Augmented Inherited MultiIndex Structure for Maintenance of Materialized Path Query Views},
+publisher = {RIDE-NDS, pp. 128-137},
+year = {1996},
+}
+
+
+@misc{jaas,
+author = {SUN},
+title = {Java Authentication and Authorization Service (JAAS)},
+url = {http:// java.sun.com/products/jaas/},
+urldate = {10/05/13}
+}
+
+@book{otss,
+  title={Testing IT: An Off-the-Shelf Software Testing Process},
+  author={John Watkins and  Simon Mills},
+  isbn={978-0521148016},  
+  year={2010},
+  publisher={ Cambridge University Press }
+}
+
