@@ -22,8 +22,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+import org.eclipse.persistence.oxm.annotations.XmlAccessMethods;
 
 /**
  *
@@ -32,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Test")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name = "Test.findAll", query = "SELECT t FROM Test t"),
     @NamedQuery(name = "Test.findByParent", query = "SELECT t FROM Test t WHERE t.testGroupidTestGroup.idTestGroup = :parentId")})
@@ -43,34 +48,53 @@ public class Test implements Serializable {
     @Basic(optional = false)
     @Column(name = "idTest")
     private Integer idTest;
-    @Size(max = 45)
+    @Size(max = 55)
     @Column(name = "name")
     private String name;
-    @Size(max = 45)
+    @Size(max = 511)
     @Column(name = "description")
     private String description;
-    @Size(max = 45)
+    @Size(max = 124)
     @Column(name = "Group_path")
     private String grouppath;
     @Size(max = 45)
     @Column(name = "VariationNumber")
     private String variationNumber;
-    @ManyToMany(mappedBy = "testCollection")
-    private Collection<Product> products;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testDefinition")
-    private Collection<TestExecution> testExecutionCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "test")
-    private Collection<TesthasEquipment> testhasEquipmentCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testidTest")
-    private Collection<ProductState> productStateCollection;
     @JoinColumn(name = "TestGroup_idTestGroup", referencedColumnName = "idTestGroup")
     @ManyToOne(optional = false)
     private TestGroup testGroupidTestGroup;
     @JoinColumn(name = "Feature_idFeature", referencedColumnName = "idFeature")
     @ManyToOne(optional = false)
     private Feature featureidFeature;
+    /**
+     * Collections
+     */
+    @ManyToMany(mappedBy = "testCollection")
+    private Collection<Product> products;
+    /**
+     * TEST EXECUTIONS mapping used only by JPA
+     */
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testDefinition")
+    @XmlTransient
+    private Collection<TestExecution> testExecutionCollection;
+    /**
+     * EQUIPMENTS
+     */
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "test")
+    private Collection<TesthasEquipment> testhasEquipmentCollection;
+    /**
+     * PRODUCT STATES
+     */
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testidTest")
+    private Collection<ProductState> productStateCollection;
+    /**
+     * SCRIPT STEPS
+     */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "testidTest")
     private Collection<TestStep> testStepCollection;
+    /**
+     * GROUP OF DEVICES
+     */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "test", fetch = FetchType.LAZY)
     private Collection<GroupOfDevices> devicesGroups;
 
@@ -80,6 +104,7 @@ public class Test implements Serializable {
     public Test(Integer idTest) {
         this.idTest = idTest;
     }
+
     public Integer getIdTest() {
         return idTest;
     }
@@ -95,6 +120,7 @@ public class Test implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
     public String getDescription() {
         return description;
     }
@@ -119,15 +145,14 @@ public class Test implements Serializable {
         this.variationNumber = variationNumber;
     }
 
-    @XmlTransient
     public Collection<Product> getProducts() {
         return products;
     }
+
     public void setProducts(Collection<Product> productCollection) {
         this.products = productCollection;
     }
 
-    @XmlTransient
     public Collection<TestExecution> getTestExecutionCollection() {
         return testExecutionCollection;
     }
@@ -136,7 +161,6 @@ public class Test implements Serializable {
         this.testExecutionCollection = testExecutionCollection;
     }
 
-    @XmlTransient
     public Collection<TesthasEquipment> getTesthasEquipmentCollection() {
         return testhasEquipmentCollection;
     }
@@ -145,7 +169,6 @@ public class Test implements Serializable {
         this.testhasEquipmentCollection = testhasEquipmentCollection;
     }
 
-    @XmlTransient
     public Collection<ProductState> getProductStateCollection() {
         return productStateCollection;
     }
@@ -170,7 +193,6 @@ public class Test implements Serializable {
         this.featureidFeature = featureidFeature;
     }
 
-    @XmlTransient
     public Collection<TestStep> getTestStepCollection() {
         return testStepCollection;
     }
@@ -179,7 +201,6 @@ public class Test implements Serializable {
         this.testStepCollection = testStepCollection;
     }
 
-    @XmlTransient
     public Collection<GroupOfDevices> getDevicesGroups() {
         return devicesGroups;
     }

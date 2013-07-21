@@ -1,17 +1,33 @@
 \select@language {polish}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Model kaskadowy}}{12}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Model kaskadowy, podzia\IeC {\l } na cz\IeC {\k e}\IeC {\'s}ci \cite {TestingMatt}}}{12}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Model V \cite {otss}}}{13}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Model W \cite {wmodel}}}{13}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Model "butterfly" \cite {BUTTERFLY}}}{14}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Model kaskadowy\relax }}{12}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Model kaskadowy, podzia\IeC {\l } na cz\IeC {\k e}\IeC {\'s}ci \cite {TestingMatt}\relax }}{12}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Model V \cite {otss}\relax }}{13}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Model W \cite {wmodel}\relax }}{13}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Model "butterfly" \cite {BUTTERFLY}\relax }}{14}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Architektura systemu}}{27}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Mou\IeC {\l }y systemu}}{30}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Alogrytm doboru stan\IeC {\'o}w produkto do przypadku testowego }}{34}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Architektura systemu\relax }}{27}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Modu\IeC {\l }y systemu\relax }}{30}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Algorytm doboru stan\IeC {\'o}w produktu do przypadku testowego \relax }}{34}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Organizacja plik\IeC {\'o}w projektu}}{36}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Organizacja plik\IeC {\'o}w projektu\relax }}{37}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Baza danych, cz\IeC {\k e}\IeC {\'s}\IeC {\'c} odpowiedzialna za administracje u\IeC {\.z}ytkownikami\relax }}{39}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Baza danych, cz\IeC {\k e}\IeC {\'s}\IeC {\'c} odpowiedzialna za definicje danych dodatkowych\relax }}{40}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Baza danych, cz\IeC {\k e}\IeC {\'s}\IeC {\'c} odpowiedzialna za definicje test\IeC {\'o}w\relax }}{41}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Baza danych, cz\IeC {\k e}\IeC {\'s}\IeC {\'c} odpowiedzialna za wykonanie test\IeC {\'o}w\relax }}{41}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Strona g\IeC {\l }\IeC {\'o}wna aplikacji internetowej\relax }}{43}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Stan produktu ze zdefiniowanym warunkiem\relax }}{47}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Podsumowanie definicji testu\relax }}{48}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Wyb\IeC {\'o}r urz\IeC {\k a}dze\IeC {\'n} ko\IeC {\'n}cowych dla planu testowego\relax }}{49}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Ekran prezentuj\IeC {\k a}cy wykonanie testu\relax }}{50}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Prezentacja zmiany stanu testu\relax }}{51}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Archiwum dla wykonania testu}}}{51}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Strona g\IeC {\l }\IeC {\'o}wna aplikacji}}}{51}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Permutacja dla testu.\relax }}{52}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Permutacja element\IeC {\'o}w testu}}}{52}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Permutacja urz\IeC {\k a}dze\IeC {\'n} dla permutacji elementow}}}{52}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Detale permutacji element\IeC {\'o}w}}}{52}
 \addvspace {10\p@ }

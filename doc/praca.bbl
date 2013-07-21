@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{postman}
+A.~Asthana.
+\newblock http://www.getpostman.com/.
+
 \bibitem{SEaT}
 S.~P.~T. B.~B.~Agarwal, M.~Gupta.
 \newblock {\em Software Engineering and Testing}.
@@ -31,6 +35,18 @@ ISTQB.
 \newblock {International Software Testing Qualifications Board: Certified
   Tester Foundation Level Syllabus}.
 
+\bibitem{materializedPath}
+H.~Kuno and E.~Rundensteiner.
+\newblock Augmented inherited multiindex structure for maintenance of
+  materialized path query views.
+\newblock 1996.
+
+\bibitem{Levenshtein}
+A.~Levenshtein.
+\newblock Binary codes capable of correcting deletions, insertions, and
+  reversals.
+\newblock 1966.
+
 \bibitem{TestingMatt}
 S.~Loveland, M.~Shannon, G.~Miller, and R.~Prewitt.
 \newblock {\em Software Testing Techniques: Finding the Defects That Matter}.
@@ -40,6 +56,22 @@ S.~Loveland, M.~Shannon, G.~Miller, and R.~Prewitt.
 S.~Morton.
 \newblock The butterfly model for test development.
 \newblock 2001.
+
+\bibitem{hash}
+N.~Sklavos and O.~Koufopavlou.
+\newblock Nist. announcing the secure hash standard.
+\newblock Federal Information Processing Satndards Publication 180-2, 2002.
+
+\bibitem{sha2}
+N.~Sklavos and O.~Koufopavlou.
+\newblock On the hardware implementations of the sha-2(256,384,512) hash
+  functions.
+\newblock Proceedings of the IEEE International Symposium on Circuits and
+  Systems ISCAS 2003, 2003.
+
+\bibitem{jaas}
+SUN.
+\newblock Java authentication and authorization service (jaas).
 
 \bibitem{primeFaces}
 O.~Varaksin and M.~Caliskan.

@@ -18,15 +18,21 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author pawel
  */
+//JAX-B
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+//JPA
 @Entity
 @Table(name = "TestExecution_has_TestStep")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TestExecutionStep.findAll", query = "SELECT t FROM TestExecutionStep t")})
 public class TestExecutionStep implements Serializable {
@@ -44,6 +50,7 @@ public class TestExecutionStep implements Serializable {
     private TestStep testStep;
     @JoinColumn(name = "TestExecution_idTestExecution", referencedColumnName = "idTestExecution")
     @ManyToOne(optional = false)
+    @XmlTransient
     private TestExecution testExecution;
 
     public TestExecutionStep() {

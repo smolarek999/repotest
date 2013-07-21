@@ -14,6 +14,18 @@
         <p:inputTextarea id="description" value="#{testPlanController.selected.description}" title="#{bundle.CreateTestPlanTitle_description}" />
 
 
+        <p:outputLabel value="Load" for="loadCollection" />
+        <p:selectOneMenu id="loadCollection" value="#{testPlanController.selected.load}" filter="true" filterMatchMode="startsWith" >
+            <f:selectItems value="#{loadTableController.items}"
+                           var="loadCollectionItem"
+                           itemValue="#{loadCollectionItem}"
+                           itemLabel="#{loadCollectionItem.name.toString()}"
+                           />
+            <f:converter binding="#{loadTableConverter}"/>
+        </p:selectOneMenu>
+        
+        
+        
         <p:outputLabel value="Features" for="featureCollection" />
         <p:selectManyMenu id="featureCollection" value="#{testPlanController.selected.features}" >
             <f:selectItems value="#{featureController.items}"

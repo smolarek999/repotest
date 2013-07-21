@@ -31,7 +31,7 @@
 
                         <p:outputLabel value="#{bundle.CreateUsersLabel_authoritiesCollection}" for="authoritiesCollection" />
                         <p:selectManyMenu id="authoritiesCollection" value="#{usersController.selected.authoritiesCollection}" >
-                            <f:selectItems value="#{authoritiesController.items}"
+                            <f:selectItems value="#{usersController.authorities}"
                                            var="authoritiesCollectionItem"
                                            itemValue="#{authoritiesCollectionItem}"
                                            itemLabel="#{authoritiesCollectionItem.authorityname.toString()}"

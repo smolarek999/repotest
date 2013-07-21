@@ -4,6 +4,7 @@
  */
 package edu.agh.repotest.session;
 
+import edu.agh.repotest.dao.UserRole;
 import edu.agh.repotest.dao.Users;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -36,9 +37,9 @@ public class UsersFacade extends AbstractFacade<Users> {
         return query.getSingleResult();
     }
 
-    public List<Users> getByAuthorityname(String authorityname) {
-        final TypedQuery<Users> query = em.createNamedQuery("Users.findByAuthorityname", Users.class);
-        query.setParameter("authorityname", authorityname);
+    public List<Users> getByRole(UserRole role) {
+        final TypedQuery<Users> query = em.createNamedQuery("Users.findByRole", Users.class);
+        query.setParameter("role", role);
         return query.getResultList();
     }
 }

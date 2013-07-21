@@ -2,49 +2,54 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: praca.aux
 A level-1 auxiliary file: rozdzial1.aux
 A level-1 auxiliary file: rozdzial2.aux
+A level-1 auxiliary file: rozdzial3.aux
 The style file: abbrv.bst
 Database file #1: bibliografia.bib
 Warning--empty booktitle in wmodel
+Warning--empty journal in materializedPath
+Warning--empty journal in Levenshtein
 Warning--empty journal in BUTTERFLY
-You've used 11 entries,
+Warning--empty booktitle in hash
+Warning--empty booktitle in sha2
+You've used 17 entries,
             2118 wiz_defined-function locations,
-            556 strings with 4911 characters,
-and the built_in function-call counts, 2698 in all, are:
-= -- 232
-> -- 133
+            584 strings with 5661 characters,
+and the built_in function-call counts, 4066 in all, are:
+= -- 353
+> -- 193
 < -- 0
-+ -- 55
-- -- 42
-* -- 129
-:= -- 477
-add.period$ -- 31
-call.type$ -- 11
-change.case$ -- 47
++ -- 79
+- -- 60
+* -- 185
+:= -- 711
+add.period$ -- 47
+call.type$ -- 17
+change.case$ -- 74
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 121
-empty$ -- 242
-format.name$ -- 42
-if$ -- 561
+cite$ -- 23
+duplicate$ -- 181
+empty$ -- 372
+format.name$ -- 60
+if$ -- 848
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 16
-newline$ -- 56
-num.names$ -- 22
-pop$ -- 95
+int.to.str$ -- 17
+missing$ -- 20
+newline$ -- 84
+num.names$ -- 34
+pop$ -- 142
 preamble$ -- 1
-purify$ -- 43
+purify$ -- 64
 quote$ -- 0
-skip$ -- 78
+skip$ -- 129
 stack$ -- 0
-substring$ -- 57
-swap$ -- 10
+substring$ -- 87
+swap$ -- 14
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 30
-warning$ -- 2
-while$ -- 22
-width$ -- 13
-write$ -- 106
-(There were 2 warnings)
+type$ -- 54
+warning$ -- 6
+while$ -- 34
+width$ -- 19
+write$ -- 158
+(There were 6 warnings)

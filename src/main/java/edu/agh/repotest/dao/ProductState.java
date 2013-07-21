@@ -5,7 +5,6 @@
 package edu.agh.repotest.dao;
 
 import edu.agh.repotest.util.ConditionHelper;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
@@ -21,8 +20,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "ProductState")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name = "ProductState.findAll", query = "SELECT p FROM ProductState p")})
 public class ProductState extends EnityWithCondition{
@@ -45,17 +46,19 @@ public class ProductState extends EnityWithCondition{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer id;
-    @Size(max = 45)
+    @Size(max = 511)
     @Column(name = "Description")
     private String description;
     @Size(max = 45)
     @Column(name = "ConditionCol")
     private String condition;
+    @XmlTransient
     @ManyToMany(mappedBy = "productStates")
     private Collection<TestExecution> testExecutionCollection;
     @JoinColumn(name = "Product_idProduct", referencedColumnName = "idProduct")
     @OneToOne(optional = false)
     private Product product;
+    @XmlTransient
     @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")
     @ManyToOne(optional = false)
     private Test testidTest;
@@ -85,7 +88,10 @@ public class ProductState extends EnityWithCondition{
     }
 
     
-
+@Override
+    public String getConditionalDesc() {
+        return "ProductState: " + getProduct().getName() + getDescription();
+    }
     public String getCondition() {
         return ConditionHelper.createToString(getRawCondition());
     }
@@ -121,6 +127,11 @@ public class ProductState extends EnityWithCondition{
 
     public void setTestidTest(Test testidTest) {
         this.testidTest = testidTest;
+    }
+
+    @Override
+    public String getConditionalId() {
+        return "P" + id;
     }
 
     @Override

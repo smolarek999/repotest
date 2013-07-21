@@ -45,10 +45,12 @@ public abstract class AbstractController<T> {
     }
 
     public T getSelected() {
+        System.out.print("get selected " + itemClass);
         return selected;
     }
 
     public void setSelected(T selected) {
+        System.out.print("setSelected " + itemClass);
         this.selected = selected;
     }
 

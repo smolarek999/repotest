@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
 <glassfish-web-app error-url="">
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+  </servlet>
   <class-loader delegate="true"/>
   <jsp-config>
     <property name="keepgenerated" value="true">
@@ -8,9 +11,13 @@
     </property>
   </jsp-config>
   <security-role-mapping>
-        <role-name>ADMIN</role-name>
-        
-        <group-name>ADMIN</group-name>
-        <principal-name>ADMIN</principal-name>
-    </security-role-mapping>
+    <role-name>ADMIN</role-name>
+    <group-name>ADMIN</group-name>
+    <principal-name>ADMIN</principal-name>
+  </security-role-mapping>
+  <security-role-mapping>
+    <role-name>TESTER</role-name>
+    <group-name>TESTER</group-name>
+    <principal-name>TESTER</principal-name>
+  </security-role-mapping>
 </glassfish-web-app>

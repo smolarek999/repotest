@@ -13,12 +13,15 @@ import edu.agh.repotest.dao.TestPlan;
 import edu.agh.repotest.dao.TestStatus;
 import edu.agh.repotest.dao.TestStep;
 import edu.agh.repotest.dao.TesthasEquipment;
+import edu.agh.repotest.dao.UserRole;
 import edu.agh.repotest.dao.Users;
+import edu.agh.repotest.jsf.util.JsfUtil;
 import edu.agh.repotest.session.TestFacade;
 import edu.agh.repotest.session.TestPlanFacade;
 import edu.agh.repotest.session.UsersFacade;
 import edu.agh.repotest.util.ConditionHelper;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -51,6 +54,8 @@ public class TestPlanController extends AbstractController<TestPlan> implements 
     Test selectedTest;
     Map<Integer, Device> devicesGroupSelectedDevice = new HashMap<Integer, Device>();
     List<Users> availableTeamMembers;
+    
+    private int id;
 
     public TestPlanController() {
         super(TestPlan.class);
@@ -60,18 +65,23 @@ public class TestPlanController extends AbstractController<TestPlan> implements 
     @PostConstruct
     public void init() {
         super.setFacade(ejbFacade);
-        testsAvailableToAdd = testFacade.findAll();
-        addedTests = new ArrayList<TestExecution>();
+    }
 
+    public void loadFromGetParameters() {
+        if (!FacesContext.getCurrentInstance().isPostback()) {
+            setSelected(ejbFacade.find(id));
+        }
     }
 
     @Override
     public TestPlan prepareCreate(ActionEvent event) {
         if (!FacesContext.getCurrentInstance().isPostback()) {
             super.prepareCreate(event);
+            testsAvailableToAdd = testFacade.findAll();
+            addedTests = new ArrayList<TestExecution>();
             getSelected().setTests(new LinkedList<TestExecution>());
-            availableTeamMembers = usersFacade.getByAuthorityname(Authorities.USER_ROLE);
-           
+            availableTeamMembers = usersFacade.getByRole(UserRole.TESTER);
+
         }
 
         return getSelected();
@@ -101,10 +111,9 @@ public class TestPlanController extends AbstractController<TestPlan> implements 
                 setSelectedTest(testExecution.getTestDefinition());
                 removeTest();
             }
-
         }
-
     }
+
     public void addSelectedTest() {
         addSelectedTest(true);
     }
@@ -143,6 +152,8 @@ public class TestPlanController extends AbstractController<TestPlan> implements 
         for (TestExecution testExecution : getSelected().getTests()) {
             cookTestExecution(testExecution);
         }
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        getSelected().setCreationDate(timestamp);
         super.saveNew(event);
         // add devices
         // add test steps 1 
@@ -249,6 +260,13 @@ public class TestPlanController extends AbstractController<TestPlan> implements 
 
     public void setAvailableTeamMembers(List<Users> availableTeamMembers) {
         this.availableTeamMembers = availableTeamMembers;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

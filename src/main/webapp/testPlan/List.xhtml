@@ -45,9 +45,11 @@
                     </f:facet>
                     <h:outputText value="#{item.creationDate}"/>
                 </p:column>
+                 <p:column >
+                    <h:button id="viewButton" value="Show details" outcome="/userflow/showPlanDetails"><f:param  name="id" value="#{item.idTestPlan}"/></h:button>
+                </p:column>
                 <f:facet name="footer">
-                     <p:button outcome="/testPlan/Create" styleClass="btn btn-mini btn-success" value="Create Test" />
-                    <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TestPlanViewForm" oncomplete="TestPlanViewDialog.show()" disabled="#{empty testPlanController.selected}"/>
+                    <p:button outcome="/testPlan/Create" styleClass="btn btn-mini btn-success" value="Create Test" />
                     <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TestPlanEditForm" oncomplete="TestPlanEditDialog.show()" disabled="#{empty testPlanController.selected}"/>
                     <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{testPlanController.delete}" update=":growl,datalist" disabled="#{empty testPlanController.selected}"/>
                 </f:facet>

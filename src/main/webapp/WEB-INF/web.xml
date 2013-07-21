@@ -21,9 +21,18 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -42,6 +51,11 @@
         <description/>
         <role-name>ADMIN</role-name>
     </security-role>
+    <security-role>
+        <description/>
+        <role-name>TESTER</role-name>
+    </security-role>
+   
 
     <error-page>
         <error-code>403</error-code>
@@ -57,6 +71,10 @@
             <web-resource-name>Protected Admin Area</web-resource-name>
             <description></description>
             <url-pattern>/faces/testPlan/*</url-pattern>
+            <url-pattern>/faces/test/*</url-pattern>
+            <url-pattern>/faces/product/*</url-pattern>
+            <url-pattern>/faces/feature/*</url-pattern>
+            <url-pattern>/faces/equipment/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>HEAD</http-method>
@@ -67,6 +85,29 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
+            <role-name>ADMIN</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>User Pages</display-name>
+        <web-resource-collection>
+            <web-resource-name>Userflow Area</web-resource-name>
+            <description></description>
+            <url-pattern>/faces/userflow/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>TESTER</role-name>
             <role-name>ADMIN</role-name>
         </auth-constraint>
         <user-data-constraint>

@@ -21,7 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
     @NamedQuery(name = "Users.findByName", query = "SELECT u FROM Users u WHERE u.username = :username"),
-    @NamedQuery(name = "Users.findByAuthorityname", query = "SELECT u FROM Users u JOIN u.authoritiesCollection as a WHERE a.authorityname = :authorityname")
+    @NamedQuery(name = "Users.findByRole", query = "SELECT u FROM Users u JOIN u.authoritiesCollection as a WHERE a.role = :role")
 })
 public class Users implements Serializable {
 
@@ -128,6 +128,27 @@ public class Users implements Serializable {
 
     public void setTestExecutionCollection(Collection<TestExecution> testExecutionCollection) {
         this.testExecutionCollection = testExecutionCollection;
+    }
+
+    @Transient
+    public boolean hasRole(UserRole role) {
+        return roleInCollection(role);
+    }
+
+    @Transient
+    public boolean hasStrictRole(UserRole role) {
+        return authoritiesCollection.size() == 1
+                && roleInCollection(role);
+    }
+
+    @Transient
+    private boolean roleInCollection(UserRole role) {
+        for (Authorities authority : authoritiesCollection) {
+            if (authority.getRole().equals(role)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

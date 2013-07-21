@@ -5,6 +5,7 @@
 package edu.agh.repotest.dao;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -18,11 +19,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -32,12 +36,17 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "TestPlan")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TestPlan.findAll", query = "SELECT t FROM TestPlan t"),
+    @NamedQuery(name = "TestPlan.findByState", query = "SELECT t FROM TestPlan t WHERE t.planState = :state"),
     @NamedQuery(name = "TestPlan.findByUser", query = "SELECT t FROM TestPlan t JOIN t.team as user WHERE user = :user ")})
 public class TestPlan implements Serializable {
 
+    public enum State {
+
+        Open,
+        Closed
+    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,9 +59,8 @@ public class TestPlan implements Serializable {
     @Size(max = 45)
     @Column(name = "description")
     private String description;
-    @Size(max = 45)
     @Column(name = "creationDate")
-    private String creationDate;
+    private java.sql.Timestamp creationDate;
     @JoinTable(name = "TestPlan_has_Feature", joinColumns = {
         @JoinColumn(name = "TestPlan_idTestPlan", referencedColumnName = "idTestPlan")}, inverseJoinColumns = {
         @JoinColumn(name = "Feature_idFeature", referencedColumnName = "idFeature")})
@@ -63,10 +71,15 @@ public class TestPlan implements Serializable {
             @JoinColumn(name = "TestPlan_idTestPlan", referencedColumnName = "idTestPlan"), inverseJoinColumns =
             @JoinColumn(name = "Users_id", referencedColumnName = "userId"))
     private Collection<Users> team;
+   
+    @ManyToOne
+    @JoinColumn(name = "Load_Table_idLoad", referencedColumnName = "idLoad")
+    private Load load;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "testPlan")
     private Collection<TestExecution> tests;
+    @Column(name="currentState")
     @Enumerated(EnumType.STRING)
-    State planState;
+    State planState = State.Open;
 
     public TestPlan() {
     }
@@ -100,15 +113,14 @@ public class TestPlan implements Serializable {
         this.description = description;
     }
 
-    public String getCreationDate() {
+    public Timestamp getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(Timestamp creationDate) {
         this.creationDate = creationDate;
     }
 
-    @XmlTransient
     public Collection<Feature> getFeatures() {
         return features;
     }
@@ -161,10 +173,12 @@ public class TestPlan implements Serializable {
         return true;
     }
 
-    public enum State {
+    public Load getLoad() {
+        return load;
+    }
 
-        Open,
-        Closed
+    public void setLoad(Load load) {
+        this.load = load;
     }
 
     @Override

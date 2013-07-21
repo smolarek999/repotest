@@ -6,6 +6,11 @@ package edu.agh.repotest.jsf.controller;
 
 import edu.agh.repotest.dao.Test;
 import edu.agh.repotest.dao.TestExecution;
+import edu.agh.repotest.dao.TestStatus;
+import edu.agh.repotest.dao.TestStatusChange;
+import edu.agh.repotest.dao.UserRole;
+import edu.agh.repotest.dao.Users;
+import edu.agh.repotest.jsf.util.JsfUtil;
 import edu.agh.repotest.session.TestExecutionFacade;
 import java.io.Serializable;
 import java.util.List;
@@ -24,25 +29,56 @@ import javax.faces.context.FacesContext;
 @ViewScoped
 public class TestExecutionController extends AbstractController<TestExecution> implements Serializable {
 
+    @ManagedProperty("#{loggedUserController}")
+    LoggedUserController userController;
     @EJB
     TestExecutionFacade testExecutionFacade;
     private int idTestExecution;
+    private TestStatus previousStatus;
+    
+    private List<TestStatusChange> changesOnTest;
+    /**
+     * Lazy loaded
+     */
     private List<TestExecution> takenTests;
-    @ManagedProperty("#{loggedUserController}")
-    LoggedUserController userController;
-
+    
     @PostConstruct
     public void init() {
         super.setFacade(testExecutionFacade);
         System.out.println("TestExecutionController.init");
 
     }
+    
+    public void update( TestStatus status ){
+        System.out.println("TestExecutionController update");
+        if( status.isValidTestExecution(getSelected()) ){
+            getSelected().setStatus(status);
+            testExecutionFacade.edit(getSelected(), previousStatus);
+        }else{
+            
+        }
+        
+    }
 
+    
     public void loadFromGetParameters() {
-        System.out.println("TestExecutionController.loadFromGetParameters");
         if (!FacesContext.getCurrentInstance().isPostback()) {
             setSelected(testExecutionFacade.find(idTestExecution));
+            previousStatus = getSelected().getStatus();
+            if (!isUserAllowed()) {
+                JsfUtil.addErrorMessage("You are not owner of this tests, readonly");
+            }
         }
+    }
+    
+    // Getters and setters ----------------------------------------------------
+
+    public boolean isUserAllowed() {
+        Users user = userController.getLoggedUser();
+        if (user.hasStrictRole(UserRole.TESTER)) {
+            return getSelected().getTester().equals(user);
+        }
+        return true;
     }
 
     public Test getTestDefinition() {
@@ -54,7 +90,6 @@ public class TestExecutionController extends AbstractController<TestExecution> i
     }
 
     public void setIdTestExecution(int idTestExecution) {
-        System.out.println("setIdTestExecution");
         this.idTestExecution = idTestExecution;
     }
 
@@ -71,6 +106,13 @@ public class TestExecutionController extends AbstractController<TestExecution> i
 
     public void setUserController(LoggedUserController userController) {
         this.userController = userController;
+    }
+
+    public List<TestStatusChange> getChangesOnTest() {
+        if( changesOnTest == null ){
+            changesOnTest = testExecutionFacade.findByTestExecution(getSelected());
+        }
+        return changesOnTest;
     }
     
 }

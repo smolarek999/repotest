@@ -47,7 +47,7 @@ public class TestSelectionController {
         availableTests.remove(selectedTest);
         selectedTest.setStatus(TestStatus.IN_PROGRESS);
         selectedTest.setTester(userController.getLoggedUser());
-        testExecutionFacade.edit(selectedTest);
+        testExecutionFacade.edit(selectedTest,TestStatus.WAITING);
     }
     
     public void setAvailableTests( List<TestExecution> availableTests ){

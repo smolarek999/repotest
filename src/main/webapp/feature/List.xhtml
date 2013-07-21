@@ -45,11 +45,11 @@
                     </f:facet>
                     <h:outputText value="#{item.releaseSince}"/>
                 </p:column>
-                <p:column sortBy="#{item.productId}" filterBy="#{item.productId}">
+                <p:column sortBy="#{item.product}" filterBy="#{item.product}">
                     <f:facet name="header">
                         <h:outputText value="#{bundle.ListFeatureTitle_productId}"/>
                     </f:facet>
-                    <h:outputText value="#{item.productId}"/>
+                    <h:outputText value="#{item.product.name}"/>
                 </p:column>
                 <f:facet name="footer">
                     <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{featureController.prepareCreate}" update=":FeatureCreateForm" oncomplete="FeatureCreateDialog.show()"/>

@@ -21,8 +21,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 /**
  *
@@ -33,6 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Feature.findAll", query = "SELECT f FROM Feature f")})
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Feature implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,18 +54,20 @@ public class Feature implements Serializable {
     @Size(max = 45)
     @Column(name = "releaseSince")
     private String releaseSince;
-    
     @ManyToOne
     @JoinColumn(name = "productId",referencedColumnName = "idProduct")
+    @XmlTransient
     private Product product;
     @ManyToMany(mappedBy = "features")
+    @XmlTransient
     private Collection<TestPlan> testPlanCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "featureidFeature")
+    @XmlTransient
     private Collection<Test> testCollection;
 
     public Feature() {
     }
-
+    
     public Feature(Integer idFeature) {
         this.idFeature = idFeature;
     }
@@ -105,7 +112,6 @@ public class Feature implements Serializable {
         this.product = product;
     }
 
-    @XmlTransient
     public Collection<TestPlan> getTestPlanCollection() {
         return testPlanCollection;
     }
@@ -114,7 +120,6 @@ public class Feature implements Serializable {
         this.testPlanCollection = testPlanCollection;
     }
 
-    @XmlTransient
     public Collection<Test> getTestCollection() {
         return testCollection;
     }
@@ -142,7 +147,6 @@ public class Feature implements Serializable {
         }
         return true;
     }
-
     @Override
     public String toString() {
         return "edu.agh.repotest.dao.Feature[ idFeature=" + idFeature + " ]";

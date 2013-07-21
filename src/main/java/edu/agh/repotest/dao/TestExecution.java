@@ -28,16 +28,20 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-
 /**
  *
  * @author pawel
  */
+//JAX-B
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+//JPA
 @Entity
 @Table(name = "TestExecution")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TestExecution.findAll", query = "SELECT t FROM TestExecution t"),
     @NamedQuery(name = "TestExecution.findByTestPlanUserAndStatus", query = "SELECT t FROM TestExecution t JOIN t.testPlan.team as user WHERE t.status = :status AND user = :user"),
@@ -72,6 +76,7 @@ public class TestExecution implements Serializable {
     @JoinColumn(name = "Users_id", referencedColumnName = "userId")
     @ManyToOne(optional = false)
     private Users tester;
+    @XmlTransient
     @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")
     @ManyToOne(optional = false)
     private Test testDefinition;
@@ -111,10 +116,12 @@ public class TestExecution implements Serializable {
     }
 
     public String getComments() {
+        System.out.print("Test execution getComments");
         return comments;
     }
 
     public void setComments(String comments) {
+        System.out.print("Test execution setComments");
         this.comments = comments;
     }
 

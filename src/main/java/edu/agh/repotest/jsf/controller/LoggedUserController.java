@@ -7,6 +7,7 @@ package edu.agh.repotest.jsf.controller;
 import edu.agh.repotest.dao.Authorities;
 import edu.agh.repotest.dao.TestExecution;
 import edu.agh.repotest.dao.TestPlan;
+import edu.agh.repotest.dao.UserRole;
 import edu.agh.repotest.dao.Users;
 import edu.agh.repotest.session.TestExecutionFacade;
 import edu.agh.repotest.session.TestPlanFacade;
@@ -75,20 +76,12 @@ public class LoggedUserController implements Serializable{
     }
     
      public boolean isAdmin(){
-        return !isNonLoggedUser() && userHasAuthority(Authorities.ADMIN_ROLE);
+         
+        return !isNonLoggedUser() && loggedUser.hasRole(UserRole.ADMIN);
     }
      
       public boolean isUser(){
-        return  !isNonLoggedUser() && userHasAuthority(Authorities.USER_ROLE);
+        return  !isNonLoggedUser() && loggedUser.hasRole(UserRole.TESTER);
     }
-      
-    private boolean userHasAuthority( String authority){
-        for( Authorities authorities : loggedUser.getAuthoritiesCollection()){
-            if (authorities.getAuthorityname().equals(authority)){
-                return true;
-            }
-        }
-        return false;
-        
-    }
+ 
 }

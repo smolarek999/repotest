@@ -19,7 +19,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Test_has_Equipment")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name = "TesthasEquipment.findAll", query = "SELECT t FROM TesthasEquipment t")})
 public class TesthasEquipment extends EnityWithCondition {
@@ -49,11 +53,18 @@ public class TesthasEquipment extends EnityWithCondition {
     private Equipment equipment;
     @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")
     @ManyToOne(optional = false)
+    @XmlTransient
     private Test test;
     
 
     public TesthasEquipment() {
     }
+
+    @Override
+    public String getConditionalId() {
+        return "E" + id;
+    }
+    
 
     public Integer getId() {
         return id;
@@ -123,7 +134,10 @@ public class TesthasEquipment extends EnityWithCondition {
         }
         return true;
     }
-
+    @Override
+    public String getConditionalDesc() {
+        return "Equipment: " + getEquipment().getName();
+    }
     @Override
     public String toString() {
         return "edu.agh.repotest.dao.TesthasEquipment[ testhasEquipmentPK=" + id + " ]";

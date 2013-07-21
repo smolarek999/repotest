@@ -63,5 +63,8 @@ public abstract class AbstractFacade<T> {
     public Map<String, Object> getEmProperties(){
         return getEntityManager().getProperties();
     }
+    public void clear(){
+        getEntityManager().clear();
+    }
     
 }

@@ -21,11 +21,18 @@
                         <p:outputLabel value="#{bundle.CreateFeatureLabel_description}" for="description" />
                         <p:inputText id="description" value="#{featureController.selected.description}" title="#{bundle.CreateFeatureTitle_description}" />
 
-                        <p:outputLabel value="#{bundle.CreateFeatureLabel_releaseSince}" for="releaseSince" />
-                        <p:inputText id="releaseSince" value="#{featureController.selected.releaseSince}" title="#{bundle.CreateFeatureTitle_releaseSince}" />
+                        <p:outputLabel value="#{bundle.CreateFeatureLabel_releaseSince}" for="releaseId" />
+                        <p:selectOneMenu id="releaseId" value="#{featureController.selected.releaseSince}">
+                            <f:selectItems  value="#{releaseTableController.items}" var="release" noSelectionValue="Select one" itemValue="#{release.idRelease}" itemLabel="#{release.name}"/>
+                            <f:converter binding="#{releaseTableConverter}"/>
+                        </p:selectOneMenu>
 
+                        
                         <p:outputLabel value="#{bundle.CreateFeatureLabel_productId}" for="productId" />
-                        <p:inputText id="productId" value="#{featureController.selected.productId}" title="#{bundle.CreateFeatureTitle_productId}" />
+                        <p:selectOneMenu id="productId" value="#{featureController.selected.product}">
+                            <f:selectItems  value="#{productController.items}" var="prod" noSelectionValue="Select one" itemValue="#{prod.idProduct}" itemLabel="#{prod.name}"/>
+                            <f:converter binding="#{featureConverter}"/>
+                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{featureController.saveNew}" value="#{bundle.Save}" update="display,:FeatureListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,FeatureCreateDialog);"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="FeatureCreateDialog.hide()"/>

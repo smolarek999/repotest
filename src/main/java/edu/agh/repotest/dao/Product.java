@@ -24,8 +24,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -34,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Product")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")})
 public class Product implements Serializable {
@@ -42,7 +49,9 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idProduct")
+    
     private Integer idProduct;
+    
     @Size(max = 100)
     @Column(name = "name")
     private String name;
@@ -54,11 +63,14 @@ public class Product implements Serializable {
         @JoinColumn(name = "Product_idProduct", referencedColumnName = "idProduct")}, inverseJoinColumns = {
         @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")})
     @ManyToMany
+    @XmlTransient
     private Collection<Test> testCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "product")
+    @XmlTransient
     private ProductState productState;
     
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @XmlElement(name="features")
     private Collection<Feature> features;
 
     public Product() {

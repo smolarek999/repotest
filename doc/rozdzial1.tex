@@ -1,22 +1,22 @@
 \chapter{Wstęp}
-Testowanie oprogramowania ma za zadanie wykrycie i poprawienie istniejących błędów w oprogramowaniu, tak by nie występowały one w produkcie końcowym, drugim z zadań testowania jest sprawdzenie czy produkt działa według oczekiwań klienta. Założeniem testowania oprogramowania nie jest natomiast przedstawienie dowodu iż oprogramowanie jest pozbawione błędów. Dowiedzenie bezbłędności oprogramowania jest niewykonalne dla dużych systemów, teoretycznie istnieje taka możliwość dla pewnej ilości małych, nieskomplikowanych systemów jednak nakład pracy potrzebny dla wykonania wszystkich możliwych kombinacji jest na tyle duży iż nie jest on opłacalny ekonomicznie. 
+Testowanie oprogramowania ma za zadanie wykrycie i poprawienie istniejących błędów w oprogramowaniu, tak by nie występowały one w produkcie końcowym. Celem testowania jest też sprawdzenie czy produkt zachowuje się w sposób oczekiwany przez klienta i spełnia jego scenariusze biznesowe. Założeniem testowania oprogramowania nie jest natomiast przedstawienie dowodu iż oprogramowanie jest pozbawione błędów. Dowiedzenie bezbłędności oprogramowania jest niewykonalne dla dużych systemów, teoretycznie istnieje taka możliwość dla pewnej ilości małych, nieskomplikowanych systemów jednak nakład pracy potrzebny dla wykonania wszystkich możliwych kombinacji jest na tyle duży iż nie jest on opłacalny ekonomicznie. 
 
-Kluczowym zagadnieniem podczas testowania oprogramowania jest więc wykonanie odpowienich przypadków testowych tak by przy określonym czasie i wielkości zespółu testerskiego zapewnić możliwie największą jakość oprogramowania poprzez wykrycie kluczowych błędów z perspektywy użycia produktu końcowego.  
+Kluczowym zagadnieniem podczas testowania oprogramowania jest więc wykonanie odpowiednich przypadków testowych tak by przy określonym czasie i wielkości zespołu testerskiego zapewnić możliwie największą jakość oprogramowania poprzez wykrycie kluczowych błędów z perspektywy użycia produktu końcowego.  
 
-Cykl testowania oprogramowania można podzielić na kilka faz: analiza wymagań, dokumentacji i innych składowych oprogramowania która dostarcza wiedzy o tym co i jak należy testować, projektowaniu przypadków testowych na podstawie informacji dostarcznych przez analizę, doboru odpowiednich przypadków testowych do planu testów które zostaną wykonane, wykonaniu przypadków testowych i logowaniu wyników, analizy wyników wykonania przypadków testowych, zgłoszenia incydentów do zespołu programistycznego, weryfikacji poprawy zgłoszonych incydentów i przeprowadzeniu regresji.
+Cykl testowania oprogramowania można podzielić na kilka faz: analiza wymagań, dokumentacji i innych artefaktów oprogramowania w celu zebrania istotnych informacji o oczekiwanym zachowaniu, projektowanie przypadków testowych na podstawie informacji dostarczanych przez analizę, dobór odpowiednich przypadków testowych do planu testów, wykonanie przypadków testowych przypisanych w planie testów, logowanie wyników, analiza wyników, zgłaszanie incydentów do zespołu programistycznego, weryfikacja poprawy zgłoszonych incydentów i przeprowadzanie regresji.
 
-Cykl poprzez swoją złożoność może być wspierany przez narzędzia informatyczne, specyficzne dla każdej z faz. W ramach niniejszej pracy stworzone zostanie repozytorium do przechowywania testów oprogramowania. Poprzez repozytorium autor rozumie miejsce przechowujące wszystkie dane określonego typu, udostępniające prosty sposób przeglądania i dodawania danych. Repozytorium nie udostępnia dostępu swobodnego, dostęp wymaga zautoryzowania dostępu poprzez okazanie loginu i hasła użytkowika. Dokładny opis i funkcjonalności stworzonego oprogramowania czytelnik znajdzie w rozdziale trzecim, czwartym i piątym. 
+Cykl poprzez swoją złożoność może być wspierany przez narzędzia informatyczne, specyficzne dla każdej z faz. W ramach niniejszej pracy zostało zaprojektowane i zaimplementowane repozytorium do przechowywania testów oprogramowania. Poprzez repozytorium autor rozumie centralne miejsce przechowujące wszystkie dane określonego typu, udostępniające prosty sposób przeglądania, edycji i dodawania danych. Repozytorium nie udostępnia dostępu swobodnego, dostęp wymaga autoryzowania dostępu poprzez okazanie loginu i hasła użytkownika. Dokładny opis i funkcjonalności stworzonego oprogramowania czytelnik znajdzie w rozdziale trzecim, czwartym i piątym. 
 
-Celem niniejszej pracy jest przedstawienie projektu i implementacji wyżej wymienionego repozytorium przy założeniu spełnienia specyficznych funkcjonalności. Repozytorium dedykowane jest dla systemów które dedykowane są na wiele urządzeń i ich czas życia może być dłuższy niż jedno wydanie. Dokładna specyfika opisana została w rozdziale trzecim. Przez system autor rozumie zbiór programów działających w pewnym środowisku które jako całość dostarczają określonej funkcjonalności i spełniają określone procesy biznesowe. 
+Celem niniejszej pracy jest przedstawienie projektu i implementacji wyżej wymienionego repozytorium przy założeniu spełnienia specyficznych funkcjonalności. Repozytorium zapewnia wspiercie dla systemów których czas życia może być dłuższy niż jedno wydanie i są one dedykowane na wiele urządzeń. Dokładna specyfika opisana została w rozdziale trzecim. Przez system autor rozumie zbiór programów działających w pewnym środowisku które jako całość dostarczają określonej funkcjonalności i spełniają określone procesy biznesowe. 
 \section{Podział pracy}
 \begin{enumerate}
-  \item Rodział pierwszy zawiera wstęp wprowadzający w tematyke pracy i jej  cel
+  \item Rozdział pierwszy zawiera wstęp wprowadzający w tematykę pracy i jej  cel
   \item Rozdział drugi porusza podstawowe zagadnienia związane z procesem testowania oprogramowania
-  \item Rozdzaił trzeci przedstawia problem poruszony w niniejszej pracy i umieszcza go w rodzinie innych programów wspierający proces testowania
-  \item Rozdział czwarty opisuje projekt oprogramowania stworzonego podczas tworzenia niniejszej pracy
-  \item Rozdział piąty opisuje zagadnienia związane z implementają oprogramowania powstałęgo podczas tworzenia niniejszej pracy
-  \item Rozdział szósty opisuje podstawowe scenariusze użycia i zastosowania powstałego repozytorium oprogramowania w procesie testowania oprogramowania
-  \item Rozdział siódmy przedstawia wnioski i możliwości rozwojum repozytorium 
+  \item Rozdział trzeci przedstawia problem poruszony w niniejszej pracy i umieszcza go w rodzinie innych programów wspierający proces testowania
+  \item Rozdział czwarty opisuje projekt oprogramowania stworzonego w ramach niniejszej pracy
+  \item Rozdział piąty opisuje zagadnienia związane z implementacją oprogramowania powstałego w ramach niniejszej pracy
+  \item Rozdział szósty opisuje podstawowe scenariusze użycia i zastosowania stworzonego repozytorium oprogramowania w procesie testowania oprogramowania
+  \item Rozdział siódmy przedstawia wnioski i możliwości rozwoju repozytorium 
 \end{enumerate}
 
 
@@ -24,19 +24,19 @@ Celem niniejszej pracy jest przedstawienie projektu i implementacji wyżej wymie
 W niniejszym rozdziale przedstawione zostanie zagadnienie testowania oprogramowania w kontekście procesu wytwarzania oprogramowania. Omówione zostaną różne rodzaje cykli tworzenia oprogramowania i to w jaki sposób wpisany jest w nie proces testowania. Następnie omówiony zostanie temat strategii testowania oprogramowania i przedstawione ich rodzaje. Na zakończenie rozdziału przedstawione zostaną typy testów w podziale na dwie kategorie: obszar zastosowania i typ walidacji.
 \section{Testowanie w procesie tworzenia oprogramowania}
 \label{sec:testowanieWprocesie}
-Model tworzenia oprogramowania jest to usystematyzowany proces opisujący jakie kroki (zwane fazami) muszą zostać podjęte w celu stworzenia nowego produktu, bądź nowej wersji produktu. Model determinuje między innymi kolejność faz, ich częstotliwość, czas trwania, możliwość powrotu do faz wcześniejszych. Jedną z faz projektu informatycznego jest faza testowania. W zależności od modelu tworzenia oprogramowania, faza testownia przyjmuje postać całkowicie oddzielnej lub zintegrowanej z innymi wcześniejszymi fazami. Model określa również specyfikę testów które powinny być wykonane  i czas kiedy prowadzone jest projektowanie i analiza testów.
-Można wydzielić dwa typy modeli tworzenia oprogramowania: klasyczne i zwinne.  
+Model tworzenia oprogramowania jest to usystematyzowany proces opisujący jakie kroki (zwane fazami) muszą zostać podjęte w celu stworzenia nowego produktu, bądź nowej wersji produktu. Model determinuje między innymi kolejność faz, ich częstotliwość, czas trwania, możliwość powrotu do faz wcześniejszych. Jedną z faz projektu informatycznego jest faza testowania. W zależności od modelu tworzenia oprogramowania, faza testowania przyjmuje postać całkowicie oddzielnej lub zintegrowanej z innymi wcześniejszymi fazami. Model określa również specyfikę testów które powinny być wykonane  i czas kiedy prowadzone jest projektowanie i analiza testów.
+Można wydzielić dwa typy modeli tworzenia oprogramowania: tradycyjne i iteracyjne.  
 \section{Modele tradycyjne wytwarzania oprogramowania}
-Modele tradycyjne zakładają dokłade zdefiniowanie projektu i wykonanie go według liniowo ustalonej kolejności.
+Modele tradycyjne zakładają dokładne zdefiniowanie projektu i wykonanie go według liniowo ustalonej kolejności.
 \subsection{Model Kaskadowy}
-Model kaskadowy powstał w celu ujednolicenia faz potrzebnych do stworzenia oprogramowania. Zakłada iż każda faza następuje po zakończeniu poprzedniej, przy czym przed przejściem do kolejnej fazy nastąpić musi weryfikacja poprzez spełnienie kryterium wyjścia \cite{SEaT}. Model ten zakłada pełną specyfikacja wymagań i zaprojektowanie systemu przed implementacją. Pełna definicja wymagań ułatwia zaprojektowanie fazy testowej gdyż dane wejściowe są znane. W modelu tym nie występują błędy związane ze zmianą wymagań podczas implementacji. Z drugiej strony restrykcyjne przestrzeganie pierwotnych założeń powoduje iż projekt pomimo pozytywnej weryfikacji nie przechodzi fazy walidacji. Naturą projektów informatycznych jest zmiana, natomiast model kaskadowy nie jest otwarty na zmiane wymagań. 
+Model kaskadowy powstał w celu ujednolicenia faz potrzebnych do stworzenia oprogramowania. Zakłada iż każda faza następuje po zakończeniu poprzedniej, przy czym przed przejściem do kolejnej fazy nastąpić musi weryfikacja poprzez spełnienie kryterium wyjścia \cite{SEaT}. Model ten zakłada pełną specyfikacja wymagań i zaprojektowanie systemu przed implementacją. Pełna definicja wymagań ułatwia zaprojektowanie fazy testowej gdyż dane wejściowe są znane. W modelu tym nie występują błędy związane ze zmianą wymagań podczas implementacji. Z drugiej strony restrykcyjne przestrzeganie pierwotnych założeń powoduje iż projekt pomimo pozytywnej weryfikacji nie przechodzi fazy walidacji. Naturą projektów informatycznych jest zmiana, natomiast model kaskadowy nie jest otwarty na zmianę wymagań. 
 \begin{figure}[h]
 \centerline{\includegraphics[scale=0.5]{img/model_kaskadowy.png}}
 \caption{Model kaskadowy}
 \label{fig:kaskadowy}
 \end{figure}
 
-Istnieją różne podejścia do testowania w modelu kaskadowym. Pierwsze teoretyczne poddejście zakłada ścisłe rozdzielenie fazy implementacji od fazy testów co oznacza iż nie wykonywane są nawet testy modułowe. Drugie podejście zakłada podczas fazy implementacji wykonywanie testów modułowych i statycznej weryfikacji.
+Istnieją różne podejścia do testowania w modelu kaskadowym. Pierwsze teoretyczne podejście zakłada ścisłe rozdzielenie fazy implementacji od fazy testów co oznacza iż nie wykonywane są nawet testy modułowe. Drugie podejście zakłada podczas fazy implementacji wykonywanie testów modułowych i statycznej weryfikacji.
 
 Model kaskadowy stosowany jest głównie dla dobrze zdefiniowanych projektów, najczęściej w segmentach bezpieczeństwa publicznego ponieważ przejście pomiędzy fazami może być połączone z przeglądem i akceptacją formalnych dokumentów
 
@@ -48,10 +48,8 @@ Rozdzielenie faz implementacji od fazy testowania powoduje nierównomierną alok
 \end{figure}
 
 Jedną z wariacji modelu kaskadowego jest rozbicie tworzonego oprogramowania na części \cite{TestingMatt}. 
-Zespół programistyczny oddaje pierwszą część do testów. Wykonywane są testy integracyjne i testy systemowe natomiast znalezione błędy konsultowane są z zespołem programistycznym i zgłaszane. Równolegle zespół programistyczny pracuje nad poprawą zgłoszonych błędów i dokończeniem implementacji części systemu które nie zostały oddane w pierwszej cześci. Kolejna oddana część jest poddawana testom, weryfikacji poprawionych błędów i małej regresji.
+Zespół programistyczny oddaje pierwszą część do testów. Wykonywane są testy integracyjne i testy systemowe natomiast znalezione błędy konsultowane są z zespołem programistycznym i zgłaszane. Równolegle zespół programistyczny pracuje nad poprawą zgłoszonych błędów i dokończeniem implementacji części systemu które nie zostały oddane w pierwszej części. Kolejna oddana część jest poddawana testom, weryfikacji poprawionych błędów i małej regresji.
 
- 
- 
 \subsection{Model V}
 
 \begin{figure}[h]
@@ -60,8 +58,9 @@ Zespół programistyczny oddaje pierwszą część do testów. Wykonywane są te
 \label{fig:vmodel}
 \end{figure}
 Model V zakłada rozpoczęcie czynności związanych z planowaniem fazy testów równolegle z fazami analizy, projektu i implementacji. Model obrazuje litera V dla której lewa część to czynności związane z implementacją i planowaniem a prawa część to czynności powiązane z testami. Model zakłada iż każdy typ testu jest połączony z jedną fazą z lewej części modelu. Oznacza to iż fazy zbierania wymagań, analizy, projektu i implementacji oprócz swoich specyficznych artefaktów dostarczają także analizę wymagań, scenariusze, przegląd dokumentów i kryteria sukcesu do odpowiednich faz testów \cite{otss}.
-Pozytywnym aspektem modelu V jest to iż podczas początkowych faz zaangażowany jest zespół testerski który aktywnie uczestniczy w opisanych wsześniej czynnościach. Wadą modelu jest to iż rola zespołu testerskiego ograniczona jest do biernego przyjmowania artefaktów bez możliwości ich wstępnej walidacji.  Według Rex Black \cite{Fund}, model ten sterowany jest głównie poprzez koszty i harmonogram.
-\paragraph{}
+
+Jedną z głównych zalet modelu V jest to iż podczas początkowych faz zaangażowany jest zespół testerski który aktywnie uczestniczy w opisanych wcześniej czynnościach. Wadą modelu jest to iż rola zespołu testerskiego ograniczona jest do biernego przyjmowania artefaktów bez możliwości ich wstępnej walidacji.  Według Rex Black \cite{Fund}, model ten sterowany jest głównie poprzez koszty i harmonogram.
+
 Model ten zakłada iż kolejność nie jest stała jak w modelu kaskadowym. każda  faz może spowodować powrót do fazy wcześniejszej, tak więc wymagania mogą ulec zmianie. Zmiana wymagań powoduje konieczność zmiany skryptów do testów.
 
 \subsubsection{Wariacje modelu V}
@@ -71,11 +70,11 @@ Model ten zakłada iż kolejność nie jest stała jak w modelu kaskadowym. każ
 \label{fig:wmodel}
 \end{figure}
 
-Praktyczne zastosowanie modelu V powoduje konieczność dostosowania go do aktualnie panujących warunków w organizacji i warunków rynkowych. Jedną z wariacji modelu V jest model W. Model W dostarcza większą władze zespołowi testowemu już w początkowych fazach projektu. Model ten zakłada iż już podczas fazy analizy i projektowania, dostarczane artefakty są wstępnie weryfikowane i walidowane \cite{wmodel}. Model ten zakłada dla faz z lewej części modelu istnienie równoległych faz które je kontrolują, weryfikują i walidują. Tak więc dopiero zaakceptowane artefakty służą jako dane wejściowe do procesu planowania odpowiednich faz związanych z testowaniem.
-\paragraph{}
-Model ten zakłada iż projekt zostaje testowany jak najwcześniej. Początkowo wykonywane są testy statyczne i prototypowanie pod kątem użyteczności. Testy dynamiczne wykonywane są gdy zaimplementowane są komponent
+Praktyczne zastosowanie modelu V powoduje konieczność dostosowania go do aktualnie panujących warunków w organizacji i warunków rynkowych. Jedną z wariacji modelu V jest model W. Model W dostarcza większą władze zespołowi testerskiemu już w początkowych fazach projektu. Model ten zakłada iż już podczas fazy analizy i projektowania, dostarczane artefakty są wstępnie weryfikowane i walidowane \cite{wmodel}. Model ten zakłada dla faz z lewej części modelu istnienie równoległych faz które je kontrolują, weryfikują i walidują. Tak więc dopiero zaakceptowane artefakty służą jako dane wejściowe do procesu planowania odpowiednich faz związanych z testowaniem.
 
-\paragraph{}
+Model ten zakłada iż projekt zostaje testowany jak najwcześniej. Początkowo wykonywane są testy statyczne i prototypowanie pod kątem użyteczności. Testy dynamiczne wykonywane są gdy zaimplementowane są komponenty.
+
+
 Rozszerzonym wariantem modelu W, jest model "butterfly"\cite{BUTTERFLY}. Model ten zakłada że każdą z faz można podzielić na kilka mikro-iteracji. Każda z iteracji składa się z analizy pod kątem możliwości przetestowania, projektu testów i ich wykonania. 
 \begin{figure}[h]
 \centerline{\includegraphics[scale=0.5]{img/butterflymodel2.JPG}}
@@ -89,53 +88,56 @@ Modele iteracyjne w przeciwieństwie do modeli tradycyjnych zakładają podziele
   \item przyrostowe - co oznacza iż projekt dzielony jest na mniejsze części i każda z części posiada oddzielną fazę projektowania, implementacji i testowania. Każda z części dodaje nowe funkcjonalności
  
 \end{itemize}
- Modele iteracyjne poprzez podział na podprojekty wymagają od zespołu testerskiego wykonyania regresji począwszy od drugiej iteracji. Regresja ta ma na celu sprawdzenie czy nowo dodany kod nie wprowadził błędów do wcześniej oddanego i przetestowanego rozwiązania.
+ Modele iteracyjne poprzez podział na pod-projekty wymagają od zespołu testerskiego wykonania regresji począwszy od drugiej iteracji. Regresja ta ma na celu sprawdzenie czy nowo dodany kod nie wprowadził błędów do wcześniej oddanego i przetestowanego rozwiązania.
 \subsection{RAD}
 Rad czyli Rapid Aplication Development (szybkie tworzenie oprogramowania) to model który zakłada podział projektu na mniejsze
- niezalezne moduły ktore mogą byc implementowane przez rozdzielne zespoly równolegle. Zespoly w trakcie pracy używaja gotowych komponentów i narzedzi do generowania kodu dostosowując je do indywidualnych potrzeb projektu. Model zakłada że rozwiazanie może zostać oddane w bardzo krotkim czasie to jest 30-90 dni roboczych.
+ niezależne moduły które mogą być implementowane przez niezależne zespoły równolegle. Zespoły w trakcie pracy używają gotowych komponentów i narzędzi do generowania kodu dostosowując je do indywidualnych potrzeb projektu. Model zakłada że rozwiązanie może zostać oddane w bardzo krótkim czasie to jest 30-90 dni roboczych.
 
-Faza testowania zakłada iż gotowe komponenty używane w projekcie są już przetestowane. Testami należy pokryć kustomizacje rozwiązania. 
-\paragraph{}
-Rozwiązanie to sprawdza się w sytuacji gdy produkt jest mocno ograniczony czasowo, natomiast jakość i wydajność nie są priorytetem. Wadą rozwiązania jest niska wydajność rozwiązania powodowana używaniem generycznych komponentów. Wydajność obniża także niezależnością między zespołami które produkując swoje rozwiązanie nie kalibrują go z rozwiązaniem równoległych zespołów.
-\paragraph{}
-Zdarza się iż oprogramowanie wyprodukowane poprzez ten model jest używane jako prototyp za pomocą którego projektowane jest końcowe rozwiązanie. Za pomocu modelu RAD tworzone jest więc oprogramowanie aż do pewnego momentu tak by klient mógł skonfrontować swoje przewidywania z działającym oprogramowaniem. Następnie walidowane są wstępne wymagania po czym następuje kontynuacja projektu już z zastosowaniem bardziej formalnych technik.
+Faza testowania zakłada iż gotowe komponenty używane w projekcie są już przetestowane. Testami należy pokryć dostosowanie rozwiązania pod specyficzną logikę biznesową. 
+
+Rozwiązanie to sprawdza się w sytuacji gdy produkt jest mocno ograniczony czasowo, natomiast jakość i wydajność nie są priorytetem. Wadą rozwiązania jest niska wydajność rozwiązania powodowana używaniem generycznych komponentów. Negatywnie na wydajność wpływa także brak wspólnej pracy między zespołami które produkując swoje rozwiązanie nie kalibrują się wzajemnie.
+
+Zdarza się iż oprogramowanie wyprodukowane poprzez ten model jest używane jako prototyp za pomocą którego projektowane jest końcowe rozwiązanie. Za pomocą modelu RAD tworzone jest więc oprogramowanie aż do pewnego momentu tak by klient mógł skonfrontować swoje przewidywania z działającym oprogramowaniem. W ten spsób walidowa jest poprawność wstępnych wymagań po czym następuje kontynuacja projektu już z zastosowaniem bardziej formalnych technik.
 \subsection{Techniki zwinne}
-Techiniki zwinne zakładają uproszczenie procesu analizy i projektowania oprogramowania zakładając zmienność wymagań w czasie. Głównymi aspektami zwinnych modeli jest:
+Techniki zwinne zakładają uproszczenie procesu analizy i projektowania oprogramowania zakładając zmienność wymagań w czasie. Głównymi aspektami zwinnych modeli jest:
 \begin{itemize}
-  \item zaangażowanie interesariuszy podczas trwania projektu - model ten przewiduje że przynajmniej jeden reprezentant interesariuszy bydzie aktywnym członkiem zespołu. Oznacza to iż zespół projektowy może szybko otrzymać informacje zwrotne na temat projektu
-  \item szybka reakcja na zmienianiające się wymagania - w ramach iteracji tworzone są tylko te funkcjonalności które wchodzą w jej skład. Nie są podejmowane kroki mające przygotować system do lżejszej integracji z funkcjonalnościami planowanymi w przyszłości 
-  \item uproszczenie dokumentacji i wymagań - nie istnieje sformalizowany proces dokumentacji, część zespołów stosouje jedynie dokumentacje kodu.
+  \item zaangażowanie interesariuszy podczas trwania projektu - model ten przewiduje że przynajmniej jeden reprezentant interesariuszy będzie aktywnym członkiem zespołu. Oznacza to iż zespół projektowy może szybko otrzymać informacje zwrotne na temat projektu
+  \item szybka reakcja na zmieniające się wymagania - w ramach iteracji tworzone są tylko te funkcjonalności które wchodzą w jej skład. Nie są podejmowane kroki mające przygotować system pod potencjalne funkcjonalności które często pomimo planów nie wchodzą w zakres produktu 
+  \item uproszczenie dokumentacji i wymagań - nie istnieje sformalizowany proces dokumentacji, część zespołów stosuje jedynie dokumentacje kodu.
   \item idea wspólnego kodu - każdy członek zespołu ma prawo poprawić kod innej osoby
   \item duży nacisk na zapewnienie jakości podczas fazy implementacji - stosowane są techniki mające zapewnić wysoką jakość rozwiązania. Jest to np. TDD czyli pisanie testów komponentowych przed rozpoczęciem implementacji
-  \item ciągła integracja i automatyczna regresja - implementacja jest sprężona z automatycznymi narzędziami do budowania produktu. Oznacza to iż autoatycznie po dodaniu nowego kodu do repozytorium produkt jest budowany i może zostać objęty automatyczną regresją bądź manualnymi testami.
+  \item ciągła integracja i automatyczna regresja - implementacja jest sprężona z automatycznymi narzędziami do budowania produktu. Oznacza to iż automatycznie po dodaniu nowego kodu do repozytorium produkt jest budowany i może zostać objęty automatyczną regresją bądź manualnymi testami.
 \end{itemize}
-Projekt zwinny niesie ze sobą również nowe wyzwania dla zespołu testerskiego. Jedym z aspektów jest nowa forma statycznego przeglądu kodu, zespoły zwinne stosują programowanie w parach które zakłada iż podczas pisania kodu, programiści pracują we dwójke zmieniając się, przy czym w danym czasie jedna osoba tworzy kod, natomiast druga kontroluje i szuka lepszych rozwiązań. Forma ta zakłada iż kod taki jest już wstępnie zweryfikowany i nie wymaga innych formalnych metod. 
-Bardzo ważnym aspektem jest dobra komunikacja w zespole, pomiędzy programistami i zespołem testerskim. W wyniku braku obszernej dokumentacji, pewne informacje przekazywane są bezpośrednio. Rola testera sprowadza się często do funkcji doradczych i pełni on często aktywną rolę już w fazie implementacji.
-Zapewnienie automatycznej regresji jest kluczowe dla projektów zwinnych. Musi ona być wykonana po zakończeniu każdej z iteracji by uzysać pewność czy nie wprowadziła ona błędów do wcześniejszych rozwiązań
+Projekt zwinny niesie ze sobą również nowe wyzwania dla zespołu testerskiego. Jedynym z aspektów jest nowa forma statycznego przeglądu kodu. Zespoły zwinne stosują programowanie w parach które zakłada iż podczas pisania kodu, programiści pracują we dwójkę zmieniając się, przy czym w danym czasie jedna osoba tworzy kod, natomiast druga kontroluje i szuka lepszych rozwiązań. Forma ta zakłada iż kod taki jest już wstępnie zweryfikowany i nie wymaga innych formalnych metod. 
+
+Ważnym aspektem jest dobra komunikacja w zespole, pomiędzy programistami i zespołem testerskim. W wyniku braku obszernej dokumentacji, pewne informacje przekazywane są bezpośrednio. Rola testera sprowadza się często do funkcji doradczych i pełni on często aktywną rolę już w fazie implementacji.
+
+Zapewnienie automatycznej regresji jest kluczowe dla projektów zwinnych. Musi ona być wykonana po zakończeniu każdej z iteracji by uzyskać pewność iż nie wprowadzono błędów do już działających rozwiązań.
 
 \section{Strategie testowania oprogramowania}
 \label{cha:strategie testowania}
-Projekt informatyczny określa zasady tworzenia i wykonywania testów. Zasady te mają na celu dostarczenie produktu, którego jakość spełnia założone wymagania. Wymagania te są zróżnicowane w zależności od charekterystyki produktu to jest, systemy medyczne, bankowe, telekomunikacyjne wymagają krytycznie wysokiej jakości, aplikacje internetowe natomiast cechują się mniej restrykcyjnymi normami. Zbiór reguł i praktyk nazywamy strategią. Strategia testowania oprogramowania determinowana jest głównie przez dwa aspekty: wspomniana wcześniej charakterystyka produktu i model tworzenia oprogramowania. 
-Jak już zostało wspomniane strategia określa sposób tworzenia i wykonywania testów, określa również harmonogram i tryb pracy zespołu testerskiego.
+Projekt informatyczny określa zasady tworzenia i wykonywania testów. Zasady te mają na celu dostarczenie produktu, którego jakość spełnia założone wymagania. Wymagania te są zróżnicowane w zależności od charakterystyki produktu to jest, systemy medyczne, bankowe, telekomunikacyjne wymagają krytycznie wysokiej jakości, aplikacje internetowe natomiast cechują się mniej restrykcyjnymi normami. Zbiór reguł i praktyk nazywamy strategią. Strategia testowania oprogramowania determinowana jest głównie przez dwa aspekty: wspomniana wcześniej charakterystyka produktu i model tworzenia oprogramowania. 
+Strategia testowania określa sposób tworzenia i wykonywania testów, określa również harmonogram i tryb pracy zespołu testerskiego.
 
 
 \subsection{Typy strategii}
 Typ strategii określa jakie testy będą wykonywane na różnych poziomach testowania. Celem jest stworzenie przypadków użycia i dobór konkretnych skryptów tak by zapewnić oczekiwany poziom jakości przy minimalizacji kosztów i czasu.
 \subsubsection{Strategie analityczne}
-Pierwszą z opisywanych grup strategii jes grupa strategii analityczne. Zakładają one iż dany wejściowymi są artefakty powstałe podczas tworzenia oprogramowania które następnie poddawane są analizie. Artefaty używane do analizy to na przykład dokumentacja, kod źródłowy, przypadki użycia, lista funkcjonalności.
+Pierwszą z opisywanych grup strategii jest grupa strategii analitycznych. Zakładają one iż danymi wejściowymi są artefakty powstałe podczas tworzenia oprogramowania które następnie poddawane są analizie. Artefakty to na przykład dokumentacja, kod źródłowy, przypadki użycia, lista funkcjonalności.
 
-Najczęściej spotykanami strategiami analitycznymi jest strategia sterowana ryzykiem i strategia sterowana funkcjonalnością. Zostaną one przedstawione poniżej.
+Poniżej przedstawione zostaną dwie strategie analityczne: strategia sterowana ryzykiem i strategia sterowana funkcjonalnością. 
 
 Dla testowania sterowanego funkcjonalnością, jako dane wejściowe używane są funkcjonalności. Projektowanie fazy testowania ma na zadanie pokrycie testami wszystkich wymienionych funkcjonalności. Jest to proces który złożony z dwóch części: walidacji wymagań i identyfikacji przypadków użycia na podstawie wymagań. 
-\paragraph{}
-Wymagania walidowane są pod kątem wieloznaczności, wzajemnego wykluczania się, niepełnego opisu. Nieprecyzyjne opisy są uzupełniane a dwuznaczności eliminowane. Wyeliminowanie wieloznaczności wymaga obecności interesariuszy, programistów i testerów ponieważ każda z tych grup może interpetować funkcjonalności w inny sposób co prowadzi do kosztowych błędów w projekcie.
-\paragraph{}
-Kolejnym krokiem jest wygenerowanie minimalnej ilości przypadków użycia które pokryją wszystkie funkcjonalności. Na ich podstawie powstają skrypty testowe. Do tego celu tworzony jest diagram przyczyna-efekt. Służy on do zobrazowania na podstawie funkcjonalności wpływu stanu systemu na oczekiwany rezultat. Po lewej stronie diagramu umieszczane są możliwe warunki wejściowe, po prawej oczekiwany efekt. Pomiędzy dwoma warstwami zachodzą relacje które mogą posiadać warunki logiczne takie jak: i, lub, nie. Dodatkowo można wyróżnić warunki wejściowe których odpowiednia wartość powoduje iż wartość pozostałych elementów nie jest brana pod uwagę, wartości te możemy więc zamaskować. Na podstawie diagramu tworzona jest tabela decyzyjna która jest źródłem przypadków użycia.
-\paragraph{}
-Drugą ze strategii analitycznch jest testowanie sterowane ryzykiem. Zakłada one iż najpierw wykonujemy te testy które dotykają obszarów oprogramowania mających największe ryzyko.  Dobór ryzyka polega na priorytyzacji zdarzeń które mogą wystąpić, mających negatywny wpływ na jakość oprogramowania.
-Priorytezacja polega na przypisaniu do każdego ze zdarzeń prawdopodbieństwa jego wystąpienia i wpływu jaki ma na jakość oprogramowania. Wartości te mogą być liczbowe ( np 1-10), bądź dyskretnie ustalone (np. małe, średnie, duże). Następnie dla par ryzyko-wystąpienie przypisywana jest końcowa wartość ryzyka. Ważne jest aby w trakcie trwania projektu na bieżąco monitorować aktualny stan ryzyka, gdyż może on zmieniać się w czasie.
 
-Istnieje kilka wyróżnionych domen do których można przyporządkować poszczególne ryzyka. Spis kategorii pozwala dostrzeć pewne powszechne ryzyka które mogą zostać pominięte
+Wymagania walidowane są pod kątem wieloznaczności, wzajemnego wykluczania się, niepełnego opisu. Nieprecyzyjne opisy są uzupełniane a dwuznaczności eliminowane. Wyeliminowanie wieloznaczności wymaga obecności interesariuszy, programistów i testerów ponieważ każda z tych grup może interpetować funkcjonalności w inny sposób co prowadzi do kosztowych błędów w projekcie.
+
+Kolejnym krokiem jest wygenerowanie minimalnej ilości przypadków użycia które pokryją wszystkie funkcjonalności. Na ich podstawie powstają skrypty testowe. Do tego celu tworzony jest diagram przyczyna-efekt. Służy on do zobrazowania na podstawie funkcjonalności wpływu stanu systemu na oczekiwany rezultat. Po lewej stronie diagramu umieszczane są możliwe warunki wejściowe, po prawej oczekiwany efekt. Pomiędzy dwoma warstwami zachodzą relacje które mogą posiadać warunki logiczne takie jak: \textit{i, lub, nie}. Dodatkowo można wyróżnić warunki wejściowe których odpowiednia wartość powoduje iż wartość pozostałych elementów nie jest brana pod uwagę, wartości te możemy więc zamaskować. Na podstawie diagramu tworzona jest tabela decyzyjna która jest źródłem przypadków użycia.
+
+Drugą ze strategii analitycznych jest testowanie sterowane ryzykiem. Zakłada one iż najpierw wykonujemy te testy które dotykają obszarów oprogramowania mających największe ryzyko.  Dobór ryzyka polega na ustaleniu priorytetów dla zdarzeń które mogą wystąpić, mających negatywny wpływ na jakość oprogramowania.
+
+Ustalenie priorytetów polega na przypisaniu do każdego ze zdarzeń prawdopodobieństwa jego wystąpienia i wpływu jaki może mieć na jakość oprogramowania. Wartości te mogą być liczbowe ( np. 1-10 ), bądź dyskretnie ustalone (np. małe, średnie, duże). Następnie dla par ryzyko-wystąpienie przypisywana jest końcowa wartość ryzyka. Końcowe wartości ryzyka ustalane są na podstawie określonych wartości dla każdej pary ryzyko-wystąpienie. Ważne jest aby w trakcie trwania projektu na bieżąco monitorować aktualny stan ryzyka, gdyż może ono zmieniać się w czasie.
+
+Istnieje kilka wyróżnionych domen do których można przyporządkować poszczególne ryzyka. Spis kategorii pozwala dostrzec pewne powszechne ryzyka które mogą zostać pominięte
 Kategorie ryzyka:
 \begin{itemize}
   \item funkcjonalność
@@ -155,63 +157,77 @@ Kategorie ryzyka:
   \item dokumentacja
 \end{itemize}
 
-\subsubsection{Strategie oparte na modelu oprogramowania}
-Drugim typem strategii są te oparte na modelu oprogramownia.  Istnieją programy wspierające tego typu strategie które generują przypadki użycia bezpośrednio z modelu, tak więc nie muszą być one tworzone manulanie.
-Model systemu to między innymi diagramy przejścia, model domeny, maszyna stanów skończonych. Przepływ dla tego typu strategii wygląda następująco: system, model systemu, skrytpy testów, konkretnie wywołania testów.
+\subsubsection{Strategie wynikające z projektu oprogramowania}
+Drugim typem strategii są strategie oparte na artefaktach powstałych podczas projektowania oprogramowania. Artefakty takie nazywane są modelami, mogą być to między innymi diagramy przejścia, model domeny, maszyna stanów skończonych. Istnieją programy wspierające tego typu strategie które generują przypadki użycia bezpośrednio z modelów. Przepływ dla tego typu strategii wygląda następująco: 
+\begin{figure}[h!]
+  \begin{center}
+   system $\rightarrow$  model systemu $\rightarrow$ skrypty testów  $\rightarrow$  konkretne wykonania testów 
+  \end{center}
+\end{figure}
+     
+  
 \subsubsection{Strategie metodyczne}
-Trzecim typem strategii są strategie metodyczne. Dla tego typu strategii, projekt testów powstaje na podstawie zdefiniowanej metody. Przykładem metody może być metoda uczenia która polega na stworzeniu listy pomocniczej która składa się z pytań na które należy odpowiedzieć podczas projektowania i zagadnień które należy poruszyć. Lista taka powstaje na podstawie przeglądu wcześniejszych błędów, wiedzy dziedzinowej, konsultacji eksperckich. Strategia metodyczna może też to być strategia korzystająca z metod opisanych standardami. Przykładowo standard IBM zakłada podział testowania na kategorie takie jak: użyteczność, funcjonalności, wersje językowe, dostępność, wydajność, obciążenie, dokumentacja, instalacja.
+Trzecim typem strategii są strategie metodyczne. Dla tego typu strategii, projekt testów powstaje na podstawie zdefiniowanej metody. Przykładem metody może być metoda uczenia która polega na stworzeniu listy pomocniczej która składa się z pytań na które należy odpowiedzieć podczas projektowania i zagadnień które należy poruszyć. Lista taka powstaje na podstawie przeglądu wcześniejszych błędów, wiedzy dziedzinowej, konsultacji eksperckich. 
+
+Strategia metodyczna może też korzystać bezpośrednio ze istniejących metod wynikających ze standardów. Przykładowo standard IBM zakłada podział testowania na kategorie takie jak: użyteczność, funkcjonalności, wersje językowe, dostępność, wydajność, obciążenie, dokumentacja, instalacja.
 \subsubsection{Strategie zorientowane procesowo}
-Strategie zorientowane procesowo, są to strategie których trzonem jest ogólnie przyjęty standard testowania. Przykładem takich strategi może być IEEE 82, czy standardy dla przemysłu lotniczego. Adaptacja strategi wymaga dostosowania ich do specyfiki produktu. Innym przykładem mogą być opisane strategie testowania zwinnego, które zakładają mocną automatyzację procesu testowania i odporność na zmianę nawet w późnym etapie projektu. Automatyzacja testowania zakłada cykliczne wykonywanie grup testów, dla których dane wejściowe są losowe.
+Strategie zorientowane procesowo, są to strategie których trzonem jest ogólnie przyjęty standard testowania. Przykładem takich strategi może być IEEE 82, czy standardy dla przemysłu lotniczego. Adaptacja strategi wymaga dostosowania ich do specyfiki produktu. Innym przykładem mogą być opisane strategie testowania zwinnego, które zakładają automatyzację procesu testowania i odporność na zmianę nawet w późnym etapie projektu. Automatyzacja testowania może zakładać cykliczne wykonywanie grup testów, dla których dane wejściowe są losowe.
 \subsubsection{Strategie dynamiczne}
-Dynamiczne strategie testowe, zakładają zmiejszony nakład na projektowanie i planowanie fazy testowej. Strategia ta zakłada adoptowanie sposobu testowania do aktualnych warunków. Przypadki testowe tworzone są na bieżąco przy czym głównie wykonywane są testy eksploracyjne i testy eksperckie. Testerzy wraz z poznawaniem systemu, ustalają priorytety i scenariusze.
+Dynamiczne strategie testowe, zakładają zmniejszony nakład na projektowanie i planowanie fazy testowej. Strategia ta zakłada adoptowanie sposobu testowania do aktualnych warunków. Przypadki testowe tworzone są na bieżąco przy czym głównie wykonywane są testy eksploracyjne i testy eksperckie. Testerzy wraz z poznawaniem systemu, ustalają priorytety i scenariusze.
 \subsubsection{Strategie sterowane specyfiką testowania}
 Strategia sterowana specyfiką testowania oprogramowania zakłada iż każdy produkt zawiera w sobie błędy. Przyjmowane są z góry nałożone dolne limity błędów które może zawierać oprogramowanie. Testowanie prowadzone jest do czasu aż limity nie zostaną osiągnięte. Oznacza to iż dynamicznie dokładane są nowe testy.
 \subsubsection{Strategie regresyjne}
-Strategie testów regresyjnych, są to strategie ktore mają zapewnić iż nie został wprowadzony błąd w działającej i przetestowanej już funkcjonalności. Największy nacisk kładziony jest w modelu iteracyjnym i dla produków które posiadają wiele wydań. Błędy regresji mogą występować w trzech rodzajach:
+Strategie testów regresyjnych, są to strategie które mają zapewnić iż nie został wprowadzony błąd w działającej i przetestowanej już funkcjonalności. Największy nacisk kładziony jest w modelu iteracyjnym i dla produktów które posiadają wiele wydań. Błędy regresji mogą występować w trzech rodzajach:
 \begin{itemize}
-  \item błąd bezpośrednio wprowadzony przez poprawę defektu lub wprowadzenie nowej funkjonalności
-  \item błąd który objawił się dopiero po naprawie defektu lub dodaniu nowej funkjonalności
+  \item błąd bezpośrednio wprowadzony przez poprawę defektu lub wprowadzenie nowej funkcjonalności
+  \item błąd który objawił się dopiero po naprawie defektu lub dodaniu nowej funkcjonalności
   \item  błąd który pojawił się w innym obszarze produktu lub systemu w związku z nową funkcjonalnością lub poprawą defektu,
 \end{itemize}
 
-\paragraph{}
-Istnieje kilka strategii regresji. Pierwsza strategia to wykonywanie wszyskich testów wywoływanych podczas poprzeniej iteracji bądź wersji systemy. Strategia ta związana jest z dużymi kosztami tak więc najczęściej polega ona na wywoływaniu wszystkich testów automatycznych i automatyzacji tych testów które prawdopodobnie będą powtarzane w przyszłości. Drugą opcją jest wykonanie wybranej puli testów. Dobór testów dokonywany jest na różne sposoby, może to być przydział ekspercki polegający na analizie tego co mogło się zmienić. Może to być także testowanie które zakłada większą aktywność dla elementów obarczonych większym ryzykiem bądź tych które mają krytyczne znaczenie biznesowe lub znaczenie dla bezpieczeństwa. Powinny zostać również wykonane te testy które absorbują cały system, tak by potwierdzić że wszystkie elementy wpsółpracują poprawnie.
+
+Istnieje kilka strategii regresji. Pierwsza strategia zakłada ponowne wykonywanie wszystkich testów z podczas poprzedniej iteracji lub poprzedniego wydania systemu. Strategia ta związana jest z dużymi kosztami tak więc często połączona jest ona z automatyzacją często powtarzanych i długotrwałych testów. 
+
+Drugą strategia zakłada wykonanie wybranej puli testów. Dobór testów dokonywany jest na różne sposoby, może to być przykładowo przydział ekspercki polegający na analizie zmian w oprogramowaniu. Alternatywą jest wzmożone testowanie tych elementów które obarczone są większym ryzykiem bądź tych które mają krytyczne znaczenie biznesowe lub wpływ na bezpieczeństwo systemu. Powinny zostać również wykonane te testy które absorbują cały system, tak by potwierdzić że wszystkie elementy współpracują poprawnie.
 
 \section{Typy testów}
 Testy oprogramowania można dzielić według różnych kategorii. W niniejszej pracy przedstawiony zostanie podział ze względu na obszar zastosowania i typ walidacji.
  
 \subsection{Podział ze względu na obszar zastosowania}
-\subsubsection{Testy komponentowe}
-Testy komponentowe są to testy które szukają defektów i weryfikują funkcjonalności na poziomie pojedyńczych klas, modułów kodu źródłowego. które mogą być uruchamiane i testowane niezależnie. Testy komponentowe wykonywane są często w izolacji z innymi częściami systemu. Klasy dostarczające dane, silniki bazodanowe, zastępowane są przez specjalne obiekty które naśladują ich działanie. Technika ta ma na celu zapewnienie iż wykrycie błędu podczas testowania określonego modułu nie jest spowodowane błędem wynikającym z błednych danych pochodzących z modułów zależnych które nie są aktualnie obiektem testu. Testy takie charakteryzują się wysokim zwrotem inwestycji. Dodatkowo stanowią dokumentacje jako przykład użycia kodu źródłowego.
+Testy możemy podzielić ze względu na typ składowych oprogramowania które są weryfikowane i walidowane. Główną charakterystyką która pozwala wyodrębnić typy jest poziom niezależności i izolacji a także sposób w który można symulować pozostałą część systemu która aktualnie nie jest poddawana testom. Wraz z postępem faz projektu wykonywane testy charakteryzują się mniejszym poziomem izolacji i niezależności. 
 
-Testy komponentowe najczęściej wykonywane są podczas fazy implementacji. Wykonywane i tworzone są przez zespół programistyczny, co więcej najczęściej osoba która tworzy komponent piszę również do niego test. Dobrą praktyką jest by osoba inna niż autor zweryfikowała czy stworzone testy pokrywają zaimplementowaną funkcjonalność, zdarza się też iż test pisane są przed implementacją. Błędy znalezione podczas testów komponentowych najczęściej nie są logowane ponieważ występują przed formalnym oddaniem kodu źródłowego i zatwierdzeniem go.
+
+\subsubsection{Testy komponentowe}
+Testy komponentowe są to testy które operują na poziomie pojedynczych klas, modułów kodu źródłowego. Testy te mogą być uruchamiane i testowane niezależnie. Testy komponentowe wykonywane są często w izolacji z innymi częściami systemu. Klasy dostarczające dane, silniki bazodanowe, zastępowane są przez specjalne obiekty które naśladują ich działanie. Technika ta ma na celu zapewnienie iż wykrycie błędu podczas testowania określonego modułu nie jest spowodowane błędem wynikającym z błędnych danych pochodzących z modułów zależnych które nie są aktualnie obiektem testu. Testy takie charakteryzują się wysokim zwrotem inwestycji. Dodatkowo stanowią dokumentacje jako przykład użycia kodu źródłowego.
+
+Testy komponentowe najczęściej wykonywane są podczas fazy implementacji. Wykonywane i tworzone są przez zespół programistyczny, co więcej najczęściej osoba która tworzy komponent piszę również do niego test. Dobrą praktyką jest by osoba inna niż autor zweryfikowała czy stworzone testy pokrywają zaimplementowaną funkcjonalność, zdarza się też iż testy pisane są przed implementacją. Błędy znalezione podczas testów komponentowych najczęściej nie są logowane ponieważ występują przed formalnym oddaniem kodu źródłowego i zatwierdzeniem go.
 
 \subsubsection{Testy integracyjne} 
-Pojedyncze moduly ktory przeszly przez faze testow jednostkowych sa laczone z wieksze grupy dla ktorych wykonywane sa testy zgodnie z planem testow
+Pojedyncze moduły dla których testy komponentowe zakończyły się rezultatem pozytywnym są łączone w większe grupy dla których wykonywane są testy integracyjne, zgodnie z planem testów.
 
-Celem testow integracyjnych jes weryfikacja spelnienia funkcjonalnosci, niezawodnosci, wydajnosci na poziomie wiekszym niz pojednynczy komponent. Testowane sa wieszke grupy logiczne ktore dostarczaja konkretna funkcjonalnosc. Główną metodą testowania są testy czarno-skrzynkowo, co więcej osoby wykonujące testy najczęściej nie posiadają informacji o sposobie działania kodu.
+Celem testów integracyjnych jest weryfikacja spełnienia funkcjonalności, niezawodności, wydajności na poziomie większym niż pojedynczy komponent. Testowane są większe grupy logiczne które dostarczają konkretna funkcjonalność. Główną metodą testowania są testy czarno-skrzynkowe czyli przeprowadzone testy powstają na podstawie oczekiwanej funkcjonalności, nie na podstawie analizy struktury kodu. Osoby wykonujące testy najczęściej nie posiadają i nie powinny posiadać informacji o wewnętrznym sposobie działania kodu.
 
-Istniejie kilka typow testow integracyjnych ktore można wyróżnić ze względu na poziom izolacji modułów.
+Można wyróżnić kilka typów testów integracyjnych które można wyróżnić ze względu na poziom izolacji modułów.
 
 Pierwszym typem są testy zależne od całości systemu. Przed przystąpieniem do testowania zakłada się iż całość systemu jest dostarczona i może zostać zintegrowana.  Podczas testowania, używane są prawdziwe implementacje wszystkich potrzebnych modułów. Testowanie tego typu daje pewność iż system działa poprawnie używając prawdziwych komponentów. Głównymi wadami jest to iż testy takie można rozpocząć tylko wtedy gdy gotowy jest cały system, co może nastąpić bardzo późno w procesie tworzenia oprogramowania. Problemem jest także izolacja defektu.
 
 Drugim typem testów, przeciwnym testowaniu całościowemu jest testowania polegające na podzieleniu fazy testów integracyjnych na mniejsze fazy z których każda zakłada testowanie każdej pary modułów. Testowanie tego typu zakłada iż tylko testowana para musi być realnym oprogramowanie, reszta systemu jest symulowana. Testowanie tego typu wymaga dostarczenia symulatorów i wspierania ich podczas kolejnych wydań systemu. Zaletą tego typu testu jest możliwość rozpoczęcia testów już gdy zespół programistyczny dostarczy gotowy kod dwóch modułów które z sobą współpracują. Wydzielenie tylko dwóch modułów pozwala także na wysoką izolacje defektów. Wadą jest wysoki kosz i czas trwania tego typu testów gdyż pewne testy powtarzane są dla różnych par modułów.
 
-Pomiędzy dwoma wcześniej opisanynymi podejściami istnieje podejście hybrydowe. Polega ono na łączeniu modułów w grupy niższego poziomu które są wzajemnie testowane. Następnie grupy niższego poziomu łączone są w grupy wyższego poziomu które są wzajemnie testowane. Końcowym etapem może być test integracji całego systemu.
+Pomiędzy dwoma wcześniej opisywanymi podejściami istnieje podejście hybrydowe. Polega ono na łączeniu modułów w grupy niższego poziomu które są wzajemnie testowane. Następnie grupy niższego poziomu łączone są w grupy wyższego poziomu które są wzajemnie testowane. Końcowym etapem może być test integracji całego systemu.
+
 \subsubsection{Testy systemowe}
-System jest to zbior zintegrowanych komponentow ktore wspolnie dostarczaja okreslonych wymagan. W skład systemu wchodzi także całe środowisko uruchomieniowe, sprzęt, oprogramowanie zewtnętrzne. Testowanie systemowe jest okreslane jako faza testow ktore sprawdzaja kompletny w pelni zintegrowany system ktory działa na środowisku końcowym lub zbliżonym do końcowegp. Testy te sprawdzaja zgodnosc z okreslonymi wymaganiami takimi jak: funkcjonalnosc, niezawodnosc itp
-Faza ta powinna zostac wykonana po testach komponentowych i integracyjnych i może sprawdzać wymagania zarówno funkcjonalne i niefunkcjonalne.
-Testy systemowe najczęściej wykonywane są manualnie na podstawie zdefiniowanego planu, przy czymś część testów takich jak testy wydajnościowe mogą być wspomagane automatycznie.
-Testy systemowe zakładają iż większość negatywnych scenariuszy takich jak podanie błędnych zdanych sprawdzone zostało podczas faz wcześniejszych testów tak więc testowanie systemowe skupione jest na weryfikacji pozytywnych scenariuszy. 
+System jest to zbiór zintegrowanych komponentów które wspólnie realizują wymaganą logikę biznesową. W skład systemu wchodzi także całe środowisko uruchomieniowe, sprzęt, oprogramowanie zewnętrzne. Testowanie systemowe jest określane jako faza testów które operują na kompletnym w pełni zintegrowanym systemie, działającym na środowisku końcowym lub zbliżonym do końcowego. Testy te sprawdzają zgodność z określonymi wymaganiami takimi jak: funkcjonalności, niezawodność itp.
+Testy systemowe powinny zostać przeprowadzone po  zakończonych testach  komponentowych i integracyjnych.  Weryfikują one wymagania zarówno funkcjonalne i niefunkcjonalne.
+
+Testy systemowe najczęściej wykonywane są manualnie na podstawie zdefiniowanego planu, przy czym część testów takich jak testy wydajnościowe mogą być wspomagane automatycznie.
+Testy systemowe zakładają iż większość negatywnych scenariuszy takich jak podanie błędnych danych sprawdzone zostało podczas faz wcześniejszych testów tak więc testowanie systemowe skupione jest głównie na weryfikacji pozytywnych scenariuszy. 
 Testy systemowe powinny być przeprowadzone przez niezależny zespół który raportuje do kierownika niezależnego od departamentu produkcji. 
 
-\subsubsection{Testy akceptacyjne}
-TODO: opisać testy akceptacyjne
 
 
 \subsection{Podział ze względu na typ walidacji}
+Typ walicaji dla testu określa jakiego typu wiedza wymagane jest do jego przeprowadzenia i z jakiej perspektywy tester powinien oceniać oczekiwane rezultaty. Możemy wyróżnić dwa typy walidacji które skupione są na potwierdzeniu innych charakterystyk systemu.
 \subsubsection{Testy funkcjonalne}
-Testowanie funkcjonalne ma na zadanie sprawdzić zgodność oprogramowania z zdefiniowanymi wymaganiami. Testy takie przeprowadzane są z punktu widzenia użytkownika końcowego, nie jest więc wymagana wiedza o działaniu i architekturze poszczególnych komponentów. Testy funkcjonalne są  zazwyczaj łatwę do testowania ręcznego. Język użyty w opisie testu powinien być dopasowany do terminologii końcowej, tak by móc zweryfikować czy nazwy używane w aplikacji są zgodne z nazwami używanymi w dziedzinie zastosowania.
+Testowanie funkcjonalne ma na zadanie sprawdzić zgodność oprogramowania z zdefiniowanymi wymaganiami. Testy takie przeprowadzane są z punktu widzenia użytkownika końcowego, nie jest więc wymagana wiedza o działaniu i architekturze poszczególnych komponentów. Testy funkcjonalne są  zazwyczaj łatwe do testowania ręcznego. Język użyty w opisie testu powinien być dopasowany do terminologii końcowej, tak by móc zweryfikować czy nazwy używane w aplikacji są zgodne z nazwami używanymi w dziedzinie zastosowania.
 
 Przypadek testowy odnoszący się do testu funkcjonalnego powinien zawierać:
 \begin{itemize}
@@ -220,26 +236,28 @@ Przypadek testowy odnoszący się do testu funkcjonalnego powinien zawierać:
   \item opis stanu środowiska w jakim należy wykonać test
 \end{itemize}
 
-Tworząc testy funkcjonalne należy wziąć pod uwagę dwa aspekty: redundancję i strefę szarości. Redundancja testów oznacz iż podobne testy są powtarzane w różnych fazach. Należy stworzyć taki plan testów aby uniknąć duplikacji, jeżeli podobne testy występują w różnych fazach należy zadbać by sprawdzały spełnienie wymagań z różnych prespektyw. Strefa szarości, czyli taka strefa produktu która nie zostanie pokryta podczas testów. Minimalizować szarą strefę możemy poprzez dobre planowanie. Należy zadbac by całość wymagań została pokrywa przypadkami testowymi. Dodatkowo w planie testów należy zadbać o to by przypadki testowe weryfikujące najważniejsze funkcjonalności dostały większy priorytet ( więcej zasobów ), natomiast marginalne funkcjonalności mogą być testowane poprzez testy poprzeczne ( testujące większą grupę funkcjonalności).
+Tworząc testy funkcjonalne należy wziąć pod uwagę dwa aspekty: redundancję i strefę szarości. Redundancja testów oznacza iż podobne testy są powtarzane w różnych fazach. Należy stworzyć taki plan testów aby uniknąć duplikacji, jeżeli podobne testy występują w różnych fazach należy zadbać by sprawdzały spełnienie wymagań z różnych perspektyw. 
+
+Strefa szarości, czyli taka strefa produktu która nie zostanie pokryta podczas testów. Minimalizować szarą strefę możemy poprzez dobre planowanie. Należy zadbać by całość wymagań została pokrywa przypadkami testowymi. Dodatkowo w planie testów należy zadbać o to by przypadki testowe weryfikujące najważniejsze funkcjonalności dostały większy priorytet ( więcej zasobów ), natomiast marginalne funkcjonalności mogą być testowane poprzez testy poprzeczne ( testujące większą grupę funkcjonalności).
 \subsubsection{Testy niefunkcjonalne}
-Testy niefunkcjonalne testują jakość oprogramowania, testowane są  niefunkcjonalne właściwości systemu, bez których system pomimo iz spełnia wymagania nie może zostać nazwany poprawnym. Przypadki testowe dla testów niefunkcjonalnych powinny określać jakościowe i ilościowe oczekiwane rezultaty. Przykładem rezultatu może być określenie "dla 10 000 wejść na stronę system powinien zachowywać się stabilnie co oznacza iż użytkownicy będą w stanie wykonać swoje biznesowe procesy". Wykonywanie tego wypu testów wymaga wiedzy na temat architektury prouktu Powodowane jest to faktem iż znając newralgiczne części systemu, tester może skupić na nich dodatkową uwagę wiedząc iż mogą one powodować efekt wąskiego gardła
+Testy niefunkcjonalne testują jakość oprogramowania, testowane są  niefunkcjonalne właściwości systemu, bez których system pomimo iż spełnia wymagania nie może zostać nazwany poprawnym. Przypadki testowe dla testów niefunkcjonalnych powinny określać jakościowe i ilościowe oczekiwane rezultaty. Przykładem rezultatu może być określenie "dla 10 000 wejść na stronę system powinien zachowywać się stabilnie co oznacza iż użytkownicy będą w stanie wykonać swoje biznesowe procesy". Wykonywanie tego typu testów wymaga wiedzy na temat architektury produktu Powodowane jest to faktem iż znając newralgiczne części systemu, tester może skupić na nich dodatkową uwagę wiedząc iż mogą one powodować efekt wąskiego gardła
 
 
-Testy niefunkcjonalne przez swoją złożoność są trudne lub niemożliwe do wykonania. Przykładem może być test wymagający by kilka użytkowików w tej samej chwili weszło na tą samą stronę. Jeżeli jest to możliwe, sugerowane jest by testy takie zostały zautomatyzowane.
-\chapter{Określenie problemu} % (fold)
+Testy niefunkcjonalne przez swoją złożoność są trudne lub niemożliwe do wykonania ręcznego. Przykładem może być test wymagający by kilku użytkowników w tym samym momencie załadowało stronę główną portalu internetowego. Jeżeli jest to możliwe, sugerowane jest by testy takie zostały zautomatyzowane.
+\chapter{Określenie problemu} 
 \label{cha:okreslenie_problemu}
 
 W rozdziale zdefiniowany zostanie problem badawczy oraz dokonany zostanie szczegółowy przegląd  podobnych problemów i ich rozwiązań. Ostatecznie postanowiona zostanie teza niniejszej pracy.
 
-\section{Definicja problemu} % (fold)
+\section{Definicja problemu} 
 \label{sec:definicja_problemu}
 
 Tematem pracy jest stworzenie aplikacji wspomagającej proces zapewnienia jakości produktu informatycznego. Istnieje wiele rodzai aplikacji które wpisują się w tematykę testowania oprogramowania i wspierają ten proces w różnych fazach i aspektach. Założeniem pracy jest stworzenie aplikacji która będzie repozytorium testów manualnych. Głównymi funkcjami repozytorium będzie możliwość dodawania i edycji testów, klasyfikowania i definicji, grupowania i wykonywania  testów.
 
 
-Odwołując się do wcześniejszych informacji, aplikacja przeznaczona jest do każdego z typów wytwarzania oprogramowania. Repozytorium przechowywać będzie testy integracyjne i systemowe, ponieważ to te typy testów najczęścniej wykonywane są manualnie. Charakterystyka testów może być zarówno funkcjonalna jak i niefunkcjonalna, należy jednak mieć świadomość i testy niefunkcjonalne przez swą złożoność mogą nie być możliwe do wykonania manualnego.
+Odwołując się do wcześniejszych informacji, aplikacja przeznaczona jest do każdego z typów wytwarzania oprogramowania. Repozytorium przechowywać będzie testy integracyjne i systemowe, ponieważ to te typy testów najczęściej wykonywane są manualnie. Charakterystyka testów może być zarówno funkcjonalna jak i niefunkcjonalna, należy jednak mieć świadomość iż testy niefunkcjonalne przez swą złożoność mogą nie być możliwe lub być trudne do wykonania manualnego.
 
-Specyfikacjia aplikacji której projekt i implementacja przedstawione będą w niniejszej pracy umożliwiać będzie definicje testów i strategii testowych dla systemów dedykowanych na wiele urządzeń. Aplikacja wspierać będzie iteracyjny model wytwarzania oprogramowania w którym w ramach jednego wydania systemu przeprowadzonych będzie kilka strategii testowych ( dla każdej iteracji osobno). W modelu takim istotne jest to by podzielić testowanie posczególnych funkcjonalności na inkrementacje, tak by możliwe było jak najszybsze testowanie już oddanych funkcjonalności bez potrzeby wydania całego systemu. Dodatkowym aspektem jest potrzeba przeprowadzenia regresji tak by uzyskać pewność iż nowe wydanie systemu nie spowodowało defektów w już istniejących funkcjonalnościach ( z poprzednich wersji ). Należy róznież zadbać o regresje między iteracjami, gdyż nowe funkcjonalności mogą wprowadzić defekty w funkcjonalnościach już przetestowanych.
+Specyfikacja aplikacji której projekt i implementacja przedstawione będą w niniejszej pracy umożliwiać będzie definicje testów i planów testowych dla systemów dedykowanych na wiele urządzeń. Aplikacja wspierać będzie iteracyjny model wytwarzania oprogramowania w którym w ramach jednego wydania systemu przeprowadzonych będzie kilka strategii testowych ( dla każdej iteracji osobno). W modelu takim istotne jest to by podzielić testowanie poszczególnych funkcjonalności na inkrementacje, tak by możliwe było jak najszybsze testowanie już oddanych funkcjonalności bez potrzeby wydania całego systemu. Dodatkowym aspektem jest potrzeba przeprowadzenia regresji tak by uzyskać pewność iż nowe wydanie systemu nie spowodowało defektów w już istniejących funkcjonalnościach ( z poprzednich wersji ). Należy róznież zadbać o regresje między iteracjami, gdyż nowe funkcjonalności mogą wprowadzić defekty w funkcjonalnościach już przetestowanych.
 
 Systemy dedykowane na różne kombinacje urządzeń docelowych lub urządzeń pośrednich posiadają złożoną kombinację możliwych przypadków testowych. Złożoność tą możemy przedstawić wzorem:
 
@@ -253,7 +271,7 @@ TC_{mix} = TC * D
 	\end{itemize}
 
 
-Powołując się na wiedzę z zagadnień testowania oprogramowania, można stwierdzić iż niemożliwe jest testowanie wszystkich kombinacji przypadków użycia i urządzeń. Celem zapewnienia najwyższej jakości produktu a zarazem zminimalizowania kosztów testów stosowana jest strategia sterowana ryzykiem. Dla przypomnienia polega ona na określeniu które funkcjonalności objęte są najwyższym ryzykiem w aktualnym wydaniu produktu. Powoduje to iż testy odnoszące się do najbardziej ryzykownych funkcjonalności otrzymują najwyższy priorytet, tak więc z tych grup zostanie wybrana największa ilość testów które zostaną wykonane. Analogiczną strategię sterowaną ryzkiem należy zastosować dla urządzeń dla których produkt jest dedykowany. W tym przypadku pomocna może okazać się znajomość rynku na który dedykowany jest system, lub konfiguracji jeżeli system dedykowany jest dla jednego klienta. Analiza taka dostarczy dane które pozwolą skoncentrować proces testowaniach na najpopularniejszych urządzeniach. 
+Powołując się na wiedzę z zagadnień testowania oprogramowania, można stwierdzić iż niemożliwe jest testowanie wszystkich kombinacji dla przypadków użycia i urządzeń. Celem zapewnienia najwyższej jakości produktu a zarazem zminimalizowania kosztów testów stosowana jest strategia sterowana ryzykiem. Dla przypomnienia polega ona na określeniu które funkcjonalności objęte są najwyższym ryzykiem w aktualnym wydaniu produktu. Powoduje to iż testy odnoszące się do najbardziej ryzykownych funkcjonalności otrzymują najwyższy priorytet, tak więc z tych grup zostanie wybrana największa ilość testów które zostaną wykonane. Analogiczną strategię sterowaną ryzykiem należy zastosować dla urządzeń dla których produkt jest dedykowany. W tym przypadku pomocna może okazać się znajomość rynku na który dedykowany jest system, lub konfiguracji jeżeli system dedykowany jest dla jednego klienta. Analiza taka dostarczy dane które pozwolą skoncentrować proces testowaniach na najpopularniejszych urządzeniach. 
 
 \section{Rodzaje narzędzi wspomagających proces testowania}
 Narzędzia wspierające proces testowania możemy dzielić ze względu na różne kategorie takie jak na przykład: cel, poziom testów dla których są dedykowane, rodzaj licencji, technologia itp. Standard ISTQB stosuje podział w zależności od aktywności które są wspierane przez narzędzie. 
@@ -275,7 +293,7 @@ Narzędzia wspierające proces testowania możemy dzielić ze względu na różn
 \hline
 \endlastfoot
 \multirow{4}{4cm}{Narzędzia wspierające zarządzanie testami}  &
- wspierające zaządzaniem procesem testowania & przechowują treść testów, plany testów, strategie\\ \cline{2-3}
+ wspierające zarządzanie procesem testowania & przechowują treść testów, plany testów, strategie\\ \cline{2-3}
  & wspierające zarządzanie wymaganiami & przechowują priorytety wymagań, zapewniają unikatowość i identyfikacje wymagań, wspierają wykrywanie brakujących lub sprzecznych wymagań\\
  & przechowujące incydenty & przechowują historię defektów, anomalii, zmian wymagań\\ \cline{2-3}
  & zarządzające konfiguracją & przechowują informacje o konfiguracji dla wydań produktów, platform \\ \hline
@@ -284,49 +302,37 @@ Narzędzia wspierające proces testowania możemy dzielić ze względu na różn
 \multirow{3}{4cm}{Narzędzia wspierające testowanie statyczne} &
 Wspierające przegląd kodu & przechowują informacje na temat przeglądu, zgłoszone problemy i ich rozwiązania, listy z wskazówkami na temat standardów, udostępniają zdalne tworzenie przeglądów\\ \cline{2-3}
 & wykonujące statyczną analizę produktu & generują metryki produktu, sprawdzają zgodność ze standardami, sprawdzają kod produktu pod kątem znanych problemów\\ \cline{2-3}
-&  modelujące  & wspierajace walidacje modelu jak na przykład modelu bazy danych, sprawdzają niezgodność relacji, generują przypadki testowe na podstawie modelu\\ \hline
+&  modelujące  & wspierające walidacje modelu jak na przykład modelu bazy danych, sprawdzają niezgodność relacji, generują przypadki testowe na podstawie modelu\\ \hline
 \hline
 \multirow{2}{4cm}{Wspierające specyfikacje testów} &
-Wspierające projektowanie testów & oferują automatyczne tworzenie przypadków testowych i danych wejściowych na podstawie wymagań, interfejsu użytkowika, kodu\\ \cline{2-3}
+Wspierające projektowanie testów & oferują automatyczne tworzenie przypadków testowych i danych wejściowych na podstawie wymagań, interfejsu użytkownika, kodu\\ \cline{2-3}
 & narzędzia przygotowujące dane dla testów & oferują automatyczne zapełnianie systemu danymi do testów ( np. generacja danych dla bazy danych )\\ \cline{2-3}
 \hline
 \multirow{5}{4cm}{Rodzina narzędzi wspierających wykonanie testów i logowania} &
 wykonujące testy & wykonują automatycznie lub pół automatycznie testy, zapisują rezultaty\\ \cline{2-3}
 & biblioteki testowe & dostarczają komponenty na podstawie których zespół tworzy testy jednostkowe, symuluje obiekty\\ \cline{2-3}
 &  porównujące wyniki & sprawdzają zgodność stanu systemu poddanego testów z wymaganiami, pozwalają na określenie czy dany test zakończył się powodzeniem\\ \cline{2-3}
-& określające metryki pokrycua & narzędzia określające pokrycie kodu przez testy \\ \cline{2-3}
-& narzędzia wspierające testowanie bezpieczeństwa & wspierają system i jego zgodność ze standardami bezpieczeństwa, dostępu do donych, autoryzacji i autentykacji itp\\ \hline
+& określające metryki pokrycia & narzędzia określające pokrycie kodu przez testy \\ \cline{2-3}
+& narzędzia wspierające testowanie bezpieczeństwa & wspierają system i jego zgodność ze standardami bezpieczeństwa, dostępu do danych, autoryzacji i autentykacji itp\\ \hline
 \hline
 \multirow{5}{4cm}{Rodzina narzędzi wspierających testowanie wydajności i monitorujących}&
- wspierające testowanie wydajności & używane dla testów niefunkcjonalnych dla tekich dziedzin jak wydajność, obciążenie. Testują wydajność dla dużej ilości wątków, transakcji \\ \cline{2-3}
+ wspierające testowanie wydajności & używane dla testów niefunkcjonalnych dla takich dziedzin jak wydajność, obciążenie. Testują wydajność dla dużej ilości wątków, transakcji \\ \cline{2-3}
 & wykonujące dynamiczne testowanie & wykonują testy sprawdzające zachowanie systemu podczas jego działania, używane do sprawdzania wycieków pamięci, zależności czasowych \\ \cline{2-3}
 & narzędzia do monitorowania & monitorują określone zasoby, pozwalają na analizę porównawczą ( na przykład między różnymi wersjami systemu ) \\ \hline
 \hline
 \multirow{1}{4cm}{Rodzina narzędzi specjalnego zastosowania} &
-narzędzia do analizy jakości danych & używane przy testowania migracji ( aktualizacja oprogramowania do nowej wersji połączona ze zmienioną strukturą danych), moniturują poprawność konwersji danych \\
+narzędzia do analizy jakości danych & używane przy testowania migracji ( aktualizacja oprogramowania do nowej wersji połączona ze zmienioną strukturą danych), monitorują poprawność konwersji danych \\
 \hline
 \caption{Podział narzędzi wspomagających proces testowania oprogramowania według ISTQB (na podstawie  \cite{istqb})}\\
 \end{longtable}
 
 \section{Potrzeba integracji z innymi narzędziami}
 
-Przedsiębiorstwa informatyzują wiele kluczowych procesów biznesowych. Zdarza się iż do rozwiązania konkretnego przypadku stosowane jest kilka różnych systemów, pochodzących od jednego wydawcy lub wydawaców ze sobą niezwiąnych. Fakt istnienia różnych systemów powoduje konieczność zintegrowania ich wspólnie tak by systemy mogły w sposób zautomatyzowany wymieniać między sobą dane, zdarzenia, komunikaty.
+Przedsiębiorstwa informatyzują wiele kluczowych procesów biznesowych. Zdarza się iż do rozwiązania konkretnego przypadku stosowane jest kilka różnych systemów, pochodzących od jednego wydawcy lub wydawców ze sobą niezwiązanych. Fakt istnienia różnych systemów powoduje konieczność zintegrowania ich wspólnie tak by systemy mogły w sposób zautomatyzowany wymieniać między sobą dane, zdarzenia, komunikaty.
 
-Różnorodność na rynku informatycznym powoduje iż programy pracujące w tej samej domenie, używane wspólnie do rozwiązania konkretnej potrzeby biznesowej, tworzone są w różnych technologiach, w odmiennych językach programowania. Potrzeba komunikacji pomiędzy programami, które różnią się implementacją i technologiami rozwiązywana jest poprzez zastosowanie standardów które mogą być stosowane interdyscyplinarnie.
+Różnorodność na rynku informatycznym powoduje iż programy pracujące w tej samej domenie, używane wspólnie do rozwiązania konkretnej potrzeby biznesowej, tworzone są w różnych technologiach, w odmiennych językach programowania. Potrzeba komunikacji pomiędzy programami, które różnią się implementacją i technologiami rozwiązywana jest poprzez zastosowanie standardów które mogą być używane w sposób interdyscyplinarny.
 
 Poprzedni rozdział zobrazował jak wiele różnorodnych narzędzi wspomagających proces testowania można wyróżnić na rynku. W przypadku oprogramowania wspierającego proces testowania, integracja bywa kluczowym zadaniem. W ten sposób stworzyć można w pełni automatyczne lub pół-automatyczne rozwiązania pokrywające proces zapewnienia jakości oprogramowania. 
 
-Repozytorium stworzone w ramach niniejszej pracy wpisuje się w potrzebę integracji z narzędziami zewnętrznymi. Komunikacja udostępniona zostanie poprzez usługę sieciową. Więcej szcegółow znajduje się w rozdziale dotyczącym projektu aplikacji.
-
-\section{Analiza istniejących repozytorii testów}
-
-//TODO
-
-
-
-
-
-
-
-
+Repozytorium stworzone w ramach niniejszej pracy wpisuje się w potrzebę integracji z narzędziami zewnętrznymi. Komunikacja udostępniona zostanie poprzez usługę sieciową. Więcej szczegółów znajduje się w rozdziale dotyczącym projektu aplikacji.
 

@@ -1,56 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui"
-                template="/template.xhtml">
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    template="/template.xhtml">
     <f:metadata>
         <f:viewParam name="id" value="#{testExecutionController.idTestExecution}" />
         <f:event type="preRenderComponent" listener="#{testExecutionController.loadFromGetParameters()}"/>
     </f:metadata>
-    <ui:define name="title">Execution of the test</ui:define>
+    <ui:define name="title">Execution of the test<ui:fragment rendered="#{!testExecutionController.isUserAllowed()}"> (readonly)</ui:fragment></ui:define>
     <ui:define name="body">
-        <h3><ul class="breadcrumb">
-                <li><a href="#">#{testExecutionController.testDefinition.testGroupidTestGroup.getName()}</a> <span class="divider">/</span></li>
-                <li class="active"> #{testExecutionController.testDefinition.name}</li>
-            </ul></h3>
-        <table class="table table-hover">
-            <tr><th>Name</th><th>Value</th></tr>
-            <tr><td>Features</td><td>#{testExecutionController.testDefinition.featureidFeature.name}</td></tr> 
-            <tr><td>Products</td><td><ui:repeat var="pr" varStatus="idx" value="#{testExecutionController.testDefinition.products}">#{pr.name}<h:outputText value="," rendered="#{!idx.last}"/> </ui:repeat></td></tr> 
-            <tr><td>Comment</td><td><p:inputTextarea value="#{testExecutionController.selected.comments}"/></td></tr>
-        </table>
+        <h:form id="executeTestFrom">
+            <h3><ul class="breadcrumb">
+                    <li><a href="#">#{testExecutionController.testDefinition.testGroupidTestGroup.getName()}</a> <span class="divider">/</span></li>
+                    <li class="active"> #{testExecutionController.testDefinition.name} </li>
+                </ul></h3>
+            <table class="table table-hover">
+                <tr><th>Name</th><th>Value</th></tr>
+                <tr><td>Status</td><td><label class="label #{testExecutionController.selected.status.cssClassLabel}">#{testExecutionController.selected.status}</label></td></tr>
+                <tr><td>Features</td><td>#{testExecutionController.testDefinition.featureidFeature.name}</td></tr> 
+                <tr><td>Products</td><td><ui:repeat var="pr" varStatus="idx" value="#{testExecutionController.testDefinition.products}">#{pr.name}<h:outputText value="," rendered="#{!idx.last}"/> </ui:repeat></td></tr> 
+                <tr><td>Devices</td><td><ui:repeat var="dev" varStatus="idx" value="#{testExecutionController.selected.devices}">#{dev.name}<h:outputText value="," rendered="#{!idx.last}"/> </ui:repeat></td></tr>
+                <tr><td>Comment</td><td><p:inputTextarea readonly="#{!testExecutionController.isUserAllowed()}" value="#{testExecutionController.selected.comments}"/></td></tr>
+
+            </table>
+            <h3>Required equipment for test</h3>
+            <table class="table table-hover">
+                <tr><th>Equipment</th><th>Quantity</th></tr>
+                <ui:repeat var="equipment" value="#{testExecutionController.selected.equipments}" >
+                    <tr><td>#{equipment.equipment.name}</td><td>#{equipment.quantity}</td>
+
+                    </tr>  
+                </ui:repeat>
+            </table>
+            <h3>Required products states - preconditions </h3>
+            <table class="table table-hover">
+                <tr><th>Product name</th><th>Precondition</th></tr>
+                <ui:repeat var="productState" value="#{testExecutionController.selected.productStates}" >
+                    <tr><td>#{productState.product.name}</td><td>#{productState.description}</td>
+                    </tr>  
+                </ui:repeat>
+            </table>
+            <h3>Test script steps</h3>
+            <table class="table table-hover">
+                <tr><th>#</th><th>Instruction</th><th>Expected results</th><th>Comment</th></tr>
+                <ui:repeat var="step" varStatus="status" value="#{testExecutionController.selected.steps}" >
+                    <tr><td>#{status.index +1}</td><td>#{step.description}</td><td>#{step.expectedResult}</td>
+                        <td><p:inputTextarea id="comment" readonly="#{!testExecutionController.isUserAllowed()}" value="#{step.comment}" /></td>
+                    </tr>  
+                </ui:repeat>
+            </table>
+            <ui:fragment rendered="#{testExecutionController.isUserAllowed()}">
+                <h3>Update test execution and select current status</h3>
+                <div class="btn-toolbar pagination-centered">
+                    <div class="btn-group">
+                        <p:commandButton  styleClass="btn  #{testStatus.passed.cssClassButton}" 
+                                          id="passedButton"  value="Passed"  update=":executeTestFrom" action="#{testExecutionController.update(testStatus.passed)}" />
+                        <p:commandButton  styleClass="btn  #{testStatus.failed.cssClassButton}" action="#{testExecutionController.update(testStatus.failed)}" 
+                                          id="failedButton"  value="Failed"  update=":executeTestFrom"  />
+                        <p:commandButton  styleClass="btn  #{testStatus.blocked.cssClassButton}" action="#{testExecutionController.update(testStatus.blocked)}" 
+                                          id="blockedButton" process="@form"  value="Blocked"  update=":executeTestFrom"  />
+                        <p:commandButton  styleClass="btn  #{testStatus.waived.cssClassButton}"  action="#{testExecutionController.update(testStatus.waived)}"
+                                          id="waivedButton"  value="Unnable to execute"  update=":executeTestFrom"  />
+                        <p:commandButton  styleClass="btn  #{testStatus.needHelp.cssClassButton}" action="#{testExecutionController.update(testStatus.needHelp)}"
+                                          id="needHelpButton"  value="Request for help"  update=":executeTestFrom"  />
+                    </div>
+                </div>
+            </ui:fragment>
+            
+            <h3>Changes history</h3>
+                
+                <p:dataTable styleClass="table table-hover" value="#{testExecutionController.changesOnTest}" var="change">
+                    <p:column headerText="Date">#{change.dateTime}</p:column>
+                    <p:column headerText="From"><label class="label">#{change.previousStatus}</label></p:column>
+                    <p:column headerText="To"><label class="label">#{change.currentStatus}</label></p:column>
+                </p:dataTable>
+
+        </h:form>
     </ui:define>
-
-    <h3>Required equipment for test</h3>
-    <table class="table table-hover">
-        <tr><th>Equipment</th><th>Quantity</th></tr>
-        <ui:repeat var="equipment" value="#{testExecutionController.selected.equipments}" >
-            <tr><td>#{equipment.equipment.name}</td><td>#{equipment.quantity}</td>
-
-            </tr>  
-        </ui:repeat>
-    </table>
-    <h3>Required products states - preconditions </h3>
-    <table class="table table-hover">
-        <tr><th>Product name</th><th>Precondition</th></tr>
-        <ui:repeat var="productState" value="#{testExecutionController.selected.productStates}" >
-            <tr><td>#{productState.product.name}</td><td>#{productState.description}</td>
-            </tr>  
-        </ui:repeat>
-    </table>
-    <h3>Test script steps</h3>
-    <table class="table table-hover">
-        <tr><th>#</th><th>Instruction</th><th>Expected results</th><th>Comment</th></tr>
-        <ui:repeat var="step" varStatus="status" value="#{testExecutionController.selected.steps}" >
-            <tr><td>#{status.index +1}</td><td>#{step.description}</td><td>#{step.expectedResult}</td>
-                <td><p:inputTextarea id="comment" value="#{step.comment}" /></td>
-            </tr>  
-        </ui:repeat>
-    </table>
-
-
-
 
 </ui:composition>

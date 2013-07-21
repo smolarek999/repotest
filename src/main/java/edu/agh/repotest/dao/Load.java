@@ -49,9 +49,9 @@ public class Load implements Serializable {
     @Column(name = "startDate")
     @Temporal(TemporalType.DATE)
     private Date startDate;
-    @Size(max = 45)
     @Column(name = "endDate")
-    private String endDate;
+    @Temporal(TemporalType.DATE)
+    private Date endDate;
     @ManyToOne(optional = false)
     @JoinColumn(name = "releaseId", referencedColumnName = "idRelease")
     private Release release;
@@ -89,11 +89,11 @@ public class Load implements Serializable {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

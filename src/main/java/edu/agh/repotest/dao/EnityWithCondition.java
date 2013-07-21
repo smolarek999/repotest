@@ -8,22 +8,28 @@ import edu.agh.repotest.util.ConditionHelper;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
+import org.eclipse.persistence.oxm.annotations.XmlAccessMethods;
 
 /**
  *
  * @author JWR734
  */
-public abstract class EnityWithCondition implements Serializable{
+@XmlAccessorType(XmlAccessType.NONE)
+public abstract class EnityWithCondition implements Serializable {
+
     @Transient
     Condition rawCondition;
-    
-    public void refreshCondition(){
-         setCondition(ConditionHelper.createToString(rawCondition)) ;
+
+    public void refreshCondition() {
+        setCondition(ConditionHelper.createToString(rawCondition));
     }
     public Condition getRawCondition() {
         System.out.println("getRawCondition");
-        
-        if( rawCondition == null ){
+
+        if (rawCondition == null) {
             rawCondition = ConditionHelper.createFromString(getConditionInner());
         }
         return rawCondition;
@@ -31,14 +37,17 @@ public abstract class EnityWithCondition implements Serializable{
 
     public void setRawCondition(Condition condition) {
         System.out.println("setRawCondition");
-        setCondition(ConditionHelper.createToString(condition)) ;
+        setCondition(ConditionHelper.createToString(condition));
         this.rawCondition = condition;
-        
+
     }
-    
-        public abstract String getCondition() ;
-        
-        public abstract String getConditionInner() ;
+
+    public abstract String getCondition();
+
+    public abstract String getConditionInner();
 
     public abstract void setCondition(String condition);
+    
+    public abstract String getConditionalId();
+    public abstract String getConditionalDesc();
 }

@@ -7,6 +7,7 @@ package edu.agh.repotest.util;
 import static edu.agh.repotest.util.AssertHelper.atLeastOneIsNull;
 import edu.agh.repotest.dao.Condition;
 import edu.agh.repotest.dao.Device;
+import edu.agh.repotest.dao.DevicePermutation;
 import edu.agh.repotest.dao.EnityWithCondition;
 import edu.agh.repotest.dao.GroupOfDevices;
 import java.util.LinkedList;
@@ -24,6 +25,11 @@ public class ConditionHelper {
     static final String CONDITION_SEPARATOR = "|";
     static final String CONDITION_SEPARATOR_PATTERN = "\\" + CONDITION_SEPARATOR;
     static final String ITEM_SEPARATOR_PATTERN = "\\" + ITEM_SEPARATOR;
+
+    public static boolean hasBeenPassed(EnityWithCondition entityWithCondition, DevicePermutation deviceSelection) {
+
+        return hasBeenPassed(entityWithCondition, deviceSelection.getDevices());
+    }
 
     public static boolean hasBeenPassed(EnityWithCondition entityWithCondition, List<Device> availableDevices) {
         boolean passed = true;

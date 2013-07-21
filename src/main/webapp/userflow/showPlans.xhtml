@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui"
-                template="/template.xhtml">
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    template="/template.xhtml">
     <ui:define name="title">Plan for which you are assigned</ui:define>
     <ui:define name="body">
 
-        <p:dataTable   styleClass="table table-hover">
+        <p:dataTable   styleClass="table table-hover" var="testPlan" value="#{loggedUserController.testPlans}">
             <f:facet name="header" >Test plans</f:facet>
             <p:column headerText="name" >#{testPlan.name}</p:column>
             <p:column headerText="description" >#{testPlan.description}</p:column>
-            <tr><th>name</th><th>description</th></tr>
+            <p:column headerText="show tests" ><h:button outcome="/userflow/showPlanDetails" value="Show details"><f:param name="id" value="#{testPlan.idTestPlan}"/></h:button></p:column>
         </p:dataTable>
     </ui:define>
 

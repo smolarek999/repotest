@@ -19,6 +19,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class TestPlanFacade extends AbstractFacade<TestPlan> {
+
     @PersistenceContext(unitName = "edu.agh.repotest_repoTest_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -26,14 +27,20 @@ public class TestPlanFacade extends AbstractFacade<TestPlan> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-    public List<TestPlan> getByUser( Users user) {
+
+    public List<TestPlan> getOpened() {
+        final TypedQuery<TestPlan> query = em.createNamedQuery("TestPlan.findByState", TestPlan.class);
+        query.setParameter("state", TestPlan.State.Open);
+        return query.getResultList();
+    }
+
+    public List<TestPlan> getByUser(Users user) {
         final TypedQuery<TestPlan> query = em.createNamedQuery("TestPlan.findByUser", TestPlan.class);
         query.setParameter("user", user);
         return query.getResultList();
     }
+
     public TestPlanFacade() {
         super(TestPlan.class);
     }
-    
 }

@@ -19,6 +19,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -26,43 +28,51 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author pawel
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "TestStep")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TestStep.findAll", query = "SELECT t FROM TestStep t")})
 public class TestStep extends EnityWithCondition {
 
     private static final long serialVersionUID = 1L;
-    
-    @Size(max = 45)
-    @Column(name = "Description")
-    private String description;
-    @Size(max = 45)
-    @Column(name = "ExpectedResult")
-    private String expectedResult;
-    @Size(max = 45)
-    @Column(name = "ConditionCol")
-    private String condition;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idTestStep")
     private Integer idTestStep;
+    @Size(max = 511)
+    @Column(name = "Description")
+    private String description;
+    @Size(max = 511)
+    @Column(name = "ExpectedResult")
+    private String expectedResult;
+    @Size(max = 45)
+    @Column(name = "ConditionCol")
+    @XmlTransient
+    private String condition;
+    @XmlTransient
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "testStep")
     private Collection<TestExecutionStep> testExecutionhasTestStepCollection;
+    @XmlTransient
     @JoinColumn(name = "Test_idTest", referencedColumnName = "idTest")
     @ManyToOne(optional = false)
     private Test testidTest;
 
     public TestStep() {
-        
     }
 
     public TestStep(Integer idTestStep) {
         this.idTestStep = idTestStep;
     }
 
+    @Override
+    public String getConditionalId() {
+        return "S" + idTestStep;
+    }
+
+    
     public String getDescription() {
         System.out.println("TESTSTEP" + "getDescription" + description);
         return description;
@@ -73,23 +83,25 @@ public class TestStep extends EnityWithCondition {
     }
 
     public String getExpectedResult() {
-         System.out.println("TESTSTEP" + "getExpectedResult" + expectedResult);
+        System.out.println("TESTSTEP" + "getExpectedResult" + expectedResult);
         return expectedResult;
     }
+
     @Override
-    public String getConditionInner(){
+    public String getConditionInner() {
         return condition;
     }
+
     public void setExpectedResult(String expectedResult) {
         this.expectedResult = expectedResult;
     }
-    
-    
+
     @Override
     public String getCondition() {
-         System.out.println("TESTSTEP" + "getCondition");
+        System.out.println("TESTSTEP" + "getCondition");
         return condition;
     }
+
     @Override
     public void setCondition(String condition) {
         this.condition = condition;
@@ -106,7 +118,7 @@ public class TestStep extends EnityWithCondition {
 
     @XmlTransient
     public Collection<TestExecutionStep> getTestExecutionhasTestStepCollection() {
-         System.out.println("TESTSTEP" + "getTestExecutionhasTestStepCollection");
+        System.out.println("TESTSTEP" + "getTestExecutionhasTestStepCollection");
         return testExecutionhasTestStepCollection;
     }
 
@@ -115,8 +127,8 @@ public class TestStep extends EnityWithCondition {
     }
 
     public Test getTestidTest() {
-         System.out.println("TESTSTEP" + "getTestidTest");
-         
+        System.out.println("TESTSTEP" + "getTestidTest");
+
         return testidTest;
     }
 
@@ -147,8 +159,12 @@ public class TestStep extends EnityWithCondition {
     }
 
     @Override
+    public String getConditionalDesc() {
+        return "TestStep: " + getDescription();
+    }
+
+    @Override
     public String toString() {
         return "edu.agh.repotest.dao.TestStep[ idTestStep=" + idTestStep + " ]";
     }
-    
 }
