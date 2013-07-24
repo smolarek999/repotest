@@ -135,7 +135,7 @@ Kolejnym krokiem jest wygenerowanie minimalnej ilości przypadków użycia któr
 
 Drugą ze strategii analitycznych jest testowanie sterowane ryzykiem. Zakłada one iż najpierw wykonujemy te testy które dotykają obszarów oprogramowania mających największe ryzyko.  Dobór ryzyka polega na ustaleniu priorytetów dla zdarzeń które mogą wystąpić, mających negatywny wpływ na jakość oprogramowania.
 
-Ustalenie priorytetów polega na przypisaniu do każdego ze zdarzeń prawdopodobieństwa jego wystąpienia i wpływu jaki może mieć na jakość oprogramowania. Wartości te mogą być liczbowe ( np. 1-10 ), bądź dyskretnie ustalone (np. małe, średnie, duże). Następnie dla par ryzyko-wystąpienie przypisywana jest końcowa wartość ryzyka. Końcowe wartości ryzyka ustalane są na podstawie określonych wartości dla każdej pary ryzyko-wystąpienie. Ważne jest aby w trakcie trwania projektu na bieżąco monitorować aktualny stan ryzyka, gdyż może ono zmieniać się w czasie.
+Ustalenie priorytetów polega na przypisaniu do każdego ze zdarzeń prawdopodobieństwa jego wystąpienia i wpływu jaki może mieć na jakość oprogramowania. Wartości te mogą być liczbowe (np. 1-10), bądź dyskretnie ustalone (np. małe, średnie, duże). Następnie dla par ryzyko-wystąpienie przypisywana jest końcowa wartość ryzyka. Końcowe wartości ryzyka ustalane są na podstawie określonych wartości dla każdej pary ryzyko-wystąpienie. Ważne jest aby w trakcie trwania projektu na bieżąco monitorować aktualny stan ryzyka, gdyż może ono zmieniać się w czasie.
 
 Istnieje kilka wyróżnionych domen do których można przyporządkować poszczególne ryzyka. Spis kategorii pozwala dostrzec pewne powszechne ryzyka które mogą zostać pominięte. Można wyróżnić następujące kategorie ryzyka:
 
@@ -238,7 +238,7 @@ Przypadek testowy odnoszący się do testu funkcjonalnego powinien zawierać:
 
 Tworząc testy funkcjonalne należy wziąć pod uwagę dwa aspekty: redundancję i strefę szarości. Redundancja testów oznacza iż podobne testy są powtarzane w różnych fazach. Należy stworzyć taki plan testów aby uniknąć duplikacji, jeżeli podobne testy występują w różnych fazach należy zadbać by sprawdzały spełnienie wymagań z różnych perspektyw. 
 
-Strefa szarości, czyli taka strefa produktu która nie zostanie pokryta podczas testów. Minimalizować szarą strefę możemy poprzez dobre planowanie. Należy zadbać by całość wymagań została pokrywa przypadkami testowymi. Dodatkowo w planie testów należy zadbać o to by przypadki testowe weryfikujące najważniejsze funkcjonalności dostały większy priorytet ( więcej zasobów ), natomiast marginalne funkcjonalności mogą być testowane poprzez testy poprzeczne ( testujące większą grupę funkcjonalności).
+Strefa szarości, czyli taka strefa produktu która nie zostanie pokryta podczas testów. Minimalizować szarą strefę możemy poprzez dobre planowanie. Należy zadbać by całość wymagań została pokrywa przypadkami testowymi. Dodatkowo w planie testów należy zadbać o to by przypadki testowe weryfikujące najważniejsze funkcjonalności dostały większy priorytet (więcej zasobów), natomiast marginalne funkcjonalności mogą być testowane poprzez testy poprzeczne (testujące większą grupę funkcjonalności).
 \subsubsection{Testy niefunkcjonalne}
 Testy niefunkcjonalne testują jakość oprogramowania, testowane są  niefunkcjonalne właściwości systemu, bez których system pomimo iż spełnia wymagania nie może zostać nazwany poprawnym. Przypadki testowe dla testów niefunkcjonalnych powinny określać jakościowe i ilościowe oczekiwane rezultaty. Przykładem rezultatu może być określenie "dla 10 000 wejść na stronę system powinien zachowywać się stabilnie co oznacza iż użytkownicy będą w stanie wykonać swoje procesy biznesowe". Wykonywanie tego typu testów wymaga wiedzy na temat architektury produktu. Powodowane jest to faktem iż znając newralgiczne części systemu, tester może skupić na nich dodatkową uwagę wiedząc iż mogą one powodować efekt wąskiego gardła
 
@@ -257,7 +257,7 @@ Tematem pracy jest stworzenie aplikacji wspomagającej proces zapewnienia jakoś
 
 Odwołując się do wcześniejszych informacji, aplikacja przeznaczona jest do każdego z typów wytwarzania oprogramowania. Repozytorium przechowywać będzie testy integracyjne i systemowe, ponieważ to te typy testów najczęściej wykonywane są manualnie. Charakterystyka testów może być zarówno funkcjonalna jak i niefunkcjonalna, należy jednak mieć świadomość iż testy niefunkcjonalne przez swą złożoność mogą nie być możliwe lub być trudne do wykonania manualnego.
 
-Specyfikacja aplikacji której projekt i implementacja przedstawione będą w niniejszej pracy umożliwiać będzie definicje testów i planów testowych dla systemów dedykowanych na wiele urządzeń. Aplikacja wspierać będzie iteracyjny model wytwarzania oprogramowania w którym w ramach jednego wydania systemu przeprowadzonych będzie kilka strategii testowych ( dla każdej iteracji osobno). W modelu takim istotne jest to by podzielić testowanie poszczególnych funkcjonalności na inkrementacje, tak by możliwe było jak najszybsze testowanie już oddanych funkcjonalności bez potrzeby wydania całego systemu. Dodatkowym aspektem jest potrzeba przeprowadzenia regresji tak by uzyskać pewność iż nowe wydanie systemu nie spowodowało defektów w już istniejących funkcjonalnościach ( z poprzednich wersji ). Należy róznież zadbać o regresje między iteracjami, gdyż nowe funkcjonalności mogą wprowadzić defekty w funkcjonalnościach już przetestowanych.
+Specyfikacja aplikacji której projekt i implementacja przedstawione będą w niniejszej pracy umożliwiać będzie definicje testów i planów testowych dla systemów dedykowanych na wiele urządzeń. Aplikacja wspierać będzie iteracyjny model wytwarzania oprogramowania w którym w ramach jednego wydania systemu przeprowadzonych będzie kilka strategii testowych (dla każdej iteracji osobno). W modelu takim istotne jest to by podzielić testowanie poszczególnych funkcjonalności na inkrementacje, tak by możliwe było jak najszybsze testowanie już oddanych funkcjonalności bez potrzeby wydania całego systemu. Dodatkowym aspektem jest potrzeba przeprowadzenia regresji tak by uzyskać pewność iż nowe wydanie systemu nie spowodowało defektów w już istniejących funkcjonalnościach (z poprzednich wersji). Należy róznież zadbać o regresje między iteracjami, gdyż nowe funkcjonalności mogą wprowadzić defekty w funkcjonalnościach już przetestowanych.
 
 Systemy dedykowane na różne kombinacje urządzeń docelowych lub urządzeń pośrednich posiadają złożoną kombinację możliwych przypadków testowych. Złożoność tą możemy przedstawić wzorem:
 
@@ -306,7 +306,7 @@ Wspierające przegląd kodu & przechowują informacje na temat przeglądu, zgło
 \hline
 \multirow{2}{4cm}{Wspierające specyfikacje testów (Przykłady: Generate data\cite{generateData}, Test Composer\cite{testComposer})} &
 Wspierające projektowanie testów & oferują automatyczne tworzenie przypadków testowych i danych wejściowych na podstawie wymagań, interfejsu użytkownika, kodu\\ \cline{2-3}
-& narzędzia przygotowujące dane dla testów & oferują automatyczne zapełnianie systemu danymi do testów ( np. generacja danych dla bazy danych )\\ \cline{2-3}
+& narzędzia przygotowujące dane dla testów & oferują automatyczne zapełnianie systemu danymi do testów (np. generacja danych dla bazy danych)\\ \cline{2-3}
 \hline
 \multirow{5}{4cm}{Rodzina narzędzi wspierających wykonanie testów i logowania (Przykłady: Junit\cite{junit}, Clover\cite{clover}, Jacoco\cite{jacoco})} &
 wykonujące testy & wykonują automatycznie lub pół automatycznie testy, zapisują rezultaty\\ \cline{2-3}
@@ -318,10 +318,10 @@ wykonujące testy & wykonują automatycznie lub pół automatycznie testy, zapis
 \multirow{5}{4cm}{Rodzina narzędzi wspierających testowanie wydajności i monitorujących (Przykłady: Jprofiler\cite{jprofiler}, App Dynamics Lite\cite{appdynamic})}&
  wspierające testowanie wydajności & używane dla testów niefunkcjonalnych dla takich dziedzin jak wydajność, obciążenie. Testują wydajność dla dużej ilości wątków, transakcji \\ \cline{2-3}
 & wykonujące dynamiczne testowanie & wykonują testy sprawdzające zachowanie systemu podczas jego działania, używane do sprawdzania wycieków pamięci, zależności czasowych \\ \cline{2-3}
-& narzędzia do monitorowania & monitorują określone zasoby, pozwalają na analizę porównawczą ( na przykład między różnymi wersjami systemu ) \\ \hline
+& narzędzia do monitorowania & monitorują określone zasoby, pozwalają na analizę porównawczą (na przykład między różnymi wersjami systemu) \\ \hline
 \hline
 \multirow{1}{4cm}{Rodzina narzędzi specjalnego zastosowania (Przykłady: Universal Replicator\cite{replicator})} &
-narzędzia do analizy jakości danych & używane przy testowania migracji ( aktualizacja oprogramowania do nowej wersji połączona ze zmienioną strukturą danych), monitorują poprawność konwersji danych \\
+narzędzia do analizy jakości danych & używane przy testowania migracji (aktualizacja oprogramowania do nowej wersji połączona ze zmienioną strukturą danych), monitorują poprawność konwersji danych \\
 \hline
 \caption{Podział narzędzi wspomagających proces testowania oprogramowania według ISTQB (na podstawie  \cite{istqb})}\\
 \end{longtable}
