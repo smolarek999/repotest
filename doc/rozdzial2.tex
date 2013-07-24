@@ -28,20 +28,20 @@ W projektowanym systemie można wyróżnić dwie warstwy poprzez które klient m
 \subsection{Warstwa aplikacji internetowej}
 Dostęp poprzez aplikację internetową jest podstawowym źródłem interakcji użytkownika w projektowanej aplikacji. Celem rozdzielenia poszczególnych odpowiedzialności modułów oprogramowania, użyty zostanie wzorzec Model-Widok-Kontroler. Zakłada on wydzielenie trzech warstw:
 \begin{enumerate}
-  \item Model - odpowiedzialny za pobranie i enkapsulacje danych
-  \item Widok - odpowiedzialny za wyświetlenie sformatowanej treści. Język stosowany w widoku powinien pozwalać na swobodne osadzanie treści języka końcowego ( w tym przypadku HTML ), powinien on być dostosowany do edycji przez osoby nie posiadające wiedzy na temat języku programowania.
-  \item Kontroler - odpowiedzialny za skoordynowanie pobrania danych, przetworzenia ich za pomocą serwisów i przesłanie danych do widoku
+  \item Model - odpowiedzialny za pobranie i enkapsulacje danych;
+  \item Widok - odpowiedzialny za wyświetlenie sformatowanej treści. Język stosowany w widoku powinien pozwalać na swobodne osadzanie treści języka końcowego ( w tym przypadku HTML ), powinien on być dostosowany do edycji przez osoby nie posiadające wiedzy na temat języku programowania;
+  \item Kontroler - odpowiedzialny za skoordynowanie pobrania danych, przetworzenia ich za pomocą serwisów i przesłanie danych do widoku.
 \end{enumerate}
 
 Język JAVA oferuje technologie objęte zdefiniowanym standardem które pozwalają tworzyć aplikacje internetowe z wykorzystaniem wzorca Model-Widok-Kontroler. Zaprezentowana aplikacja stworzona zostanie w oparciu o technologię Java Server Faces jej implementacje Mojarra wzbogaconą o komponenty PrimeFaces.
 
 Java Server Faces jest jednym ze standardów tworzenia aplikacji internetowych w języku JAVA\cite{jsfRef}. Główne założenia standardu to:
 \begin{enumerate}
-  \item Łatwość tworzenia części klienckiej ( widoku ) w oparciu o strukturę komponentową. Udostępnione są standardowe komponenty ( takie jak na przykład formularz, pole tekstowe ).
-  \item Możliwość zagnieżdżania struktury dokumentu, pozwalająca na minimalizację redundancji po stronie szablonu strony internetowej 
-  \item Zdefiniowany standard dostęp z widoku do danych po stronie serwera
-  \item Zapewnienie trwałości stanu danych pomiędzy żądaniami w obrębie sesji klienta
-  \item Część serwerowa oparta jest na ziarnach ( ang. JavaBeans ), posiada wsparcie dla walidacji zarówno po stronie klienckiej jak i serwerowej
+  \item Łatwość tworzenia części klienckiej ( widoku ) w oparciu o strukturę komponentową. Udostępnione są standardowe komponenty ( takie jak na przykład formularz, pole tekstowe );
+  \item Możliwość zagnieżdżania struktury dokumentu, pozwalająca na minimalizację redundancji po stronie szablonu strony internetowej; 
+  \item Zdefiniowany standard dostęp z widoku do danych po stronie serwera;
+  \item Zapewnienie trwałości stanu danych pomiędzy żądaniami w obrębie sesji klienta;
+  \item Część serwerowa oparta jest na ziarnach ( ang. JavaBeans ), posiada wsparcie dla walidacji zarówno po stronie klienckiej jak i serwerowej;
 \end{enumerate}
 
 W technologii Java Server Faces rola Kontrolera rozdzielona jest na pliki szablonu strony i ziarna zarządzające po stronie serwera. W plikach szablonu osadzone są instrukcję które wprost pobierają dane z kontrolera i wykonują na nim akcje.
@@ -54,8 +54,8 @@ Standard Java Server Faces posiada wiele implementacji. W tworzonej aplikacji u�
 
 Jednym ze standardów komunikacji między aplikacjami jest komunikacja poprzez usługę internetową, dla której istnieje wiele technologii. W niniejszej pracy użyta zostanie technologia REST. REST zakłada iż deklaracja działania które klient zamierza osiągnąć po stronie serwera określona poprzez zasób. Odwołanie do zasobu składa się z:
 \begin{enumerate}
-  \item URI czyli adres internetowy określa adres zasobu do którego odwołuje się klient
-  \item  typ metody HTTP ( zgodnie z HTTP/1.1) określa jakie działanie ma być podjęte na zasobie ( wyświetlenie, dodanie, modyfikacja, usunięcie)
+  \item URI czyli adres internetowy określa adres zasobu do którego odwołuje się klient;
+  \item  typ metody HTTP ( zgodnie z HTTP/1.1) określa jakie działanie ma być podjęte na zasobie (wyświetlenie, dodanie, modyfikacja, usunięcie).
 \end{enumerate}
 
 Zgodnie ze specyfikacją HTTP/1.1 możemy wyróżnić następujące metody i oczekiwany rezultat po stronie serwerowej:
@@ -75,9 +75,9 @@ OPTIONS, TRACE, HEAD & nie używane \\ \hline
 
 Poprzez usługę internetową możliwe będzie wykonanie następujących akcji:
 \begin{enumerate}
-  \item dodanie wymagania
-  \item pobrania listy przypadków testowych do wykonania dla użytkownika
-  \item aktualizacji wykonania przypadku testowego
+  \item dodanie wymagania;
+  \item pobrania listy przypadków testowych do wykonania dla użytkownika;
+  \item aktualizacji wykonania przypadku testowego.
 \end{enumerate}
 Pierwszy punkt pozwala na integracje z aplikacją przechowującą wymagania. Punkt drugi i trzeci pozwala na integracje z zewnętrznymi aplikacjami do wykonywania testów. W szczególnym przypadku poprzez stworzenie fikcyjnego użytkownika np. automatyzacja, można zintegrować repozytorium z modułem wykonującym testy automatycznie.
 
@@ -131,7 +131,7 @@ Podstawową jednostą aplikacji jest przypadek testowy. Składowe przypadku test
     wymagania & lista wymagań które są weryfikowane poprzez wykonanie testu \\ \hline
     estymowany czas & estymowany czas potrzebny do wykonania przypadku testowego \\ \hline
      stan początkowy produktów & stan początkowy poszczególnych produktów który musi być spełniony. Dla każdego ze zdefiniowanych stanów możliwe jest przypisanie warunku który określa dla jakiej konfiguracji grup urządzeń stan ma zajść \\ \hline
-     ilość wariacji & ilość możliwych alternatywnych przebiegów przypadku testowego ( w zależności od doboru urządzeń ) \\ \hline 
+     liczba wariacji & liczba możliwych alternatywnych przebiegów przypadku testowego ( w zależności od doboru urządzeń ) \\ \hline 
  \caption{ Składowe przypadku testowego}
  \label{tab:test}
 \end{longtable}
@@ -157,19 +157,19 @@ Definicja testów przez swoją złożoność i potrzebę pełnej specyfikacji wy
 
 Pierwszym krokiem jest zdefiniowanie produktów wchodzących w skład systemu który poddany zostanie testom. System w kontekście aplikacji jest to zbiór zintegrowanych produktów które współdziałając oferują określoną funkcjonalność z perspektywy klienta.
 
-W celu wsparcia inkrementacyjnego modelu wytwarzania oprogramowania w aplikacji istnieją takie elementy jak "wydanie produktu" i "wersja produktu" która wchodzi w skład wydania. Poprzez wersje produktu rozumiany jest konkretny skompilowany stan komponentów systemu. Wersja systemu powinna być jednoznacznie identyfikowalna ponieważ stanowi linie bazową. Na podstawie porównania dwóch poprzedzających się wersji można określić kiedy został wprowadzony błąd regresji. Wydania produktu są to wersje widoczne z poziomu klienta końcowego, w ich skład najczęściej wchodzi wiele wersji.
+W celu wsparcia inkrementacyjnego modelu wytwarzania oprogramowania w aplikacji istnieją takie elementy jak ,,wydanie produktu'' i ,,wersja produktu'' która wchodzi w skład wydania. Poprzez wersje produktu rozumiany jest konkretny skompilowany stan komponentów systemu. Wersja systemu powinna być jednoznacznie identyfikowalna ponieważ stanowi linie bazową. Na podstawie porównania dwóch poprzedzających się wersji można określić kiedy został wprowadzony błąd regresji. Wydania produktu są to wersje widoczne z poziomu klienta końcowego, w ich skład najczęściej wchodzi wiele wersji.
 
 W ramach wydań produktów definiowane są wymagania. Wymaganie powinno być jasno zdefiniowane tak by możliwe było zweryfikowanie spełnienia wymagania przez oprogramowanie. Na podstawie wymagań tworzone są przypadki testowe.
 
-Drugą charakterystyką aplikacji jest wsparcie dla systemów dedykowanych na wiele urządzeń. Aplikacje umożliwia więc przechowywanie informacji o urządzeniach. Definicja urządzenia powinna zawierać dane podstawowe takie jak nazwa, dostawca, zdjęcie jak i referencję do kompletnej dokumentacji na temat urządzenia. Dostęp do dokumentacji jest kluczowy podczas testów, szczególnie dla młodego stażem zespołu testerskiego.
+Drugą charakterystyką aplikacji jest wsparcie dla systemów dedykowanych na wiele urządzeń. Aplikacje umożliwia więc przechowywanie informacji o urządzeniach. Definicja urządzenia powinna zawierać dane podstawowe takie jak nazwa, dostawca, zdjęcie jak i referencję do kompletnej dokumentacji na temat urządzenia. Dostęp do dokumentacji jest kluczowy podczas testów, szczególnie dla młodego stażem zespołu testującego.
 
 W module definicji testów, podczas tworzenie przypadku testowego tworzone są grupy urządzeń. W skład grupy może wejść jedno lub więcej urządzeń, przy czym podczas wykonania przypadku testowego należy wybrać tylko jedno urządzenie dla każdej z grup. Konfiguracja wybranych urządzeń determinuje i modyfikuje końcową treść przypadku testowego. Od tego które urządzenia zostały wybrane mogą zależeć poszczególne kroki, stany początkowe produktów i wymagany sprzęt. Aplikacja repozytorium udostępnia sposób definiowania warunków dla wcześniej wspomnianych elementów. Warunek określa iż dany element jest ważny ( wchodzi w skład definicji przypadku testowego) wtedy i tylko wtedy gdy dla określonej grupy urządzeń wybrane zostało określone urządzenie.
 
 Jednym z elementów wykonania testów funkcjonalnych jest instalacja środowiska do wykonania testów. Instalacja składa się z kilku elementów:
 \begin{itemize}
-  \item dostarczenie i zainstalowanie sprzętu wymaganego do wykonania testów ( przykładowo może to być symulator fal radiowych, sejf automatyczny, kabel ethernet, komputer stacjonarny )
-  \item instalacja platformy do wykonania testów ( systemy operacyjne, środowiska uruchomieniowe, modyfikacji systemów, bios, maszyny wirtualne )
-  \item instalacja oprogramowania w wersji zgodnej z planem testów
+  \item dostarczenie i zainstalowanie sprzętu wymaganego do wykonania testów ( przykładowo może to być symulator fal radiowych, sejf automatyczny, kabel ethernet, komputer stacjonarny );
+  \item instalacja platformy do wykonania testów ( systemy operacyjne, środowiska uruchomieniowe, modyfikacji systemów, bios, maszyny wirtualne );
+  \item instalacja oprogramowania w wersji zgodnej z planem testów.
 \end{itemize}
 
 \subsection{Moduł wykonania }
@@ -231,13 +231,13 @@ Po dokonaniu pełnej definicji przypadku testowego, rozwiązywane są wszystkie 
 
 Rezultat wykonania przypadku testowego może przyjmować jedną wartość z podanych:
 \begin{itemize}
-   \item oczekujący - przypadek testowy oczekuje na przypisanie przez testera ( każda osoba z zespołu może się przypisać )
-   \item przypisany - przypadek testowy przypisany do testera ( przypadek nie jest już widoczny w puli )
-   \item zablokowany - przypadek testowy zablokowany przez błąd w innym przypadku, bądź poprzez niegotową konfigurację
-   \item rezultat pozytywny - wszystkie kroki scenariusza wygenerowały oczekiwane rezultaty
-   \item rezultat negatywny - przynajmniej jeden z kroków scenariusza wygenerował rezultat negatywny, lub testy eksploracyjne związane z przypadkiem testowym wygenerowały rezultat negatywny
-   \item nie możliwy do wykonania - przypadek niemożliwy do wykonania z przyczyny braku zasobów
-   \item wymagana analiza - podczas wykonywania przypadku testowego, wyniki poszczególnych kroków scenariusza nie dały jednoznacznej odpowiedzi. Wymagana jest konsultacja lidera i pośrednika ( ang. liaisona)
+   \item oczekujący - przypadek testowy oczekuje na przypisanie przez testera ( każda osoba z zespołu może się przypisać );
+   \item przypisany - przypadek testowy przypisany do testera ( przypadek nie jest już widoczny w puli );
+   \item zablokowany - przypadek testowy zablokowany przez błąd w innym przypadku, bądź poprzez niegotową konfigurację;
+   \item rezultat pozytywny - wszystkie kroki scenariusza wygenerowały oczekiwane rezultaty;
+   \item rezultat negatywny - przynajmniej jeden z kroków scenariusza wygenerował rezultat negatywny, lub testy eksploracyjne związane z przypadkiem testowym wygenerowały rezultat negatywny;
+   \item nie możliwy do wykonania - przypadek niemożliwy do wykonania z przyczyny braku zasobów;
+   \item wymagana analiza - podczas wykonywania przypadku testowego, wyniki poszczególnych kroków scenariusza nie dały jednoznacznej odpowiedzi. Wymagana jest konsultacja lidera i pośrednika (ang. \textit{liaisona}).
  \end{itemize} 
 
 Po wykonaniu przypadku testowego, tester oznacza wynik wykonania przypadku testowego i w razie konieczności opisuje wnioski jako komentarz. Tester uzupełnia też realny czas poświęcony na wykonanie przypadku testowego.
@@ -252,26 +252,28 @@ Drugą grupą jest pokrycie wymagań na podstawie wykonania przypadków testowyc
 
 Trzecia grupa dotyczy relacji pomiędzy urządzeniami a przypadkami testowymi. Analiza danych dostarczanych w tej grupie pozwala określić które urządzenia zostały już przetestowana a także które urządzenia należy dostarczyć i włączyć w przyszłych przypadkach testowych.
 
-Czwarta grupa dotyczy procentowego stanu przypadków testowych. Analiza danych dostarczanych przez tą grupę pozwala określić czy wraz z czasem projektu zmniejsza się liczba znajdywanych defektów, określić procent testów zablokowanych i inne wnioski które mogą wpłynąć na zwiększenie efektywności zespołu testerskiego.
+Czwarta grupa dotyczy procentowego stanu przypadków testowych. Analiza danych dostarczanych przez tą grupę pozwala określić czy wraz z czasem projektu zmniejsza się liczba znajdywanych defektów, określić procent testów zablokowanych i inne wnioski które mogą wpłynąć na zwiększenie efektywności zespołu testującego.
 
 
 
 \chapter{Implementacja}
 
-Rozdział 5 opisuje szczegóły implementacji zaprojektowanego rozwiązania. Rozdział ten podzielony został na cztery części: część pierwsza opisuje strukturę projektu, druga część opisuje model bazy danych, trzecia część opisuje implementacje części aplikacji internetowej, czwarta część opisuje implementacje usługi internetowej.
+Rozdział 5 opisuje szczegóły implementacji zaprojektowanego rozwiązania. Rozdział ten podzielony został na cztery części: część pierwsza opisuje ogólną organizacje aplikacji, druga część opisuje model bazy danych, trzecia część opisuje implementacje części aplikacji internetowej, czwarta część opisuje implementacje usługi internetowej.
 
-\section{Struktura projektu}
-Aplikacja wdrożona została na serwerze aplikacji Glassfish. Serwer aplikacji jest to zrąb który udostępnia usługi i środowisko pozwalające uruchomiać i zarządzać aplikacjami w tym aplikacjami internetowymi. Zachowanie serwera aplikacji porównać można do wirtualnej maszyny dla uruchamianych aplikacji która transparentnie udostępnia określone usługi. 
+\section{Organizacja aplikacji}
+Sekcja ta opisuje wysoko-poziomową strukturę aplikacji. W podrozdziałach przedstawione zostanie: środowisko uruchomieniowe na którym zaimplementowana została aplikacja oraz struktura plików i bibliotek w projekcie.
+\subsection{Środowisko uruchomieniowe aplikacji}
+Platforma korporacyjna języka JAVA ( ang. \textit{JAVA Enterprise} ) określa sposób tworzenia wielowarstowych systemów w tym języku. Poszczególne funkcjonalności udostępniane są poprzez komponenty.  Przykładowymi funkcjonalnościami oferowanymi przez platformę korporacyjną są: dostęp do bazy danych, serializacja danych do formatu XML, zarządzanie sesjami i transakcjami, autoryzacja i autentykacja, wstrzykiwanie zależności, funkcjonalność aplikacji internetowej, funkcjonalność usługi internetowej. Aplikacje tworzone w oparciu o platformę korporacyjną mogą być wdrażane transparentnie na różnych platformach docelowych.Specyfikacja platformy korporacyjnej JAVA określa również ścieżki i format plików konfiguracyjnych za pomocą których możliwa jest konfiguracja określonych funkcjonalności.
 
-Specyfikacja platformy JAVA wymaga aby serwer aplikacyjny udostępniał implementacje standardowych funkcjonalności i serwisów oferowanych przez tą platformę, nie istnieje jednak formalna lista specyfikująca które technologię zaliczają się do standardowych. Glassfish oferuje takie funkcjonalności jak na przykład: dostęp do bazy danych, serializacja danych do formatu XML, zarządzanie sesjami i transakcjami, autoryzacja i autentykacja, wstrzykiwanie zależności, funkcjonalność aplikacji internetowej, funkcjonalność usługi internetowej. 
+Środowisko które obsługuję programy oparte na platformie korporacyjnej nazywamy serwerem aplikacji. Jest to zrąb który udostępnia usługi i środowisko pozwalające uruchomiać i zarządzać aplikacjami w tym aplikacjami internetowymi. Zachowanie serwera aplikacji porównać można do wirtualnej maszyny dla uruchamianych aplikacji która transparentnie udostępnia określone usługi. Zgodnie ze specyfikacją platformy korporacyjnej serwer aplikacyjny musi udostępniać implementacje standardowych funkcjonalności i serwisów oferowanych przez tą platformę. 
 
-Specyfikacja platformy JAVA określa również ścieżki i format plików konfiguracyjnych za pomocą których możliwa jest konfiguracja określonych funkcjonalności. Serwer aplikacji Glassfish, jest to referencyjna, otwarta i bezpłatna implementacja serwera aplikacji stworzona przez firmę Oracle.
+Specyfikacja platformy korporacyjnej JAVA określa interfejsy dla komponentów. Serwery aplikacyjne dostarczają natomiast referencyjnych implementacji, przy czym implementacja może rozszerzyć zbiór funkcjonalności o własne funkcjonalności specyficzne dla dostawcy. Podczas życia produktu, istnieje możliwość migracji do innej implementacji serwera aplikacji lub nadpisania implementacji określonej technologii na implementacje innego dostawcy. Tego typu migracje mogą nastąpić transparentnie w przypadku gdy implementacja kliencka korzysta jedynie z funkcjonalność oferowanych przez interfejs. Korzystanie z rozwiązań specyficznych dla dostawcy powoduje konieczność migracji ich na analogiczne rozwiązania dla nowego dostawcy lub stworzenia własnego rozwiązania w przypadku gdy nowy dostawca nie udostępnia wymaganej funkcjonalności.
 
-Język JAVA specyfikuje interfejsy dla określonych technologii. Serwery aplikacyjne dostarczają natomiast referencyjnych implementacji dla wymienionych technologii, przy czym konkretna implementacja może rozszerzyć zbiór funkcjonalności o własne funkcjonalności specyficzne dla dostawcy. Podczas życia produktu, istnieje możliwość migracji do innej implementacji serwera aplikacji lub nadpisania implementacji określonej technologii na implementacje innego dostawcy. Tego typu migracje mogą nastąpić transparentnie w przypadku gdy implementacja kliencka korzysta jedynie z funkcjonalność oferowanych przez interfejs. Korzystanie z rozwiązań specyficznych dla dostawcy powoduje konieczność migracji ich na analogiczne rozwiązania dla nowego dostawczy lub stworzenia własnego rozwiązania w przypadku gdy nowy dostawca nie udostępnia wymaganej funkcjonalności.
+Istnieje wiele implemetacji serweru aplikacji dla platformy korporacyjnej języka JAVA. Podczas implementacji repozytorium użyty został serwer aplikacji Glassfish. Serwer aplikacji Glassfish, jest to referencyjna, otwarta i bezpłatna implementacja serwera aplikacji stworzona przez firmę Oracle. 
 
-W stworzonej aplikacji użyte zostały jedynie rozwiązania specyfikowane w interfejsach używanych technologii. Oznacza to iż migracja na inny serwer aplikacji może odbyć się transparentnie.
-\clearpage
-Struktura projektu została zorganizowana w następujący sposób:
+W stworzonej aplikacji użyte zostały jedynie rozwiązania specyfikowane w interfejsach funkcjonalności platformy korporacyjnej. Oznacza to iż migracja na inny serwer aplikacji może odbyć się transparentnie.
+\subsection{Struktura projektu}
+Pliki źródłowe projektu zostały podzielone na sekcje tak by w sposób przejrzysty rozdzielić poszczególne elementy. Zastosowany podział przedstawiony został na rysunku \ref{fig:stukturaProjektu}. Stworzone zostały osobne katalogi dla: bibliotek, kodu źródłowego i docelowych artefaktów. Pliki kodu źródłowego podzielone zostały na: kod aplikacji i testy jednostkowe.
 
 \begin{figure}[h!]
 
@@ -288,13 +290,14 @@ Struktura projektu została zorganizowana w następujący sposób:
 .1 pom.xml.
 }
 \caption{Organizacja plików projektu}
+\label{fig:stukturaProjektu}
 \end{figure}
 
 Wszelkie zależności wymagane przez aplikacje rozwiązywane są poprzez narzędzie do automatycznego budowania projektów Maven. Maven poprzez konfiguracje zdefiniowaną w pliku pom.xml określa które biblioteki są wymagane przez aplikację i pobiera je podczas budowania aplikacji. Narzędzie to poprzez system wtyczek pozwala na zdefiniowanie celów budowania i wdrażania projektu. W zaimplementowanej aplikacji został zdefiniowany cel który: pobiera biblioteki zależne, kompiluje kod produkcyjny i kod testów jednostkowych, wykonuje wszystkie testy jednostkowe i w przypadku powodzenia instaluje archiwum aplikacji internetowej ( ang. WAR ) na serwerze aplikacji.
 
 
 \section{Model bazy danych}
-Glassfish dostarcza bibliotekę EclipseLink która spełnia standardy między innymi warstwy dostępu do danych (ang. JPA ) i łączenia danych do i z formatu XML ( JAXB ). Na poziomie kodu JAVA aplikacji, struktura połączenia obiektów z bazą relacyjną jest rozwiązywana poprzez zastosowanie standardowych adnotacji. Zastosowania standardowych adnotacji zgodnych ze standardem JPA pozwala na transparentność dostawcy modułu mapującego relacyjną bazę danych. W przypadku zmiany dostawcy, migracja dotyka jedynie pewnych plików konfiguracyjnych które zawierają specyficzne ustawienia dla dostawcy ( np. sposób logowania czy automatycznego tworzenia schematu bazy danych z encji kodu JAVA).
+Glassfish dostarcza bibliotekę EclipseLink która spełnia standardy między innymi warstwy dostępu do danych (ang. JPA ) i łączenia danych do i z formatu XML ( JAXB ). Na poziomie kodu aplikacji, struktura połączenia obiektów z bazą relacyjną jest rozwiązywana poprzez zastosowanie standardowych adnotacji. Zastosowania standardowych adnotacji zgodnych ze standardem JPA pozwala na transparentność dostawcy modułu mapującego relacyjną bazę danych. W przypadku zmiany dostawcy, migracja dotyka jedynie pewnych plików konfiguracyjnych które zawierają specyficzne ustawienia dla dostawcy ( np. sposób logowania czy automatycznego tworzenia schematu bazy danych z encji kodu JAVA).
 Konfiguracja odpowiedzialna za utworzenie połączenia z bazą danych, znajduję się w lokalizacji \textit{src/main/resources/META-INF/persistence.xml}. Poniżej przedstawione główne składowe pliku
 
 \begin{itemize}
@@ -337,7 +340,7 @@ W powyższym pliku konfiguracyjnym zostało zdefiniowane połączenie do bazy da
 
 Tabele wchodzące w skład sekcji administracja przechowują dane o użytkownikach i rolach. System posiada predefiniowane role które określają które akcje mogą zostać podjęte przez aktualnie zalogowanego użytkownika, rola określa również wygląd głównego menu aplikacji.
 
-Definicja użytkownika składa się z danych identyfikujących go ( login w aplikacji, imię, nazwisko ), hasła i przypisanej roli która znajduje się w relacji wiele to wielu z użytkownikiem. Hasła kodowane są w sposób niesymetryczny poprzez algorytm SHA-256 \cite{sha2}.  SHA-256 jest to algorytm haszujący \cite{hash} który dla każdego wejściowego ciągu znaków przyporządkowuje 256 bitowy ciąg wyjściowy. Funkcje haszujące są nieodwracalne to znaczy iż nie istnieje przekształcenie które dla wynikowego ciągu znaków wypisze wejściowy ciąg znaków. Dodatkowymi cechami są
+Definicja użytkownika składa się z danych identyfikujących go ( login w aplikacji, imię, nazwisko ), hasła i przypisanej roli która znajduje się w relacji wiele to wielu z użytkownikiem. Hasła kodowane są w sposób niesymetryczny poprzez algorytm SHA-256 \cite{sha2}. Przed zakodowaniem do hasła w postaci tekstowej dodawany jest ciąg zaburzający (ang. \textit{salt}), czyli losowy ciąg znaków o określonej długości. Czynność ta chroni hasła użytkowników przed złamaniem za pomocą tablic tęczowych. Tablice tęczowe są to tablice które zawierają listę przekształceń wejściowych ciągów znaków w ciąg zakodowany. SHA-256 jest to algorytm haszujący \cite{hash} który dla każdego wejściowego ciągu znaków przyporządkowuje 256 bitowy ciąg wyjściowy. Funkcje haszujące są nieodwracalne to znaczy iż nie istnieje przekształcenie które dla wynikowego ciągu znaków wypisze wejściowy ciąg znaków. Dodatkowymi cechami są:
 \begin{itemize}
   \item  odporność na kolizję --  dwa różne ciągi znaków nie generują tych samych wyników 
   \item dwa podobne ciągi znaków ( podobieństwo może być zmierzone na na przykład odległością Levenshteina\cite{Levenshtein} ) generują całkowicie różne ciągi wynikowe

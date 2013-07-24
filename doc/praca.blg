@@ -3,53 +3,59 @@ The top-level auxiliary file: praca.aux
 A level-1 auxiliary file: rozdzial1.aux
 A level-1 auxiliary file: rozdzial2.aux
 A level-1 auxiliary file: rozdzial3.aux
-The style file: abbrv.bst
+The style file: IEEEtran.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Database file #1: bibliografia.bib
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 Warning--empty booktitle in wmodel
-Warning--empty journal in materializedPath
-Warning--empty journal in Levenshtein
 Warning--empty journal in BUTTERFLY
-Warning--empty booktitle in hash
 Warning--empty booktitle in sha2
-You've used 17 entries,
-            2118 wiz_defined-function locations,
-            584 strings with 5661 characters,
-and the built_in function-call counts, 4066 in all, are:
-= -- 353
-> -- 193
+Warning--empty booktitle in hash
+Warning--empty journal in Levenshtein
+Warning--empty journal in materializedPath
+
+Done.
+You've used 31 entries,
+            4039 wiz_defined-function locations,
+            956 strings with 10591 characters,
+and the built_in function-call counts, 11649 in all, are:
+= -- 834
+> -- 185
 < -- 0
-+ -- 79
-- -- 60
-* -- 185
-:= -- 711
-add.period$ -- 47
-call.type$ -- 17
-change.case$ -- 74
++ -- 88
+- -- 44
+* -- 442
+:= -- 2081
+add.period$ -- 65
+call.type$ -- 31
+change.case$ -- 38
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 181
-empty$ -- 372
-format.name$ -- 60
-if$ -- 848
+cite$ -- 37
+duplicate$ -- 993
+empty$ -- 1249
+format.name$ -- 53
+if$ -- 2515
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 20
-newline$ -- 84
-num.names$ -- 34
-pop$ -- 142
+int.to.str$ -- 31
+missing$ -- 224
+newline$ -- 152
+num.names$ -- 31
+pop$ -- 709
 preamble$ -- 1
-purify$ -- 64
-quote$ -- 0
-skip$ -- 129
+purify$ -- 0
+quote$ -- 2
+skip$ -- 892
 stack$ -- 0
-substring$ -- 87
-swap$ -- 14
+substring$ -- 52
+swap$ -- 505
 text.length$ -- 0
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 54
+top$ -- 5
+type$ -- 31
 warning$ -- 6
-while$ -- 34
-width$ -- 19
-write$ -- 158
+while$ -- 31
+width$ -- 33
+write$ -- 289
 (There were 6 warnings)

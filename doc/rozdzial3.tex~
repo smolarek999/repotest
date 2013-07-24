@@ -178,8 +178,42 @@ Poprzez odwołanie się do zasobu poszczególnego wykonania przypadku testowego 
 
 Aktualizacja przypadku testowego przez usługę internetową wykonuje taki sam przepływ w aplikacji jak wykonanie analogicznej czynności poprzez aplikacje internetową.
 
+\section{Podsumowanie scenariuszy testowych}
+
+Wykonanie przedstawionych scenariuszy testowych przebiegło pomyślnie. Aplikacja spełnia założone wymagania funkcjonalne. Ponadto sprawdzone zostały niefunkcjonalne aspekty aplikacji związane z użytecznością. Ocena użyteczności cechuje się subiektywnością gdyż trudno wydzielić jednoznaczne charakterystyki oceniające poziom użyteczności oprogramowania. Aspektami które mogą pozytywnie wpływać na użyteczność są: przejrzysty i wyraźny dobór kolorów i czcionek w aplikacji, zastosowania odpowiednich komponentów w formularzach, rozbicie dużych formularzy na mniejsze kroki, zastosowanie funkcjonalności drag and drop.
 
 
-\chapter{Wnioski i możliwości rozwoju aplikacji}
 
-TODO
+\chapter{Zakończenie}
+
+Rozdział szósty przedstawia możliwe ścieżki rozwoju aplikacji i podsumowuje rezutat otrzymany w trakcie tworzenia niniejszej pracy.
+
+\section{Możliwe ścieżki rozwoju aplikacji}
+
+Aplikacja może być rozwijana w dwóch aspektach:
+\begin{enumerate}
+  \item rozszerzenie ogónych funkcjonalności aplikacji;
+  \item rozszerzenie wsparacia integracji z zewnętrznymi aplikacjami.
+\end{enumerate}
+
+Przykładowymi funkcjonalnościami które mogą być dodane do aplikacji są: analiza kosztów testowania i system agentowy służący do pobierania danych pochodzących z wykonania testu.
+
+Poprzez analize kosztów testowania autor rozumie możliwość przypisania określonych kosztów dla poszczególnych elementów składowych testowania. Elementami takimi może być godzina pracy testera, dostarczenie wymaganego sprzętu, koszt instalacji konfiguracji sprzętowej. Zdefiniowane dane mogą posłużyć do analizy kosztów na poziomie permutacji przypadku testowego lub całego planu testów.
+
+Drugą z możliwych funkcjonalności jest zaprojektowanie i zaimplementowanie systemu agentowego który zbiera artefakty powstałe podczas wykonania przypadku testowego na bieżącym oprogramowaniu i urządzeniach. Agenty te działały by na urządzeniach na których zainstalowane są produkty poddane testom. Podczas rozpoczęcia przypadku testowego, system przesyła informacje o rozpoczęciu testu do wszystkich agentów które znajdują się na komputerach na których znajduje się oprogramowanie które wymagane jest do wykonania aktualnego przypadku testowego. W przypadku gdy wynik wykonania przypadku testowego byłby negatywny, system automatycznie pobiera poprzez agenty artefakty które zostaną dołączone do opisu wykonania przypadku testowego. Artefaktami mogą być: logi aplikacji, stan obciążenia procesora i pamięci. Informacje te mogą być przydatne podczas analizy defektu przez zespół programistyczny.
+
+Drugim kierunkiem rozwoju dla aplikacji jest dodanie dostępu do większej liczby funkcjonalności dla interakcji komputer-komputer. Dobór które funkcjonalności powinny być również udostępnione przez usługę internetową może zostać dokonany podczas normalnego użytkowania aplikacji. Użytkowanie pozwoli wyodrębnić obszary które mogą zostać zautomatyzowane. Drugim kryterium doboru elementów dla usługi internetowej mogą być wymaganie wynikające wprost z aktualnego stanu oprogramowania wspierającego proces testowania u użytkowika aplikacji. Pozostałe aplikacje użytkowika mogą przechowywać dane które w sposób automatyczny powinny zostać przeniesione do repozytorium.
+
+
+
+\section{Podsumowanie}
+
+Wynikiem niniejszej pracy magisterkiej jest aplikacja będąca repozytorium testów manualnych. Założeniami było spełnienie specyficznych wymagań dla systemów wielowydaniowych które dedykowane są na wiele urządzeń. Spełnienie przyjętych założeń walidowane było w rozdziale szóstym który przedstawia możliwe scenariusze procesu testowania oprogramowania względem aplikacji repozytorium.
+
+Specyfika systemów dla których dedykowane jest repozytorium wymaga odpowiedniego doboru testów gdyż końcowa ilość przypadków testowych składa się z macierzy istniejąych przypadków testowych i permutacji końcowych konfiguracji sprzętowych. Ważnym założeniem aplikacji było umożliwienie jak najprostszego sposobu definicji przypadków testowych których końcowa treść uzależniona jest od końcowej konfiguracji. Efekt ten udało się osiągnąć poprzez udostępnienie możliwości definiowania warunków dla składowych definicji testów. Drugi aspekt systemów czyli inkrementacyjny sposób tworzenia oprogramowania wspierany jest podczas definicji planów testowych których specyfikacja wymaga podania wersji oprogramowania. Wersja oprogramowania odpowiada inkrementacji w obrębie jednego wydania.
+
+Aplikacjia udostępnia podstawowe funkcjonalności wymagane do zarządzania przypadkami testowymi, planami testów  i do  wykonywania i raportowania stanu przypadków testowych. Dodatkowo aplikacja udostępnia narzędzia analityczne poprzez hurtownie danych takie jak: wykres spalania testów dla planu testów, wykresy pokrycia funkcjonalności, informacje o zdarzeniach w systemie i grafy permutacji końcowej treści przypadku testowego w zależności od konfiguracji sprzętowej.
+
+Założeniem aplikacji było też umożliwienie integracji z zewnętrznumi aplikacjami. Wymóg ten jest kluczowy ponieważ przedsiębiorstwa na podstawie integracji pojednyńczych aplikacji konstruują złożone systemy testowe. Udało się spełnić to wymaganie poprzez udostępnienie poprzez usługę internetową kluczowych funkcjonalności z perspektywy integracji.
+
+ 

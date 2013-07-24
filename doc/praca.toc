@@ -1,6 +1,7 @@
 \select@language {polish}
 \contentsline {chapter}{\numberline {1}Wst\IeC {\k e}p}{9}
-\contentsline {section}{\numberline {1.1}Podzia\IeC {\l } pracy}{10}
+\contentsline {section}{\numberline {1.1}Cel pracy}{9}
+\contentsline {section}{\numberline {1.2}Struktura pracy}{10}
 \contentsline {chapter}{\numberline {2}Wprowadzenie}{11}
 \contentsline {section}{\numberline {2.1}Testowanie w procesie tworzenia oprogramowania}{11}
 \contentsline {section}{\numberline {2.2}Modele tradycyjne wytwarzania oprogramowania}{11}
@@ -8,20 +9,19 @@
 \contentsline {subsection}{\numberline {2.2.2}Model V}{13}
 \contentsline {subsubsection}{\numberline {2.2.2.1}Wariacje modelu V}{13}
 \contentsline {section}{\numberline {2.3}Modele iteracyjne wytwarzania oprogramowania}{14}
-\contentsline {subsection}{\numberline {2.3.1}RAD}{14}
+\contentsline {subsection}{\numberline {2.3.1}RAD}{15}
 \contentsline {subsection}{\numberline {2.3.2}Techniki zwinne}{15}
 \contentsline {section}{\numberline {2.4}Strategie testowania oprogramowania}{16}
-\contentsline {subsection}{\numberline {2.4.1}Typy strategii}{16}
-\contentsline {subsubsection}{\numberline {2.4.1.1}Strategie analityczne}{16}
-\contentsline {subsubsection}{\numberline {2.4.1.2}Strategie wynikaj\IeC {\k a}ce z projektu oprogramowania}{18}
-\contentsline {subsubsection}{\numberline {2.4.1.3}Strategie metodyczne}{18}
-\contentsline {subsubsection}{\numberline {2.4.1.4}Strategie zorientowane procesowo}{18}
-\contentsline {subsubsection}{\numberline {2.4.1.5}Strategie dynamiczne}{18}
-\contentsline {subsubsection}{\numberline {2.4.1.6}Strategie sterowane specyfik\IeC {\k a} testowania}{18}
-\contentsline {subsubsection}{\numberline {2.4.1.7}Strategie regresyjne}{19}
+\contentsline {subsection}{\numberline {2.4.1}Strategie analityczne}{16}
+\contentsline {subsection}{\numberline {2.4.2}Strategie wynikaj\IeC {\k a}ce z projektu oprogramowania}{18}
+\contentsline {subsection}{\numberline {2.4.3}Strategie metodyczne}{18}
+\contentsline {subsection}{\numberline {2.4.4}Strategie zorientowane procesowo}{18}
+\contentsline {subsection}{\numberline {2.4.5}Strategie dynamiczne}{18}
+\contentsline {subsection}{\numberline {2.4.6}Strategie sterowane specyfik\IeC {\k a} testowania}{19}
+\contentsline {subsection}{\numberline {2.4.7}Strategie regresyjne}{19}
 \contentsline {section}{\numberline {2.5}Typy test\IeC {\'o}w}{19}
-\contentsline {subsection}{\numberline {2.5.1}Podzia\IeC {\l } ze wzgl\IeC {\k e}du na obszar zastosowania}{19}
-\contentsline {subsubsection}{\numberline {2.5.1.1}Testy komponentowe}{19}
+\contentsline {subsection}{\numberline {2.5.1}Podzia\IeC {\l } ze wzgl\IeC {\k e}du na obszar zastosowania}{20}
+\contentsline {subsubsection}{\numberline {2.5.1.1}Testy komponentowe}{20}
 \contentsline {subsubsection}{\numberline {2.5.1.2}Testy integracyjne}{20}
 \contentsline {subsubsection}{\numberline {2.5.1.3}Testy systemowe}{21}
 \contentsline {subsection}{\numberline {2.5.2}Podzia\IeC {\l } ze wzgl\IeC {\k e}du na typ walidacji}{21}
@@ -43,23 +43,25 @@
 \contentsline {subsection}{\numberline {4.3.4}Modu\IeC {\l } wykonania }{33}
 \contentsline {subsection}{\numberline {4.3.5} Modu\IeC {\l } hurtowni danych }{35}
 \contentsline {chapter}{\numberline {5}Implementacja}{36}
-\contentsline {section}{\numberline {5.1}Struktura projektu}{36}
+\contentsline {section}{\numberline {5.1}Organizacja aplikacji}{36}
+\contentsline {subsection}{\numberline {5.1.1}\IeC {\'S}rodowisko uruchomieniowe aplikacji}{36}
+\contentsline {subsection}{\numberline {5.1.2}Struktura projektu}{37}
 \contentsline {section}{\numberline {5.2}Model bazy danych}{37}
-\contentsline {subsection}{\numberline {5.2.1}Administracja}{38}
-\contentsline {subsection}{\numberline {5.2.2}Definicja danych dodatkowych}{39}
+\contentsline {subsection}{\numberline {5.2.1}Administracja}{39}
+\contentsline {subsection}{\numberline {5.2.2}Definicja danych dodatkowych}{40}
 \contentsline {subsection}{\numberline {5.2.3}Definicja test\IeC {\'o}w}{40}
-\contentsline {subsection}{\numberline {5.2.4}Wykonanie test\IeC {\'o}w}{40}
+\contentsline {subsection}{\numberline {5.2.4}Wykonanie test\IeC {\'o}w}{41}
 \contentsline {section}{\numberline {5.3}Komponenty aplikacji internetowej}{42}
-\contentsline {section}{\numberline {5.4}Implementacja REST}{44}
-\contentsline {chapter}{\numberline {6}Przypadki u\IeC {\.z}ycia aplikacji}{46}
-\contentsline {section}{\numberline {6.1}Specyfikacja systemu poddanego testom}{46}
-\contentsline {section}{\numberline {6.2}Scenariusz 1: tworzenie bazy test\IeC {\'o}w}{47}
-\contentsline {section}{\numberline {6.3}Scenariusz 2: tworzenie planu test\IeC {\'o}w}{48}
-\contentsline {section}{\numberline {6.4}Scenariusz 3: wykonanie testu z pozytywnym rezultatem}{49}
-\contentsline {section}{\numberline {6.5}Scenariusz 4: wykonanie testu z negatywnym rezultatem}{50}
-\contentsline {section}{\numberline {6.6}Scenariusz 5: Analiza wariacji przypadku testowego}{51}
-\contentsline {section}{\numberline {6.7}Scenariusz 6: integracja z zewn\IeC {\k e}trznym oprogramowaniem}{52}
-\contentsline {section}{\numberline {6.8}Podsumowanie scenariuszy testowych}{53}
-\contentsline {chapter}{\numberline {7}Zako\IeC {\'n}czenie}{54}
-\contentsline {section}{\numberline {7.1}Mo\IeC {\.z}liwe \IeC {\'s}cie\IeC {\.z}ki rozwoju aplikacji}{54}
-\contentsline {section}{\numberline {7.2}Podsumowanie}{55}
+\contentsline {section}{\numberline {5.4}Implementacja REST}{43}
+\contentsline {chapter}{\numberline {6}Przypadki u\IeC {\.z}ycia aplikacji}{47}
+\contentsline {section}{\numberline {6.1}Specyfikacja systemu poddanego testom}{47}
+\contentsline {section}{\numberline {6.2}Scenariusz 1: tworzenie bazy test\IeC {\'o}w}{48}
+\contentsline {section}{\numberline {6.3}Scenariusz 2: tworzenie planu test\IeC {\'o}w}{49}
+\contentsline {section}{\numberline {6.4}Scenariusz 3: wykonanie testu z pozytywnym rezultatem}{50}
+\contentsline {section}{\numberline {6.5}Scenariusz 4: wykonanie testu z negatywnym rezultatem}{51}
+\contentsline {section}{\numberline {6.6}Scenariusz 5: Analiza wariacji przypadku testowego}{52}
+\contentsline {section}{\numberline {6.7}Scenariusz 6: integracja z zewn\IeC {\k e}trznym oprogramowaniem}{53}
+\contentsline {section}{\numberline {6.8}Podsumowanie scenariuszy testowych}{54}
+\contentsline {chapter}{\numberline {7}Zako\IeC {\'n}czenie}{55}
+\contentsline {section}{\numberline {7.1}Mo\IeC {\.z}liwe \IeC {\'s}cie\IeC {\.z}ki rozwoju aplikacji}{55}
+\contentsline {section}{\numberline {7.2}Podsumowanie}{56}

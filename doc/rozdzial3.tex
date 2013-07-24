@@ -1,5 +1,5 @@
 \chapter{Przypadki użycia aplikacji}
-Rodział szósty definiuje możliwy przykład użycia aplikacji i weryfikuje jej działanie. Stworzona została charakterystyka systemu poddanego testom i scenariusze zawierające wymagania których werfyfikacji została poddana aplikacja.
+Rodział siódmy definiuje możliwy przykład użycia aplikacji i weryfikuje jej działanie. Stworzona została charakterystyka systemu poddanego testom i scenariusze zawierające wymagania których werfyfikacji została poddana aplikacja.
 
 \section{Specyfikacja systemu poddanego testom}
 
@@ -190,17 +190,17 @@ Rozdział szósty przedstawia możliwe ścieżki rozwoju aplikacji i podsumowuje
 
 \section{Możliwe ścieżki rozwoju aplikacji}
 
-Aplikacja może być rozwijana w dwóch aspektach:
+Stworzona aplikacja nie jest tworem zamkniętym. Może ona zostać rozwinięta o dodatkowe funkcjonalności tak by spełniać dodatkowe wymagania użytkowników. Można wyróżnić dwa aspekty w kierunku których nastąpić może rozwój aplikacji:
 \begin{enumerate}
-  \item rozszerzenie ogónych funkcjonalności aplikacji
-  \item rozszerzenie wsparacia integracji z zewnętrznymi aplikacjami
+  \item rozszerzenie ogónych funkcjonalności aplikacji;
+  \item rozszerzenie wsparacia integracji z zewnętrznymi aplikacjami.
 \end{enumerate}
 
 Przykładowymi funkcjonalnościami które mogą być dodane do aplikacji są: analiza kosztów testowania i system agentowy służący do pobierania danych pochodzących z wykonania testu.
 
 Poprzez analize kosztów testowania autor rozumie możliwość przypisania określonych kosztów dla poszczególnych elementów składowych testowania. Elementami takimi może być godzina pracy testera, dostarczenie wymaganego sprzętu, koszt instalacji konfiguracji sprzętowej. Zdefiniowane dane mogą posłużyć do analizy kosztów na poziomie permutacji przypadku testowego lub całego planu testów.
 
-Drugą z możliwych funkcjonalności jest zaprojektowanie i zaimplementowanie systemu agentowego który zbiera artefakty powstałe podczas wykonania przypadku testowego na bieżącym oprogramowaniu i urządzeniach. Agenty te działały by na urządzeniach na których zainstalowane są produkty poddane testom. Podczas rozpoczęcia przypadku testowego, system przesyła informacje o rozpoczęciu testu do wszystkich agentów które znajdują się na komputerach na których znajduje się oprogramowanie które wymagane jest do wykonania aktualnego przypadku testowego. W przypadku gdy wynik wykonania przypadku testowego byłby negatywny, system automatycznie pobiera poprzez agenty artefakty które zostaną dołączone do opisu wykonania przypadku testowego. Artefaktami mogą być: logi aplikacji, stan obciążenia procesora i pamięci. Inforamcje te mogą być przydatne podczas analizy defektu przez zespół programistyczny.
+Drugą z możliwych funkcjonalności jest zaprojektowanie i zaimplementowanie systemu agentowego który zbiera artefakty powstałe podczas wykonania przypadku testowego na bieżącym oprogramowaniu i urządzeniach. Agenty te działały by na urządzeniach na których zainstalowane są produkty poddane testom. Podczas rozpoczęcia przypadku testowego, system przesyła informacje o rozpoczęciu testu do wszystkich agentów które znajdują się na komputerach na których znajduje się oprogramowanie które wymagane jest do wykonania aktualnego przypadku testowego. W przypadku gdy wynik wykonania przypadku testowego byłby negatywny, system automatycznie pobiera poprzez agenty artefakty które zostaną dołączone do opisu wykonania przypadku testowego. Artefaktami mogą być: logi aplikacji, stan obciążenia procesora i pamięci. Informacje te mogą być przydatne podczas analizy defektu przez zespół programistyczny.
 
 Drugim kierunkiem rozwoju dla aplikacji jest dodanie dostępu do większej liczby funkcjonalności dla interakcji komputer-komputer. Dobór które funkcjonalności powinny być również udostępnione przez usługę internetową może zostać dokonany podczas normalnego użytkowania aplikacji. Użytkowanie pozwoli wyodrębnić obszary które mogą zostać zautomatyzowane. Drugim kryterium doboru elementów dla usługi internetowej mogą być wymaganie wynikające wprost z aktualnego stanu oprogramowania wspierającego proces testowania u użytkowika aplikacji. Pozostałe aplikacje użytkowika mogą przechowywać dane które w sposób automatyczny powinny zostać przeniesione do repozytorium.
 
