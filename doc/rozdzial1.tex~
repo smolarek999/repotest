@@ -121,10 +121,8 @@ Zapewnienie automatycznej regresji jest kluczowe dla projektów zwinnych. Musi o
 Projekt informatyczny określa zasady tworzenia i wykonywania testów. Zasady te mają na celu dostarczenie produktu, którego jakość spełnia założone wymagania. Wymagania te są zróżnicowane w zależności od charakterystyki produktu to jest, systemy medyczne, bankowe, telekomunikacyjne wymagają krytycznie wysokiej jakości, aplikacje internetowe natomiast cechują się mniej restrykcyjnymi normami. Zbiór reguł i praktyk nazywamy strategią. Strategia testowania oprogramowania determinowana jest głównie przez dwa aspekty: wspomniana wcześniej charakterystyka produktu i model tworzenia oprogramowania. 
 Strategia testowania określa sposób tworzenia i wykonywania testów, określa również harmonogram i tryb pracy zespołu testującego.
 
-
-\subsection{Typy strategii}
 Typ strategii określa jakie testy będą wykonywane na różnych poziomach testowania. Celem jest stworzenie przypadków użycia i dobór konkretnych skryptów tak by zapewnić oczekiwany poziom jakości przy minimalizacji kosztów i czasu.
-\subsubsection{Strategie analityczne}
+\subsection{Strategie analityczne}
 Pierwszą z opisywanych grup strategii jest grupa strategii analitycznych. Zakładają one iż danymi wejściowymi są artefakty powstałe podczas tworzenia oprogramowania które następnie poddawane są analizie. Artefakty to na przykład dokumentacja, kod źródłowy, przypadki użycia, lista funkcjonalności.
 
 Poniżej przedstawione zostaną dwie strategie analityczne: strategia sterowana funkcjonalnością i strategia sterowana ryzykiem. 
@@ -137,7 +135,7 @@ Kolejnym krokiem jest wygenerowanie minimalnej ilości przypadków użycia któr
 
 Drugą ze strategii analitycznych jest testowanie sterowane ryzykiem. Zakłada one iż najpierw wykonujemy te testy które dotykają obszarów oprogramowania mających największe ryzyko.  Dobór ryzyka polega na ustaleniu priorytetów dla zdarzeń które mogą wystąpić, mających negatywny wpływ na jakość oprogramowania.
 
-Ustalenie priorytetów polega na przypisaniu do każdego ze zdarzeń prawdopodobieństwa jego wystąpienia i wpływu jaki może mieć na jakość oprogramowania. Wartości te mogą być liczbowe ( np. 1-10 ), bądź dyskretnie ustalone (np. małe, średnie, duże). Następnie dla par ryzyko-wystąpienie przypisywana jest końcowa wartość ryzyka. Końcowe wartości ryzyka ustalane są na podstawie określonych wartości dla każdej pary ryzyko-wystąpienie. Ważne jest aby w trakcie trwania projektu na bieżąco monitorować aktualny stan ryzyka, gdyż może ono zmieniać się w czasie.
+Ustalenie priorytetów polega na przypisaniu do każdego ze zdarzeń prawdopodobieństwa jego wystąpienia i wpływu jaki może mieć na jakość oprogramowania. Wartości te mogą być liczbowe (np. 1-10), bądź dyskretnie ustalone (np. małe, średnie, duże). Następnie dla par ryzyko-wystąpienie przypisywana jest końcowa wartość ryzyka. Końcowe wartości ryzyka ustalane są na podstawie określonych wartości dla każdej pary ryzyko-wystąpienie. Ważne jest aby w trakcie trwania projektu na bieżąco monitorować aktualny stan ryzyka, gdyż może ono zmieniać się w czasie.
 
 Istnieje kilka wyróżnionych domen do których można przyporządkować poszczególne ryzyka. Spis kategorii pozwala dostrzec pewne powszechne ryzyka które mogą zostać pominięte. Można wyróżnić następujące kategorie ryzyka:
 
@@ -159,7 +157,7 @@ Istnieje kilka wyróżnionych domen do których można przyporządkować poszcze
   \item dokumentacja.
 \end{itemize}
 
-\subsubsection{Strategie wynikające z projektu oprogramowania}
+\subsection{Strategie wynikające z projektu oprogramowania}
 Drugim typem strategii są strategie oparte na artefaktach powstałych podczas projektowania oprogramowania. Artefakty takie nazywane są modelami, mogą być to między innymi diagramy przejścia, model domeny, maszyna stanów skończonych. Istnieją programy wspierające tego typu strategie które generują przypadki użycia bezpośrednio z modelów. Przepływ dla tego typu strategii wygląda następująco: 
 \begin{figure}[h!]
   \begin{center}
@@ -168,17 +166,17 @@ Drugim typem strategii są strategie oparte na artefaktach powstałych podczas p
 \end{figure}
      
   
-\subsubsection{Strategie metodyczne}
+\subsection{Strategie metodyczne}
 Trzecim typem strategii są strategie metodyczne. Dla tego typu strategii, projekt testów powstaje na podstawie zdefiniowanej metody. Przykładem metody może być metoda uczenia która polega na stworzeniu listy pomocniczej która składa się z pytań na które należy odpowiedzieć podczas projektowania i zagadnień które należy poruszyć. Lista taka powstaje na podstawie przeglądu wcześniejszych błędów, wiedzy dziedzinowej, konsultacji eksperckich. 
 
 Strategia metodyczna może też korzystać bezpośrednio ze istniejących metod wynikających ze standardów. Przykładowo standard IBM zakłada podział testowania na kategorie takie jak: użyteczność, funkcjonalności, wersje językowe, dostępność, wydajność, obciążenie, dokumentacja, instalacja.
-\subsubsection{Strategie zorientowane procesowo}
+\subsection{Strategie zorientowane procesowo}
 Strategie zorientowane procesowo, są to strategie których trzonem jest ogólnie przyjęty standard testowania. Przykładem takich strategi może być IEEE 82, czy standardy dla przemysłu lotniczego. Adaptacja strategi wymaga dostosowania ich do specyfiki produktu. Innym przykładem mogą być opisane strategie testowania zwinnego, które zakładają automatyzację procesu testowania i odporność na zmianę nawet w późnym etapie projektu. Automatyzacja testowania może zakładać cykliczne wykonywanie grup testów, dla których dane wejściowe są losowe.
-\subsubsection{Strategie dynamiczne}
+\subsection{Strategie dynamiczne}
 Dynamiczne strategie testowe, zakładają zmniejszony nakład na projektowanie i planowanie fazy testowej. Strategia ta zakłada adoptowanie sposobu testowania do aktualnych warunków. Przypadki testowe tworzone są na bieżąco przy czym głównie wykonywane są testy eksploracyjne i testy eksperckie. Testerzy wraz z poznawaniem systemu, ustalają priorytety i scenariusze.
-\subsubsection{Strategie sterowane specyfiką testowania}
+\subsection{Strategie sterowane specyfiką testowania}
 Strategia sterowana specyfiką testowania oprogramowania zakłada iż każdy produkt zawiera w sobie błędy. Przyjmowane są z góry nałożone dolne limity błędów które może zawierać oprogramowanie. Testowanie prowadzone jest do czasu aż limity nie zostaną osiągnięte. Oznacza to iż dynamicznie dokładane są nowe testy.
-\subsubsection{Strategie regresyjne}
+\subsection{Strategie regresyjne}
 Strategie testów regresyjnych, są to strategie które mają zapewnić iż nie został wprowadzony błąd w działającej i przetestowanej już funkcjonalności. Największy nacisk kładziony jest w modelu iteracyjnym i dla produktów które posiadają wiele wydań. Błędy regresji mogą występować w trzech rodzajach:
 \begin{itemize}
   \item błąd bezpośrednio wprowadzony przez poprawę defektu lub wprowadzenie nowej funkcjonalności
@@ -240,7 +238,7 @@ Przypadek testowy odnoszący się do testu funkcjonalnego powinien zawierać:
 
 Tworząc testy funkcjonalne należy wziąć pod uwagę dwa aspekty: redundancję i strefę szarości. Redundancja testów oznacza iż podobne testy są powtarzane w różnych fazach. Należy stworzyć taki plan testów aby uniknąć duplikacji, jeżeli podobne testy występują w różnych fazach należy zadbać by sprawdzały spełnienie wymagań z różnych perspektyw. 
 
-Strefa szarości, czyli taka strefa produktu która nie zostanie pokryta podczas testów. Minimalizować szarą strefę możemy poprzez dobre planowanie. Należy zadbać by całość wymagań została pokrywa przypadkami testowymi. Dodatkowo w planie testów należy zadbać o to by przypadki testowe weryfikujące najważniejsze funkcjonalności dostały większy priorytet ( więcej zasobów ), natomiast marginalne funkcjonalności mogą być testowane poprzez testy poprzeczne ( testujące większą grupę funkcjonalności).
+Strefa szarości, czyli taka strefa produktu która nie zostanie pokryta podczas testów. Minimalizować szarą strefę możemy poprzez dobre planowanie. Należy zadbać by całość wymagań została pokrywa przypadkami testowymi. Dodatkowo w planie testów należy zadbać o to by przypadki testowe weryfikujące najważniejsze funkcjonalności dostały większy priorytet (więcej zasobów), natomiast marginalne funkcjonalności mogą być testowane poprzez testy poprzeczne (testujące większą grupę funkcjonalności).
 \subsubsection{Testy niefunkcjonalne}
 Testy niefunkcjonalne testują jakość oprogramowania, testowane są  niefunkcjonalne właściwości systemu, bez których system pomimo iż spełnia wymagania nie może zostać nazwany poprawnym. Przypadki testowe dla testów niefunkcjonalnych powinny określać jakościowe i ilościowe oczekiwane rezultaty. Przykładem rezultatu może być określenie "dla 10 000 wejść na stronę system powinien zachowywać się stabilnie co oznacza iż użytkownicy będą w stanie wykonać swoje procesy biznesowe". Wykonywanie tego typu testów wymaga wiedzy na temat architektury produktu. Powodowane jest to faktem iż znając newralgiczne części systemu, tester może skupić na nich dodatkową uwagę wiedząc iż mogą one powodować efekt wąskiego gardła
 
@@ -259,7 +257,7 @@ Tematem pracy jest stworzenie aplikacji wspomagającej proces zapewnienia jakoś
 
 Odwołując się do wcześniejszych informacji, aplikacja przeznaczona jest do każdego z typów wytwarzania oprogramowania. Repozytorium przechowywać będzie testy integracyjne i systemowe, ponieważ to te typy testów najczęściej wykonywane są manualnie. Charakterystyka testów może być zarówno funkcjonalna jak i niefunkcjonalna, należy jednak mieć świadomość iż testy niefunkcjonalne przez swą złożoność mogą nie być możliwe lub być trudne do wykonania manualnego.
 
-Specyfikacja aplikacji której projekt i implementacja przedstawione będą w niniejszej pracy umożliwiać będzie definicje testów i planów testowych dla systemów dedykowanych na wiele urządzeń. Aplikacja wspierać będzie iteracyjny model wytwarzania oprogramowania w którym w ramach jednego wydania systemu przeprowadzonych będzie kilka strategii testowych ( dla każdej iteracji osobno). W modelu takim istotne jest to by podzielić testowanie poszczególnych funkcjonalności na inkrementacje, tak by możliwe było jak najszybsze testowanie już oddanych funkcjonalności bez potrzeby wydania całego systemu. Dodatkowym aspektem jest potrzeba przeprowadzenia regresji tak by uzyskać pewność iż nowe wydanie systemu nie spowodowało defektów w już istniejących funkcjonalnościach ( z poprzednich wersji ). Należy róznież zadbać o regresje między iteracjami, gdyż nowe funkcjonalności mogą wprowadzić defekty w funkcjonalnościach już przetestowanych.
+Specyfikacja aplikacji której projekt i implementacja przedstawione będą w niniejszej pracy umożliwiać będzie definicje testów i planów testowych dla systemów dedykowanych na wiele urządzeń. Aplikacja wspierać będzie iteracyjny model wytwarzania oprogramowania w którym w ramach jednego wydania systemu przeprowadzonych będzie kilka strategii testowych (dla każdej iteracji osobno). W modelu takim istotne jest to by podzielić testowanie poszczególnych funkcjonalności na inkrementacje, tak by możliwe było jak najszybsze testowanie już oddanych funkcjonalności bez potrzeby wydania całego systemu. Dodatkowym aspektem jest potrzeba przeprowadzenia regresji tak by uzyskać pewność iż nowe wydanie systemu nie spowodowało defektów w już istniejących funkcjonalnościach (z poprzednich wersji). Należy róznież zadbać o regresje między iteracjami, gdyż nowe funkcjonalności mogą wprowadzić defekty w funkcjonalnościach już przetestowanych.
 
 Systemy dedykowane na różne kombinacje urządzeń docelowych lub urządzeń pośrednich posiadają złożoną kombinację możliwych przypadków testowych. Złożoność tą możemy przedstawić wzorem:
 
@@ -294,36 +292,36 @@ Narzędzia wspierające proces testowania możemy dzielić ze względu na różn
 \endfoot
 \hline
 \endlastfoot
-\multirow{4}{4cm}{Narzędzia wspierające zarządzanie testami}  &
+\multirow{4}{4cm}{Narzędzia wspierające zarządzanie testami (Przykłady: Testlink\cite{testlink} , Testrail\cite{testrail} , Fitnesse\cite{fitnesse})}  &
  wspierające zarządzanie procesem testowania & przechowują treść testów, plany testów, strategie\\ \cline{2-3}
- & wspierające zarządzanie wymaganiami & przechowują priorytety wymagań, zapewniają unikatowość i identyfikacje wymagań, wspierają wykrywanie brakujących lub sprzecznych wymagań\\
+ & wspierające zarządzanie wymaganiami & przechowują priorytety wymagań, zapewniają unikatowość i identyfikacje wymagań, wspierają wykrywanie brakujących lub sprzecznych wymagań\\ \cline{2-3}
  & przechowujące incydenty & przechowują historię defektów, anomalii, zmian wymagań\\ \cline{2-3}
  & zarządzające konfiguracją & przechowują informacje o konfiguracji dla wydań produktów, platform \\ \hline
 \hline
 
-\multirow{3}{4cm}{Narzędzia wspierające testowanie statyczne} &
+\multirow{3}{4cm}{Narzędzia wspierające testowanie statyczne (Przykłady: Crucible\cite{crucible}, Klocwork\cite{klocwork}, Advanced ETL processor\cite{etlProcessor})} &
 Wspierające przegląd kodu & przechowują informacje na temat przeglądu, zgłoszone problemy i ich rozwiązania, listy z wskazówkami na temat standardów, udostępniają zdalne tworzenie przeglądów\\ \cline{2-3}
 & wykonujące statyczną analizę produktu & generują metryki produktu, sprawdzają zgodność ze standardami, sprawdzają kod produktu pod kątem znanych problemów\\ \cline{2-3}
 &  modelujące  & wspierające walidacje modelu jak na przykład modelu bazy danych, sprawdzają niezgodność relacji, generują przypadki testowe na podstawie modelu\\ \hline
 \hline
-\multirow{2}{4cm}{Wspierające specyfikacje testów} &
+\multirow{2}{4cm}{Wspierające specyfikacje testów (Przykłady: Generate data\cite{generateData}, Test Composer\cite{testComposer})} &
 Wspierające projektowanie testów & oferują automatyczne tworzenie przypadków testowych i danych wejściowych na podstawie wymagań, interfejsu użytkownika, kodu\\ \cline{2-3}
-& narzędzia przygotowujące dane dla testów & oferują automatyczne zapełnianie systemu danymi do testów ( np. generacja danych dla bazy danych )\\ \cline{2-3}
+& narzędzia przygotowujące dane dla testów & oferują automatyczne zapełnianie systemu danymi do testów (np. generacja danych dla bazy danych)\\ \cline{2-3}
 \hline
-\multirow{5}{4cm}{Rodzina narzędzi wspierających wykonanie testów i logowania} &
+\multirow{5}{4cm}{Rodzina narzędzi wspierających wykonanie testów i logowania (Przykłady: Junit\cite{junit}, Clover\cite{clover}, Jacoco\cite{jacoco})} &
 wykonujące testy & wykonują automatycznie lub pół automatycznie testy, zapisują rezultaty\\ \cline{2-3}
 & biblioteki testowe & dostarczają komponenty na podstawie których zespół tworzy testy jednostkowe, symuluje obiekty\\ \cline{2-3}
 &  porównujące wyniki & sprawdzają zgodność stanu systemu poddanego testów z wymaganiami, pozwalają na określenie czy dany test zakończył się powodzeniem\\ \cline{2-3}
 & określające metryki pokrycia & narzędzia określające pokrycie kodu przez testy \\ \cline{2-3}
 & narzędzia wspierające testowanie bezpieczeństwa & wspierają system i jego zgodność ze standardami bezpieczeństwa, dostępu do danych, autoryzacji i autentykacji itp\\ \hline
 \hline
-\multirow{5}{4cm}{Rodzina narzędzi wspierających testowanie wydajności i monitorujących}&
+\multirow{5}{4cm}{Rodzina narzędzi wspierających testowanie wydajności i monitorujących (Przykłady: Jprofiler\cite{jprofiler}, App Dynamics Lite\cite{appdynamic})}&
  wspierające testowanie wydajności & używane dla testów niefunkcjonalnych dla takich dziedzin jak wydajność, obciążenie. Testują wydajność dla dużej ilości wątków, transakcji \\ \cline{2-3}
 & wykonujące dynamiczne testowanie & wykonują testy sprawdzające zachowanie systemu podczas jego działania, używane do sprawdzania wycieków pamięci, zależności czasowych \\ \cline{2-3}
-& narzędzia do monitorowania & monitorują określone zasoby, pozwalają na analizę porównawczą ( na przykład między różnymi wersjami systemu ) \\ \hline
+& narzędzia do monitorowania & monitorują określone zasoby, pozwalają na analizę porównawczą (na przykład między różnymi wersjami systemu) \\ \hline
 \hline
-\multirow{1}{4cm}{Rodzina narzędzi specjalnego zastosowania} &
-narzędzia do analizy jakości danych & używane przy testowania migracji ( aktualizacja oprogramowania do nowej wersji połączona ze zmienioną strukturą danych), monitorują poprawność konwersji danych \\
+\multirow{1}{4cm}{Rodzina narzędzi specjalnego zastosowania (Przykłady: Universal Replicator\cite{replicator})} &
+narzędzia do analizy jakości danych & używane przy testowania migracji (aktualizacja oprogramowania do nowej wersji połączona ze zmienioną strukturą danych), monitorują poprawność konwersji danych \\
 \hline
 \caption{Podział narzędzi wspomagających proces testowania oprogramowania według ISTQB (na podstawie  \cite{istqb})}\\
 \end{longtable}
