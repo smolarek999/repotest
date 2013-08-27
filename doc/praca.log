@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.11.28)  24 JUL 2013 13:27
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.11.28)  27 AUG 2013 21:46
 entering extended mode
  %&-line parsing enabled.
 **praca.tex
@@ -691,11 +691,15 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
 
  (./rozdzial1.tex
 Rozdzia\l  1.
-[9
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9
 
 
 
-] [10]
+]
+[10]
 Rozdzia\l  2.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 31.
@@ -708,19 +712,16 @@ File: img/model_kaskadowy.png Graphic file (type png)
 <img/water-wheel.png, id=45, 409.53pt x 246.1697pt>
 File: img/water-wheel.png Graphic file (type png)
  <use img/water-wheel.png>
-Underfull \vbox (badness 4024) has occurred while \output is active []
+Underfull \vbox (badness 5050) has occurred while \output is active []
 
  [12 <./img/model_kaskadowy.png> <./img/water-wheel.png (PNG copy)>]
 <img/vmodel.png, id=50, 310.15875pt x 210.7875pt>
 File: img/vmodel.png Graphic file (type png)
- <use img/vmodel.png>
-<img/Wmodel3.JPG, id=51, 389.95688pt x 261.97874pt>
+ <use img/vmodel.png> [13 <./img/vmodel.png (PNG copy)>] <img/Wmodel3.JPG, id=5
+5, 389.95688pt x 261.97874pt>
 File: img/Wmodel3.JPG Graphic file (type jpg)
- <use img/Wmodel3.JPG>
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13 <./img/vmodel.png (PNG copy)>]
+<use img/Wmodel3.JPG>
 <img/butterflymodel2.JPG, id=56, 365.11406pt x 167.12437pt>
 File: img/butterflymodel2.JPG Graphic file (type jpg)
 
@@ -730,17 +731,12 @@ Rozdzia\l  3.
 [23
 
 ]
-Overfull \hbox (37.59995pt too wide) in alignment at lines 281--285
+Overfull \hbox (37.59995pt too wide) in alignment at lines 283--287
  [] [] [] 
  []
 
 
-Overfull \hbox (37.59995pt too wide) in alignment at lines 285--291
- [] [] [] 
- []
-
-
-Overfull \hbox (37.59995pt too wide) in alignment at lines 291--293
+Overfull \hbox (37.59995pt too wide) in alignment at lines 287--293
  [] [] [] 
  []
 
@@ -750,80 +746,86 @@ Overfull \hbox (37.59995pt too wide) in alignment at lines 293--295
  []
 
 
-Overfull \vbox (17.68008pt too high) detected at line 296
+Overfull \hbox (37.59995pt too wide) in alignment at lines 295--297
+ [] [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--297
+Overfull \vbox (17.68008pt too high) detected at line 298
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--299
 []|\T1/ptm/m/n/10.95 wspieraj¡ce za-rz¡-dza-nie
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 298--298
+Underfull \hbox (badness 10000) in paragraph at lines 300--300
 []|\T1/ptm/m/n/10.95 wspieraj¡ce za-rz¡-dza-nie
  []
 
 
-Overfull \vbox (35.3601pt too high) detected at line 303
+Overfull \vbox (35.3601pt too high) detected at line 305
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--304
+Underfull \hbox (badness 10000) in paragraph at lines 306--306
 []|\T1/ptm/m/n/10.95 Wspieraj¡ce prze-gl¡d
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--305
+Underfull \hbox (badness 10000) in paragraph at lines 307--307
 []|\T1/ptm/m/n/10.95 wykonuj¡ce sta-tyczn¡
  []
 
 
-Overfull \vbox (35.36009pt too high) detected at line 308
+Overfull \vbox (35.36009pt too high) detected at line 310
  []
 
 
-Underfull \hbox (badness 1960) in paragraph at lines 309--309
+Underfull \hbox (badness 1960) in paragraph at lines 311--311
 []|\T1/ptm/m/n/10.95 Wspieraj¡ce pro-jek-to-wa-
  []
 
 
-Underfull \hbox (badness 3189) in paragraph at lines 316--316
+Underfull \hbox (badness 3189) in paragraph at lines 318--318
 []|\T1/ptm/m/n/10.95 okre±laj¡ce me-tryki po-
  []
 
 
-Overfull \vbox (17.6801pt too high) detected at line 319
+Overfull \vbox (17.6801pt too high) detected at line 321
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 320--320
+Underfull \hbox (badness 10000) in paragraph at lines 322--322
 []|\T1/ptm/m/n/10.95 wspieraj¡ce te-sto-wa-nie
  []
 
 
-Underfull \hbox (badness 3471) in paragraph at lines 321--321
+Underfull \hbox (badness 3471) in paragraph at lines 323--323
 []|\T1/ptm/m/n/10.95 wykonuj¡ce dy-na-miczne
  []
 
 
-Overfull \vbox (53.04012pt too high) detected at line 324
+Overfull \vbox (53.04012pt too high) detected at line 326
  []
 
 
-Underfull \hbox (badness 1867) in paragraph at lines 325--326
+Underfull \hbox (badness 2617) in paragraph at lines 327--328
+[]|\T1/ptm/m/n/10.95 u»ywane przy te-sto-wa-nia mi-gra-cji (ak-tu-ali-za-cja
+ []
+
+
+Underfull \hbox (badness 1867) in paragraph at lines 327--328
 \T1/ptm/m/n/10.95 opro-gra-mo-wa-nia do no-wej wer-sji po-ª¡-czona ze
  []
 
 
-Overfull \hbox (37.59995pt too wide) in alignment at lines 295--328
+Overfull \hbox (37.59995pt too wide) in alignment at lines 297--330
  [] [] [] 
  []
 
-[24]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [25])
-[26]
+[24] [25]) [26]
 \openout2 = `rozdzial2.aux'.
 
  (./rozdzial2.tex
@@ -946,12 +948,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <img/bazaDanychDefinicjaDanych.png, id=146, 541.27219pt x 451.6875pt>
 File: img/bazaDanychDefinicjaDanych.png Graphic file (type png)
 
-<use img/bazaDanychDefinicjaDanych.png> [39]
-<img/bazaDanychDefinicja.png, id=150, 718.93594pt x 417.05812pt>
+<use img/bazaDanychDefinicjaDanych.png> [39] [40 <./img/bazaDanychAdministracja
+.png> <./img/bazaDanychDefinicjaDanych.png>]
+<img/bazaDanychDefinicja.png, id=155, 718.93594pt x 417.05812pt>
 File: img/bazaDanychDefinicja.png Graphic file (type png)
 
-<use img/bazaDanychDefinicja.png> [40 <./img/bazaDanychAdministracja.png> <./im
-g/bazaDanychDefinicjaDanych.png>]
+<use img/bazaDanychDefinicja.png>
 <img/bazaDanychWykonanie.png, id=156, 783.67781pt x 417.05812pt>
 File: img/bazaDanychWykonanie.png Graphic file (type png)
 
@@ -960,40 +962,39 @@ File: img/bazaDanychWykonanie.png Graphic file (type png)
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [41 <./img/bazaDanychDefinicja.png>] [42 <./img/bazaDanychWykonanie.png>]
-<img/screen/Welcome.png, id=165, 1269.74374pt x 1143.27126pt>
+LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10.95> not available
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 428.
+
+[43] <img/screen/Welcome.png, id=170, 1269.74374pt x 1143.27126pt>
 File: img/screen/Welcome.png Graphic file (type png)
 
 <use img/screen/Welcome.png>
-Overfull \hbox (52.6444pt too wide) in paragraph at lines 426--428
+Overfull \hbox (52.6444pt too wide) in paragraph at lines 441--443
  [] 
  []
 
-LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 434.
-
-Overfull \hbox (41.93042pt too wide) in paragraph at lines 453--453
+[44 <./img/screen/Welcome.png>]
+Overfull \hbox (41.93042pt too wide) in paragraph at lines 456--456
  []   \T1/pcr/m/n/9 <servlet-class>com.sun.jersey.spi.container.servlet.Servlet
 Container</servlet-class>[] 
  []
 
-[43] [44 <./img/screen/Welcome.png>] [45]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 467.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 475.
-
+(Font)              <5> on input line 469.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 477.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 475.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 477.
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--483
+Underfull \hbox (badness 10000) in paragraph at lines 484--485
 []\T1/ptm/m/n/10.95 Kod ¹ró-dªowy 5.1[] ilu-struje sy-tu-acje gdy ad-res »¡-da-
 nia \T1/ptm/m/it/10.95 http://adres-
  []
 
-) [46]
+[45]) [46]
 \openout2 = `rozdzial3.aux'.
 
  (./rozdzial3.tex
@@ -1076,13 +1077,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6597 strings out of 493848
- 90718 string characters out of 1152822
- 213364 words of memory out of 3000000
- 9678 multiletter control sequences out of 15000+50000
+ 6596 strings out of 493848
+ 90691 string characters out of 1152822
+ 215364 words of memory out of 3000000
+ 9677 multiletter control sequences out of 15000+50000
  107699 words of font info for 88 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 44i,12n,47p,1092b,1431s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,12n,47p,1087b,1431s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/a
@@ -1095,7 +1096,7 @@ xlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1
 xmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on praca.pdf (58 pages, 1314760 bytes).
+Output written on praca.pdf (58 pages, 1319505 bytes).
 PDF statistics:
  284 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

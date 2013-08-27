@@ -6,7 +6,7 @@
 % dodatkowe pakiety
 \usepackage{enumerate}
 \usepackage{listings} \lstloadlanguages{TeX}
-\usepackage{longtable}
+\usepackage{longtable} 
 \usepackage{array}
 \usepackage{multirow}
 
@@ -100,7 +100,8 @@
 % \include{dodatekB}
 % itd.
 
-\bibliographystyle{abbrv}
+\bibliographystyle{IEEEtran}
 \bibliography{bibliografia}
+
 
 \end{document}

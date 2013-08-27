@@ -97,6 +97,7 @@ year = {2001},
   title = {NIST. Announcing the secure hash standard.},
   publisher = {Federal Information Processing Satndards Publication 180-2},
   year = {2002}
+  
 }
 
 @Article{Levenshtein ,
@@ -137,3 +138,104 @@ urldate = {10/06/13}
   year={2010},
   publisher={ Cambridge University Press }
 }
+
+%testlink http://teamst.org/  testrail http://www.gurock.com/testrail/ fitnesse http://fitnesse.org/ 
+@misc{testlink,
+author = {{Open source}},
+title = {{Testlink website}},
+url = {http://teamst.org/},
+urldate = {10/07/13},
+note = {Accessed: 10-07-2013}
+}
+
+@misc{testrail,
+author = {{Gurock Software}},
+title = {{Testrail website}},
+url = {http://www.gurock.com/testrail/},
+note = {Accessed: 10-07-2013}
+}
+
+
+@misc{fitnesse,
+author = {{Open source}},
+title = {{Fitnesse website}},
+url = {http://fitnesse.org/},
+note = {Accessed: 10-07-2013}
+}
+%Cruible https://www.atlassian.com/software/crucible/overview  klocwork http://www.klocwork.com/, advanced etl processor  http://www.etl-tools.com/etl-tools/advanced-etl-processor/overview.html
+
+@misc{crucible,
+author = {Atlassian},
+title = {{Crucible website}},
+url = {https://www.atlassian.com/software/crucible/overvie},
+note = {Accessed: 10-07-2013}
+}
+@misc{klocwork,
+author = {{Klocwork Inc.}},
+title = {{Klocwork website}},
+url = {http://www.klocwork.com/},
+note = {Accessed: 10-07-2013}
+}
+@misc{etlProcessor,
+author = {{DB Software Laboratory} },
+title = {{Advanced ETL processor website}},
+url = {http://www.etl-tools.com/etl-tools/advanced-etl-processor/overview.html},
+note = {Accessed: 10-07-2013}
+}
+%generate data http://www.generatedata.com/ testComposer http://www.canamsoftware.com/Products/CAGenSolutions/TestComposer/Overview/tabid/112/Default.aspx
+@misc{generateData,
+author = {{Open source}},
+title = {{Generate data website}},
+url = {http://www.generatedata.com/ },
+note = {Accessed: 10-07-2013}
+}
+@misc{testComposer,
+author = {{Canam Software Labs, Inc.} },
+title = {{Test Composer website}},
+url = {http://www.canamsoftware.com/Products/CAGenSolutions/TestComposer/Overview/tabid/112/Default.aspx},
+note = {Accessed: 10-07-2013}
+}
+%http://junit.org/ https://www.atlassian.com/software/clover/overview http://www.eclemma.org/jacoco/
+@misc{junit,
+author = {{Open source} },
+title = {{Junit website}},
+url = {http://junit.org/},
+note = {Accessed: 10-07-2013}
+}
+@misc{clover,
+author = {Atlassian },
+title = {{Clover website}},
+url = {https://www.atlassian.com/software/clover/overview},
+note = {Accessed: 10-07-2013}
+}
+@misc{jacoco,
+author = {{Mountainminds GmbH  Co} },
+title = {{Jacoco website}},
+url = {http://www.eclemma.org/jacoco/},
+note = {Accessed: 10-07-2013}
+}
+%http://www.ej-technologies.com/products/jprofiler/overview.html  http://info.appdynamics.com/AppDynamicsLiteJavaNetOLD.html
+@misc{jprofiler,
+author = { {Ej-technologies GmbH}},
+title = {{Jprofiler website}},
+url = {http://www.ej-technologies.com/products/jprofiler/overview.htm},
+note = {Accessed: 10-07-2013}
+}
+@misc{appdynamic,
+author = { AppDynamics},
+title = {{AppDynamicsLite website}},
+url = {http://info.appdynamics.com/AppDynamicsLiteJavaNetOLD.html},
+note = {Accessed: 10-07-2013}
+}
+% http://www.hds.com/products/storage-software/universal-replicator.html
+
+@misc{replicator,
+author = { {Hitachi Data Systems Corporation}},
+title = {{Universal Replicator website}},
+url = {http://www.hds.com/products/storage-software/universal-replicator.html},
+note = {Accessed: 10-07-2013}
+}
+
+
+
+

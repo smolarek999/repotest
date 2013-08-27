@@ -1,11 +1,11 @@
 \select@language {polish}
 \contentsline {chapter}{\numberline {1}Wst\IeC {\k e}p}{9}
-\contentsline {section}{\numberline {1.1}Cel pracy}{9}
+\contentsline {section}{\numberline {1.1}Cel pracy}{10}
 \contentsline {section}{\numberline {1.2}Struktura pracy}{10}
 \contentsline {chapter}{\numberline {2}Wprowadzenie}{11}
 \contentsline {section}{\numberline {2.1}Testowanie w procesie tworzenia oprogramowania}{11}
 \contentsline {section}{\numberline {2.2}Modele tradycyjne wytwarzania oprogramowania}{11}
-\contentsline {subsection}{\numberline {2.2.1}Model Kaskadowy}{11}
+\contentsline {subsection}{\numberline {2.2.1}Model kaskadowy}{11}
 \contentsline {subsection}{\numberline {2.2.2}Model V}{13}
 \contentsline {subsubsection}{\numberline {2.2.2.1}Wariacje modelu V}{13}
 \contentsline {section}{\numberline {2.3}Modele iteracyjne wytwarzania oprogramowania}{14}
@@ -16,24 +16,24 @@
 \contentsline {subsection}{\numberline {2.4.2}Strategie wynikaj\IeC {\k a}ce z projektu oprogramowania}{18}
 \contentsline {subsection}{\numberline {2.4.3}Strategie metodyczne}{18}
 \contentsline {subsection}{\numberline {2.4.4}Strategie zorientowane procesowo}{18}
-\contentsline {subsection}{\numberline {2.4.5}Strategie dynamiczne}{18}
+\contentsline {subsection}{\numberline {2.4.5}Strategie dynamiczne}{19}
 \contentsline {subsection}{\numberline {2.4.6}Strategie sterowane specyfik\IeC {\k a} testowania}{19}
 \contentsline {subsection}{\numberline {2.4.7}Strategie regresyjne}{19}
-\contentsline {section}{\numberline {2.5}Typy test\IeC {\'o}w}{19}
+\contentsline {section}{\numberline {2.5}Typy test\IeC {\'o}w}{20}
 \contentsline {subsection}{\numberline {2.5.1}Podzia\IeC {\l } ze wzgl\IeC {\k e}du na obszar zastosowania}{20}
 \contentsline {subsubsection}{\numberline {2.5.1.1}Testy komponentowe}{20}
 \contentsline {subsubsection}{\numberline {2.5.1.2}Testy integracyjne}{20}
 \contentsline {subsubsection}{\numberline {2.5.1.3}Testy systemowe}{21}
 \contentsline {subsection}{\numberline {2.5.2}Podzia\IeC {\l } ze wzgl\IeC {\k e}du na typ walidacji}{21}
-\contentsline {subsubsection}{\numberline {2.5.2.1}Testy funkcjonalne}{21}
+\contentsline {subsubsection}{\numberline {2.5.2.1}Testy funkcjonalne}{22}
 \contentsline {subsubsection}{\numberline {2.5.2.2}Testy niefunkcjonalne}{22}
 \contentsline {chapter}{\numberline {3}Okre\IeC {\'s}lenie problemu}{23}
 \contentsline {section}{\numberline {3.1}Definicja problemu}{23}
 \contentsline {section}{\numberline {3.2}Rodzaje narz\IeC {\k e}dzi wspomagaj\IeC {\k a}cych proces testowania}{24}
 \contentsline {section}{\numberline {3.3}Potrzeba integracji z innymi narz\IeC {\k e}dziami}{26}
-\contentsline {chapter}{\numberline {4}Projekt}{27}
-\contentsline {section}{\numberline {4.1}Architektura}{27}
-\contentsline {section}{\numberline {4.2}Warstwy}{28}
+\contentsline {chapter}{\numberline {4}Projekt systemu repozytorium}{27}
+\contentsline {section}{\numberline {4.1}Architektura rozwi\IeC {\k a}zania}{27}
+\contentsline {section}{\numberline {4.2}Warstwy systemu}{28}
 \contentsline {subsection}{\numberline {4.2.1}Warstwa aplikacji internetowej}{28}
 \contentsline {subsection}{\numberline {4.2.2}Warstwa us\IeC {\l }ugi internetowej}{29}
 \contentsline {section}{\numberline {4.3}Modu\IeC {\l }y aplikacji}{29}
@@ -42,19 +42,19 @@
 \contentsline {subsection}{\numberline {4.3.3}Modu\IeC {\l } danych uzupe\IeC {\l }niaj\IeC {\k a}cych}{32}
 \contentsline {subsection}{\numberline {4.3.4}Modu\IeC {\l } wykonania }{33}
 \contentsline {subsection}{\numberline {4.3.5} Modu\IeC {\l } hurtowni danych }{35}
-\contentsline {chapter}{\numberline {5}Implementacja}{36}
+\contentsline {chapter}{\numberline {5}Implementacja systemu repozytorium}{36}
 \contentsline {section}{\numberline {5.1}Organizacja aplikacji}{36}
 \contentsline {subsection}{\numberline {5.1.1}\IeC {\'S}rodowisko uruchomieniowe aplikacji}{36}
 \contentsline {subsection}{\numberline {5.1.2}Struktura projektu}{37}
 \contentsline {section}{\numberline {5.2}Model bazy danych}{37}
-\contentsline {subsection}{\numberline {5.2.1}Administracja}{39}
-\contentsline {subsection}{\numberline {5.2.2}Definicja danych dodatkowych}{40}
-\contentsline {subsection}{\numberline {5.2.3}Definicja test\IeC {\'o}w}{40}
-\contentsline {subsection}{\numberline {5.2.4}Wykonanie test\IeC {\'o}w}{41}
+\contentsline {subsection}{\numberline {5.2.1}Model administracji}{39}
+\contentsline {subsection}{\numberline {5.2.2}Model definicji danych dodatkowych}{40}
+\contentsline {subsection}{\numberline {5.2.3}Model definicji test\IeC {\'o}w}{40}
+\contentsline {subsection}{\numberline {5.2.4}Model wykonania test\IeC {\'o}w}{41}
 \contentsline {section}{\numberline {5.3}Komponenty aplikacji internetowej}{42}
-\contentsline {section}{\numberline {5.4}Implementacja REST}{43}
-\contentsline {chapter}{\numberline {6}Przypadki u\IeC {\.z}ycia aplikacji}{47}
-\contentsline {section}{\numberline {6.1}Specyfikacja systemu poddanego testom}{47}
+\contentsline {section}{\numberline {5.4}Implementacja REST}{45}
+\contentsline {chapter}{\numberline {6}Testy systemu}{47}
+\contentsline {section}{\numberline {6.1}Definicja \IeC {\'s}rodowiska testowego}{47}
 \contentsline {section}{\numberline {6.2}Scenariusz 1: tworzenie bazy test\IeC {\'o}w}{48}
 \contentsline {section}{\numberline {6.3}Scenariusz 2: tworzenie planu test\IeC {\'o}w}{49}
 \contentsline {section}{\numberline {6.4}Scenariusz 3: wykonanie testu z pozytywnym rezultatem}{50}

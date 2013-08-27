@@ -11,51 +11,52 @@ Database file #1: bibliografia.bib
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 Warning--empty booktitle in wmodel
 Warning--empty journal in BUTTERFLY
+Warning--empty journal in IBM
 Warning--empty booktitle in sha2
 Warning--empty booktitle in hash
 Warning--empty journal in Levenshtein
 Warning--empty journal in materializedPath
 
 Done.
-You've used 31 entries,
+You've used 32 entries,
             4039 wiz_defined-function locations,
-            956 strings with 10591 characters,
-and the built_in function-call counts, 11649 in all, are:
-= -- 834
-> -- 185
+            961 strings with 10689 characters,
+and the built_in function-call counts, 11956 in all, are:
+= -- 857
+> -- 189
 < -- 0
-+ -- 88
-- -- 44
-* -- 442
-:= -- 2081
-add.period$ -- 65
-call.type$ -- 31
-change.case$ -- 38
++ -- 90
+- -- 45
+* -- 453
+:= -- 2141
+add.period$ -- 67
+call.type$ -- 32
+change.case$ -- 39
 chr.to.int$ -- 0
-cite$ -- 37
-duplicate$ -- 993
-empty$ -- 1249
-format.name$ -- 53
-if$ -- 2515
+cite$ -- 39
+duplicate$ -- 1023
+empty$ -- 1280
+format.name$ -- 54
+if$ -- 2579
 int.to.chr$ -- 0
-int.to.str$ -- 31
-missing$ -- 224
-newline$ -- 152
-num.names$ -- 31
-pop$ -- 709
+int.to.str$ -- 32
+missing$ -- 229
+newline$ -- 155
+num.names$ -- 32
+pop$ -- 724
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 892
+skip$ -- 916
 stack$ -- 0
-substring$ -- 52
-swap$ -- 505
+substring$ -- 53
+swap$ -- 518
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 31
-warning$ -- 6
-while$ -- 31
-width$ -- 33
-write$ -- 289
-(There were 6 warnings)
+type$ -- 32
+warning$ -- 7
+while$ -- 32
+width$ -- 34
+write$ -- 296
+(There were 7 warnings)
