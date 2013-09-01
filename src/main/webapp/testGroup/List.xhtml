@@ -32,7 +32,10 @@
             
              <p:treeNode type="test" icon="ui-icon-document">  
                 <h:outputText value="#{node.getName()}" />  
-       
+                 <p:button outcome="/test/variationMap" styleClass="btn btn-mini btn-success" value="Permutations"  >
+                        <f:param name="id" value="#{node.getIdTest()}" />
+                    </p:button>
+                
 
             </p:treeNode> 
         </p:tree>  

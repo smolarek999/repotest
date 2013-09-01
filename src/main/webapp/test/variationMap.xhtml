@@ -18,6 +18,7 @@
                 <li>#{variation}</li>
             </ui:repeat>
         </ul>
+        
         <h:form>
 
             <p:mindmap value="#{testVariationController.root}" style="width:100%;height:600px;border:1px solid black;">
@@ -37,6 +38,19 @@
 
             </p:dialog>  
         </h:form>
+        <p>Keys:
+        <ul>
+            <ui:repeat var="state" varStatus="key" value="#{testVariationController.test.productStateCollection}" >
+                <li>P#{key.index + 1} : #{state.description}</li>
+            </ui:repeat>
+            <ui:repeat var="equip" varStatus="key" value="#{testVariationController.test.testhasEquipmentCollection}" >
+                <li>E#{key.index + 1} #{equip.equipment.name}</li>
+            </ui:repeat>
+            <ui:repeat var="step" varStatus="key" value="#{testVariationController.test.testStepCollection}" >
+                <li>S#{key.index + 1} #{step.description}</li>
+            </ui:repeat>
+        </ul>
+        </p>
 
     </ui:define>
 

@@ -117,6 +117,13 @@ public class TestVariationController {
 
     }
 
+    public Test getTest() {
+        return test;
+    }
+    
+    
+    
+
     public void onNodeDblselect(SelectEvent event) {
         this.selectedNode = (MindmapNode) event.getObject();
         if (selectedNode.getData() instanceof TestExecutionVariation) {
