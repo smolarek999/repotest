@@ -1,0 +1,61 @@
+\documentclass[inz]{recenzja}
+
+% data, opcjonalnie, domyslnie dzisiejsza
+%\date{22.06.07}
+
+% nazwa jednostki, w ktorej praca zostala wykonana
+\jednostka{Katedra Informatyki Stosowanej}
+
+% tytul pracy
+\title{Repozytorium testów oprogramowania dla produktów \\ wielowydaniowych dedykowanych na wiele urządzeń}
+\typpracy{pracy magisterskiej} 
+% lub 
+%\typpracy{projektu inżynierskiego}
+
+% promotor/recenzent
+\author{dr inż. Paweł Skrzyński}
+\rola{promotor}
+% lub
+%\rola{opiekun}
+
+% imie i nazwisko studenta
+\student{Paweł Englert}
+
+% nr. albumu
+\studentnr{}
+
+% Czy tre¶æ pracy odpowiada tematowi okre¶lonemu w tytule
+\temat{tak}
+
+% Merytoryczna ocena pracy
+\merytA{
+Celem recenzowanej pracy jest przedstawienie projektu repozytorium i jego implementacji w oparciu o określone, ustalone w ramach pracy funkcjonalności. Repozytorium zapewnia wsparcie dla systemów, których czas życia moęe być dłuższy niż jedno wydanie i są one dedykowane na wiele urządzeń. Dokładna specyfika została opisana w rozdziale trzecim pracy. 
+\newline
+Wynikiem niniejszej pracy magisterkiej jest aplikacja webowa bądąca repozytorium testów manualnych. Podstawowymi założeniami było spełnienie specyficznych wymagań dla systemów wielowydaniowych, które dedykowane są na wiele urządzeń. Spełnienie przyjętych założeń walidowane było w rozdziale szóstym, który przedstawia możliwe scenariusze procesu testowania oprogramowania względem aplikacji repozytorium.}
+
+\merytB{
+Ważnym założeniem aplikacji było umożliwienie jak najprostszego sposobu definicji przypadków testowych, których końcowa treść uzależniona jest od końcowej konfiguracji. Efekt ten udało się osiągnąć poprzez udostępnienie możliwości definiowania warunków dla składowych definicji testów. Cel pracy ustało się osiągnąć i stworzone narzędzie z powodzeniem może zostać wykorzystane w praktyce.}
+
+% Ocena struktury pracy, kolejno¶ci rozdzia³ów, itp.
+\strukt{Na pracę składa się wstęp, 5 rozdziałów i podsumowanie. W rodziale 1 zawarty jest wstępny zarys problematyki i opis struktury pracy. W rodziale 2 przedstawiono podstawowe informacje dotyczące procesu testowania oprogramowania. W rodziale 3 przedstawiono problem, który ma byc rozwiązany w pracy na tle dostępnych na rynku rozwiązań. W rodziale 4 i 5 przedstawiono projekt oraz implementację systemu. W rozdziale 6 omówiono sposób testowania stworzonego narzędzia. W rozdziale 7 zawarto podsumowanie efektów pracy. Struktura pracy nie budzi większych zastrzeżeń.}
+
+% Charakterystyka doboru i wykorzystania ¼róde³
+\zrodla{Na literaturę składa się 32 pozycji, obejmujących pozycje ksiazkowe, artykuły oraz linki do specyfikacji wykorzystanych technologii. Dobór materiału źródłowego jest adekwatny.}
+
+% Ocena formalnej strony pracy (poprawno¶æ jêzyka, strona edytorska, itp.)
+\formal{Praca zawiera jedynie drobne błędy edytorskie i językowe, które nie wpływają na jej pozytywny odbiór.}
+
+% Ocena indywidualnego wk³adu pracy dyplomanta
+\wklad{Istotny -- warto zaznaczyć, że wytworzenie oprogramowania będącego przedmiotem pracy wymagało dobrej znajmości Java oraz problematyki testowania oprogramowania.}
+
+% Uwagi dodatkowe (koñcowe)
+\uwagi{Brak.}
+
+% Ocena koñcowa pracy
+\ocena{5,0 bardzo dobry}
+
+\begin{document}
+
+\rec
+
+\end{document}
